@@ -1,0 +1,42 @@
+#
+# define display information
+#
+
+name     : Compare metabolic annotations
+subtitle : Conduct a side-by-side annotation of various metabolic annotations mapped into a genome
+tooltip  : Conduct a side-by-side annotation of various metabolic annotations mapped into a genome
+
+icon: data-teal.png
+
+screenshots :
+    []
+
+suggestions :
+    apps:
+        related :
+            []
+        next :
+            []
+    methods:
+        related :
+            []
+        next :
+            []
+
+parameters :
+    genome :
+      ui-name : |
+            Genome to be annotated
+      short-hint : |
+            Select the Genome object that these annotations should be assigned to
+      long-hint  : |
+            Select the Genome object that these annotations should be assigned to
+    annotations_to_compare :
+        ui-name : |
+            Annotations to compare
+        short-hint : |
+            Select the annotations you want to compare
+        long-hint : |
+            Select the annotations you want to compare
+description : |
+    <p>Conduct side-by-side comparison of various genome annotations.</p>

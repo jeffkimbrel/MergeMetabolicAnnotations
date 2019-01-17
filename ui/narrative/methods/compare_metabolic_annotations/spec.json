@@ -1,0 +1,98 @@
+{
+  "name" : "Compare Metabolic Annotations",
+  "ver" : "0.0.1",
+  "authors" : ["chenry","jakimbrel","patrikd"],
+  "contact" : "http://kbase.us/contact-us/",
+  "visble" : true,
+  "categories" : ["active","annotation"],
+  "widgets" : {
+    "input" : null,
+    "output" : ""
+  },
+  "parameters" : [
+     {
+       "id" : "genome",
+       "optional" : false,
+       "advanced" : false,
+       "allow_multiple" : false,
+       "default_values" : [ "" ],
+       "field_type" : "text",
+       "text_options" : {
+         "valid_ws_types" : [ "KBaseGenomes.Genome" ]
+       }
+     },
+     {
+        "id" : "annotations_to_compare",
+        "optional" : false,
+        "advanced" : false,
+        "allow_multiple" : true,
+        "default_values" : [ "" ],
+        "field_type" : "textsubdata",
+        "textsubdata_options" : {
+           "allow_custom" : false,
+           "show_src_obj" : false,
+           "subdata_selection" : {
+              "path_to_subdata" : [
+                 "ontology_events"
+              ],
+              "parameter_id" : "genome",
+              "selection_id" : "id",
+              "subdata_included" : [
+                 "ontology_events/[*]/id",
+                 "ontology_events/[*]/timestamp",
+                 "ontology_events/[*]/description"
+              ]
+           },
+           "multiselection" : false
+        },
+        "text_options" : {
+           "valid_ws_types" : []
+        }
+     }
+  ],
+  "behavior" : {
+    "service-mapping": {
+       "url": "",
+       "name": "MergeMetabolicAnnotations",
+       "method": "compare_metabolic_annotations",
+       "input_mapping": [
+           {
+               "narrative_system_variable": "workspace",
+               "target_property": "workspace"
+           },
+           {
+               "target_property" : "genome",
+               "input_parameter" : "genome"
+           },
+           {
+               "target_property" : "annotations_to_compare",
+               "input_parameter" : "annotations_to_compare"
+           }
+       ],
+      "output_mapping" : [
+     {
+             "narrative_system_variable": "workspace",
+             "target_property": "wsName"
+           },
+           {
+             "service_method_output_path": [0,"obj_ref"],
+             "target_property": "obj_ref",
+             "target_type_transform": "resolved-ref"
+           },
+           {
+               "service_method_output_path": [0, "report_name"],
+               "target_property": "report_name"
+           },
+           {
+               "service_method_output_path": [0, "report_ref"],
+               "target_property": "report_ref"
+           },
+           {
+               "constant_value": "16",
+               "target_property": "report_window_line_height"
+           }
+      ]
+    }
+  },
+  "job_id_output_field": "docker"
+}

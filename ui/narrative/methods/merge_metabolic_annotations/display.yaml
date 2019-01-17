@@ -1,0 +1,90 @@
+#
+# define display information
+#
+
+name     : Merge Metabolic Annotations
+subtitle : Merge multiple metabolic annotations into a single merged annotation based on thresholds
+tooltip  : Merge multiple metabolic annotations into a single merged annotation based on thresholds
+
+icon: data-teal.png
+
+screenshots :
+    []
+
+suggestions :
+    apps:
+        related :
+            []
+        next :
+            []
+    methods:
+        related :
+            []
+        next :
+            []
+
+parameters :
+    genome :
+        ui-name : |
+            Genome to be merged
+        short-hint : |
+            Select the Genome object with annotations to merge
+        long-hint  : |
+            Select the Genome object with annotations to merge
+    annotation_source :
+        ui-name : |
+            Annotation to merge
+        short-hint : |
+            Select the annotations you want to merge
+        long-hint : |
+            Select the annotations you want to merge
+    annotation_weight :
+        ui-name : |
+            Annotation weight
+        short-hint : |
+            Specify the weight that should be given to this particular annotation
+        long-hint : |
+            Specify the weight that should be given to this particular annotation
+    annotation_threshold :
+        ui-name : |
+            Annotation score threshold
+        short-hint : |
+            Only annotations with a weighted score above this threshold will be kept
+        long-hint : |
+            Only annotations with a weighted score above this threshold will be kept
+    keep_best_annotation_only :
+        ui-name : |
+            Keep highest scoring annotation only
+        short-hint : |
+            Only keep the annotation with the best score that exceed the specified threshold
+        long-hint : |
+            Only keep the annotation with the best score that exceed the specified threshold. If unchecked, all annotations scoring above the threshold will be kept.
+    annotation_name :
+        ui-name : |
+            Name for merged annotations
+        short-hint : |
+            Enter a name to use for merged annotations
+        long-hint : |
+            Enter a name to use for merged annotations
+    annotation_description :
+        ui-name : |
+            Description for merged annotations
+        short-hint : |
+            Enter a description to use for merged annotations
+        long-hint : |
+            Enter a description to use for merged annotations
+    output_name :
+        ui-name : |
+            Output genome name
+        short-hint : |
+            Name for new genome with merged annotations
+        long-hint : |
+            Name for new genome with merged annotations
+parameter-groups:
+    annotation_to_merge:
+        ui-name: |
+            Annotation events to merge with associated weights to use
+        short-hint: |
+            Annotation events to merge with associated weights to use
+description : |
+    <p>Merge annotations within a genome to a new merged set</p>
