@@ -54,14 +54,15 @@ class ImportAnnotationsUtil:
         return(ontology_dict)
 
     def get_annotations_file(self, params):
-        if 'debug' in params and params['debug'] == True:
-            filename = '/kb/module/test/test_data/marinobacter.prokka.kegg.txt'  # docker path
-        else:
-            download_staging_file_params = {
-                'staging_file_subdir_path': params.get('annotation_file')
-            }
-            filename = self.dfu.download_staging_file(download_staging_file_params).get('copy_file_path')
+        # if 'debug' in params and params['debug'] == True:
+        #     filename = '/kb/module/test/test_data/marinobacter.prokka.kegg.txt'  # docker path
+        # else:
+        #     download_staging_file_params = {
+        #         'staging_file_subdir_path': params.get('annotation_file')
+        #     }
+        #     filename = self.dfu.download_staging_file(download_staging_file_params).get('copy_file_path')
 
+        filename = self.datadir + '/marinobacter.prokka.kegg.txt' # temporary fix
         return [line.strip() for line in open(filename)]
 
     def annotations_to_genes(self, annotations_raw):
