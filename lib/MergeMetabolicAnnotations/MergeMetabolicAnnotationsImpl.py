@@ -2,6 +2,10 @@
 #BEGIN_HEADER
 import logging
 import os
+from .utils.ImportAnnotationsUtil import ImportAnnotationsUtil
+from MergeMetabolicAnnotations.utils.ImportAnnotationsUtil import ImportAnnotationsUtil
+
+
 
 from installed_clients.KBaseReportClient import KBaseReport
 #END_HEADER
@@ -14,7 +18,7 @@ class MergeMetabolicAnnotations:
 
     Module Description:
     A KBase module: MergeMetabolicAnnotations
-This module implements tools for importing, comparing and merging 3rd party metabolic annotations.
+    This module implements tools for importing, comparing and merging 3rd party metabolic annotations.
     '''
 
     ######## WARNING FOR GEVENT USERS ####### noqa
@@ -36,6 +40,8 @@ This module implements tools for importing, comparing and merging 3rd party meta
         #BEGIN_CONSTRUCTOR
         self.callback_url = os.environ['SDK_CALLBACK_URL']
         self.shared_folder = config['scratch']
+        self.config = config
+        self.config['SDK_CALLBACK_URL'] = self.callback_url
         logging.basicConfig(format='%(created)s %(levelname)s: %(message)s',
                             level=logging.INFO)
         #END_CONSTRUCTOR
@@ -50,6 +56,8 @@ This module implements tools for importing, comparing and merging 3rd party meta
         # ctx is the context object
         # return variables are: output
         #BEGIN import_annotations
+        import_runner = ImportAnnotationsUtil(self.config)
+        output = import_runner.run(params)
         #END import_annotations
 
         # At some point might do deeper type checking...
