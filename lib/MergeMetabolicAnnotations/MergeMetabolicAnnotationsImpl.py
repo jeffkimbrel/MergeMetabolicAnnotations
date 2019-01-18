@@ -57,7 +57,7 @@ class MergeMetabolicAnnotations:
         # return variables are: output
         #BEGIN import_annotations
         import_runner = ImportAnnotationsUtil(self.config)
-        output = import_runner.run(params)
+        output = import_runner.run(ctx, params)
         #END import_annotations
 
         # At some point might do deeper type checking...
