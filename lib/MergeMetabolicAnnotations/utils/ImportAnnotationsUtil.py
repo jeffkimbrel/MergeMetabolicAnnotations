@@ -3,6 +3,7 @@ import datetime
 import logging
 import json
 from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
+from install_clients.DataFileUtilClient import DataFileUtil
 
 class ImportAnnotationsUtil:
 
@@ -23,6 +24,7 @@ class ImportAnnotationsUtil:
         self.genes = {}
         self.callback_url = config['SDK_CALLBACK_URL']
         self.genome_api = GenomeAnnotationAPI(self.callback_url)
+        self.dfu = DataFileUtil(self.callback_url)
 
     def validate(self):
         pass
