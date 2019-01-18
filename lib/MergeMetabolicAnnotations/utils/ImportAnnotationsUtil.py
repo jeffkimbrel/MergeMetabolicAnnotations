@@ -38,7 +38,7 @@ class ImportAnnotationsUtil:
 
     def get_ontology_dict(self, ontology): # getting only the 'ontology' param from the UI
 
-        ontology_path = datadir + "/" + self.ontology_lookup[ontology]
+        ontology_path = self.datadir + "/" + self.ontology_lookup[ontology]
         ontology_dict_raw = json.loads(open(ontology_path, "r").read() )
 
         ontology_dict = {}
