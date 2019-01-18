@@ -3,7 +3,7 @@ import datetime
 import logging
 import json
 from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
-from install_clients.DataFileUtilClient import DataFileUtil
+from installed_clients.DataFileUtilClient import DataFileUtil
 
 class ImportAnnotationsUtil:
 
