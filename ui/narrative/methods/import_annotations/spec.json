@@ -129,7 +129,8 @@
         },
         {
           "input_parameter": "genome",
-          "target_property": "genome"
+          "target_property": "genome",
+          "target_type_transform": "resolved-ref"
         }
       ],
       "output_mapping" : [
