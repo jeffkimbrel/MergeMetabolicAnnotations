@@ -52,7 +52,7 @@ class ImportAnnotationsUtil:
         return(ontology_dict)
 
     def get_annotations_file(self, params):
-        if params['debug'] == True:
+        if 'debug' in params and params['debug'] == True:
             filename = '/kb/module/test/test_data/marinobacter.prokka.kegg.txt'  # docker path
         else:
             download_staging_file_params = {
