@@ -66,7 +66,7 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         params = {
             "debug" : True,
             "ontology": "keggko",
-            "annotation_file": "test/test_data/PT3_2.Spades.prokka.kegg.txt",
+            "annotation_file": "test/test_data/marinobacter.prokka.kegg.txt",
             "description": "test",
             "genome": "23001/5/1",
             "output_name": "testGenome_1",

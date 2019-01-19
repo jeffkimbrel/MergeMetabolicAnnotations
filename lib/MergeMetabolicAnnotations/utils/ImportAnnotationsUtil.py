@@ -4,6 +4,7 @@ import logging
 import json
 from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
 from installed_clients.DataFileUtilClient import DataFileUtil
+from installed_clients.GenomeFileUtilClient import GenomeFileUtil
 
 class ImportAnnotationsUtil:
 
@@ -25,6 +26,7 @@ class ImportAnnotationsUtil:
         self.callback_url = config['SDK_CALLBACK_URL']
         self.genome_api = GenomeAnnotationAPI(self.callback_url)
         self.dfu = DataFileUtil(self.callback_url)
+        self.gfu = GenomeFileUtil(self.callback_url)
 
     def validate(self):
         pass
@@ -184,17 +186,17 @@ class ImportAnnotationsUtil:
         #logging.info(self.genome_full.keys())
         #logging.info(self.genome_full['data'].keys())
 
-        # with open("/kb/module/work/genome_full.json", 'w') as outfile1:
-        #     json.dump(self.genome_full, outfile1, indent = 2)
-        #
-        # with open("/kb/module/work/genome_dict.json", 'w') as outfile2:
-        #     json.dump(genome_dict, outfile2, indent = 2)
+        with open("/kb/module/work/genome_full.json", 'w') as outfile1:
+            json.dump(self.genome_full, outfile1, indent = 2)
+
+        with open("/kb/module/work/genome_dict.json", 'w') as outfile2:
+            json.dump(genome_dict, outfile2, indent = 2)
 
 
         prov = ctx.provenance()
         info = self.genome_api.save_one_genome_v1({'workspace': params['workspace_name'],
                                       'name': params['output_name'],
-                                      'data': self.genome_full, 'provenance': prov})['info']
+                                      'data': genome_dict, 'provenance': prov})['info']
 
         genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
         logging.info(genome_ref)
