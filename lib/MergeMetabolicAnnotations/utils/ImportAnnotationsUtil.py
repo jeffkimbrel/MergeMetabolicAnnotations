@@ -173,30 +173,30 @@ class ImportAnnotationsUtil:
 
         self.summarize()
 
-        # save genome to new object
-        self.genome_full['data'] = genome_dict
+        # overwrite object with new genome
+#!!!        self.genome_full['data'] = genome_dict
 
         # TODO - ask for these from user, or pull from original genome
         # and what is id?
-        for item in ['id', 'scientific_name', 'domain', 'genetic_code']:
-            if item not in self.genome_full:
-                self.genome_full[item] = "unknown"
-
-                if item == 'genetic_code':
-                    self.genome_full[item] = 11
+        # for item in ['id', 'scientific_name', 'domain', 'genetic_code']:
+        #     if item not in self.genome_full:
+        #         self.genome_full[item] = "unknown"
+        #
+        #         if item == 'genetic_code':
+        #             self.genome_full[item] = 11
 
         #logging.info(self.genome_full.keys())
         #logging.info(self.genome_full['data'].keys())
 
-        with open("/kb/module/work/genome_full.json", 'w') as outfile1:
-            json.dump(self.genome_full, outfile1, indent = 2)
-
-        with open("/kb/module/work/genome_dict.json", 'w') as outfile2:
-            json.dump(genome_dict, outfile2, indent = 2)
+        # with open("/kb/module/work/genome_full.json", 'w') as outfile1:
+        #     json.dump(self.genome_full, outfile1, indent = 2)
+        #
+        # with open("/kb/module/work/genome_dict.json", 'w') as outfile2:
+        #     json.dump(genome_dict, outfile2, indent = 2)
 
 
         prov = ctx.provenance()
-        logging.info(prov)
+
         info = self.gfu.save_one_genome({'workspace' : params['workspace_name'],
                                       'name': params['output_name'],
                                       'data': self.genome_full['data'],
