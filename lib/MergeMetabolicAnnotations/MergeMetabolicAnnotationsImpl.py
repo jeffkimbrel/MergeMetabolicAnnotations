@@ -5,11 +5,8 @@ import os
 from .utils.ImportAnnotationsUtil import ImportAnnotationsUtil
 from MergeMetabolicAnnotations.utils.ImportAnnotationsUtil import ImportAnnotationsUtil
 
-
-
 from installed_clients.KBaseReportClient import KBaseReport
 #END_HEADER
-
 
 class MergeMetabolicAnnotations:
     '''

@@ -196,9 +196,11 @@ class ImportAnnotationsUtil:
 
 
         prov = ctx.provenance()
-        info = self.genome_api.save_one_genome_v1({'workspace': params['workspace_name'],
+        logging.info(prov)
+        info = self.gfu.save_one_genome({'workspace' : params['workspace_name'],
                                       'name': params['output_name'],
-                                      'data': genome_dict, 'provenance': prov})['info']
+                                      'data': self.genome_full['data'],
+                                      'provenance' : prov})['info']
 
         genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
         logging.info(genome_ref)
