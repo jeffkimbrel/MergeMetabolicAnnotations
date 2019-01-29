@@ -11,6 +11,7 @@ class ImportAnnotationsUtil:
     workdir = 'tmp/work'
     staging_dir = "/staging/"
     datadir = "/kb/module/data/"
+
     ontology_lookup = {
         "ec": "KBaseOntology/ec_ontology",
         "keggko": "KEGG_KO_ontologyDictionary.json",
@@ -174,7 +175,7 @@ class ImportAnnotationsUtil:
         self.summarize()
 
         # overwrite object with new genome
-#!!!        self.genome_full['data'] = genome_dict
+        self.genome_full['data'] = genome_dict
 
         # TODO - ask for these from user, or pull from original genome
         # and what is id?
@@ -185,17 +186,14 @@ class ImportAnnotationsUtil:
         #         if item == 'genetic_code':
         #             self.genome_full[item] = 11
 
-        #logging.info(self.genome_full.keys())
-        #logging.info(self.genome_full['data'].keys())
-
         # with open("/kb/module/work/genome_full.json", 'w') as outfile1:
         #     json.dump(self.genome_full, outfile1, indent = 2)
         #
         # with open("/kb/module/work/genome_dict.json", 'w') as outfile2:
         #     json.dump(genome_dict, outfile2, indent = 2)
 
-
         prov = ctx.provenance()
+        logging.info(params)
 
         info = self.gfu.save_one_genome({'workspace' : params['workspace_name'],
                                       'name': params['output_name'],
@@ -229,7 +227,6 @@ class Gene:
             if id in ontology_dict:
                 valid = 1
                 name = ontology_dict[id]
-
             else:
                 name = ""
 

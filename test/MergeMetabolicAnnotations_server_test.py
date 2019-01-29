@@ -70,6 +70,6 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
             "description": "test",
             "genome": "23001/5/1",
             "output_name": "testGenome_1",
-            "workspace_name" : self.wsName
+            "workspace_name": self.wsName
         }
         ret = self.serviceImpl.import_annotations(self.ctx, params)
