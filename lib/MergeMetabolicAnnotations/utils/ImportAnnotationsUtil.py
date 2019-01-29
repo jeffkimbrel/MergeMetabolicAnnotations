@@ -5,6 +5,9 @@ import json
 from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
 from installed_clients.DataFileUtilClient import DataFileUtil
 from installed_clients.GenomeFileUtilClient import GenomeFileUtil
+from installed_clients.WorkspaceClient import Workspace as Workspace
+
+
 
 class ImportAnnotationsUtil:
 
@@ -29,6 +32,18 @@ class ImportAnnotationsUtil:
         self.genome_api = GenomeAnnotationAPI(self.callback_url)
         self.dfu = DataFileUtil(self.callback_url)
         self.gfu = GenomeFileUtil(self.callback_url)
+        self.ws_client = Workspace(config["workspace-url"])
+
+
+
+    def get_sso_data(self,sso_to_lookup):
+        sso_to_lookup = "KBaseOntology/seed_subsystem_ontology"
+        sso_ret = \
+            self.ws_client.get_objects([{"ref": sso_to_lookup}])[0]
+        sso = sso_ret["data"]
+        sso_info = sso_ret["info"]
+        self.sso_ref = str(sso_info[6]) + "/" + str(sso_info[0]) + "/" + str(sso_info[4])
+        return sso
 
     def validate(self):
         pass
@@ -90,15 +105,20 @@ class ImportAnnotationsUtil:
                         self.genes[geneID].addAnnotation(annotation)
 
     def add_ontology_event(self, genome_dict, ontology):
-        genome_dict['ontology_events'].append(
-            {
-                "id"             : ontology,
-                "method"         : "TEST",
-                "method_version" : "TEST",
-                "ontology_ref"   : "TEST",
-                "timestamp"      : self.timestamp
-            }
-        )
+
+        if 'ontology_events' not in genome_dict:
+            genome_dict['ontology_events'] = []
+
+
+            genome_dict['ontology_events'].append(
+                {
+                    "id"             : ontology,
+                    "method"         : "TEST",
+                    "method_version" : "TEST",
+                    "ontology_ref"   : self.sso_ref,
+                    "timestamp"      : self.timestamp
+                }
+            )
 
     def update_genome(self, genome_dict, ontology):
         for feature in genome_dict['features']:
@@ -157,6 +177,8 @@ class ImportAnnotationsUtil:
 
         # read and prepare objects/files
         self.validate()
+        self.get_sso_data(params['ontology'])
+
         genome_dict = self.get_genome(params['genome'])
         ontology_dict = self.get_ontology_dict(params['ontology'])
         annotations = self.get_annotations_file(params)
