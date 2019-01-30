@@ -34,8 +34,6 @@ class ImportAnnotationsUtil:
         self.gfu = GenomeFileUtil(self.callback_url)
         self.ws_client = Workspace(config["workspace-url"])
 
-
-
     def get_sso_data(self,sso_to_lookup):
         sso_to_lookup = "KBaseOntology/seed_subsystem_ontology"
         sso_ret = \
@@ -110,15 +108,16 @@ class ImportAnnotationsUtil:
             genome_dict['ontology_events'] = []
 
 
-            genome_dict['ontology_events'].append(
-                {
-                    "id"             : ontology,
-                    "method"         : "TEST",
-                    "method_version" : "TEST",
-                    "ontology_ref"   : self.sso_ref,
-                    "timestamp"      : self.timestamp
-                }
-            )
+        genome_dict['ontology_events'].append(
+            {
+                "id"             : ontology,
+                "method"         : "TEST",
+                "method_version" : "TEST",
+                "ontology_ref"   : self.sso_ref,
+                "timestamp"      : self.timestamp
+            }
+        )
+
 
     def update_genome(self, genome_dict, ontology):
         for feature in genome_dict['features']:
@@ -209,7 +208,7 @@ class ImportAnnotationsUtil:
         #             self.genome_full[item] = 11
 
         # with open("/kb/module/work/genome_full.json", 'w') as outfile1:
-        #     json.dump(self.genome_full, outfile1, indent = 2)
+        #     json.dump(self.genome_full['data'], outfile1, indent = 2)
         #
         # with open("/kb/module/work/genome_dict.json", 'w') as outfile2:
         #     json.dump(genome_dict, outfile2, indent = 2)
