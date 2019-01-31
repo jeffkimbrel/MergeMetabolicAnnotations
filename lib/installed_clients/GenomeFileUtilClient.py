@@ -271,7 +271,7 @@ class GenomeFileUtil(object):
            Prokka, (other annotators) @optional warnings contig_lengths
            contig_ids source_id taxonomy publications @optional
            ontology_events ontologies_present non_coding_features mrnas
-           @optional genbank_handle_ref gff_handle_ref
+           genome_type @optional genbank_handle_ref gff_handle_ref
            external_source_origination_date @optional release
            original_source_file_name notes quality_scores suspect
            assembly_ref @metadata ws gc_content as GC content @metadata ws
@@ -279,43 +279,45 @@ class GenomeFileUtil(object):
            as Size @metadata ws genetic_code as Genetic code @metadata ws
            domain as Domain @metadata ws source_id as Source ID @metadata ws
            source as Source @metadata ws scientific_name as Name @metadata ws
-           length(features) as Number of Protein Encoding Genes @metadata ws
-           length(cdss) as Number of CDS @metadata ws assembly_ref as
-           Assembly Object @metadata ws num_contigs as Number contigs
-           @metadata ws length(warnings) as Number of Genome Level Warnings
-           @metadata ws suspect as Suspect Genome) -> structure: parameter
-           "id" of type "Genome_id" (KBase genome ID @id kb), parameter
-           "scientific_name" of String, parameter "domain" of String,
-           parameter "warnings" of list of String, parameter "genome_tiers"
-           of list of String, parameter "feature_counts" of mapping from
-           String to Long, parameter "genetic_code" of Long, parameter
-           "dna_size" of Long, parameter "num_contigs" of Long, parameter
-           "molecule_type" of String, parameter "contig_lengths" of list of
-           Long, parameter "contig_ids" of list of String, parameter "source"
-           of String, parameter "source_id" of type "source_id" (Reference to
-           a source_id @id external), parameter "md5" of String, parameter
-           "taxonomy" of String, parameter "gc_content" of Double, parameter
-           "publications" of list of type "publication" (Structure for a
-           publication (float pubmedid string source (ex. Pubmed) string
-           title string web address string  publication year string authors
-           string journal)) -> tuple of size 7: parameter "pubmedid" of
-           Double, parameter "source" of String, parameter "title" of String,
-           parameter "url" of String, parameter "year" of String, parameter
-           "authors" of String, parameter "journal" of String, parameter
-           "ontology_events" of list of type "Ontology_event" (@optional
-           ontology_ref method_version eco) -> structure: parameter "id" of
+           genome_type as Genome Type @metadata ws length(features) as Number
+           of Protein Encoding Genes @metadata ws length(cdss) as Number of
+           CDS @metadata ws assembly_ref as Assembly Object @metadata ws
+           num_contigs as Number contigs @metadata ws length(warnings) as
+           Number of Genome Level Warnings @metadata ws suspect as Suspect
+           Genome) -> structure: parameter "id" of type "Genome_id" (KBase
+           genome ID @id kb), parameter "scientific_name" of String,
+           parameter "domain" of String, parameter "warnings" of list of
+           String, parameter "genome_tiers" of list of String, parameter
+           "feature_counts" of mapping from String to Long, parameter
+           "genetic_code" of Long, parameter "dna_size" of Long, parameter
+           "num_contigs" of Long, parameter "molecule_type" of String,
+           parameter "contig_lengths" of list of Long, parameter "contig_ids"
+           of list of String, parameter "source" of String, parameter
+           "source_id" of type "source_id" (Reference to a source_id @id
+           external), parameter "md5" of String, parameter "taxonomy" of
+           String, parameter "gc_content" of Double, parameter "publications"
+           of list of type "publication" (Structure for a publication (float
+           pubmedid string source (ex. Pubmed) string title string web
+           address string  publication year string authors string journal))
+           -> tuple of size 7: parameter "pubmedid" of Double, parameter
+           "source" of String, parameter "title" of String, parameter "url"
+           of String, parameter "year" of String, parameter "authors" of
+           String, parameter "journal" of String, parameter "ontology_events"
+           of list of type "Ontology_event" (@optional ontology_ref
+           method_version eco description) -> structure: parameter "id" of
            String, parameter "ontology_ref" of type "Ontology_ref" (Reference
            to a ontology object @id ws KBaseOntology.OntologyDictionary),
            parameter "method" of String, parameter "method_version" of
            String, parameter "timestamp" of String, parameter "eco" of
-           String, parameter "ontologies_present" of mapping from String to
-           mapping from String to String, parameter "features" of list of
-           type "Feature" (Structure for a single CDS encoding ?gene? of a
-           genome ONLY PUT GENES THAT HAVE A CORRESPONDING CDS IN THIS ARRAY
-           NOTE: Sequence is optional. Ideally we can keep it in here, but
-           Recognize due to space constraints another solution may be needed.
-           We may want to add additional fields for other CDM functions
-           (e.g., atomic regulons, coexpressed fids, co_occurring fids,...)
+           String, parameter "description" of String, parameter
+           "ontologies_present" of mapping from String to mapping from String
+           to String, parameter "features" of list of type "Feature"
+           (Structure for a single CDS encoding ?gene? of a genome ONLY PUT
+           GENES THAT HAVE A CORRESPONDING CDS IN THIS ARRAY NOTE: Sequence
+           is optional. Ideally we can keep it in here, but Recognize due to
+           space constraints another solution may be needed. We may want to
+           add additional fields for other CDM functions (e.g., atomic
+           regulons, coexpressed fids, co_occurring fids,...)
            protein_translation_length and protein_translation are for longest
            coded protein (representative protein for splice variants) NOTE:
            New Aliases field definitely breaks compatibility. As Does
@@ -447,10 +449,11 @@ class GenomeFileUtil(object):
            (Reference to a report object @id ws KBaseReport.Report),
            parameter "method_version" of String, parameter "score" of String,
            parameter "score_interpretation" of String, parameter "timestamp"
-           of String, parameter "suspect" of type "Bool", parameter "hidden"
-           of type "boolean" (A boolean - 0 for false, 1 for true. @range (0,
-           1)), parameter "upgrade" of type "boolean" (A boolean - 0 for
-           false, 1 for true. @range (0, 1))
+           of String, parameter "suspect" of type "Bool", parameter
+           "genome_type" of String, parameter "hidden" of type "boolean" (A
+           boolean - 0 for false, 1 for true. @range (0, 1)), parameter
+           "upgrade" of type "boolean" (A boolean - 0 for false, 1 for true.
+           @range (0, 1))
         :returns: instance of type "SaveGenomeResult" -> structure: parameter
            "info" of type "object_info" (Information about an object,
            including user provided metadata. obj_id objid - the numerical id
