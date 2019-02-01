@@ -16,11 +16,11 @@ class ImportAnnotationsUtil:
     datadir = "/kb/module/data/"
 
     ontology_lookup = {
-        "ec": "KBaseOntology/ec_ontology",
+        "ec": "EBI_EC_ontologyDictionary.json.txt",
         "keggko": "KEGG_KO_ontologyDictionary.json",
-        "keggro": "KBaseOntology/keggro_ontology",
-        "metacyc": "KBaseOntology/metacyc_ontology",
-        "modelseed": "KBaseOntology/modelseed_ontology"
+        "keggro": "KEGG_RXN_ontologyDictionary.json.txt",
+        "metacyc": "MetaCyc_RXN_ontologyDictionary.json.txt",
+        "modelseed": "ModelSEED_RXN_ontologyDictionary.json.txt"
     }
 
     def __init__(self, config):
