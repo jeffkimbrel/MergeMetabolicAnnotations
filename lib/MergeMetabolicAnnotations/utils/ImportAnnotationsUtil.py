@@ -16,11 +16,11 @@ class ImportAnnotationsUtil:
     datadir = "/kb/module/data/"
 
     ontology_lookup = {
-        "ec": "EBI_EC_ontologyDictionary.json.txt",
-        "keggko": "KEGG_KO_ontologyDictionary.json",
-        "keggro": "KEGG_RXN_ontologyDictionary.json.txt",
-        "metacyc": "MetaCyc_RXN_ontologyDictionary.json.txt",
-        "modelseed": "ModelSEED_RXN_ontologyDictionary.json.txt"
+        "ec"        : "EBI_EC_ontologyDictionary.json.txt",
+        "keggko"    : "KEGG_KO_ontologyDictionary.json",
+        "keggro"    : "KEGG_RXN_ontologyDictionary.json.txt",
+        "metacyc"   : "MetaCyc_RXN_ontologyDictionary.json.txt",
+        "modelseed" : "ModelSEED_RXN_ontologyDictionary.json.txt"
     }
 
     def __init__(self, config):
@@ -71,17 +71,12 @@ class ImportAnnotationsUtil:
         return(ontology_dict)
 
     def get_annotations_file(self, params):
-        # if 'debug' in params and params['debug'] == True:
-        #     filename = '/kb/module/test/test_data/marinobacter.prokka.kegg.txt'  # docker path
-        # else:
-        #     download_staging_file_params = {
-        #         'staging_file_subdir_path': params.get('annotation_file')
-        #     }
-        #     filename = self.dfu.download_staging_file(download_staging_file_params).get('copy_file_path')
+        if 'debug' in params and params['debug'] == True:
+            annotations_file_path = '/kb/module/test/test_data/Cdiff_genes_reactions.tsv'  # docker path
 
-        annotations_file_path = self.staging_dir + "/" + params.get('annotation_file')
-        #filename = self.datadir + '/marinobacter.prokka.kegg.txt' # temporary fix
-        #return [line.strip() for line in open(filename)]
+        else:
+            annotations_file_path = self.staging_dir + "/" + params.get('annotation_file')
+
         return [line.strip() for line in open(annotations_file_path)]
 
     def annotations_to_genes(self, annotations_raw):
@@ -190,7 +185,7 @@ class ImportAnnotationsUtil:
         # process
         for gene in self.genes:
             self.genes[gene].validateGeneID(genome_dict)
-            self.genes[gene].validateAnnotationID(ontology_dict)
+            self.genes[gene].validateAnnotationID(ontology_dict, params['ontology'])
 
         self.update_genome(genome_dict, params['ontology'])
 
@@ -243,17 +238,26 @@ class Gene:
             if feature['id'] == self.id:
                 self.valid = 1
 
-    def validateAnnotationID(self, ontology_dict):
+    def validateAnnotationID(self, ontology_dict, ontology):
+
         for id in self.annotations:
+            name = ""
             valid = 0
+            id_final = id
+
             if id in ontology_dict:
                 valid = 1
                 name = ontology_dict[id]
-            else:
-                name = ""
+
+            elif ontology == 'metacyc':
+                metacyc_id = "META:" + id
+                if metacyc_id in ontology_dict:
+                    valid = 1
+                    name = ontology_dict[metacyc_id]
+                    id_final = metacyc_id
 
             # adds valid and not valid annotations for recordkeeping
-            ontologyCheck = {"id"    : id,
+            ontologyCheck = {"id"    : id_final,
                              "name"  : name,
                              "valid" : valid
                             }

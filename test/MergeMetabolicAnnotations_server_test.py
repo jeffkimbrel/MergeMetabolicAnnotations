@@ -65,10 +65,10 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # self.assertEqual(ret[...], ...) or other unittest methods
         params = {
             "debug" : True,
-            "ontology": "keggko",
-            "annotation_file": "test/test_data/marinobacter.prokka.kegg.txt",
+            "ontology": "metacyc",
+            "annotation_file": "test/test_data/Cdiff_genes_reactions.tsv",
             "description": "test",
-            "genome": "23001/5/1",
+            "genome": "24233/13/1",
             "output_name": "testGenome_1",
             "workspace_name": self.wsName
         }
