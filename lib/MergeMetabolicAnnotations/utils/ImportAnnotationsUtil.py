@@ -6,19 +6,20 @@ from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
 from installed_clients.DataFileUtilClient import DataFileUtil
 from installed_clients.GenomeFileUtilClient import GenomeFileUtil
 from installed_clients.WorkspaceClient import Workspace as Workspace
+from installed_clients.KBaseReportClient import KBaseReport
 
 class ImportAnnotationsUtil:
 
-    workdir = 'tmp/work'
+    workdir     = 'tmp/work'
     staging_dir = "/staging/"
-    datadir = "/kb/module/data/"
+    datadir     = "/kb/module/data/"
 
     ontology_lookup = {
-        "ec"        : "EBI_EC_ontologyDictionary.json.txt",
-        "keggko"    : "KEGG_KO_ontologyDictionary.json",
-        "keggro"    : "KEGG_RXN_ontologyDictionary.json.txt",
-        "metacyc"   : "MetaCyc_RXN_ontologyDictionary.json.txt",
-        "modelseed" : "ModelSEED_RXN_ontologyDictionary.json.txt"
+            "ec"        : "EBI_EC_ontologyDictionary.json",
+            "keggko"    : "KEGG_KO_ontologyDictionary.json",
+            "keggro"    : "KEGG_RXN_ontologyDictionary.json",
+            "metacyc"   : "MetaCyc_RXN_ontologyDictionary.json",
+            "modelseed" : "ModelSEED_RXN_ontologyDictionary.json"
     }
 
     def __init__(self, config):
@@ -34,8 +35,7 @@ class ImportAnnotationsUtil:
 
     def get_sso_data(self,sso_to_lookup):
         sso_to_lookup = "KBaseOntology/seed_subsystem_ontology"
-        sso_ret = \
-            self.ws_client.get_objects([{"ref": sso_to_lookup}])[0]
+        sso_ret = self.ws_client.get_objects([{"ref": sso_to_lookup}])[0]
         sso = sso_ret["data"]
         sso_info = sso_ret["info"]
         self.sso_ref = str(sso_info[6]) + "/" + str(sso_info[0]) + "/" + str(sso_info[4])
@@ -45,10 +45,9 @@ class ImportAnnotationsUtil:
         pass
 
     def get_genome(self, genome_ref):
-        # TODO: create ontology_event and ontologies_present if they don't exist?
+        # TODO: create ontology_event and ontologies_present if they don't exist (for an uploaded file)?
 
-        self.genome_full = self.genome_api.get_genome_v1({"genomes": [{"ref": genome_ref}], 'downgrade': 0})[
-                "genomes"][0]
+        self.genome_full = self.genome_api.get_genome_v1({"genomes": [{"ref": genome_ref}], 'downgrade': 0})["genomes"][0]
         genome_dict = self.genome_full['data']
 
         return genome_dict
@@ -61,7 +60,6 @@ class ImportAnnotationsUtil:
         ontology_dict = {}
 
         for entry in ontology_dict_raw['term_hash']:
-
             id = ontology_dict_raw['term_hash'][entry]['id']
             name = ontology_dict_raw['term_hash'][entry]['name']
             ontology_dict[id] = name
@@ -100,7 +98,6 @@ class ImportAnnotationsUtil:
 
         if 'ontology_events' not in genome_dict:
             genome_dict['ontology_events'] = []
-
 
         genome_dict['ontology_events'].append(
             {
@@ -144,7 +141,7 @@ class ImportAnnotationsUtil:
                             else:
                                 feature['ontology_terms'][ontology][annotation['id']].append(self.current_ontology_event)
 
-    def summarize(self):
+    def summarize(self, params):
 
         validGeneCount = 0
         invalidGenes = []
@@ -163,8 +160,25 @@ class ImportAnnotationsUtil:
                 elif annotation['valid'] == 0:
                     invalidOntologyTerms.append(annotation['id'])
 
-        logging.info(str(validGeneCount) + "\t" + str(len(invalidGenes)) + "\t" + str(invalidGenes))
-        logging.info(str(validOntologyTermCount) + "\t" + str(len(invalidOntologyTerms)) + "\t" + str(invalidOntologyTerms))
+        logging.info("*** Valid Genes: "   + str(validGeneCount))
+        logging.info("*** Invalid Genes: " + str(len(invalidGenes)) + "\n" + str(invalidGenes))
+        logging.info("*** Valid Terms: "   + str(validOntologyTermCount))
+        logging.info("*** Invalid Terms: " + str(len(invalidOntologyTerms)) + "\n" + str(invalidOntologyTerms))
+
+        output_message = "*** Valid Genes: "   + str(validGeneCount) + "\n" +
+            "*** Invalid Genes: " + str(len(invalidGenes)) + "\n" +
+            "*** Valid Terms: "   + str(validOntologyTermCount)) + "\n" +
+            "*** Invalid Terms: " + str(len(invalidOntologyTerms))
+
+        report_params = {'message': output_message,
+                         'workspace_name': params.get('workspace_name')}
+
+        kbase_report_client = KBaseReport(self.callback_url)
+        output = kbase_report_client.create_extended_report(report_params)
+
+        report_output = {'report_name': output['name'], 'report_ref': output['ref']}
+
+        return report_output
 
     def run(self, ctx, params):
 
@@ -187,21 +201,20 @@ class ImportAnnotationsUtil:
 
         self.update_genome(genome_dict, params['ontology'])
 
-        self.summarize()
+        report_output = self.summarize(params)
 
         # overwrite object with new genome
         self.genome_full['data'] = genome_dict
 
         prov = ctx.provenance()
-        logging.info(params)
 
-        info = self.gfu.save_one_genome({'workspace' : params['workspace_name'],
-                                      'name': params['output_name'],
-                                      'data': self.genome_full['data'],
-                                      'provenance' : prov})['info']
+        info = self.gfu.save_one_genome({'workspace'  : params['workspace_name'],
+                                         'name'       : params['output_name'],
+                                         'data'       : self.genome_full['data'],
+                                         'provenance' : prov})['info']
 
         genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
-        logging.info(genome_ref)
+        logging.info("*** Genome ID: " + str(genome_ref))
 
         return {}
 
@@ -222,7 +235,6 @@ class Gene:
                 self.valid = 1
 
     def validateAnnotationID(self, ontology_dict, ontology):
-
         for id in self.annotations:
             name = ""
             valid = 0
