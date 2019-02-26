@@ -166,23 +166,6 @@ class ImportAnnotationsUtil:
         logging.info("*** Valid Terms: "   + str(validOntologyTermCount))
         logging.info("*** Invalid Terms: " + str(len(invalidOntologyTerms)) + "\n" + str(invalidOntologyTerms))
 
-        output_message = "Valid Genes: "   + str(validGeneCount) + "\n" +
-                         "Invalid Genes: " + str(len(invalidGenes)) + "\n\n" +
-                         "Valid Terms: "   + str(validOntologyTermCount)) + "\n" +
-                         "Invalid Terms: " + str(len(invalidOntologyTerms))
-
-        report_params = {'message': output_message,
-                         'workspace_name': params.get('workspace_name')}
-
-        kbase_report_client = KBaseReport(self.callback_url)
-        output = kbase_report_client.create(report_params)
-
-        report_output = {'report_name': output['name'],
-                         'report_ref': output['ref'],
-                         'report_object_name': 'import_annotations_' + str(uuid.uuid4())}
-
-        return report_output
-
     def run(self, ctx, params):
 
         # read and prepare objects/files
@@ -204,7 +187,7 @@ class ImportAnnotationsUtil:
 
         self.update_genome(genome_dict, params['ontology'])
 
-        report_output = self.summarize(params)
+        self.summarize(params)
 
         # overwrite object with new genome
         self.genome_full['data'] = genome_dict
