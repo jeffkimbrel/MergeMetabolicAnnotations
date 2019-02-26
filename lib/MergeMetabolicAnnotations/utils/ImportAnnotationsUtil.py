@@ -174,7 +174,7 @@ class ImportAnnotationsUtil:
                          'workspace_name': params.get('workspace_name')}
 
         kbase_report_client = KBaseReport(self.callback_url)
-        output = kbase_report_client.create_extended_report(report_params)
+        output = kbase_report_client.create(report_params)
 
         report_output = {'report_name': output['name'], 'report_ref': output['ref']}
 
