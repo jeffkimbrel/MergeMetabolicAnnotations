@@ -2,6 +2,7 @@ import os
 import datetime
 import logging
 import json
+import uuid
 from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
 from installed_clients.DataFileUtilClient import DataFileUtil
 from installed_clients.GenomeFileUtilClient import GenomeFileUtil
@@ -165,10 +166,10 @@ class ImportAnnotationsUtil:
         logging.info("*** Valid Terms: "   + str(validOntologyTermCount))
         logging.info("*** Invalid Terms: " + str(len(invalidOntologyTerms)) + "\n" + str(invalidOntologyTerms))
 
-        output_message = "*** Valid Genes: "   + str(validGeneCount) + "\n" +
-            "*** Invalid Genes: " + str(len(invalidGenes)) + "\n" +
-            "*** Valid Terms: "   + str(validOntologyTermCount)) + "\n" +
-            "*** Invalid Terms: " + str(len(invalidOntologyTerms))
+        output_message = "Valid Genes: "   + str(validGeneCount) + "\n" +
+                         "Invalid Genes: " + str(len(invalidGenes)) + "\n\n" +
+                         "Valid Terms: "   + str(validOntologyTermCount)) + "\n" +
+                         "Invalid Terms: " + str(len(invalidOntologyTerms))
 
         report_params = {'message': output_message,
                          'workspace_name': params.get('workspace_name')}
@@ -176,7 +177,9 @@ class ImportAnnotationsUtil:
         kbase_report_client = KBaseReport(self.callback_url)
         output = kbase_report_client.create(report_params)
 
-        report_output = {'report_name': output['name'], 'report_ref': output['ref']}
+        report_output = {'report_name': output['name'],
+                         'report_ref': output['ref'],
+                         'report_object_name': 'import_annotations_' + str(uuid.uuid4())}
 
         return report_output
 
