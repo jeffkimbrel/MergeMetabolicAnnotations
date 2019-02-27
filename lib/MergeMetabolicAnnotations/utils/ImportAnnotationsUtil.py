@@ -141,7 +141,7 @@ class ImportAnnotationsUtil:
                             else:
                                 feature['ontology_terms'][ontology][annotation['id']].append(self.current_ontology_event)
 
-    def summarize(self, params):
+    def summarize(self, params, genome_ref):
 
         validGeneCount = 0
         invalidGenes = []
@@ -164,6 +164,11 @@ class ImportAnnotationsUtil:
         logging.info("*** Invalid Genes: " + str(len(invalidGenes)) + "\n" + str(invalidGenes))
         logging.info("*** Valid Terms: "   + str(validOntologyTermCount))
         logging.info("*** Invalid Terms: " + str(len(invalidOntologyTerms)) + "\n" + str(invalidOntologyTerms))
+
+        #
+        objects_created = []
+        objects_created.append({'ref': genome_ref,
+                                'description': 'Updated genome'})
 
         report_params = {'message': '',
                          'workspace_name': params.get('workspace_name'),
@@ -195,8 +200,6 @@ class ImportAnnotationsUtil:
 
         self.update_genome(genome_dict, params['ontology'])
 
-        self.summarize(params)
-
         # overwrite object with new genome
         self.genome_full['data'] = genome_dict
 
@@ -209,6 +212,8 @@ class ImportAnnotationsUtil:
 
         genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
         logging.info("*** Genome ID: " + str(genome_ref))
+
+        self.summarize(params, genome_ref)
 
         return {}
 
