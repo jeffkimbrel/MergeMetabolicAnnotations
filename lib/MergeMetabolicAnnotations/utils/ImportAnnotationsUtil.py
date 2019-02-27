@@ -179,6 +179,8 @@ class ImportAnnotationsUtil:
 
         report_output = {'report_name': output['name'], 'report_ref': output['ref']}
 
+        return(report_output)
+
     def run(self, ctx, params):
 
         # read and prepare objects/files
