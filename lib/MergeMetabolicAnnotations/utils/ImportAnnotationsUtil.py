@@ -16,11 +16,11 @@ class ImportAnnotationsUtil:
     datadir     = "/kb/module/data/"
 
     ontology_lookup = {
-            "ec"        : "EBI_EC_ontologyDictionary.json",
-            "keggko"    : "KEGG_KO_ontologyDictionary.json",
-            "keggro"    : "KEGG_RXN_ontologyDictionary.json",
-            "metacyc"   : "MetaCyc_RXN_ontologyDictionary.json",
-            "modelseed" : "ModelSEED_RXN_ontologyDictionary.json"
+        "ec"        : "EBI_EC_ontologyDictionary.json",
+        "keggko"    : "KEGG_KO_ontologyDictionary.json",
+        "keggro"    : "KEGG_RXN_ontologyDictionary.json",
+        "metacyc"   : "MetaCyc_RXN_ontologyDictionary.json",
+        "modelseed" : "ModelSEED_RXN_ontologyDictionary.json"
     }
 
     def __init__(self, config):
@@ -110,7 +110,6 @@ class ImportAnnotationsUtil:
             }
         )
 
-
     def update_genome(self, genome_dict, ontology):
         for feature in genome_dict['features']:
 
@@ -165,6 +164,15 @@ class ImportAnnotationsUtil:
         logging.info("*** Invalid Genes: " + str(len(invalidGenes)) + "\n" + str(invalidGenes))
         logging.info("*** Valid Terms: "   + str(validOntologyTermCount))
         logging.info("*** Invalid Terms: " + str(len(invalidOntologyTerms)) + "\n" + str(invalidOntologyTerms))
+
+        report_params = {'message': '',
+                         'workspace_name': params.get('workspace_name'),
+                         'objects_created': objects_created}
+
+        kbase_report_client = KBaseReport(self.callback_url)
+        output = kbase_report_client.create_extended_report(report_params)
+
+        report_output = {'report_name': output['name'], 'report_ref': output['ref']}
 
     def run(self, ctx, params):
 
