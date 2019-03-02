@@ -11,7 +11,7 @@ from installed_clients.KBaseReportClient import KBaseReport
 
 class ImportAnnotationsUtil:
 
-    workdir     = 'tmp/work'
+    workdir     = 'tmp/work/'
     staging_dir = "/staging/"
     datadir     = "/kb/module/data/"
 
@@ -29,9 +29,11 @@ class ImportAnnotationsUtil:
         self.timestamp = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
         self.genes = {}
         self.callback_url = config['SDK_CALLBACK_URL']
+        self.scratch = config['scratch']
         self.genome_api = GenomeAnnotationAPI(self.callback_url)
         self.dfu = DataFileUtil(self.callback_url)
         self.gfu = GenomeFileUtil(self.callback_url)
+        self.kbr = KBaseReport(self.callback_url)
         self.ws_client = Workspace(config["workspace-url"])
 
     def get_sso_data(self,sso_to_lookup):
@@ -141,45 +143,67 @@ class ImportAnnotationsUtil:
                             else:
                                 feature['ontology_terms'][ontology][annotation['id']].append(self.current_ontology_event)
 
-    def summarize(self, params, genome_ref):
+    def summarize(self, params):
 
-        validGeneCount = 0
+        validGenes = []
         invalidGenes = []
-        validOntologyTermCount = 0
+        validOntologyTerms = []
         invalidOntologyTerms = []
 
         for gene in self.genes:
             if self.genes[gene].valid == 1:
-                validGeneCount += 1
+                validGenes.append(self.genes[gene].id)
             elif self.genes[gene].valid == 0:
                 invalidGenes.append(self.genes[gene].id)
 
             for annotation in self.genes[gene].ontologyChecked:
                 if annotation['valid'] == 1:
-                    validOntologyTermCount += 1
+                    validOntologyTerms.append(annotation['id'])
                 elif annotation['valid'] == 0:
                     invalidOntologyTerms.append(annotation['id'])
 
-        logging.info("*** Valid Genes: "   + str(validGeneCount))
-        logging.info("*** Invalid Genes: " + str(len(invalidGenes)) + "\n" + str(invalidGenes))
-        logging.info("*** Valid Terms: "   + str(validOntologyTermCount))
-        logging.info("*** Invalid Terms: " + str(len(invalidOntologyTerms)) + "\n" + str(invalidOntologyTerms))
+        return({
+            'valid_genes'   : validGenes,
+            'invalid_genes' : invalidGenes,
+            'valid_terms'   : validOntologyTerms,
+            'invalid_terms' : invalidOntologyTerms
+        })
 
-        #
-        objects_created = []
-        objects_created.append({'ref': genome_ref,
-                                'description': 'Updated genome'})
+    def generate_report(self, params):
+        summary = self.summarize(params)
 
-        report_params = {'message': '',
-                         'workspace_name': params.get('workspace_name'),
-                         'objects_created': objects_created}
+        output_html_files = list()
 
-        kbase_report_client = KBaseReport(self.callback_url)
-        output = kbase_report_client.create_extended_report(report_params)
+        # Make report directory and copy over files
+        output_directory = os.path.join(self.scratch, str(uuid.uuid4()))
+        os.mkdir(output_directory)
+        result_file_path = os.path.join(output_directory, 'import_annotations_summary.html')
 
-        report_output = {'report_name': output['name'], 'report_ref': output['ref']}
+        # Build HTML tables for results
+        table_lines = []
+        table_lines.append(f'<h3 style="text-align: center">Hello World!</h3>')
 
-        return(report_output)
+        # Fill in template HTML
+
+        with open(result_file_path, 'w') as result_file:
+            logging.info("*** " + str(result_file_path))
+            for line in table_lines:
+                result_file.write(line + "\n")
+
+
+        output_html_files.append({'path'       : output_directory,
+                                  'name'       : os.path.basename(result_file_path),
+                                  'description': 'HTML report for import_annotations app'})
+
+        report_params = {
+            'html_links'             : output_html_files,
+            'direct_html_link_index' : 0,
+            'workspace_name'         : params['workspace_name'],
+            'report_object_name'     : f'import_annotations_{uuid.uuid4()}'}
+
+        output = self.kbr.create_extended_report(report_params)
+
+        return {'report_name': output['name'], 'report_ref': output['ref']}
 
     def run(self, ctx, params):
 
@@ -206,6 +230,7 @@ class ImportAnnotationsUtil:
         self.genome_full['data'] = genome_dict
 
         prov = ctx.provenance()
+        self.generate_report(params)
 
         info = self.gfu.save_one_genome({'workspace'  : params['workspace_name'],
                                          'name'       : params['output_name'],
@@ -215,7 +240,7 @@ class ImportAnnotationsUtil:
         genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
         logging.info("*** Genome ID: " + str(genome_ref))
 
-        self.summarize(params, genome_ref)
+
 
         return {}
 
