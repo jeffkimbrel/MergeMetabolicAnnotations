@@ -186,14 +186,13 @@ class ImportAnnotationsUtil:
         # Fill in template HTML
 
         with open(result_file_path, 'w') as result_file:
-            logging.info("*** " + str(result_file_path))
             for line in table_lines:
                 result_file.write(line + "\n")
 
-
-        output_html_files.append({'path'       : output_directory,
-                                  'name'       : os.path.basename(result_file_path),
-                                  'description': 'HTML report for import_annotations app'})
+        output_html_files.append(
+            {'path'       : output_directory,
+             'name'       : os.path.basename(result_file_path),
+             'description': 'HTML report for import_annotations app'})
 
         report_params = {
             'html_links'             : output_html_files,
@@ -230,7 +229,8 @@ class ImportAnnotationsUtil:
         self.genome_full['data'] = genome_dict
 
         prov = ctx.provenance()
-        self.generate_report(params)
+        report = self.generate_report(params)
+        logging.info("********** " + str(report))
 
         info = self.gfu.save_one_genome({'workspace'  : params['workspace_name'],
                                          'name'       : params['output_name'],
