@@ -183,8 +183,7 @@ class ImportAnnotationsUtil:
         table_lines = []
         table_lines.append(f'<h3 style="text-align: center">Hello World!</h3>')
 
-        # Fill in template HTML
-
+        # Write to file
         with open(result_file_path, 'w') as result_file:
             for line in table_lines:
                 result_file.write(line + "\n")
@@ -229,8 +228,6 @@ class ImportAnnotationsUtil:
         self.genome_full['data'] = genome_dict
 
         prov = ctx.provenance()
-        report = self.generate_report(params)
-        logging.info("********** " + str(report))
 
         info = self.gfu.save_one_genome({'workspace'  : params['workspace_name'],
                                          'name'       : params['output_name'],
@@ -240,9 +237,9 @@ class ImportAnnotationsUtil:
         genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
         logging.info("*** Genome ID: " + str(genome_ref))
 
+        report = self.generate_report(params)
 
-
-        return {}
+        return report
 
 class Gene:
     def __init__(self, id):
