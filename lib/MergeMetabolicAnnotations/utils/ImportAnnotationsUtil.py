@@ -3,6 +3,8 @@ import datetime
 import logging
 import json
 import uuid
+import yaml
+
 from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
 from installed_clients.DataFileUtilClient import DataFileUtil
 from installed_clients.GenomeFileUtilClient import GenomeFileUtil
@@ -43,6 +45,11 @@ class ImportAnnotationsUtil:
         sso_info = sso_ret["info"]
         self.sso_ref = str(sso_info[6]) + "/" + str(sso_info[0]) + "/" + str(sso_info[4])
         return sso
+
+    def get_app_version(self):
+        with open("/kb/module/kbase.yml", 'r') as stream:
+            data_loaded = yaml.load(stream)
+        return(data_loaded['module-version'])
 
     def validate(self):
         pass
@@ -97,7 +104,7 @@ class ImportAnnotationsUtil:
                         annotation = elements[1]
                         self.genes[geneID].addAnnotation(annotation)
 
-    def add_ontology_event(self, genome_dict, ontology):
+    def add_ontology_event(self, genome_dict, ontology, description):
 
         if 'ontology_events' not in genome_dict:
             genome_dict['ontology_events'] = []
@@ -105,8 +112,9 @@ class ImportAnnotationsUtil:
         genome_dict['ontology_events'].append(
             {
                 "id"             : ontology,
-                "method"         : "TEST",
-                "method_version" : "TEST",
+                "method"         : "Import Annotations",
+                "method_version" : self.get_app_version(),
+                "description"    : description,
                 "ontology_ref"   : self.sso_ref,
                 "timestamp"      : self.timestamp
             }
@@ -180,20 +188,40 @@ class ImportAnnotationsUtil:
         result_file_path = os.path.join(output_directory, 'import_annotations_summary.html')
 
         # Build HTML tables for results
+        # table_lines = []
+        # table_lines.append(f'<h2>Import Annotations Summary</h2>')
+        # table_lines.append(f'<h3>Added:</h3>')
+        # table_lines.append(f'Valid Genes: ' + str(len(summary['valid_genes'])) + ' (' + str(len(set(summary['valid_genes']))) + ' unique)<br>')
+        # table_lines.append(f'Valid Terms: ' + str(len(summary['valid_terms'])) + ' (' + str(len(set(summary['valid_terms']))) + ' unique)<br><br>')
+        #
+        # table_lines.append(f'<h3>Not Added:</h3>')
+        # table_lines.append(f'Invalid Genes (not found in genome object): ' + str(len(summary['invalid_genes'])) + ' (' + str(len(set(summary['invalid_genes']))) + ' unique)<br>')
+        # for gene in set(summary['invalid_genes']):
+        #     table_lines.append(str(gene) + '<br>')
+        #
+        # table_lines.append(f'<br>Invalid Terms (not found in ontology dictionary): ' + str(len(summary['invalid_terms'])) + ' (' + str(len(set(summary['invalid_terms']))) + ' unique)<br><br>')
+        # for term in set(summary['invalid_terms']):
+        #     table_lines.append(term + '<br>')
+
         table_lines = []
-        table_lines.append(f'<h2>Import Annotations Summary</h2>')
-        table_lines.append(f'<h3>Added:</h3>')
-        table_lines.append(f'Valid Genes: ' + str(len(summary['valid_genes'])) + '<br>')
-        table_lines.append(f'Valid Terms: ' + str(len(summary['valid_terms'])) + '<br><br>')
+        table_lines.append(f'<h2>Import Annotations</h2>')
+        table_lines.append(f'<h3>Summary</h3>')
+        table_lines.append('<table cellspacing="0" cellpadding="3" border="1"><tr><th>TYPE</th><th>VALID</th><th>INVALID</th></tr>')
+        table_lines.append('<tr><td>GENES</td><td>' + str(len(summary['valid_genes'])) + '</td><td>' + str(len(summary['invalid_genes'])) + '</td></tr>')
+        table_lines.append('<tr><td>TERMS</td><td>' + str(len(summary['valid_terms'])) + '</td><td>' + str(len(summary['invalid_terms'])) + '</td></tr>')
+        table_lines.append('</table>')
 
-        table_lines.append(f'<h3>Not Added:</h3>')
-        table_lines.append(f'Invalid Genes (not found in genome object): ' + str(len(summary['invalid_genes'])) + '<br>')
-        for gene in summary['invalid_genes']:
-            table_lines.append(str(gene) + '<br>')
+        if len(summary['invalid_genes']) > 0:
+            table_lines.append(f'<h3>Invalid Genes</h3>')
+            table_lines.append('<i>These are locus_tags not identified in the genome object. Duplicates are not shown.</i><br><br>')
+            for gene in set(summary['invalid_genes']):
+                table_lines.append(str(gene) + '<br>')
 
-        table_lines.append(f'<br>Invalid Terms (not found in ontology dictionary): ' + str(len(summary['invalid_terms'])) + '<br><br>')
-        for term in summary['invalid_terms']:
-            table_lines.append(term + '<br>')
+        if len(summary['invalid_terms']) > 0:
+            table_lines.append(f'<h3>Invalid Terms</h3>')
+            table_lines.append('<i>These are ontology terms not found in the ontology dictionary. Duplicates are not shown.</i><br><br>')
+            for gene in set(summary['invalid_terms']):
+                table_lines.append(str(gene) + '<br>')
 
         # Write to file
         with open(result_file_path, 'w') as result_file:
@@ -206,9 +234,10 @@ class ImportAnnotationsUtil:
              'description': 'HTML report for import_annotations app'})
 
         report_params = {
+            'message'                   : '',
             'html_links'                : output_html_files,
             'direct_html_link_index'    : 0,
-            'objects_created' : [{'ref' : genome_ref, 'description': 'Genome with imported annotations'}],
+            'objects_created' : [{'ref' : genome_ref, 'description' : 'Genome with imported annotations'}],
             'workspace_name'            : params['workspace_name'],
             'report_object_name'        : f'import_annotations_{uuid.uuid4()}'}
 
@@ -229,7 +258,7 @@ class ImportAnnotationsUtil:
         annotations = self.get_annotations_file(params)
 
         self.annotations_to_genes(annotations)
-        self.add_ontology_event(genome_dict, params['ontology'])
+        self.add_ontology_event(genome_dict, params['ontology'], params['description'])
         self.current_ontology_event = len(genome_dict['ontology_events']) - 1
 
         # process
