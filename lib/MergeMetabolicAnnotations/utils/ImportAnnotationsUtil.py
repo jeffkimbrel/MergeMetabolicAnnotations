@@ -181,7 +181,19 @@ class ImportAnnotationsUtil:
 
         # Build HTML tables for results
         table_lines = []
-        table_lines.append(f'<h3 style="text-align: center">Hello World!</h3>')
+        table_lines.append(f'<h2>Import Annotations Summary</h2>')
+        table_lines.append(f'<h3>Added:</h3>')
+        table_lines.append(f'Valid Genes: ' + str(len(summary['valid_genes'])) + '<br>')
+        table_lines.append(f'Valid Terms: ' + str(len(summary['valid_terms'])) + '<br><br>')
+
+        table_lines.append(f'<h3>Not Added:</h3>')
+        table_lines.append(f'Invalid Genes (not found in genome object): ' + str(len(summary['invalid_genes'])) + '<br>')
+        for gene in summary['invalid_genes']:
+            table_lines.append(str(gene) + '<br>')
+
+        table_lines.append(f'<br>Invalid Terms (not found in ontology dictionary): ' + str(len(summary['invalid_terms'])) + '<br><br>')
+        for term in summary['invalid_terms']:
+            table_lines.append(term + '<br>')
 
         # Write to file
         with open(result_file_path, 'w') as result_file:
