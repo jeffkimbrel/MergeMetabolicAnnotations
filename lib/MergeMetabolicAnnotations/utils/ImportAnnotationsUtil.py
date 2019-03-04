@@ -169,7 +169,7 @@ class ImportAnnotationsUtil:
             'invalid_terms' : invalidOntologyTerms
         })
 
-    def generate_report(self, params):
+    def generate_report(self, params, genome_ref):
         summary = self.summarize(params)
 
         output_html_files = list()
@@ -206,14 +206,17 @@ class ImportAnnotationsUtil:
              'description': 'HTML report for import_annotations app'})
 
         report_params = {
-            'html_links'             : output_html_files,
-            'direct_html_link_index' : 0,
-            'workspace_name'         : params['workspace_name'],
-            'report_object_name'     : f'import_annotations_{uuid.uuid4()}'}
+            'html_links'                : output_html_files,
+            'direct_html_link_index'    : 0,
+            'objects_created' : [{'ref' : genome_ref, 'description': 'Genome with imported annotations'}],
+            'workspace_name'            : params['workspace_name'],
+            'report_object_name'        : f'import_annotations_{uuid.uuid4()}'}
 
         output = self.kbr.create_extended_report(report_params)
 
-        return {'report_name': output['name'], 'report_ref': output['ref']}
+        return {'output_genome_ref' : genome_ref,
+                'report_name'       : output['name'],
+                'report_ref'        : output['ref']}
 
     def run(self, ctx, params):
 
@@ -249,7 +252,7 @@ class ImportAnnotationsUtil:
         genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
         logging.info("*** Genome ID: " + str(genome_ref))
 
-        report = self.generate_report(params)
+        report = self.generate_report(params, genome_ref)
 
         return report
 
