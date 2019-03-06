@@ -55,7 +55,6 @@ class ImportAnnotationsUtil:
         pass
 
     def get_genome(self, genome_ref):
-        # TODO: create ontology_event and ontologies_present if they don't exist (for an uploaded file)?
 
         self.genome_full = self.genome_api.get_genome_v1({"genomes": [{"ref": genome_ref}], 'downgrade': 0})["genomes"][0]
         genome_dict = self.genome_full['data']

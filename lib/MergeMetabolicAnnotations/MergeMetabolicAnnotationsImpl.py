@@ -5,6 +5,9 @@ import os
 from .utils.ImportAnnotationsUtil import ImportAnnotationsUtil
 from MergeMetabolicAnnotations.utils.ImportAnnotationsUtil import ImportAnnotationsUtil
 
+from .utils.CompareAnnotationsUtil import CompareAnnotationsUtil
+from MergeMetabolicAnnotations.utils.CompareAnnotationsUtil import CompareAnnotationsUtil
+
 from installed_clients.KBaseReportClient import KBaseReport
 #END_HEADER
 
@@ -72,6 +75,8 @@ class MergeMetabolicAnnotations:
         # ctx is the context object
         # return variables are: output
         #BEGIN compare_metabolic_annotations
+        import_runner = CompareAnnotationsUtil(self.config)
+        output = import_runner.run(ctx, params)
         #END compare_metabolic_annotations
 
         # At some point might do deeper type checking...

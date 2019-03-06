@@ -63,13 +63,23 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         #
         # Check returned data with
         # self.assertEqual(ret[...], ...) or other unittest methods
-        params = {
+
+        # import app
+        # params_import = {
+        #     "debug" : True,
+        #     "ontology": "metacyc",
+        #     "annotation_file": "test/test_data/Cdiff_genes_reactions.tsv",
+        #     "description": "test",
+        #     "genome": "24233/13/1",
+        #     "output_name": "testGenome_1",
+        #     "workspace_name": self.wsName
+        # }
+        # ret = self.serviceImpl.import_annotations(self.ctx, params_import)
+
+        params_compare = {
             "debug" : True,
-            "ontology": "metacyc",
-            "annotation_file": "test/test_data/Cdiff_genes_reactions.tsv",
-            "description": "test",
             "genome": "24233/13/1",
             "output_name": "testGenome_1",
             "workspace_name": self.wsName
         }
-        ret = self.serviceImpl.import_annotations(self.ctx, params)
+        ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)
