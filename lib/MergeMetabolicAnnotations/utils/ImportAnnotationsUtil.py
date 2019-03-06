@@ -109,6 +109,9 @@ class ImportAnnotationsUtil:
         if 'ontology_events' not in genome_dict:
             genome_dict['ontology_events'] = []
 
+        if 'ontologies_present' not in genome_dict:
+            genome_dict['ontologies_present'] = {}
+
         genome_dict['ontology_events'].append(
             {
                 "id"             : ontology,
@@ -188,21 +191,6 @@ class ImportAnnotationsUtil:
         result_file_path = os.path.join(output_directory, 'import_annotations_summary.html')
 
         # Build HTML tables for results
-        # table_lines = []
-        # table_lines.append(f'<h2>Import Annotations Summary</h2>')
-        # table_lines.append(f'<h3>Added:</h3>')
-        # table_lines.append(f'Valid Genes: ' + str(len(summary['valid_genes'])) + ' (' + str(len(set(summary['valid_genes']))) + ' unique)<br>')
-        # table_lines.append(f'Valid Terms: ' + str(len(summary['valid_terms'])) + ' (' + str(len(set(summary['valid_terms']))) + ' unique)<br><br>')
-        #
-        # table_lines.append(f'<h3>Not Added:</h3>')
-        # table_lines.append(f'Invalid Genes (not found in genome object): ' + str(len(summary['invalid_genes'])) + ' (' + str(len(set(summary['invalid_genes']))) + ' unique)<br>')
-        # for gene in set(summary['invalid_genes']):
-        #     table_lines.append(str(gene) + '<br>')
-        #
-        # table_lines.append(f'<br>Invalid Terms (not found in ontology dictionary): ' + str(len(summary['invalid_terms'])) + ' (' + str(len(set(summary['invalid_terms']))) + ' unique)<br><br>')
-        # for term in set(summary['invalid_terms']):
-        #     table_lines.append(term + '<br>')
-
         table_lines = []
         table_lines.append(f'<h2>Import Annotations</h2>')
         table_lines.append(f'<h3>Summary</h3>')
