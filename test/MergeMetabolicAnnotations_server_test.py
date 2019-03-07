@@ -77,9 +77,9 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # ret = self.serviceImpl.import_annotations(self.ctx, params_import)
 
         params_compare = {
-            "debug" : True,
-            "genome": "24233/13/1",
-            "output_name": "testGenome_1",
-            "workspace_name": self.wsName
+            "debug"                  : True,
+            "genome"                 : "26109/9/1",
+            "annotations_to_compare" : "",
+            "workspace_name"         : self.wsName
         }
         ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)
