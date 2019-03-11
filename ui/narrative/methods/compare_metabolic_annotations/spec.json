@@ -25,7 +25,7 @@
         "id" : "annotations_to_compare",
         "optional" : false,
         "advanced" : false,
-        "allow_multiple" : true,
+        "multiselection" : true,
         "default_values" : [ "" ],
         "field_type" : "textsubdata",
         "textsubdata_options" : {
