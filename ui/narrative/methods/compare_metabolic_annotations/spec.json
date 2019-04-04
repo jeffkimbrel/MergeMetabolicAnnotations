@@ -25,7 +25,7 @@
         "id" : "annotations_to_compare",
         "optional" : false,
         "advanced" : false,
-        "multiselection" : true,
+        "allow_multiple" : false,
         "default_values" : [ "" ],
         "field_type" : "textsubdata",
         "textsubdata_options" : {
@@ -43,7 +43,7 @@
                  "ontology_events/[*]/description"
               ]
            },
-           "multiselection" : false
+           "multiselection" : true
         },
         "text_options" : {
            "valid_ws_types" : []
