@@ -45,7 +45,7 @@
                  "ontology_events/[*]/description"
               ]
            },
-
+           "multiselection" : true
         },
         "text_options" : {
            "valid_ws_types" : []
