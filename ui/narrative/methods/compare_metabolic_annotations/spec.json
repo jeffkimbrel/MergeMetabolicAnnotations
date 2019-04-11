@@ -15,7 +15,6 @@
        "optional" : false,
        "advanced" : false,
        "allow_multiple" : false,
-       "multiselection" : true,
        "default_values" : [ "" ],
        "field_type" : "text",
        "text_options" : {
@@ -27,7 +26,6 @@
         "optional" : false,
         "advanced" : false,
         "allow_multiple" : false,
-        "multiselection" : true,
         "default_values" : [ "" ],
         "field_type" : "textsubdata",
         "textsubdata_options" : {
@@ -38,13 +36,17 @@
                  "ontology_events"
               ],
               "parameter_id" : "genome",
-              "selection_id" : "id",
               "subdata_included" : [
                  "ontology_events/[*]/id",
                  "ontology_events/[*]/timestamp",
-                 "ontology_events/[*]/description"
-              ]
-           }
+                 "ontology_events/[*]/description",
+                 "ontology_events/[*]/method"
+              ],
+              "selection_description": ["id", "timestamp", "description", "method"],
+              "description_template" : "<strong>{{id}}</strong> ontology terms from <strong>{{method}}</strong> added <strong>{{timestamp}}</strong>",
+              "selection_id" : "description"
+           },
+           "multiselection" : true
         },
         "text_options" : {
            "valid_ws_types" : []
@@ -63,7 +65,8 @@
            },
            {
                "target_property" : "genome",
-               "input_parameter" : "genome"
+               "input_parameter" : "genome",
+               "target_type_transform": "resolved-ref"
            },
            {
                "target_property" : "annotations_to_compare",
@@ -76,7 +79,7 @@
              "target_property": "wsName"
            },
            {
-             "service_method_output_path": [0, "obj_ref"],
+             "service_method_output_path": [0,"obj_ref"],
              "target_property": "obj_ref",
              "target_type_transform": "resolved-ref"
            },
