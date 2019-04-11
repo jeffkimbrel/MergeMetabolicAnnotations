@@ -44,8 +44,7 @@
                  "ontology_events/[*]/timestamp",
                  "ontology_events/[*]/description"
               ]
-           },
-           "multiselection" : true
+           }
         },
         "text_options" : {
            "valid_ws_types" : []
@@ -77,7 +76,7 @@
              "target_property": "wsName"
            },
            {
-             "service_method_output_path": [0,"obj_ref"],
+             "service_method_output_path": [0, "obj_ref"],
              "target_property": "obj_ref",
              "target_type_transform": "resolved-ref"
            },
