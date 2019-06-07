@@ -37,8 +37,6 @@ class CompareAnnotationsUtil:
         self.ws_client    = Workspace(config["workspace-url"])
 
         self.events = {}
-        self.genes  = {}
-        self.rxns   = {}
 
     def get_genome(self, genome_ref):
         self.genome = self.genome_api.get_genome_v1({"genomes": [{"ref": genome_ref}], 'downgrade': 0})["genomes"][0]['data']
@@ -65,75 +63,11 @@ class CompareAnnotationsUtil:
                     rxn = entry['equiv_term']
                     self.translations[type][term] = rxn
 
-    def get_genes_and_terms(self):
-        for feature in self.genome['features']:
-            gene = feature['id']
-            if 'ontology_terms' in feature:
-                for type in feature['ontology_terms']:
-                    for term in feature['ontology_terms'][type]:
-                        for ontology_event in feature['ontology_terms'][type][term]:
-                            if gene in self.genes:
-                                self.genes[gene].add(ontology_event, type, term)
-                            else:
-                                self.genes[gene] = Gene(gene)
-                                self.genes[gene].add(ontology_event, type, term)
-
     def search_for_ec(self, line):
         ecList = re.findall(r"\(*[0-9]+\.[0-9\-]+\.[0-9\-]+\.[0-9\-]+", line)
         return(ecList)
 
-    def translate_to_rxns(self, getECs = True):
-        self.rxns['None'] = RXN('None')
-
-        for gene in self.genes:
-            for event in self.genes[gene].annotations:
-                term = event['term']
-                type = event['type']
-
-                if type == 'SSO':
-                    term = self.genome['ontologies_present']['SSO'][term]
-
-                if type == 'metacyc':
-                    if term.startswith("META:"):
-                        term = term.replace('META:', '')
-
-                if term in self.translations[type]:
-                    rxn = self.translations[type][term]
-
-                    if rxn != None:
-                        if rxn in self.rxns:
-                            self.rxns[rxn].add(event['ontology_event'], gene, type, term)
-                        else:
-                            self.rxns[rxn] = RXN(rxn)
-                            self.rxns[rxn].add(event['ontology_event'], gene, type, term)
-                    else:
-                        self.rxns['None'].add(event['ontology_event'], gene, type, term)
-
-                else:
-                    self.rxns['None'].add(event['ontology_event'], gene, type, term)
-
-                if getECs: #extract ECs from SSO terms
-                    if type == "SSO":
-                        # ECs
-                        ecList = self.search_for_ec(term)
-                        if len(ecList) > 0:
-                            for ec in ecList:
-                                if ec in self.translations['ec']:
-                                    rxn = self.translations['ec'][ec]
-
-                                    if rxn != None:
-                                        if rxn in self.rxns:
-                                            self.rxns[rxn].add(event['ontology_event'], gene, type, ec)
-                                        else:
-                                            self.rxns[rxn] = RXN(rxn)
-                                            self.rxns[rxn].add(event['ontology_event'], gene, type, ec)
-                                    else:
-                                        self.rxns['None'].add(event['ontology_event'], gene, type, ec)
-
-                                else:
-                                    self.rxns['None'].add(event['ontology_event'], gene, type, ec)
-
-    def summarize(self, gto, translations):
+    def summarize_gto(self, gto, translations):
         summary = {"genes"           : {},
                    "terms"           : {},
                    "rxns"            : {},
@@ -246,9 +180,6 @@ class CompareAnnotationsUtil:
         os.mkdir(output_directory)
         result_file_path = os.path.join(output_directory, 'compare_annotations_summary.html')
 
-        #with open(os.path.join(output_directory, 'summary.json'), 'w') as outfile:
-        #    json.dump(summary, outfile, indent = 2)
-
         # make html
         table_lines = []
         table_lines.append(f'<h2>Compare Annotations</h2>')
@@ -285,7 +216,6 @@ class CompareAnnotationsUtil:
         return {'report_name' : output['name'],
                 'report_ref'  : output['ref']}
 
-
     def run(self, ctx, params):
 
         # collect some metadata
@@ -294,34 +224,11 @@ class CompareAnnotationsUtil:
         self.get_translations()
 
         # collect some more data
-        self.get_genes_and_terms()
-        self.translate_to_rxns(getECs = True)
+        #self.get_genes_and_terms()
+        #self.translate_to_rxns(getECs = True)
 
         # make reports
-        summary = self.summarize(self.genome, self.translations)
+        summary = self.summarize_gto(self.genome, self.translations)
 
         report = self.html_summary(params, summary)
         return report
-
-class Gene:
-    def __init__(self, id):
-        self.id = id
-        self.annotations = []
-
-    def add(self, ontology_event, type, term):
-        self.annotations.append({"ontology_event" : ontology_event,
-                                           "type" : type,
-                                           "term" : term
-                               })
-
-class RXN:
-    def __init__(self, rxn):
-        self.rxn = rxn
-        self.translations = []
-
-    def add(self, ontology_event, gene, type, term):
-        self.translations.append({"ontology_event" : ontology_event,
-                                            "gene" : gene,
-                                            "type" : type,
-                                            "term" : term
-                                })
