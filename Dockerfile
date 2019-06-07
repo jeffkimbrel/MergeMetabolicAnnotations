@@ -8,6 +8,7 @@ MAINTAINER KBase Developer
 
 # RUN apt-get update
 
+RUN pip install bokeh
 
 # -----------------------------------------
 

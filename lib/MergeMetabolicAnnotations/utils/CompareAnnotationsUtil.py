@@ -3,8 +3,8 @@ import datetime
 import logging
 import json
 import uuid
-import yaml
 import re
+from bokeh.plotting import figure, output_file, show
 
 from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
 from installed_clients.DataFileUtilClient import DataFileUtil
@@ -150,7 +150,7 @@ class CompareAnnotationsUtil:
 
     def html_summary(self, params, summary):
 
-        # convert summary for this report
+        # convert gto summary for this report
         html_summary_report = {}
 
         for oe in summary['ontology_events']:
@@ -222,10 +222,6 @@ class CompareAnnotationsUtil:
         self.get_genome(params['genome'])
         self.get_ontology_events(self.genome)
         self.get_translations()
-
-        # collect some more data
-        #self.get_genes_and_terms()
-        #self.translate_to_rxns(getECs = True)
 
         # make reports
         summary = self.summarize_gto(self.genome, self.translations)
