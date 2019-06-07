@@ -7,7 +7,7 @@
   "categories" : ["active","annotation"],
   "widgets" : {
     "input" : null,
-    "output" : ""
+    "output" : "no-display"
   },
   "parameters" : [
      {

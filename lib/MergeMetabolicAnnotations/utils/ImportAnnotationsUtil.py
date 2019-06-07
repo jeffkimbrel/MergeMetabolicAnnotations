@@ -259,7 +259,6 @@ class ImportAnnotationsUtil:
         self.genome_full['data'] = genome_dict
 
         prov = ctx.provenance()
-
         info = self.gfu.save_one_genome({'workspace'  : params['workspace_name'],
                                          'name'       : params['output_name'],
                                          'data'       : self.genome_full['data'],

@@ -133,39 +133,111 @@ class CompareAnnotationsUtil:
                                 else:
                                     self.rxns['None'].add(event['ontology_event'], gene, type, ec)
 
-    def html_summary(self, params):
-        summary = {}
+    def summarize(self, gto, translations):
+        summary = {"genes"           : {},
+                   "terms"           : {},
+                   "rxns"            : {},
+                   "ontology_events" : {},
+                   "orphan_terms"    : {}
+        }
 
-        for gene in self.genes:
-            for event in self.genes[gene].annotations:
-                term = event['term']
-                event = event['ontology_event']
+        # add ontology events
+        for count, oe in enumerate(gto['ontology_events']):
+            summary['ontology_events'][count] = oe
 
-                if event not in summary:
-                    summary[event] = {}
-                if 'gene' not in summary[event]:
-                    summary[event]['gene'] = []
-                if 'term' not in summary[event]:
-                    summary[event]['term'] = []
+        # add gene id to summary
+        for feature in gto['features']:
+            gene_id = feature['id']
+            summary["genes"][gene_id] = {"terms" : {},
+                                         "rxns" : {}
+                                         }
 
-                summary[event]['gene'].append(gene)
-                summary[event]['term'].append(term)
+            # get ontology term
+            if "ontology_terms" in feature:
+                for type in feature['ontology_terms']:
+                    term_dict = feature['ontology_terms'][type]
 
-                summary[event]['gene'] = list(set(summary[event]['gene']))
-                summary[event]['term'] = list(set(summary[event]['term']))
+                    for term in term_dict:
+                        for oe in term_dict[term]:
 
-        for rxn in self.rxns:
-            for event in self.rxns[rxn].translations:
-                event = event['ontology_event']
-                if event not in summary:
-                    summary[event] = {}
-                if 'rxn' not in summary[event]:
-                    summary[event]['rxn'] = []
+                            rxn = "none"
 
-                if rxn != "None":
-                    summary[event]['rxn'].append(rxn)
+                            # get rxn
+                            ontology_type = summary['ontology_events'][oe]['id']
 
-                summary[event]['rxn'] = list(set(summary[event]['rxn']))
+                            # fix metacyc terms
+                            if ontology_type == 'metacyc':
+                                if term.startswith("META:"):
+                                    term = term.replace('META:', '')
+
+                            # fix SSO terms
+                            if ontology_type == 'SSO':
+
+                                if term in gto['ontologies_present']['SSO']:
+                                    if gto['ontologies_present']['SSO'][term] != 'Unknown':
+                                        term = gto['ontologies_present']['SSO'][term]
+
+                            # convert terms to rxns
+                            if term in translations[ontology_type]:
+                                rxn = translations[ontology_type][term]
+                            else:
+                                if oe in summary["orphan_terms"]:
+                                    summary["orphan_terms"][oe].append(term)
+                                    summary["orphan_terms"][oe] = list(set(summary["orphan_terms"][oe]))
+                                else:
+                                    summary["orphan_terms"][oe] = [term]
+
+                            # terms
+                            if term in summary["genes"][gene_id]['terms']:
+                                summary["genes"][gene_id]['terms'][term].append(oe)
+                            else:
+                                summary["genes"][gene_id]['terms'][term] = [oe]
+
+                            if term in summary['terms']:
+                                summary['terms'][term].append(oe)
+                                summary['terms'][term] = list(set(summary['terms'][term]))
+                            else:
+                                summary['terms'][term] = [oe]
+
+                            # rxns
+                            if rxn != "none":
+                                if rxn in summary["genes"][gene_id]['rxns']:
+                                    summary["genes"][gene_id]['rxns'][rxn].append(oe)
+                                else:
+                                    summary["genes"][gene_id]['rxns'][rxn] = [oe]
+
+                                if rxn in summary['rxns']:
+                                    summary['rxns'][rxn].append(oe)
+                                    summary['rxns'][rxn] = list(set(summary['rxns'][rxn]))
+                                else:
+                                    summary['rxns'][rxn] = [oe]
+
+        return summary
+
+    def html_summary(self, params, summary):
+
+        # convert summary for this report
+        html_summary_report = {}
+
+        for oe in summary['ontology_events']:
+            html_summary_report[oe] = {"gene" : [], "term" : [], "rxn" : []}
+
+        for gene in summary["genes"]:
+            for term in summary["genes"][gene]['terms']:
+                for oe in summary["genes"][gene]['terms'][term]:
+                    html_summary_report[oe]['gene'].append(gene)
+                    html_summary_report[oe]['term'].append(term)
+
+                    html_summary_report[oe]['gene'] = list(set(html_summary_report[oe]['gene']))
+                    html_summary_report[oe]['term'] = list(set(html_summary_report[oe]['term']))
+
+            for rxn in summary["genes"][gene]['rxns']:
+                for oe in summary["genes"][gene]['rxns'][rxn]:
+                    html_summary_report[oe]['rxn'].append(rxn)
+                    html_summary_report[oe]['gene'].append(gene)
+
+                    html_summary_report[oe]['rxn'] = list(set(html_summary_report[oe]['rxn']))
+                    html_summary_report[oe]['gene'] = list(set(html_summary_report[oe]['gene']))
 
         output_html_files = list()
 
@@ -174,17 +246,20 @@ class CompareAnnotationsUtil:
         os.mkdir(output_directory)
         result_file_path = os.path.join(output_directory, 'compare_annotations_summary.html')
 
+        #with open(os.path.join(output_directory, 'summary.json'), 'w') as outfile:
+        #    json.dump(summary, outfile, indent = 2)
+
         # make html
         table_lines = []
         table_lines.append(f'<h2>Compare Annotations</h2>')
         table_lines.append(f'<h3>Summary</h3>')
         table_lines.append('<table cellspacing="0" cellpadding="3" border="1"><tr><th>EVENT</th><th>DESCRIPTION</th><th>TYPE</th><th>GENES</th><th>TERMS</th><th>RXNS</th></tr>')
-        for event in sorted(summary.keys()):
+        for event in sorted(html_summary_report.keys()):
             description = self.events[event].get('description', self.events[event]['method']) # RAST/PROKKA don't have descriptions, but they have methods
             type = self.events[event]['id']
-            genes_list = summary[event]['gene']
-            terms_list = summary[event]['term']
-            rxns_list = summary[event]['rxn']
+            genes_list = html_summary_report[event]['gene']
+            terms_list = html_summary_report[event]['term']
+            rxns_list = html_summary_report[event]['rxn']
             table_lines.append('<tr><td>' + str(event) + '</td><td>' + description + '</td><td>' + type + '</td><td>' + str(len(set(genes_list))) + '</td><td>' + str(len(terms_list)) + '</td><td>' +  str(len(rxns_list)) + '</td></tr>')
         table_lines.append('</table>')
 
@@ -223,8 +298,9 @@ class CompareAnnotationsUtil:
         self.translate_to_rxns(getECs = True)
 
         # make reports
-        report = self.html_summary(params)
+        summary = self.summarize(self.genome, self.translations)
 
+        report = self.html_summary(params, summary)
         return report
 
 class Gene:
@@ -248,4 +324,4 @@ class RXN:
                                             "gene" : gene,
                                             "type" : type,
                                             "term" : term
-                               })
+                                })
