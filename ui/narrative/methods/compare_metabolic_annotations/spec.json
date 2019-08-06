@@ -1,7 +1,7 @@
 {
   "name" : "Compare Metabolic Annotations",
   "ver" : "0.0.1",
-  "authors" : ["chenry","jakimbrel","patrikd"],
+  "authors" : ["jakimbrel","chenry","patrikd"],
   "contact" : "http://kbase.us/contact-us/",
   "visble" : true,
   "categories" : ["active","annotation"],

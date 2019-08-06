@@ -22,7 +22,8 @@ class CompareAnnotationsUtil:
                              'keggro': 'KEGG_RXN.ModelSEED.json',
                              'keggko': 'KEGG_KO.ModelSEED.json',
                              'metacyc': 'Metacyc_RXN.ModelSEED.json',
-                             'SSO': 'SSO.ModelSEED.json'}
+                             'SSO': 'SSO.ModelSEED.json',
+                             'go': 'GO.ModelSEED.json'}
 
     def __init__(self, config):
         os.makedirs(self.workdir, exist_ok=True)
@@ -104,6 +105,11 @@ class CompareAnnotationsUtil:
                             if ontology_type == 'metacyc':
                                 if term.startswith("META:"):
                                     term = term.replace('META:', '')
+
+                            # fix go terms
+                            if ontology_type == 'go':
+                                if term.startswith("GO:"):
+                                    term = term.replace('GO:', '')
 
                             # fix SSO terms
                             if ontology_type == 'SSO':
