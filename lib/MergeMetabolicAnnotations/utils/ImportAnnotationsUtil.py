@@ -11,22 +11,24 @@ from installed_clients.GenomeFileUtilClient import GenomeFileUtil
 from installed_clients.WorkspaceClient import Workspace as Workspace
 from installed_clients.KBaseReportClient import KBaseReport
 
+
 class ImportAnnotationsUtil:
 
-    workdir     = 'tmp/work/'
+    workdir = 'tmp/work/'
     staging_dir = "/staging/"
-    datadir     = "/kb/module/data/"
+    datadir = "/kb/module/data/"
 
     ontology_lookup = {
-        "ec"        : "EBI_EC_ontologyDictionary.json",
-        "keggko"    : "KEGG_KO_ontologyDictionary.json",
-        "keggro"    : "KEGG_RXN_ontologyDictionary.json",
-        "metacyc"   : "MetaCyc_RXN_ontologyDictionary.json",
-        "modelseed" : "ModelSEED_RXN_ontologyDictionary.json"
+        "ec": "EBI_EC_ontologyDictionary.json",
+        "keggko": "KEGG_KO_ontologyDictionary.json",
+        "keggro": "KEGG_RXN_ontologyDictionary.json",
+        "metacyc": "MetaCyc_RXN_ontologyDictionary.json",
+        "modelseed": "ModelSEED_RXN_ontologyDictionary.json",
+        "go": "GO_ontologyDictionary.json"
     }
 
     def __init__(self, config):
-        os.makedirs(self.workdir, exist_ok = True)
+        os.makedirs(self.workdir, exist_ok=True)
         self.config = config
         self.timestamp = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
         self.genes = {}
@@ -38,7 +40,7 @@ class ImportAnnotationsUtil:
         self.kbr = KBaseReport(self.callback_url)
         self.ws_client = Workspace(config["workspace-url"])
 
-    def get_sso_data(self,sso_to_lookup):
+    def get_sso_data(self, sso_to_lookup):
         sso_to_lookup = "KBaseOntology/seed_subsystem_ontology"
         sso_ret = self.ws_client.get_objects([{"ref": sso_to_lookup}])[0]
         sso = sso_ret["data"]
@@ -56,15 +58,16 @@ class ImportAnnotationsUtil:
 
     def get_genome(self, genome_ref):
 
-        self.genome_full = self.genome_api.get_genome_v1({"genomes": [{"ref": genome_ref}], 'downgrade': 0})["genomes"][0]
+        self.genome_full = self.genome_api.get_genome_v1(
+            {"genomes": [{"ref": genome_ref}], 'downgrade': 0})["genomes"][0]
         genome_dict = self.genome_full['data']
 
         return genome_dict
 
-    def get_ontology_dict(self, ontology): # getting only the 'ontology' param from the UI
+    def get_ontology_dict(self, ontology):  # getting only the 'ontology' param from the UI
 
         ontology_path = self.datadir + "/" + self.ontology_lookup[ontology]
-        ontology_dict_raw = json.loads(open(ontology_path, "r").read() )
+        ontology_dict_raw = json.loads(open(ontology_path, "r").read())
 
         ontology_dict = {}
 
@@ -76,8 +79,8 @@ class ImportAnnotationsUtil:
         return(ontology_dict)
 
     def get_annotations_file(self, params):
-        if 'debug' in params and params['debug'] == True:
-            annotations_file_path = '/kb/module/test/test_data/Cdiff_genes_reactions.tsv'  # docker path
+        if 'debug' in params and params['debug'] is True:
+            annotations_file_path = '/kb/module/test/test_data/' + params.get('annotation_file')
 
         else:
             annotations_file_path = self.staging_dir + "/" + params.get('annotation_file')
@@ -87,10 +90,10 @@ class ImportAnnotationsUtil:
     def annotations_to_genes(self, annotations_raw):
 
         for line in annotations_raw:
-            if not line.startswith('#'): # ignore comment lines
-                elements = line.split("\t") # can add commas here as well for .csv
+            if not line.startswith('#'):  # ignore comment lines
+                elements = line.split("\t")  # can add commas here as well for .csv
 
-                if elements[0] != "": # ignore blank lines
+                if elements[0] != "":  # ignore blank lines
                     geneID = elements[0]
                     annotation = ""
 
@@ -113,12 +116,12 @@ class ImportAnnotationsUtil:
 
         genome_dict['ontology_events'].append(
             {
-                "id"             : ontology,
-                "method"         : "Import Annotations",
-                "method_version" : self.get_app_version(),
-                "description"    : description,
-                "ontology_ref"   : self.sso_ref,
-                "timestamp"      : self.timestamp
+                "id": ontology,
+                "method": "Import Annotations",
+                "method_version": self.get_app_version(),
+                "description": description,
+                "ontology_ref": self.sso_ref,
+                "timestamp": self.timestamp
             }
         )
 
@@ -129,7 +132,7 @@ class ImportAnnotationsUtil:
 
             if geneID in self.genes:
 
-                if self.genes[geneID].hasValidAnnotations() == True:
+                if self.genes[geneID].hasValidAnnotations() is True:
 
                     # create some things if they don't exist
                     if 'ontology_terms' not in feature:
@@ -146,12 +149,15 @@ class ImportAnnotationsUtil:
                                 genome_dict['ontologies_present'][ontology] = {}
 
                             if annotation['id'] not in genome_dict['ontologies_present'][ontology]:
-                                genome_dict['ontologies_present'][ontology][annotation['id']] = annotation['name']
+                                genome_dict['ontologies_present'][ontology][annotation['id']
+                                                                            ] = annotation['name']
 
                             if annotation['id'] not in feature['ontology_terms'][ontology]:
-                                feature['ontology_terms'][ontology][annotation['id']] = [self.current_ontology_event]
+                                feature['ontology_terms'][ontology][annotation['id']] = [
+                                    self.current_ontology_event]
                             else:
-                                feature['ontology_terms'][ontology][annotation['id']].append(self.current_ontology_event)
+                                feature['ontology_terms'][ontology][annotation['id']].append(
+                                    self.current_ontology_event)
 
     def summarize(self, params):
 
@@ -173,10 +179,10 @@ class ImportAnnotationsUtil:
                     invalidOntologyTerms.append(annotation['id'])
 
         return({
-            'valid_genes'   : validGenes,
-            'invalid_genes' : invalidGenes,
-            'valid_terms'   : validOntologyTerms,
-            'invalid_terms' : invalidOntologyTerms
+            'valid_genes': validGenes,
+            'invalid_genes': invalidGenes,
+            'valid_terms': validOntologyTerms,
+            'invalid_terms': invalidOntologyTerms
         })
 
     def generate_report(self, params, genome_ref):
@@ -193,20 +199,25 @@ class ImportAnnotationsUtil:
         table_lines = []
         table_lines.append(f'<h2>Import Annotations</h2>')
         table_lines.append(f'<h3>Summary</h3>')
-        table_lines.append('<table cellspacing="0" cellpadding="3" border="1"><tr><th>TYPE</th><th>VALID</th><th>INVALID</th></tr>')
-        table_lines.append('<tr><td>GENES</td><td>' + str(len(summary['valid_genes'])) + '</td><td>' + str(len(summary['invalid_genes'])) + '</td></tr>')
-        table_lines.append('<tr><td>TERMS</td><td>' + str(len(summary['valid_terms'])) + '</td><td>' + str(len(summary['invalid_terms'])) + '</td></tr>')
+        table_lines.append(
+            '<table cellspacing="0" cellpadding="3" border="1"><tr><th>TYPE</th><th>VALID</th><th>INVALID</th></tr>')
+        table_lines.append('<tr><td>GENES</td><td>' + str(
+            len(summary['valid_genes'])) + '</td><td>' + str(len(summary['invalid_genes'])) + '</td></tr>')
+        table_lines.append('<tr><td>TERMS</td><td>' + str(
+            len(summary['valid_terms'])) + '</td><td>' + str(len(summary['invalid_terms'])) + '</td></tr>')
         table_lines.append('</table>')
 
         if len(summary['invalid_genes']) > 0:
             table_lines.append(f'<h3>Invalid Genes</h3>')
-            table_lines.append('<i>These are locus_tags not identified in the genome object. Duplicates are not shown.</i><br><br>')
+            table_lines.append(
+                '<i>These are locus_tags not identified in the genome object. Duplicates are not shown.</i><br><br>')
             for gene in set(summary['invalid_genes']):
                 table_lines.append(str(gene) + '<br>')
 
         if len(summary['invalid_terms']) > 0:
             table_lines.append(f'<h3>Invalid Terms</h3>')
-            table_lines.append('<i>These are ontology terms not found in the ontology dictionary. Duplicates are not shown.</i><br><br>')
+            table_lines.append(
+                '<i>These are ontology terms not found in the ontology dictionary. Duplicates are not shown.</i><br><br>')
             for gene in set(summary['invalid_terms']):
                 table_lines.append(str(gene) + '<br>')
 
@@ -216,23 +227,23 @@ class ImportAnnotationsUtil:
                 result_file.write(line + "\n")
 
         output_html_files.append(
-            {'path'       : output_directory,
-             'name'       : os.path.basename(result_file_path),
+            {'path': output_directory,
+             'name': os.path.basename(result_file_path),
              'description': 'HTML report for import_annotations app'})
 
         report_params = {
-            'message'                   : '',
-            'html_links'                : output_html_files,
-            'direct_html_link_index'    : 0,
-            'objects_created' : [{'ref' : genome_ref, 'description' : 'Genome with imported annotations'}],
-            'workspace_name'            : params['workspace_name'],
-            'report_object_name'        : f'import_annotations_{uuid.uuid4()}'}
+            'message': '',
+            'html_links': output_html_files,
+            'direct_html_link_index': 0,
+            'objects_created': [{'ref': genome_ref, 'description': 'Genome with imported annotations'}],
+            'workspace_name': params['workspace_name'],
+            'report_object_name': f'import_annotations_{uuid.uuid4()}'}
 
         output = self.kbr.create_extended_report(report_params)
 
-        return {'output_genome_ref' : genome_ref,
-                'report_name'       : output['name'],
-                'report_ref'        : output['ref']}
+        return {'output_genome_ref': genome_ref,
+                'report_name': output['name'],
+                'report_ref': output['ref']}
 
     def run(self, ctx, params):
 
@@ -259,10 +270,10 @@ class ImportAnnotationsUtil:
         self.genome_full['data'] = genome_dict
 
         prov = ctx.provenance()
-        info = self.gfu.save_one_genome({'workspace'  : params['workspace_name'],
-                                         'name'       : params['output_name'],
-                                         'data'       : self.genome_full['data'],
-                                         'provenance' : prov})['info']
+        info = self.gfu.save_one_genome({'workspace': params['workspace_name'],
+                                         'name': params['output_name'],
+                                         'data': self.genome_full['data'],
+                                         'provenance': prov})['info']
 
         genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
         logging.info("*** Genome ID: " + str(genome_ref))
@@ -270,6 +281,7 @@ class ImportAnnotationsUtil:
         report = self.generate_report(params, genome_ref)
 
         return report
+
 
 class Gene:
     def __init__(self, id):
@@ -304,11 +316,18 @@ class Gene:
                     name = ontology_dict[metacyc_id]
                     id_final = metacyc_id
 
-            # adds valid and not valid annotations for recordkeeping
-            ontologyCheck = {"id"    : id_final,
-                             "name"  : name,
-                             "valid" : valid
-                            }
+            elif ontology == 'go':
+                go_id = id.replace('GO:', '')
+                if go_id in ontology_dict:
+                    valid = 1
+                    name = ontology_dict[go_id]
+                    id_final = go_id
+
+                # adds valid and not valid annotations for recordkeeping
+            ontologyCheck = {"id": id_final,
+                             "name": name,
+                             "valid": valid
+                             }
 
             self.ontologyChecked.append(ontologyCheck)
 
