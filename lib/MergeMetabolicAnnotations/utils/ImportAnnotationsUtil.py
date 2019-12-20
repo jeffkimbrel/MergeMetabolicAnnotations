@@ -4,6 +4,7 @@ import logging
 import json
 import uuid
 import yaml
+from collections import Counter
 
 from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
 from installed_clients.DataFileUtilClient import DataFileUtil
@@ -210,16 +211,24 @@ class ImportAnnotationsUtil:
         if len(summary['invalid_genes']) > 0:
             table_lines.append(f'<h3>Invalid Genes</h3>')
             table_lines.append(
-                '<i>These are locus_tags not identified in the genome object. Duplicates are not shown.</i><br><br>')
-            for gene in set(summary['invalid_genes']):
-                table_lines.append(str(gene) + '<br>')
+                '<i>These are locus_tags not identified in the genome object. Frequency shown in parentheses.</i><br><br>')
+
+            invalid_genes_count = dict(Counter(summary['invalid_genes']))
+
+            for gene in sorted(invalid_genes_count.keys()):
+                gene_count = gene + '\t(' + str(invalid_genes_count[gene]) + ')'
+                table_lines.append(gene_count + '<br>')
 
         if len(summary['invalid_terms']) > 0:
             table_lines.append(f'<h3>Invalid Terms</h3>')
             table_lines.append(
-                '<i>These are ontology terms not found in the ontology dictionary. Duplicates are not shown.</i><br><br>')
-            for gene in set(summary['invalid_terms']):
-                table_lines.append(str(gene) + '<br>')
+                '<i>These are ontology terms not found in the ontology dictionary. Frequency shown in parentheses.</i><br><br>')
+
+            invalid_terms_count = dict(Counter(summary['invalid_terms']))
+
+            for term in sorted(invalid_terms_count.keys()):
+                term_count = term + '\t(' + str(invalid_terms_count[term]) + ')'
+                table_lines.append(term_count + '<br>')
 
         # Write to file
         with open(result_file_path, 'w') as result_file:
