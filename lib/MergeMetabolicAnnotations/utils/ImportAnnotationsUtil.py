@@ -291,6 +291,9 @@ class ImportAnnotationsUtil:
 
         return report
 
+    def run_bulk(self, ctx, params):
+        logging.info("SEEMS TO WORK!")
+
 
 class Gene:
     def __init__(self, id):

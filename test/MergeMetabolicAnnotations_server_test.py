@@ -65,6 +65,18 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # self.assertEqual(ret[...], ...) or other unittest methods
 
         # # import app
+        # params_import = {
+        #     "debug": True,
+        #     "ontology": "go",
+        #     "annotation_file": "PT19DW_GO.txt",
+        #     "description": "test",
+        #     "genome": "30554/14/1",
+        #     "output_name": "testGenome_2",
+        #     "workspace_name": self.wsName
+        # }
+        # ret = self.serviceImpl.import_annotations(self.ctx, params_import)
+
+        # # bulk import app
         params_import = {
             "debug": True,
             "ontology": "go",
@@ -74,7 +86,7 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
             "output_name": "testGenome_2",
             "workspace_name": self.wsName
         }
-        ret = self.serviceImpl.import_annotations(self.ctx, params_import)
+        ret = self.serviceImpl.import_annotations_bulk(self.ctx, params_import)
 
         # compare app
         # params_compare = {

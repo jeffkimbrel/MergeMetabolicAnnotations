@@ -342,6 +342,10 @@ class Application(object):
                              name='MergeMetabolicAnnotations.import_annotations',
                              types=[dict])
         self.method_authentication['MergeMetabolicAnnotations.import_annotations'] = 'required'  # noqa
+        self.rpc_service.add(impl_MergeMetabolicAnnotations.import_annotations_bulk,
+                             name='MergeMetabolicAnnotations.import_annotations_bulk',
+                             types=[dict])
+        self.method_authentication['MergeMetabolicAnnotations.import_annotations_bulk'] = 'required'  # noqa
         self.rpc_service.add(impl_MergeMetabolicAnnotations.compare_metabolic_annotations,
                              name='MergeMetabolicAnnotations.compare_metabolic_annotations',
                              types=[dict])
@@ -350,6 +354,10 @@ class Application(object):
                              name='MergeMetabolicAnnotations.merge_metabolic_annotations',
                              types=[dict])
         self.method_authentication['MergeMetabolicAnnotations.merge_metabolic_annotations'] = 'required'  # noqa
+        self.rpc_service.add(impl_MergeMetabolicAnnotations.run_MergeMetabolicAnnotations,
+                             name='MergeMetabolicAnnotations.run_MergeMetabolicAnnotations',
+                             types=[dict])
+        self.method_authentication['MergeMetabolicAnnotations.run_MergeMetabolicAnnotations'] = 'required'  # noqa
         self.rpc_service.add(impl_MergeMetabolicAnnotations.status,
                              name='MergeMetabolicAnnotations.status',
                              types=[dict])
