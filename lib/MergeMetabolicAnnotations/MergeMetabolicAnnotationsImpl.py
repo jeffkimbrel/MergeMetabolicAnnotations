@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# BEGIN_HEADER
+#BEGIN_HEADER
 import logging
 import os
 from .utils.ImportAnnotationsUtil import ImportAnnotationsUtil
@@ -9,8 +9,7 @@ from .utils.CompareAnnotationsUtil import CompareAnnotationsUtil
 from MergeMetabolicAnnotations.utils.CompareAnnotationsUtil import CompareAnnotationsUtil
 
 from installed_clients.KBaseReportClient import KBaseReport
-# END_HEADER
-
+#END_HEADER
 
 class MergeMetabolicAnnotations:
     '''
@@ -32,21 +31,22 @@ class MergeMetabolicAnnotations:
     GIT_URL = ""
     GIT_COMMIT_HASH = ""
 
-    # BEGIN_CLASS_HEADER
-    # END_CLASS_HEADER
+    #BEGIN_CLASS_HEADER
+    #END_CLASS_HEADER
 
     # config contains contents of config file in a hash or None if it couldn't
     # be found
     def __init__(self, config):
-        # BEGIN_CONSTRUCTOR
+        #BEGIN_CONSTRUCTOR
         self.callback_url = os.environ['SDK_CALLBACK_URL']
         self.shared_folder = config['scratch']
         self.config = config
         self.config['SDK_CALLBACK_URL'] = self.callback_url
         logging.basicConfig(format='%(created)s %(levelname)s: %(message)s',
                             level=logging.INFO)
-        # END_CONSTRUCTOR
+        #END_CONSTRUCTOR
         pass
+
 
     def import_annotations(self, ctx, params):
         """
@@ -55,10 +55,10 @@ class MergeMetabolicAnnotations:
         """
         # ctx is the context object
         # return variables are: output
-        # BEGIN import_annotations
+        #BEGIN import_annotations
         import_runner = ImportAnnotationsUtil(self.config)
         output = import_runner.run(ctx, params)
-        # END import_annotations
+        #END import_annotations
 
         # At some point might do deeper type checking...
         if not isinstance(output, object):
@@ -93,10 +93,10 @@ class MergeMetabolicAnnotations:
         """
         # ctx is the context object
         # return variables are: output
-        # BEGIN compare_metabolic_annotations
-        compare_runner = CompareAnnotationsUtil(self.config)
-        output = compare_runner.run(ctx, params)
-        # END compare_metabolic_annotations
+        #BEGIN compare_metabolic_annotations
+        import_runner = CompareAnnotationsUtil(self.config)
+        output = import_runner.run(ctx, params)
+        #END compare_metabolic_annotations
 
         # At some point might do deeper type checking...
         if not isinstance(output, object):
@@ -112,8 +112,8 @@ class MergeMetabolicAnnotations:
         """
         # ctx is the context object
         # return variables are: output
-        # BEGIN merge_metabolic_annotations
-        # END merge_metabolic_annotations
+        #BEGIN merge_metabolic_annotations
+        #END merge_metabolic_annotations
 
         # At some point might do deeper type checking...
         if not isinstance(output, object):
@@ -121,13 +121,12 @@ class MergeMetabolicAnnotations:
                              'output is not type object as required.')
         # return the results
         return [output]
-
     def status(self, ctx):
-        # BEGIN_STATUS
+        #BEGIN_STATUS
         returnVal = {'state': "OK",
                      'message': "",
                      'version': self.VERSION,
                      'git_url': self.GIT_URL,
                      'git_commit_hash': self.GIT_COMMIT_HASH}
-        # END_STATUS
+        #END_STATUS
         return [returnVal]
