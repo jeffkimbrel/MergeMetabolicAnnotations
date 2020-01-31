@@ -10,9 +10,6 @@ module MergeMetabolicAnnotations {
   funcdef import_annotations(mapping<string,UnspecifiedObject> params)
     returns (ReportResults output) authentication required;
 
-  funcdef import_annotations_bulk(mapping<string,UnspecifiedObject> params)
-    returns (ReportResults output) authentication required;
-
   funcdef compare_metabolic_annotations(mapping<string,UnspecifiedObject> params)
     returns (ReportResults output) authentication required;
 
