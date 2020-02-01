@@ -1,0 +1,71 @@
+#
+# define display information
+#
+
+name     : Import Annotations from Staging
+subtitle : Import a file in TSV format from your staging area with new annotations to add to an existing genome
+tooltip  : Import a file in TSV format from your staging area with new annotations to add to an existing genome
+
+icon: data-teal.png
+
+screenshots :
+    []
+
+suggestions :
+    apps:
+        related :
+            []
+        next :
+            []
+    methods:
+        related :
+            []
+        next :
+            []
+
+parameters :
+    ontology_name :
+        ui-name : |
+            Annotation name
+        short-hint : |
+            Provide a short, distinct, and recognizable name for this set of annotations
+        long-hint  : |
+            Provide a short, distinct, and recognizable name for this set of annotations
+    ontology :
+        ui-name : |
+            Annotation namespace
+        short-hint : |
+            Namespace of annotation terms used in the input file
+        long-hint  : |
+            Namespace of annotation terms used in the input file
+    annotation_file :
+        ui-name : |
+            Annotation file path (TSV files only)
+        short-hint : |
+            Select the TSV file containing your annotation.
+        long-hint  : |
+            Select the TSV file containing your annotation.
+    description :
+        ui-name : |
+            Description
+        short-hint : |
+            Describe how the annotations were generated
+        long-hint  : |
+            Describe how the annotations were generated
+    genome :
+      ui-name : |
+            Genome to be annotated
+      short-hint : |
+            Select the Genome object that these annotations should be assigned to
+      long-hint  : |
+            Select the Genome object that these annotations should be assigned to
+    output_name :
+        ui-name : |
+            Output genome name
+        short-hint : |
+            Provide a name for the modified genome that includes the new annotations
+        long-hint : |
+            Provide a name for the modified genome that includes the new annotations
+description : |
+    <p>Import a file in TSV format from your staging area containing new annotations to be mapped into a selected genome.
+        Please see the <a href="http://kbase.us/data-upload-download-guide/">Data Upload/Download Guide</a> for more information. </p>

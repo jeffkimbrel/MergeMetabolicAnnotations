@@ -1,0 +1,166 @@
+{
+  "name" : "Import Annotations from Staging",
+  "ver" : "0.0.1",
+  "authors" : ["jakimbrel","chenry","patrikd"],
+  "contact" : "http://kbase.us/contact-us/",
+  "visible" : true,
+  "categories" : [ "active","annotation","upload" ],
+  "widgets": {
+    "input": "kbaseNarrativeMethodInput",
+    "output" : "no-display"
+  },
+  "parameters" : [
+    {
+      "id" : "ontology_name",
+      "optional" : false,
+      "advanced" : false,
+      "allow_multiple" : false,
+      "default_values" : [ "" ],
+      "field_type" : "text",
+      "text_options" : {}
+    },
+    {
+      "id" : "ontology",
+      "optional" : false,
+      "advanced" : false,
+      "allow_multiple" : false,
+      "default_values" : [ "ec" ],
+      "field_type" : "dropdown",
+      "dropdown_options":
+      {
+        "options":
+        [
+          {
+              "display": "EC",
+              "value": "ec"
+          },
+          {
+              "display": "KEGG KO",
+              "value": "keggko"
+          },
+          {
+              "display": "KEGG RO",
+              "value": "keggro"
+          },
+          {
+              "display": "MetaCyc reactions",
+              "value": "metacyc"
+          },
+          {
+              "display": "ModelSEED",
+              "value": "modelseed"
+          },
+          {
+              "display": "GO",
+              "value": "go"
+          }
+        ]
+      }
+    },
+    {
+      "id" : "annotation_file",
+      "optional" : false,
+      "advanced" : false,
+      "allow_multiple" : false,
+      "default_values" : [ "" ],
+      "field_type" : "dynamic_dropdown",
+      "dynamic_dropdown_options" : {
+        "data_source": "ftp_staging"
+      }
+    },
+    {
+      "id" : "description",
+      "optional" : false,
+      "advanced" : false,
+      "allow_multiple" : false,
+      "default_values" : [ "" ],
+      "field_type" : "text",
+      "text_options" : {}
+    },
+    {
+      "id" : "genome",
+      "optional" : true,
+      "advanced" : false,
+      "allow_multiple" : false,
+      "default_values" : [ "" ],
+      "field_type" : "text",
+      "text_options" : {
+        "valid_ws_types" : [ "KBaseGenomes.Genome" ]
+      }
+    },
+    {
+      "id" : "output_name",
+      "optional" : false,
+      "advanced" : false,
+      "allow_multiple" : false,
+      "default_values" : [ "" ],
+      "field_type" : "text",
+      "text_options" : {
+        "valid_ws_types" : [ "KBaseGenomes.Genome" ],
+        "is_output_name" : true
+      }
+    }
+  ],
+  "behavior" : {
+    "service-mapping" : {
+      "url" : "",
+      "name" : "MergeMetabolicAnnotations",
+      "method" : "import_bulk_annotations",
+      "input_mapping" : [
+        {
+          "narrative_system_variable": "workspace",
+          "target_property": "workspace_name"
+        },
+        {
+          "input_parameter": "output_name",
+          "target_property": "output_name"
+        },
+        {
+          "input_parameter": "annotation_file",
+          "target_property": "annotation_file"
+        },
+        {
+          "input_parameter": "ontology_name",
+          "target_property": "ontology_name"
+        },
+        {
+          "input_parameter": "ontology",
+          "target_property": "ontology"
+        },
+        {
+          "input_parameter": "description",
+          "target_property": "description"
+        },
+        {
+          "input_parameter": "genome",
+          "target_property": "genome",
+          "target_type_transform": "resolved-ref"
+        }
+      ],
+      "output_mapping" : [
+        {
+          "narrative_system_variable": "workspace",
+          "target_property": "wsName"
+        },
+        {
+          "service_method_output_path": [0,"obj_ref"],
+          "target_property": "obj_ref",
+          "target_type_transform": "resolved-ref"
+        },
+        {
+            "service_method_output_path": [0, "report_name"],
+            "target_property": "report_name"
+        },
+        {
+            "service_method_output_path": [0, "report_ref"],
+            "target_property": "report_ref"
+        },
+        {
+            "constant_value": "16",
+            "target_property": "report_window_line_height"
+        }
+      ]
+    }
+  },
+  "job_id_output_field": "docker"
+}
