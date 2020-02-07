@@ -1,5 +1,7 @@
 import yaml
 import json
+import logging
+import pandas as pd
 
 
 class Gene:
@@ -108,27 +110,43 @@ def get_annotations_file(params, staging_dir):
     else:
         annotations_file_path = staging_dir + "/" + params.get('annotation_file')
 
-    return [line.strip() for line in open(annotations_file_path)]
+    annotations = pd.read_csv(annotations_file_path,
+                              sep='\t',
+                              header=None,
+                              names=['gene', 'term']
+                              )
+
+    return annotations
+    # return [line.strip() for line in open(annotations_file_path)]
 
 
-def annotations_to_genes(annotations_raw, genes):
+def annotations_to_genes(annotations, genes):
+    for index, row in annotations.iterrows():
 
-    for line in annotations_raw:
-        if not line.startswith('#'):  # ignore comment lines
-            elements = line.split("\t")  # can add commas here as well for .csv
+        # make Gene class for gene
+        if row['gene'] not in genes:
+            genes[row['gene']] = Gene(row['gene'])
 
-            if elements[0] != "":  # ignore blank lines
-                geneID = elements[0]
-                annotation = ""
+        # and add the (not yet validated) annotations, columns above 2 are ignored
+        if len(row['term']) > 1:
+            genes[row['gene']].addAnnotation(row['term'])
 
-                # make Gene class for geneID
-                if geneID not in genes:
-                    genes[geneID] = Gene(geneID)
-
-                # and add the (not yet validated) annotations, columns above 2 are ignored
-                if len(elements) > 1:
-                    annotation = elements[1]
-                    genes[geneID].addAnnotation(annotation)
+    # for line in annotations_raw:
+    #     if not line.startswith('#'):  # ignore comment lines
+    #         elements = line.split("\t")  # can add commas here as well for .csv
+    #
+    #         if elements[0] != "":  # ignore blank lines
+    #             geneID = elements[0]
+    #             annotation = ""
+    #
+    #             # make Gene class for geneID
+    #             if geneID not in genes:
+    #                 genes[geneID] = Gene(geneID)
+    #
+    #             # and add the (not yet validated) annotations, columns above 2 are ignored
+    #             if len(elements) > 1:
+    #                 annotation = elements[1]
+    #                 genes[geneID].addAnnotation(annotation)
 
     return(genes)
 
@@ -221,3 +239,40 @@ def summarize(params, genes):
         'valid_terms': validOntologyTerms,
         'invalid_terms': invalidOntologyTerms
     })
+
+# bulk functions
+
+
+def process_bulk_file(params):
+    if 'debug' in params and params['debug'] is True:
+        annotations_file_path = '/kb/module/test/test_data/' + params.get('annotation_file')
+    else:
+        annotations_file_path = staging_dir + "/" + params.get('annotation_file')
+
+    df = pd.read_csv(annotations_file_path,
+                     sep='\t',
+                     header=None,
+                     names=['description', 'ontology', 'gene', 'term']
+                     )
+
+    # TODO - had validation check that the first three columns have no null values
+    logging.info(pd.isnull(df).sum() > 0)
+
+    # split by descriptions
+    annotations = {}
+    for index, row in df.iterrows():
+
+        if row['description'] not in annotations:
+            annotations[row['description']] = {'ontology': [], 'genes': {}}
+
+        if row['ontology'] not in annotations[row['description']]['ontology']:
+            annotations[row['description']]['ontology'].append(row['ontology'])
+
+        if row['gene'] not in annotations[row['description']]['genes']:
+            annotations[row['description']]['genes'][row['gene']] = []
+
+        annotations[row['description']]['genes'][row['gene']].append(row['term'])
+
+    # logging.info(annotations)
+
+    # verify each description has a single ontology

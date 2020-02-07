@@ -11,8 +11,6 @@ from installed_clients.GenomeFileUtilClient import GenomeFileUtil
 from installed_clients.WorkspaceClient import Workspace as Workspace
 from installed_clients.KBaseReportClient import KBaseReport
 
-#from .utils import get_sso_data
-
 import MergeMetabolicAnnotations.utils.utils as mu
 
 
