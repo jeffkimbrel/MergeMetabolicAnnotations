@@ -128,8 +128,7 @@ def annotations_to_genes(annotations, genes):
             genes[row['gene']] = Gene(row['gene'])
 
         # and add the (not yet validated) annotations, columns above 2 are ignored
-        if len(row['term']) > 1:
-            genes[row['gene']].addAnnotation(row['term'])
+        genes[row['gene']].addAnnotation(row['term'])
 
     # for line in annotations_raw:
     #     if not line.startswith('#'):  # ignore comment lines
@@ -243,7 +242,7 @@ def summarize(params, genes):
 # bulk functions
 
 
-def process_bulk_file(params):
+def get_bulk_annotations_file(params):
     if 'debug' in params and params['debug'] is True:
         annotations_file_path = '/kb/module/test/test_data/' + params.get('annotation_file')
     else:
@@ -254,25 +253,14 @@ def process_bulk_file(params):
                      header=None,
                      names=['description', 'ontology', 'gene', 'term']
                      )
+    return df
 
+
+def validate_bulk(bulk_annotations):
     # TODO - had validation check that the first three columns have no null values
-    logging.info(pd.isnull(df).sum() > 0)
+    # pd.isnull(df).sum() > 0
+    pass
 
-    # split by descriptions
-    annotations = {}
-    for index, row in df.iterrows():
 
-        if row['description'] not in annotations:
-            annotations[row['description']] = {'ontology': [], 'genes': {}}
-
-        if row['ontology'] not in annotations[row['description']]['ontology']:
-            annotations[row['description']]['ontology'].append(row['ontology'])
-
-        if row['gene'] not in annotations[row['description']]['genes']:
-            annotations[row['description']]['genes'][row['gene']] = []
-
-        annotations[row['description']]['genes'][row['gene']].append(row['term'])
-
-    # logging.info(annotations)
-
-    # verify each description has a single ontology
+def get_description_ontology_pairs(bulk_annotations):
+    return bulk_annotations.groupby(['description', 'ontology']).size().reset_index().rename(columns={0: 'count'})

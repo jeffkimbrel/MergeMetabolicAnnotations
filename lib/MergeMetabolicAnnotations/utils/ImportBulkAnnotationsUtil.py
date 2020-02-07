@@ -33,7 +33,6 @@ class ImportBulkAnnotationsUtil:
         os.makedirs(self.workdir, exist_ok=True)
         self.config = config
         self.timestamp = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-        self.genes = {}
         self.callback_url = config['SDK_CALLBACK_URL']
         self.scratch = config['scratch']
         self.genome_api = GenomeAnnotationAPI(self.callback_url)
@@ -116,7 +115,59 @@ class ImportBulkAnnotationsUtil:
                 'report_ref': output['ref']}
 
     def run(self, ctx, params):
-        mu.process_bulk_file(params)
+
+        get_genome_results = mu.get_genome(params['genome'], self.genome_api)
+        genome_dict = get_genome_results[0]
+        self.genome_full = get_genome_results[1]
+
+        bulk_annotations = mu.get_bulk_annotations_file(params)
+
+        mu.validate_bulk(bulk_annotations)
+
+        # identify and process each pair of descriptions/ontologies
+        pairs = mu.get_description_ontology_pairs(bulk_annotations)
+        for index, row in pairs.iterrows():
+            # logging.info("---")
+            #logging.info(row['description'] + "\t" + row['ontology'])
+
+            pair_params = params
+            pair_params['description'] = row['description']
+            pair_params['ontology'] = row['ontology']
+
+            genes = {}
+            sso_ref = mu.get_sso_data(pair_params['ontology'], self.ws_client)
+            genome_dict = mu.add_ontology_event(genome_dict, pair_params, sso_ref, self.timestamp)
+            current_ontology_event = len(genome_dict['ontology_events']) - 1
+            ontology_dict = mu.get_ontology_dict(
+                pair_params['ontology'], self.datadir, self.ontology_lookup)
+
+            annotations = bulk_annotations[(bulk_annotations.description == row['description'])
+                                           & (bulk_annotations.ontology == row['ontology'])][['gene', 'term']]
+
+            genes = mu.annotations_to_genes(annotations, genes)
+
+            for gene in genes:
+                genes[gene].validateGeneID(genome_dict)
+                genes[gene].validateAnnotationID(ontology_dict, pair_params['ontology'])
+
+            genome_dict = mu.update_genome(
+                genome_dict, pair_params['ontology'], genes, current_ontology_event)
+
+        # overwrite object with new genome
+        self.genome_full['data'] = genome_dict
+
+        prov = ctx.provenance()
+        info = self.gfu.save_one_genome({'workspace': params['workspace_name'],
+                                         'name': params['output_name'],
+                                         'data': self.genome_full['data'],
+                                         'provenance': prov})['info']
+
+        genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
+        logging.info("*** Genome ID: " + str(genome_ref))
+
+        # report = self.generate_report(params, genome_ref)
+        #
+        # return report
 
     def run_old(self, ctx, params):
         """

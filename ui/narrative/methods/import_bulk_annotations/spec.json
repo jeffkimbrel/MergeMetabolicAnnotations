@@ -1,5 +1,5 @@
 {
-  "name" : "Import Annotations from Staging",
+  "name" : "Bulk Import Annotations from Staging",
   "ver" : "0.0.1",
   "authors" : ["jakimbrel","chenry","patrikd"],
   "contact" : "http://kbase.us/contact-us/",
@@ -11,53 +11,6 @@
   },
   "parameters" : [
     {
-      "id" : "ontology_name",
-      "optional" : false,
-      "advanced" : false,
-      "allow_multiple" : false,
-      "default_values" : [ "" ],
-      "field_type" : "text",
-      "text_options" : {}
-    },
-    {
-      "id" : "ontology",
-      "optional" : false,
-      "advanced" : false,
-      "allow_multiple" : false,
-      "default_values" : [ "ec" ],
-      "field_type" : "dropdown",
-      "dropdown_options":
-      {
-        "options":
-        [
-          {
-              "display": "EC",
-              "value": "ec"
-          },
-          {
-              "display": "KEGG KO",
-              "value": "keggko"
-          },
-          {
-              "display": "KEGG RO",
-              "value": "keggro"
-          },
-          {
-              "display": "MetaCyc reactions",
-              "value": "metacyc"
-          },
-          {
-              "display": "ModelSEED",
-              "value": "modelseed"
-          },
-          {
-              "display": "GO",
-              "value": "go"
-          }
-        ]
-      }
-    },
-    {
       "id" : "annotation_file",
       "optional" : false,
       "advanced" : false,
@@ -67,15 +20,6 @@
       "dynamic_dropdown_options" : {
         "data_source": "ftp_staging"
       }
-    },
-    {
-      "id" : "description",
-      "optional" : false,
-      "advanced" : false,
-      "allow_multiple" : false,
-      "default_values" : [ "" ],
-      "field_type" : "text",
-      "text_options" : {}
     },
     {
       "id" : "genome",
@@ -118,18 +62,6 @@
         {
           "input_parameter": "annotation_file",
           "target_property": "annotation_file"
-        },
-        {
-          "input_parameter": "ontology_name",
-          "target_property": "ontology_name"
-        },
-        {
-          "input_parameter": "ontology",
-          "target_property": "ontology"
-        },
-        {
-          "input_parameter": "description",
-          "target_property": "description"
         },
         {
           "input_parameter": "genome",

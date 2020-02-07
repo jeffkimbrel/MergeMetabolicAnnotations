@@ -25,7 +25,7 @@ koalaFAM	keggko	Ga0264245_0037	K01524
 koalaFAM	keggko	Ga0264245_0038	K03671
 koalaFAM	keggko	Ga0264245_x100	
 IMG to Metacyc	metacyc	Ga0264245_0039	RXN-8342
-IMG to Metacyc		Ga0264245_0039	RXN-8342
+IMG to Metacyc	metacyc	Ga0264245_0039	RXN-8342
 IMG to Metacyc	metacyc	Ga0264245_0039	RXN-8342_duplicate
 IMG to Metacyc	metacyc	Ga0264245_0040	RXN-18694
 IMG to Metacyc	metacyc	Ga0264245_0040	RXN-8342
