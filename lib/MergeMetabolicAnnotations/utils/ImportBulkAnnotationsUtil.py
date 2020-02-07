@@ -120,7 +120,7 @@ class ImportBulkAnnotationsUtil:
         genome_dict = get_genome_results[0]
         self.genome_full = get_genome_results[1]
 
-        bulk_annotations = mu.get_bulk_annotations_file(params)
+        bulk_annotations = mu.get_bulk_annotations_file(params, self.staging_dir)
 
         mu.validate_bulk(bulk_annotations)
 
