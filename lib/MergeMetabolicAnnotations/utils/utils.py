@@ -242,7 +242,7 @@ def summarize(params, genes):
 # bulk functions
 
 
-def get_bulk_annotations_file(params):
+def get_bulk_annotations_file(params, staging_dir):
     if 'debug' in params and params['debug'] is True:
         annotations_file_path = '/kb/module/test/test_data/' + params.get('annotation_file')
     else:
