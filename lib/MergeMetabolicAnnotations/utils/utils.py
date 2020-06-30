@@ -19,6 +19,11 @@ class Gene:
         for feature in genome_dict['features']:
             if feature['id'] == self.id:
                 self.valid = 1
+            else:  # this changes the import gene id to match the feature id if it is found as an alias
+                for alias in feature['aliases']:
+                    if self.id == alias[1]:
+                        self.id = feature['id']
+                        self.valid = 1
 
     def validateAnnotationID(self, ontology_dict, ontology):
         for id in self.annotations:
