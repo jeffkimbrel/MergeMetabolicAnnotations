@@ -1,8 +1,8 @@
 {
-  "data_version": "89.0+/01-23,",
-  "date": "2019-01-23 00:58:47",
+  "data_version": "95.0+/06-30",
+  "date": "2020-06-30 12:21:59",
   "format_version": "N/A",
-  "ontology": "kegg_orthology",
+  "ontology": "kegg_reactions",
   "term_hash": {
     "R00001": {
       "id": "R00001",
@@ -475,14 +475,14 @@
     },
     "R00081": {
       "id": "R00081",
-      "name": "Ferrocytochrome-c:oxygen oxidoreductase",
+      "name": "ferrocytochrome-c:oxygen oxidoreductase",
       "synonyms": [
         "Oxygen + 4 Ferrocytochrome c + 4 H+ <=> 4 Ferricytochrome c + 2 H2O"
       ]
     },
     "R00082": {
       "id": "R00082",
-      "name": "Ferrocytochrome c2:oxygen oxidoreductase",
+      "name": "ferrocytochrome c2:oxygen oxidoreductase",
       "synonyms": [
         "Oxygen + 4 Ferrocytochrome c2 <=> 4 Ferricytochrome c2 + 2 H2O"
       ]
@@ -1399,7 +1399,7 @@
     },
     "R00238": {
       "id": "R00238",
-      "name": "Acetyl-CoA:acetyl-CoA C-acetyltransferase",
+      "name": "acetyl-CoA:acetyl-CoA C-acetyltransferase",
       "synonyms": [
         "2 Acetyl-CoA <=> CoA + Acetoacetyl-CoA"
       ]
@@ -1593,7 +1593,7 @@
       "id": "R00275",
       "name": "superoxide:superoxide oxidoreductase",
       "synonyms": [
-        "2 O2.- + 2 H+ <=> Hydrogen peroxide + Oxygen"
+        "2 Superoxide + 2 H+ <=> Hydrogen peroxide + Oxygen"
       ]
     },
     "R00276": {
@@ -1605,14 +1605,14 @@
     },
     "R00277": {
       "id": "R00277",
-      "name": "Pyridoxamine-5'-phosphate:oxygen oxidoreductase (deaminating)",
+      "name": "pyridoxamine-5'-phosphate:oxygen oxidoreductase (deaminating)",
       "synonyms": [
         "Pyridoxamine phosphate + H2O + Oxygen <=> Pyridoxal phosphate + Ammonia + Hydrogen peroxide"
       ]
     },
     "R00278": {
       "id": "R00278",
-      "name": "Pyridoxine 5-phosphate:oxygen oxidoreductase",
+      "name": "pyridoxine 5-phosphate:oxygen oxidoreductase",
       "synonyms": [
         "Pyridoxine phosphate + Oxygen <=> Hydrogen peroxide + Pyridoxal phosphate"
       ]
@@ -1714,13 +1714,6 @@
       "name": "trithionate: (acceptor) oxidoreductase",
       "synonyms": [
         "Trithionate + HO- + Acceptor + 2 H2O <=> Reduced acceptor + 3 HSO3-"
-      ]
-    },
-    "R00296": {
-      "id": "R00296",
-      "name": "carbon-monoxide:acceptor oxidoreductase",
-      "synonyms": [
-        "CO + H2O + Acceptor <=> CO2 + Reduced acceptor"
       ]
     },
     "R00297": {
@@ -2327,9 +2320,9 @@
     },
     "R00390": {
       "id": "R00390",
-      "name": "Long-chain carboxylate:CoA ligase (AMP-forming)",
+      "name": "long-chain-fatty-acid:CoA ligase (AMP-forming)",
       "synonyms": [
-        "ATP + Long-chain carboxylate + CoA <=> AMP + Diphosphate + Acyl-CoA"
+        "ATP + Long-chain fatty acid + CoA <=> AMP + Diphosphate + Long-chain acyl-CoA"
       ]
     },
     "R00391": {
@@ -2912,7 +2905,7 @@
     },
     "R00485": {
       "id": "R00485",
-      "name": "L-Asparagine amidohydrolase",
+      "name": "L-asparagine amidohydrolase",
       "synonyms": [
         "L-Asparagine + H2O <=> L-Aspartate + Ammonia"
       ]
@@ -3166,7 +3159,7 @@
     },
     "R00528": {
       "id": "R00528",
-      "name": "Sulfite:ferricytochrome-c oxidoreductase",
+      "name": "sulfite:ferricytochrome-c oxidoreductase",
       "synonyms": [
         "Sulfite + H2O + 2 Ferricytochrome c <=> Sulfate + 2 Ferrocytochrome c + 2 H+"
       ]
@@ -3908,7 +3901,7 @@
     },
     "R00653": {
       "id": "R00653",
-      "name": "N-Formyl-L-methionine amidohydrolase",
+      "name": "N-formyl-L-methionine amidohydrolase",
       "synonyms": [
         "N-Formylmethionine + H2O <=> Formate + L-Methionine"
       ]
@@ -5556,13 +5549,6 @@
         "(S)-Methylmalonyl-CoA <=> Propanoyl-CoA + CO2"
       ]
     },
-    "R00924": {
-      "id": "R00924",
-      "name": "propanoyl-CoA:electron-transfer flavoprotein 2,3-oxidoreductase",
-      "synonyms": [
-        "Propanoyl-CoA + FAD <=> FADH2 + Propenoyl-CoA"
-      ]
-    },
     "R00925": {
       "id": "R00925",
       "name": "Propanoate:CoA ligase (AMP-forming)",
@@ -5694,7 +5680,7 @@
     },
     "R00946": {
       "id": "R00946",
-      "name": "5-Methyltetrahydrofolate:L-homocysteine S-methyltransferase",
+      "name": "5-methyltetrahydrofolate:L-homocysteine S-methyltransferase",
       "synonyms": [
         "5-Methyltetrahydrofolate + L-Homocysteine <=> Tetrahydrofolate + L-Methionine"
       ]
@@ -6739,7 +6725,7 @@
       "id": "R01122",
       "name": "delta2-isopentenyl-diphosphate:tRNA isopentenyltransferase",
       "synonyms": [
-        "Dimethylallyl diphosphate + tRNA <=> Diphosphate + tRNA containing 6-isopentenyladenosine"
+        "Dimethylallyl diphosphate + tRNA adenine <=> Diphosphate + tRNA containing 6-isopentenyladenosine"
       ]
     },
     "R01123": {
@@ -9039,14 +9025,14 @@
       "id": "R01497",
       "name": "UDP-glucose:N-acylsphingosine D-glucosyltransferase",
       "synonyms": [
-        "UDP-glucose + N-Acylsphingosine <=> UDP + beta-D-Glucosyl-(1<->1)-ceramide"
+        "UDP-glucose + N-Acylsphingosine <=> UDP + Glucosylceramide"
       ]
     },
     "R01498": {
       "id": "R01498",
       "name": "D-Glucosyl-N-acylsphingosine glucohydrolase",
       "synonyms": [
-        "beta-D-Glucosyl-(1<->1)-ceramide + H2O <=> D-Glucose + N-Acylsphingosine"
+        "Glucosylceramide + H2O <=> D-Glucose + N-Acylsphingosine"
       ]
     },
     "R01500": {
@@ -9330,7 +9316,7 @@
     },
     "R01550": {
       "id": "R01550",
-      "name": "Propan-2-ol:NADP+ oxidoreductase",
+      "name": "propan-2-ol:NADP+ oxidoreductase",
       "synonyms": [
         "Acetone + NADPH + H+ <=> Propan-2-ol + NADP+"
       ]
@@ -10235,7 +10221,7 @@
     },
     "R01710": {
       "id": "R01710",
-      "name": "Pyridoxamine:oxygen oxidoreductase (deaminating)",
+      "name": "pyridoxamine:oxygen oxidoreductase (deaminating)",
       "synonyms": [
         "Pyridoxamine + H2O + Oxygen <=> Pyridoxal + Ammonia + Hydrogen peroxide"
       ]
@@ -10336,7 +10322,7 @@
     },
     "R01728": {
       "id": "R01728",
-      "name": "Prephenate:NAD+ oxidoreductase(decarboxylating)",
+      "name": "prephenate:NAD+ oxidoreductase(decarboxylating)",
       "synonyms": [
         "Prephenate + NAD+ <=> 3-(4-Hydroxyphenyl)pyruvate + CO2 + NADH + H+"
       ]
@@ -11703,13 +11689,6 @@
         "Deoxyguanosine + Orthophosphate <=> Guanine + 2-Deoxy-D-ribose 1-phosphate"
       ]
     },
-    "R01971": {
-      "id": "R01971",
-      "name": "(R)-(indol-3-yl)lactate:NAD+ oxidoreductase",
-      "synonyms": [
-        "Indolelactate + NAD+ <=> Indolepyruvate + NADH + H+"
-      ]
-    },
     "R01972": {
       "id": "R01972",
       "name": "S-adenosyl-L-methionine:(indol-3-yl)pyruvate C3-methyltransferase",
@@ -11954,7 +11933,7 @@
       "name": "geranyl-diphosphate diphosphate-lyase [cyclizing",
       "synonyms": [
         "(4S)-limonene-forming]",
-        "Geranyl diphosphate <=> (-)-Limonene + Diphosphate"
+        "Geranyl diphosphate <=> (S)-Limonene + Diphosphate"
       ]
     },
     "R02014": {
@@ -13433,7 +13412,7 @@
     },
     "R02264": {
       "id": "R02264",
-      "name": "Prostaglandin H2 + Reduced acceptor <=> Prostaglandin F2alpha + Acceptor",
+      "name": "Prostaglandin H2 + NADPH + H+ <=> Prostaglandin F2alpha + NADP+",
       "synonyms": []
     },
     "R02265": {
@@ -13991,7 +13970,7 @@
     },
     "R02360": {
       "id": "R02360",
-      "name": "Poly(1,4-alpha-D-galacturonate) glycanohydrolase",
+      "name": "poly(1,4-alpha-D-galacturonate) glycanohydrolase",
       "synonyms": [
         "Pectate + H2O <=> Digalacturonate + Pectate"
       ]
@@ -14405,7 +14384,7 @@
     },
     "R02427": {
       "id": "R02427",
-      "name": "D-Xylonolactone lactonohydrolase",
+      "name": "D-xylono-1,5-lactone lactonohydrolase",
       "synonyms": [
         "D-Xylonolactone + H2O <=> D-Xylonate"
       ]
@@ -14488,6 +14467,13 @@
       "name": "naringenin,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (3'-hydroxylating)",
       "synonyms": [
         "Naringenin + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Eriodictyol + [Oxidized NADPH---hemoprotein reductase] + H2O"
+      ]
+    },
+    "R02443": {
+      "id": "R02443",
+      "name": "naringenin,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase",
+      "synonyms": [
+        "Naringenin + 2 [Reduced NADPH---hemoprotein reductase] + 2 Oxygen <=> Pentahydroxyflavanone + 2 [Oxidized NADPH---hemoprotein reductase] + 2 H2O"
       ]
     },
     "R02444": {
@@ -14655,21 +14641,21 @@
       "id": "R02468",
       "name": "(S)-limonene,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (6-hydroxylating)",
       "synonyms": [
-        "(-)-Limonene + Oxygen + [Reduced NADPH---hemoprotein reductase] <=> (-)-trans-Carveol + [Oxidized NADPH---hemoprotein reductase] + H2O"
+        "(S)-Limonene + Oxygen + [Reduced NADPH---hemoprotein reductase] <=> (-)-trans-Carveol + [Oxidized NADPH---hemoprotein reductase] + H2O"
       ]
     },
     "R02469": {
       "id": "R02469",
       "name": "(S)-limonene,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (3-hydroxylating)",
       "synonyms": [
-        "(-)-Limonene + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> (-)-trans-Isopiperitenol + [Oxidized NADPH---hemoprotein reductase] + H2O"
+        "(S)-Limonene + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> (-)-trans-Isopiperitenol + [Oxidized NADPH---hemoprotein reductase] + H2O"
       ]
     },
     "R02470": {
       "id": "R02470",
       "name": "(S)-limonene,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (7-hydroxylating)",
       "synonyms": [
-        "(-)-Limonene + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Perillyl alcohol + [Oxidized NADPH---hemoprotein reductase] + H2O"
+        "(S)-Limonene + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> (-)-Perillyl alcohol + [Oxidized NADPH---hemoprotein reductase] + H2O"
       ]
     },
     "R02471": {
@@ -15037,9 +15023,9 @@
     },
     "R02535": {
       "id": "R02535",
-      "name": "3,4-dihydroxyphenetylamine,ascorbate:oxygen oxidoreductase (beta-hydroxylating)",
+      "name": "dopamine,ascorbate:oxygen oxidoreductase (beta-hydroxylating)",
       "synonyms": [
-        "Dopamine + Ascorbate + Oxygen <=> L-Noradrenaline + Dehydroascorbate + H2O"
+        "Dopamine + 2 Ascorbate + Oxygen <=> L-Noradrenaline + 2 Monodehydroascorbate + H2O"
       ]
     },
     "R02536": {
@@ -15851,7 +15837,7 @@
     },
     "R02670": {
       "id": "R02670",
-      "name": "2 3-Hydroxyanthranilate + 4 Oxygen <=> Cinnavalininate + 2 O2.- + 2 Hydrogen peroxide + 2 H+",
+      "name": "2 3-Hydroxyanthranilate + 4 Oxygen <=> Cinnavalininate + 2 Superoxide + 2 Hydrogen peroxide + 2 H+",
       "synonyms": []
     },
     "R02671": {
@@ -16364,8 +16350,10 @@
     },
     "R02750": {
       "id": "R02750",
-      "name": "2-Deoxy-D-ribose 5-phosphate + ADP <=> Deoxyribose + ATP",
-      "synonyms": []
+      "name": "ATP:2-deoxy-D-ribose 5-phosphotransferase",
+      "synonyms": [
+        "2-Deoxy-D-ribose 5-phosphate + ADP <=> Deoxyribose + ATP"
+      ]
     },
     "R02751": {
       "id": "R02751",
@@ -16456,14 +16444,14 @@
     },
     "R02767": {
       "id": "R02767",
-      "name": "(3R)-3-Hydroxyacyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
+      "name": "(3R)-3-hydroxyacyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
       "synonyms": [
         "(3R)-3-Hydroxyacyl-[acyl-carrier protein] + NADP+ <=> 3-Oxoacyl-[acyl-carrier protein] + NADPH + H+"
       ]
     },
     "R02768": {
       "id": "R02768",
-      "name": "Acyl-[acyl-carrier-protein]:malonyl-[acyl-carrier-protein] C-acyltransferase (decarboxylating)",
+      "name": "acyl-[acyl-carrier-protein]:malonyl-[acyl-carrier-protein] C-acyltransferase (decarboxylating)",
       "synonyms": [
         "Acyl-[acyl-carrier protein] + Malonyl-[acyl-carrier protein] <=> 3-Oxoacyl-[acyl-carrier protein] + CO2 + Acyl-carrier protein"
       ]
@@ -18556,6 +18544,13 @@
         "Dihydrokaempferol + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Taxifolin + [Oxidized NADPH---hemoprotein reductase] + H2O"
       ]
     },
+    "R03125": {
+      "id": "R03125",
+      "name": "dihydrokaempferol,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase",
+      "synonyms": [
+        "Dihydrokaempferol + 2 [Reduced NADPH---hemoprotein reductase] + 2 Oxygen <=> Dihydromyricetin + 2 [Oxidized NADPH---hemoprotein reductase] + 2 H2O"
+      ]
+    },
     "R03126": {
       "id": "R03126",
       "name": "dihydroflavonol,2-oxoglutarate:oxygen oxidoreductase",
@@ -19792,13 +19787,6 @@
         "2-Acyl-sn-glycero-3-phosphocholine <=> 1-Acyl-sn-glycero-3-phosphocholine"
       ]
     },
-    "R03336": {
-      "id": "R03336",
-      "name": "4-hydroxyphenyllactate:NAD+ oxidoreductase",
-      "synonyms": [
-        "3-(4-Hydroxyphenyl)lactate + NAD+ <=> 3-(4-Hydroxyphenyl)pyruvate + NADH + H+"
-      ]
-    },
     "R03337": {
       "id": "R03337",
       "name": "(R)-3-(4-hydroxyphenyl)lactate:NAD+ 2-oxidoreductase",
@@ -19901,14 +19889,14 @@
       "id": "R03354",
       "name": "UDP-alpha-D-galactose:beta-D-glucosyl-(1<->1)-ceramide 4-beta-D-galactosyltransferase",
       "synonyms": [
-        "beta-D-Glucosyl-(1<->1)-ceramide + UDP-alpha-D-galactose <=> beta-D-Galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide + UDP"
+        "Glucosylceramide + UDP-alpha-D-galactose <=> Lactosylceramide + UDP"
       ]
     },
     "R03355": {
       "id": "R03355",
       "name": "beta-D-Galactosyl-1,4-beta-D-glucosylceramide galactohydrolase",
       "synonyms": [
-        "beta-D-Galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide + H2O <=> beta-D-Glucosyl-(1<->1)-ceramide + D-Galactose"
+        "Lactosylceramide + H2O <=> Glucosylceramide + D-Galactose"
       ]
     },
     "R03356": {
@@ -20310,7 +20298,7 @@
       "id": "R03425",
       "name": "glycine:lipoylprotein oxidoreductase (decarboxylating and acceptor-aminomethylating)",
       "synonyms": [
-        "Glycine + Lipoylprotein <=> S-Aminomethyldihydrolipoylprotein + CO2"
+        "Glycine + Lipoylprotein <=> [Protein]-S8-aminomethyldihydrolipoyllysine + CO2"
       ]
     },
     "R03427": {
@@ -20516,7 +20504,7 @@
     },
     "R03460": {
       "id": "R03460",
-      "name": "Phosphoenolpyruvate:3-phosphoshikimate 5-O-(1-carboxyvinyl)-transferase",
+      "name": "phosphoenolpyruvate:3-phosphoshikimate 5-O-(1-carboxyvinyl)-transferase",
       "synonyms": [
         "Phosphoenolpyruvate + Shikimate 3-phosphate <=> Orthophosphate + 5-O-(1-Carboxyvinyl)-3-phosphoshikimate"
       ]
@@ -20665,40 +20653,40 @@
       "id": "R03486",
       "name": "UDP-alpha-D-galactose:beta-D-galactosyl-(1->4)-D-glucosyl-(1<->1)-ceramide 4II-alpha-D-galactosyltransferase",
       "synonyms": [
-        "UDP-alpha-D-galactose + beta-D-Galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide <=> UDP + alpha-D-Galactosyl-(1->4)-beta-D-galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide"
+        "UDP-alpha-D-galactose + Lactosylceramide <=> UDP + alpha-D-Galactosyl-(1->4)-beta-D-galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide"
       ]
     },
     "R03488": {
       "id": "R03488",
       "name": "CMP-N-acetylneuraminate:lactosylceramide alpha-2,3-N-acetylneuraminyltransferase",
       "synonyms": [
-        "CMP-N-acetylneuraminate + beta-D-Galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide <=> CMP + GM3"
+        "CMP-N-acetylneuraminate + Lactosylceramide <=> CMP + GM3"
       ]
     },
     "R03489": {
       "id": "R03489",
       "name": "CMP-N-acetylneuraminate:lactosylceramide alpha-2,6-N-acetylneuraminyltransferase",
       "synonyms": [
-        "CMP-N-acetylneuraminate + beta-D-Galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide <=> CMP + alpha-N-Acetylneuraminyl-2,6-beta-galactosyl-1,4-beta-D-glucosylceramide"
+        "CMP-N-acetylneuraminate + Lactosylceramide <=> CMP + alpha-N-Acetylneuraminyl-2,6-beta-galactosyl-1,4-beta-D-glucosylceramide"
       ]
     },
     "R03490": {
       "id": "R03490",
       "name": "UDP-N-Acetyl-D-galactosamine:(N-acetylneuraminyl)-D-galactosyl--D-glucosylceramide N-acetyl-D-galactrosaminyltransferase",
       "synonyms": [
-        "UDP-N-acetyl-D-galactosamine + beta-D-Galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide <=> UDP + GA2"
+        "UDP-N-acetyl-D-galactosamine + Lactosylceramide <=> UDP + GA2"
       ]
     },
     "R03491": {
       "id": "R03491",
-      "name": "beta-D-Galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide + N-Acetylneuraminate <=> GM3 + H2O",
+      "name": "Lactosylceramide + N-Acetylneuraminate <=> GM3 + H2O",
       "synonyms": []
     },
     "R03492": {
       "id": "R03492",
       "name": "beta-D-Galactosyl-1,4-beta-D-glucosylceramide N-acetylhexosaminohydrolase",
       "synonyms": [
-        "GA2 + H2O <=> beta-D-Galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide + N-Acetyl-D-galactosamine"
+        "GA2 + H2O <=> Lactosylceramide + N-Acetyl-D-galactosamine"
       ]
     },
     "R03493": {
@@ -20857,7 +20845,7 @@
       "id": "R03519",
       "name": "GDP-L-fucose:1,4-beta-D-galactosyl-N-acetyl-D-glucosaminyl-R 3-L-fucosyltransferase",
       "synonyms": [
-        "GDP-L-fucose + 1,4-beta-D-Galactosyl-N-acetyl-D-glucosaminyl-R <=> GDP + 1,4-beta-D-Galactosyl-(alpha-1,3-L-fucosyl)-N-acetyl-D-glucosaminyl-R"
+        "GDP-L-fucose + beta-D-Galactosyl-(1->4)-N-acetyl-beta-D-glucosaminyl-R <=> GDP + beta-D-Galactosyl-(1->4)-[alpha-L-fucosyl-(1->3)]-N-acetyl-D-glucosaminyl-R"
       ]
     },
     "R03520": {
@@ -21120,9 +21108,9 @@
     },
     "R03560": {
       "id": "R03560",
-      "name": "Toluene,NADPH:oxogen oxidoreductase (2-hydroxylating)",
+      "name": "toluene,NADH:oxygen oxidoreductase (2,3-dihydroxylating)",
       "synonyms": [
-        "Toluene + Oxygen + NADPH + H+ <=> o-Cresol + NADP+ + H2O"
+        "Toluene + Oxygen + NADH + H+ <=> o-Cresol + NAD+ + H2O"
       ]
     },
     "R03562": {
@@ -21408,9 +21396,9 @@
     },
     "R03608": {
       "id": "R03608",
-      "name": "o-Cresol,NADPH:oxogen oxidoreductase (2-hydroxylating)",
+      "name": "o-cresol,NADH:oxygen oxidoreductase (2,3-dihydroxylating)",
       "synonyms": [
-        "o-Cresol + Oxygen + NADPH + H+ <=> 2,3-Dihydroxytoluene + NADP+ + H2O"
+        "o-Cresol + Oxygen + NADH + H+ <=> 2,3-Dihydroxytoluene + NAD+ + H2O"
       ]
     },
     "R03609": {
@@ -21480,7 +21468,7 @@
       "id": "R03618",
       "name": "Trihexosylceramide galactohydrolase",
       "synonyms": [
-        "alpha-D-Galactosyl-(1->4)-beta-D-galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide + H2O <=> D-Galactose + beta-D-Galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide"
+        "alpha-D-Galactosyl-(1->4)-beta-D-galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide + H2O <=> D-Galactose + Lactosylceramide"
       ]
     },
     "R03620": {
@@ -21548,7 +21536,7 @@
     },
     "R03629": {
       "id": "R03629",
-      "name": "substrate,reduced-flaboprotein:oxygen oxidoreductase (RH-hydroxylating or -epoxidizing)",
+      "name": "melatonin,NADPH---hemoprotein reductase:oxygen oxidoreductase",
       "synonyms": [
         "Melatonin + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> 6-Hydroxymelatonin + [Oxidized NADPH---hemoprotein reductase] + H2O"
       ]
@@ -22538,9 +22526,9 @@
     },
     "R03794": {
       "id": "R03794",
-      "name": "(S)-2-Hydroxy-2-phenylacetate,tetrahydrobiopterin:oxygen oxidoreductase (4-hydroxylating)",
+      "name": "(S)-2-hydroxy-2-phenylacetate,tetrahydrobiopterin:oxygen oxidoreductase (4-hydroxylating)",
       "synonyms": [
-        "(S)-Mandelate + Tetrahydrobiopterin + Oxygen <=> (S)-4-Hydroxymandelate + Dihydrobiopterin + H2O"
+        "(S)-Mandelate + Tetrahydropteridine + Oxygen <=> (S)-4-Hydroxymandelate + 4a-Hydroxy-5,6,7,8-tetrahydropteridine"
       ]
     },
     "R03796": {
@@ -22685,7 +22673,7 @@
       "id": "R03818",
       "name": "(+)-Camphor,reduced-putidaredoxin:oxygen oxidoreductase (5-hydroxylating)",
       "synonyms": [
-        "Putidaredoxin + (+)-Camphor + Oxygen <=> (+)-exo-5-Hydroxycamphor + Oxidized putidaredoxin + H2O"
+        "Reduced putidaredoxin + (+)-Camphor + Oxygen <=> (+)-exo-5-Hydroxycamphor + Oxidized putidaredoxin + H2O"
       ]
     },
     "R03819": {
@@ -22828,7 +22816,7 @@
       "id": "R03842",
       "name": "(S)-N-methylcanadine,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (14-hydroxylating)",
       "synonyms": [
-        "(S)-cis-N-Methylcanadine + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Allocryptopine + [Oxidized NADPH---hemoprotein reductase] + H2O"
+        "(S)-N-Methylcanadine + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Allocryptopine + [Oxidized NADPH---hemoprotein reductase] + H2O"
       ]
     },
     "R03845": {
@@ -23002,9 +22990,9 @@
     },
     "R03874": {
       "id": "R03874",
-      "name": "Peptidylamidoglycolate peptidylamide-lyase",
+      "name": "[peptide]-(2S)-2-hydroxyglycine peptidyl-amide-lyase (glyoxylate-forming)",
       "synonyms": [
-        "Peptidylamidoglycolate <=> Peptidyl amide + Glyoxylate"
+        "[Peptide]-(2S)-2-hydroxyglycine <=> [Peptide]-amide + Glyoxylate"
       ]
     },
     "R03875": {
@@ -23229,9 +23217,9 @@
     },
     "R03912": {
       "id": "R03912",
-      "name": "peptidylglycine,ascorbate:oxygen oxidoreductase (2-hydroxylating)",
+      "name": "[peptide]-glycine,ascorbate:oxygen oxidoreductase (2-hydroxylating)",
       "synonyms": [
-        "Peptidylglycine + Ascorbate + Oxygen <=> Peptidylamidoglycolate + Dehydroascorbate + H2O"
+        "[Peptide]-glycine + 2 Ascorbate + Oxygen <=> [Peptide]-(2S)-2-hydroxyglycine + 2 Monodehydroascorbate + H2O"
       ]
     },
     "R03913": {
@@ -23437,7 +23425,7 @@
       "id": "R03945",
       "name": "Perillyl-alcohol:NAD+ oxidoreductase",
       "synonyms": [
-        "Perillyl alcohol + NAD+ <=> Perillyl aldehyde + NADH + H+"
+        "(-)-Perillyl alcohol + NAD+ <=> Perillyl aldehyde + NADH + H+"
       ]
     },
     "R03946": {
@@ -23947,7 +23935,7 @@
     },
     "R04034": {
       "id": "R04034",
-      "name": "phosphatidylserine 1-acylhydrolase",
+      "name": "3-sn-phosphatidyl-L-serine sn-1 acylhydrolase",
       "synonyms": [
         "Phosphatidylserine + H2O <=> 2-Acyl-sn-glycero-3-phosphoserine + Fatty acid"
       ]
@@ -24013,13 +24001,6 @@
       "name": "2-Acetyl-1-alkyl-sn-glycerol acetylhydrolase",
       "synonyms": [
         "1-Alkyl-2-acetyl-sn-glycerol + H2O <=> 1-Alkyl-sn-glycerol + Acetate"
-      ]
-    },
-    "R04044": {
-      "id": "R04044",
-      "name": "1-alkyl-sn-glycerol,tetrahydrobiopterin:oxygen oxidoreductase",
-      "synonyms": [
-        "1-Alkyl-sn-glycerol + Tetrahydrobiopterin + Oxygen <=> 1-Hydroxyalkyl-sn-glycerol + Dihydrobiopterin + H2O"
       ]
     },
     "R04046": {
@@ -24441,7 +24422,7 @@
     },
     "R04121": {
       "id": "R04121",
-      "name": "Fatty acid,reduced-flaboprotein:oxygen oxidoreductase (RH-hydroxylating or -epoxidizing)",
+      "name": "fatty acid,reduced-flaboprotein:oxygen oxidoreductase (RH-hydroxylating or -epoxidizing)",
       "synonyms": [
         "[Reduced NADPH---hemoprotein reductase] + Fatty acid + Oxygen <=> alpha-Hydroxy fatty acid + [Oxidized NADPH---hemoprotein reductase] + H2O"
       ]
@@ -24467,9 +24448,9 @@
     },
     "R04125": {
       "id": "R04125",
-      "name": "S-aminomethyldihydrolipoylprotein:(6S)-tetrahydrofolate aminomethyltransferase (ammonia-forming)",
+      "name": "[protein]-S8-aminomethyldihydrolipoyllysine:tetrahydrofolate aminomethyltransferase (ammonia-forming)",
       "synonyms": [
-        "S-Aminomethyldihydrolipoylprotein + Tetrahydrofolate <=> Dihydrolipoylprotein + 5,10-Methylenetetrahydrofolate + Ammonia"
+        "[Protein]-S8-aminomethyldihydrolipoyllysine + Tetrahydrofolate <=> Dihydrolipoylprotein + 5,10-Methylenetetrahydrofolate + Ammonia"
       ]
     },
     "R04126": {
@@ -25195,8 +25176,10 @@
     },
     "R04251": {
       "id": "R04251",
-      "name": "Phosphonoacetaldehyde <=> Phosphonoacetate",
-      "synonyms": []
+      "name": "phosphonoacetaldehyde:NAD+ oxidoreductase",
+      "synonyms": [
+        "Phosphonoacetaldehyde + NAD+ + H2O <=> Phosphonoacetate + NADH + H+"
+      ]
     },
     "R04252": {
       "id": "R04252",
@@ -25728,7 +25711,7 @@
     },
     "R04347": {
       "id": "R04347",
-      "name": "5-Methyl-5,6,7,8-tetrahydromethanopterin:2-mercaptoethanesulfonate 2-methyltransferas",
+      "name": "5-methyl-5,6,7,8-tetrahydromethanopterin:2-mercaptoethanesulfonate 2-methyltransferas",
       "synonyms": [
         "5-Methyl-5,6,7,8-tetrahydromethanopterin + Coenzyme M + 2 Sodium cation(in) <=> 5,6,7,8-Tetrahydromethanopterin + 2-(Methylthio)ethanesulfonate + 2 Sodium cation(out)"
       ]
@@ -26212,7 +26195,7 @@
     },
     "R04428": {
       "id": "R04428",
-      "name": "(3R)-3-Hydroxybutanoyl-[acyl-carrier-protein] hydro-lyase",
+      "name": "(3R)-3-hydroxybutanoyl-[acyl-carrier-protein] hydro-lyase",
       "synonyms": [
         "(3R)-3-Hydroxybutanoyl-[acyl-carrier protein] <=> But-2-enoyl-[acyl-carrier protein] + H2O"
       ]
@@ -26333,7 +26316,7 @@
     },
     "R04448": {
       "id": "R04448",
-      "name": "ATP:4-methyl-5-(2-hydroxyethyl)-thiazole 2-phosphotransferase",
+      "name": "ATP:4-methyl-5-(2-hydroxyethyl)thiazole 2-phosphotransferase",
       "synonyms": [
         "ATP + 5-(2-Hydroxyethyl)-4-methylthiazole <=> ADP + 4-Methyl-5-(2-phosphooxyethyl)thiazole"
       ]
@@ -26384,7 +26367,7 @@
       "id": "R04456",
       "name": "5,10-methylenetetrahydromethanopterin:coenzyme-F420 oxidoreductase",
       "synonyms": [
-        "5,10-Methylenetetrahydromethanopterin + Coenzyme F420 <=> 5,10-Methenyltetrahydromethanopterin + Reduced coenzyme F420"
+        "5,10-Methylenetetrahydromethanopterin + Coenzyme F420 + H+ <=> 5,10-Methenyltetrahydromethanopterin + Reduced coenzyme F420"
       ]
     },
     "R04457": {
@@ -26598,7 +26581,7 @@
       "id": "R04493",
       "name": "UDP-N-acetyl-D-glucosamine:D-galactosyl-1,4-beta-D-glucosylceramide beta-1,3-acetylglucosaminyltransferase",
       "synonyms": [
-        "UDP-N-acetyl-alpha-D-glucosamine + beta-D-Galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide <=> UDP + N-Acetyl-beta-D-glucosaminyl-(1->3)-beta-D-galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide"
+        "UDP-N-acetyl-alpha-D-glucosamine + Lactosylceramide <=> UDP + N-Acetyl-beta-D-glucosaminyl-(1->3)-beta-D-galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-ceramide"
       ]
     },
     "R04494": {
@@ -26638,7 +26621,7 @@
       "id": "R04501",
       "name": "4,4-dimethyl-5alpha-cholest-7-en-3beta-ol,ferrocytochrome-b5:oxygen oxidoreductase (hydroxylating)",
       "synonyms": [
-        "4,4-Dimethyl-5alpha-cholest-7-en-3beta-ol + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> 4beta-Hydroxymethyl-4alpha-methyl-5alpha-cholest-7-en-3beta-ol + 2 Ferricytochrome b5 + H2O"
+        "4,4-Dimethyl-5alpha-cholest-7-en-3beta-ol + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> 4alpha-Hydroxymethyl-4beta-methyl-5alpha-cholest-7-en-3beta-ol + 2 Ferricytochrome b5 + H2O"
       ]
     },
     "R04502": {
@@ -26822,37 +26805,36 @@
     },
     "R04533": {
       "id": "R04533",
-      "name": "(3R)-3-Hydroxybutanoyl-[acyl-carrier protein]:NADP+ oxidoreductase",
+      "name": "(3R)-3-hydroxybutanoyl-[acyl-carrier protein]:NADP+ oxidoreductase",
       "synonyms": [
         "(3R)-3-Hydroxybutanoyl-[acyl-carrier protein] + NADP+ <=> Acetoacetyl-[acp] + NADPH + H+"
       ]
     },
     "R04534": {
       "id": "R04534",
-      "name": "(3R)-3-Hydroxydecanoyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
+      "name": "(3R)-3-hydroxydecanoyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
       "synonyms": [
         "(3R)-3-Hydroxydecanoyl-[acyl-carrier protein] + NADP+ <=> 3-Oxodecanoyl-[acp] + NADPH"
       ]
     },
     "R04535": {
       "id": "R04535",
-      "name": "(3R)-3-Hydroxybutanoyl-[acyl-carrier-protein] hydro-lyase",
+      "name": "(3R)-3-hydroxydecanoyl-[acyl-carrier-protein] hydro-lyase",
       "synonyms": [
         "(3R)-3-Hydroxydecanoyl-[acyl-carrier protein] <=> trans-Dec-2-enoyl-[acp] + H2O"
       ]
     },
     "R04536": {
       "id": "R04536",
-      "name": "(3R)-3-Hydroxyoctanoyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
+      "name": "(3R)-3-hydroxyoctanoyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
       "synonyms": [
         "(3R)-3-Hydroxyoctanoyl-[acyl-carrier protein] + NADP+ <=> 3-Oxooctanoyl-[acp] + NADPH + H+"
       ]
     },
     "R04537": {
       "id": "R04537",
-      "name": "(3R)-3-Hydroxybutanoyl-[acyl-carrier-protein] hydro-lyase",
+      "name": "(3R)-3-hydroxyoctanoyl-[acyl-carrier-protein] hydro-lyase",
       "synonyms": [
-        "(3R)-3-Hydroxyoctanoyl-[acyl-carrier-protein] hydro-lyase",
         "(3R)-3-Hydroxyoctanoyl-[acyl-carrier protein] <=> trans-Oct-2-enoyl-[acp] + H2O"
       ]
     },
@@ -26886,7 +26868,7 @@
     },
     "R04543": {
       "id": "R04543",
-      "name": "(3R)-3-Hydroxypalmitoyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
+      "name": "(3R)-3-hydroxypalmitoyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
       "synonyms": [
         "(3R)-3-Hydroxypalmitoyl-[acyl-carrier protein] + NADP+ <=> 3-Oxohexadecanoyl-[acp] + NADPH + H+"
       ]
@@ -27021,7 +27003,7 @@
     },
     "R04566": {
       "id": "R04566",
-      "name": "(3R)-3-Hydroxytetradecanoyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
+      "name": "(3R)-3-hydroxytetradecanoyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
       "synonyms": [
         "(3R)-3-Hydroxytetradecanoyl-[acyl-carrier protein] + NADP+ <=> 3-Oxotetradecanoyl-[acp] + NADPH + H+"
       ]
@@ -27035,7 +27017,7 @@
     },
     "R04568": {
       "id": "R04568",
-      "name": "(3R)-3-Hydroxypalmitoyl-[acyl-carrier-protein] hydro-lyase",
+      "name": "(3R)-3-hydroxytetradecanoyl-[acyl-carrier-protein] hydro-lyase",
       "synonyms": [
         "(3R)-3-Hydroxytetradecanoyl-[acyl-carrier protein] <=> trans-Tetradec-2-enoyl-[acp] + H2O"
       ]
@@ -28137,8 +28119,10 @@
     },
     "R04769": {
       "id": "R04769",
-      "name": "7-O-Acetylsalutaridinol <=> Thebaine + Acetate",
-      "synonyms": []
+      "name": "salutaridinol 7-O-acetate acetate-lyase (thebaine forming)",
+      "synonyms": [
+        "7-O-Acetylsalutaridinol <=> Thebaine + Acetate"
+      ]
     },
     "R04770": {
       "id": "R04770",
@@ -29156,14 +29140,14 @@
     },
     "R04953": {
       "id": "R04953",
-      "name": "(3R)-3-Hydroxyhexanoyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
+      "name": "(3R)-3-hydroxyhexanoyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
       "synonyms": [
         "(R)-3-Hydroxyhexanoyl-[acp] + NADP+ <=> 3-Oxohexanoyl-[acp] + NADPH + H+"
       ]
     },
     "R04954": {
       "id": "R04954",
-      "name": "(3R)-3-Hydroxybutanoyl-[acyl-carrier-protein] hydro-lyase",
+      "name": "(3R)-3-hydroxybutanoyl-[acyl-carrier-protein] hydro-lyase",
       "synonyms": [
         "(R)-3-Hydroxyhexanoyl-[acp] <=> trans-Hex-2-enoyl-[acp] + H2O"
       ]
@@ -29233,14 +29217,14 @@
     },
     "R04964": {
       "id": "R04964",
-      "name": "(3R)-3-Hydroxydodecanoyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
+      "name": "(3R)-3-hydroxydodecanoyl-[acyl-carrier-protein]:NADP+ oxidoreductase",
       "synonyms": [
         "(R)-3-Hydroxydodecanoyl-[acp] + NADP+ <=> 3-Oxododecanoyl-[acp] + NADPH + H+"
       ]
     },
     "R04965": {
       "id": "R04965",
-      "name": "(3R)-3-Hydroxybutanoyl-[acyl-carrier-protein] hydro-lyase",
+      "name": "(3R)-3-hydroxydodecanoyl-[acyl-carrier-protein] hydro-lyase",
       "synonyms": [
         "(R)-3-Hydroxydodecanoyl-[acp] <=> trans-Dodec-2-enoyl-[acp] + H2O"
       ]
@@ -29436,7 +29420,7 @@
     },
     "R05030": {
       "id": "R05030",
-      "name": "Undecaprenyl-diphospho-N-acetylmuramoyl-(N-acetylglucosamine)-L-alanyl-gamma-D-glutamyl-L-lysyl-D-alanyl-D-alanine:ammonia ligase (ADP-forming)",
+      "name": "beta-D-GlcNAc-(1->4)-Mur2Ac(oyl-L-Ala-gamma-D-Glu-L-Lys-D-Ala-D-Ala)-diphospho-ditrans,octacis-undecaprenol:L-glutamine amidoligase (ADP-forming)",
       "synonyms": [
         "ATP + Undecaprenyl-diphospho-N-acetylmuramoyl-(N-acetylglucosamine)-L-alanyl-gamma-D-glutamyl-L-lysyl-D-alanyl-D-alanine + Ammonia <=> ADP + Orthophosphate + Undecaprenyl-diphospho-N-acetylmuramoyl-(N-acetylglucosamine)-L-alanyl-D-isoglutaminyl-L-lysyl-D-alanyl-D-alanine"
       ]
@@ -29713,8 +29697,10 @@
     },
     "R05084": {
       "id": "R05084",
-      "name": "Isopyridoxal + Acceptor <=> 5-Pyridoxolactone + Reduced acceptor",
-      "synonyms": []
+      "name": "isopyridoxal:NAD+ oxidoreductase (5-pyridoxolactone-forming)",
+      "synonyms": [
+        "Isopyridoxal + NAD+ <=> 5-Pyridoxolactone + NADH + H+"
+      ]
     },
     "R05085": {
       "id": "R05085",
@@ -29985,8 +29971,10 @@
     },
     "R05138": {
       "id": "R05138",
-      "name": "2-Hydroxy-2,4-pentadienoate + Acetate <=> 2-Hydroxy-6-keto-2,4-heptadienoate + H2O",
-      "synonyms": []
+      "name": "2-hydroxy-6-oxohepta-2,4-dienoate acetylhydrolase",
+      "synonyms": [
+        "2-Hydroxy-2,4-pentadienoate + Acetate <=> 2-Hydroxy-6-keto-2,4-heptadienoate + H2O"
+      ]
     },
     "R05140": {
       "id": "R05140",
@@ -30116,9 +30104,9 @@
     },
     "R05163": {
       "id": "R05163",
-      "name": "Hydroxycinnamoyl-CoA:anthocyanidin 3,5-diglucoside 5-O-glucoside-6'''-O-hydroxycinnamoyltransferase",
+      "name": "4-hydroxycinnamoyl-CoA:anthocyanidin 3,5-di-O-beta-D-glucoside 5-O-glucoside-6'''-O-4-hydroxycinnamoyltransferase",
       "synonyms": [
-        "Hydroxycinnamoyl-CoA + Anthocyanidin-3,5-diglucoside <=> CoA + Anthocyanidin 3-glucoside-5-hydroxycinnamoylglucoside"
+        "p-Coumaroyl-CoA + Anthocyanidin-3,5-diglucoside <=> CoA + Anthocyanidin 3-glucoside-5-hydroxycinnamoylglucoside"
       ]
     },
     "R05164": {
@@ -31524,13 +31512,17 @@
     },
     "R05402": {
       "id": "R05402",
-      "name": "Tetrachlorohydroquinone + 2 Glutathione <=> 2,3,6-Trichlorohydroquinone + Glutathione disulfide + Hydrochloric acid",
-      "synonyms": []
+      "name": "glutathione disulfide:2,6-dichlorohydroquinone (chlorinating)",
+      "synonyms": [
+        "Tetrachlorohydroquinone + 2 Glutathione <=> 2,3,6-Trichlorohydroquinone + Glutathione disulfide + Hydrochloric acid"
+      ]
     },
     "R05403": {
       "id": "R05403",
-      "name": "2,3,6-Trichlorohydroquinone + 2 Glutathione <=> 2,6-Dichlorohydroquinone + Glutathione disulfide + Hydrochloric acid",
-      "synonyms": []
+      "name": "glutathione disulfide:2,6-dichlorohydroquinone (chlorinating)",
+      "synonyms": [
+        "2,3,6-Trichlorohydroquinone + 2 Glutathione <=> 2,6-Dichlorohydroquinone + Glutathione disulfide + Hydrochloric acid"
+      ]
     },
     "R05404": {
       "id": "R05404",
@@ -32052,8 +32044,10 @@
     },
     "R05507": {
       "id": "R05507",
-      "name": "6-Aminohexanoate + 2-Oxoglutarate <=> Adipate semialdehyde + L-Glutamate",
-      "synonyms": []
+      "name": "6-aminohexanoate:2-oxogutarate aminotransferase",
+      "synonyms": [
+        "6-Aminohexanoate + 2-Oxoglutarate <=> Adipate semialdehyde + L-Glutamate"
+      ]
     },
     "R05508": {
       "id": "R05508",
@@ -32296,13 +32290,6 @@
       "name": "N-Isopropylammelide isopropylaminohydrolase",
       "synonyms": [
         "N-Isopropylammelide + H2O <=> Cyanuric acid + Isopropylamine"
-      ]
-    },
-    "R05561": {
-      "id": "R05561",
-      "name": "Cyanuric acid amidohydrolase",
-      "synonyms": [
-        "Cyanuric acid + 2 H2O <=> Biuret + Carbonic acid"
       ]
     },
     "R05563": {
@@ -33059,7 +33046,7 @@
     },
     "R05691": {
       "id": "R05691",
-      "name": "3-beta-Hydroxy-steroid:NADP+ 3-oxidoreductase",
+      "name": "lophenol:NADP+ 3-oxidoreductase",
       "synonyms": [
         "Lophenol + NADP+ <=> 4alpha-Methyl-5alpha-cholest-7-en-3-one + NADPH + H+"
       ]
@@ -33329,7 +33316,7 @@
       "id": "R05733",
       "name": "4beta-hydroxymethyl-4alpha-methyl-5alpha-cholest-7-en-3beta-ol,ferrocytochrome-b5:oxygen oxidoreductase (hydroxylating)",
       "synonyms": [
-        "4beta-Hydroxymethyl-4alpha-methyl-5alpha-cholest-7-en-3beta-ol + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> 3beta-Hydroxy-4beta-methyl-5alpha-cholest-7-ene-4alpha-carbaldehyde + 2 Ferricytochrome b5 + 2 H2O"
+        "4alpha-Hydroxymethyl-4beta-methyl-5alpha-cholest-7-en-3beta-ol + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> 3beta-Hydroxy-4beta-methyl-5alpha-cholest-7-ene-4alpha-carbaldehyde + 2 Ferricytochrome b5 + 2 H2O"
       ]
     },
     "R05734": {
@@ -33378,7 +33365,7 @@
       "id": "R05743",
       "name": "rubredoxin:superoxide oxidoreductase",
       "synonyms": [
-        "Reduced rubredoxin + O2.- + 2 H+ <=> Oxidized rubredoxin + Hydrogen peroxide"
+        "Reduced rubredoxin + Superoxide + 2 H+ <=> Oxidized rubredoxin + Hydrogen peroxide"
       ]
     },
     "R05744": {
@@ -33497,7 +33484,7 @@
       "id": "R05760",
       "name": "S-adenosyl-L-methionine:cycloartenol 24-C-methyltransferase",
       "synonyms": [
-        "S-Adenosyl-L-methionine + Cycloartenol <=> S-Adenosyl-L-homocysteine + (24R)-24-Methylcycloarta-25-en-3-beta-ol"
+        "S-Adenosyl-L-methionine + Cycloartenol <=> S-Adenosyl-L-homocysteine + (24R)-24-Methylcycloart-25-en-3-beta-ol"
       ]
     },
     "R05761": {
@@ -33572,15 +33559,14 @@
     },
     "R05772": {
       "id": "R05772",
-      "name": "trans-feruloyl-CoA hydratase",
+      "name": "feruloyl-CoA hydro-lyase/vanillin-lyase (acetyl-CoA-forming)",
       "synonyms": [
-        "4-Hydroxy-3-methoxyphenyl-beta-hydroxypropionyl-CoA hydro-lyase (feruloyl-CoA-forming)",
         "Feruloyl-CoA + H2O <=> 4-Hydroxy-3-methoxyphenyl-beta-hydroxypropanoyl-CoA"
       ]
     },
     "R05773": {
       "id": "R05773",
-      "name": "3-hydroxy-3-(4-hydroxy-3-methoxyphenyl)propionyl-CoA:vanillin lyase (acetyl-CoA-forming)",
+      "name": "feruloyl-CoA hydro-lyase/vanillin-lyase (acetyl-CoA-forming)",
       "synonyms": [
         "4-Hydroxy-3-methoxyphenyl-beta-hydroxypropanoyl-CoA <=> 4-Hydroxy-3-methoxy-benzaldehyde + Acetyl-CoA"
       ]
@@ -33942,7 +33928,7 @@
     },
     "R05829": {
       "id": "R05829",
-      "name": "Geissoschizine <=> Polyneuridine aldehyde",
+      "name": "Geissoschizine + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Polyneuridine aldehyde + [Oxidized NADPH---hemoprotein reductase] + 2 H2O",
       "synonyms": []
     },
     "R05830": {
@@ -34064,7 +34050,7 @@
     },
     "R05849": {
       "id": "R05849",
-      "name": "Ajmalicine <=> Serpentine",
+      "name": "Ajmalicine + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Serpentine + [Oxidized NADPH---hemoprotein reductase] + 2 H2O + 2 H+",
       "synonyms": []
     },
     "R05850": {
@@ -34205,9 +34191,9 @@
     },
     "R05875": {
       "id": "R05875",
-      "name": "Ferredoxin:NAD oxidoreductase",
+      "name": "[2Fe-2S]-ferredoxin:NAD+ oxidoreductase",
       "synonyms": [
-        "2 Reduced ferredoxin + NAD+ + H+ <=> 2 Oxidized ferredoxin + NADH"
+        "2 Reduced [2Fe-2S] ferredoxin + NAD+ + H+ <=> 2 Oxidized [2Fe-2S] ferredoxin + NADH"
       ]
     },
     "R05876": {
@@ -34353,12 +34339,12 @@
     },
     "R05905": {
       "id": "R05905",
-      "name": "CMP-N-acetylneuraminate + PA5 <=> CMP + PA6",
+      "name": "CMP-N-acetylneuraminate + G00393 <=> CMP + G00251",
       "synonyms": []
     },
     "R05906": {
       "id": "R05906",
-      "name": "CMP-N-acetylneuraminate + PA4 <=> CMP + PA6",
+      "name": "CMP-N-acetylneuraminate + G00837 <=> CMP + G00251",
       "synonyms": []
     },
     "R05907": {
@@ -34424,16 +34410,6 @@
     "R05919": {
       "id": "R05919",
       "name": "Dolichyl phosphate D-mannose + G00145 <=> Dolichyl phosphate + G00146",
-      "synonyms": []
-    },
-    "R05920": {
-      "id": "R05920",
-      "name": "Phosphatidylethanolamine + G00146 <=> 1,2-Diacyl-sn-glycerol + G00147",
-      "synonyms": []
-    },
-    "R05921": {
-      "id": "R05921",
-      "name": "Dolichyl phosphate D-mannose + G00147 <=> Dolichyl phosphate + G00148",
       "synonyms": []
     },
     "R05922": {
@@ -34741,11 +34717,6 @@
       "synonyms": [
         "H2O + G00010 <=> D-Glucose + G00011"
       ]
-    },
-    "R05982": {
-      "id": "R05982",
-      "name": "G00011 + 4 H2O <=> G00012 + 4 D-Mannose",
-      "synonyms": []
     },
     "R05983": {
       "id": "R05983",
@@ -35322,7 +35293,7 @@
     },
     "R06094": {
       "id": "R06094",
-      "name": "Ga2-Cer + H2O <=> Galactosylceramide + D-Galactose",
+      "name": "Galabiosylceramide + H2O <=> Galactosylceramide + D-Galactose",
       "synonyms": []
     },
     "R06095": {
@@ -35347,7 +35318,7 @@
     },
     "R06099": {
       "id": "R06099",
-      "name": "Lactosylceramide + H2O <=> Glucocerebroside + D-Galactose",
+      "name": "Lactosylceramide + H2O <=> Glucosylceramide + D-Galactose",
       "synonyms": []
     },
     "R06100": {
@@ -35446,14 +35417,14 @@
       "id": "R06119",
       "name": "(R)-limonene,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (6-hydroxylating)",
       "synonyms": [
-        "d-Limonene + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> (+)-trans-Carveol + [Oxidized NADPH---hemoprotein reductase] + H2O"
+        "(R)-Limonene + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> (+)-trans-Carveol + [Oxidized NADPH---hemoprotein reductase] + H2O"
       ]
     },
     "R06120": {
       "id": "R06120",
       "name": "geranyldiphosphate diphosphate lyase [(+)-(R)-limonene-forming]",
       "synonyms": [
-        "Geranyl diphosphate <=> d-Limonene + Diphosphate"
+        "Geranyl diphosphate <=> (R)-Limonene + Diphosphate"
       ]
     },
     "R06121": {
@@ -35467,7 +35438,7 @@
       "id": "R06122",
       "name": "3'-phosphoadenylyl-sulfate:galactosylceramide 3'-sulfotransferase",
       "synonyms": [
-        "Ga2-Cer + 3'-Phosphoadenylyl sulfate <=> Digalactosylceramide sulfate + Adenosine 3',5'-bisphosphate"
+        "Galabiosylceramide + 3'-Phosphoadenylyl sulfate <=> Digalactosylceramide sulfate + Adenosine 3',5'-bisphosphate"
       ]
     },
     "R06124": {
@@ -35772,7 +35743,7 @@
     },
     "R06182": {
       "id": "R06182",
-      "name": "UDP-N-acetyl-D-glucosamine:poly(ribitol-phosphate)acetylglucosaminyltransferase",
+      "name": "UDP-N-acetyl-D-glucosamine:poly(ribitol-phosphate) alpha-N-acetylglucosaminyltransferase",
       "synonyms": [
         "G10558 + UDP-N-acetyl-D-glucosamine <=> G10560 + UDP"
       ]
@@ -36024,7 +35995,7 @@
     },
     "R06234": {
       "id": "R06234",
-      "name": "Galactosylceramide + UDP-D-galactose <=> Ga2-Cer + UDP",
+      "name": "Galactosylceramide + UDP-D-galactose <=> Galabiosylceramide + UDP",
       "synonyms": []
     },
     "R06236": {
@@ -36236,12 +36207,12 @@
     },
     "R06275": {
       "id": "R06275",
-      "name": "UDP-D-glucose + N-Acylsphingosine <=> UDP + Glucocerebroside",
+      "name": "UDP-D-glucose + N-Acylsphingosine <=> UDP + Glucosylceramide",
       "synonyms": []
     },
     "R06276": {
       "id": "R06276",
-      "name": "Glucocerebroside + UDP-D-galactose <=> Lactosylceramide + UDP",
+      "name": "Glucosylceramide + UDP-D-galactose <=> Lactosylceramide + UDP",
       "synonyms": []
     },
     "R06277": {
@@ -36843,7 +36814,7 @@
       "id": "R06379",
       "name": "menth-8-en-2-ol:NAD+ oxidoreductase",
       "synonyms": [
-        "(1R,2S,4S)- Neoiso-dihydrocarveol + NAD+ <=> (1R,4S)-Iso-dihydrocarvone + NADH + H+"
+        "(1R,2S,4S)-Neoiso-dihydrocarveol + NAD+ <=> (1R,4S)-Iso-dihydrocarvone + NADH + H+"
       ]
     },
     "R06380": {
@@ -36966,7 +36937,7 @@
       "id": "R06398",
       "name": "limonene 1,2-monooxygenase",
       "synonyms": [
-        "d-Limonene + NADH + Oxygen + H+ <=> Limonene-1,2-epoxide + NAD+ + H2O"
+        "(R)-Limonene + NADH + Oxygen + H+ <=> Limonene-1,2-epoxide + NAD+ + H2O"
       ]
     },
     "R06399": {
@@ -41143,7 +41114,7 @@
       "id": "R07157",
       "name": "carbon-monoxide,water:ferredoxin oxidoreductase",
       "synonyms": [
-        "CO + H2O + Oxidized ferredoxin <=> CO2 + Reduced ferredoxin"
+        "CO + H2O + 2 Oxidized ferredoxin <=> CO2 + 2 Reduced ferredoxin + 2 H+"
       ]
     },
     "R07158": {
@@ -41291,13 +41262,6 @@
       "name": "antheraxanthin:ascorbate oxidoreductase",
       "synonyms": [
         "Antheraxanthin + Ascorbate <=> Zeaxanthin + Dehydroascorbate + H2O"
-      ]
-    },
-    "R07180": {
-      "id": "R07180",
-      "name": "thiol-containing-reductant:hydroperoxide oxidoreductase",
-      "synonyms": [
-        "ROOH + 2 Thiol-containing reductant <=> Alcohol + H2O + Oxidized thiol-containing reductant"
       ]
     },
     "R07181": {
@@ -42080,13 +42044,6 @@
       "name": "N-benzylformamide amidohydrolase",
       "synonyms": [
         "N-Benzylformamide + H2O <=> Formate + Benzylamine"
-      ]
-    },
-    "R07305": {
-      "id": "R07305",
-      "name": "cyanuric acid amidohydrolase",
-      "synonyms": [
-        "Cyanuric acid + H2O <=> Biuret + CO2"
       ]
     },
     "R07306": {
@@ -43168,12 +43125,7 @@
     },
     "R07481": {
       "id": "R07481",
-      "name": "Cycloartenol + S-Adenosyl-L-methionine <=> 24-Methylenecycloartanol + S-Adenosyl-L-homocysteine",
-      "synonyms": []
-    },
-    "R07482": {
-      "id": "R07482",
-      "name": "24-Methylenecycloartanol <=> Cycloeucalenol",
+      "name": "Cycloartenol + S-Adenosyl-L-methionine <=> 24-Methylidenecycloartanol + S-Adenosyl-L-homocysteine",
       "synonyms": []
     },
     "R07483": {
@@ -43184,11 +43136,6 @@
     "R07484": {
       "id": "R07484",
       "name": "4alpha-Methylfecosterol <=> 24-Methylenelophenol",
-      "synonyms": []
-    },
-    "R07485": {
-      "id": "R07485",
-      "name": "24-Ethylidenelophenol <=> Delta7-Avenasterol",
       "synonyms": []
     },
     "R07486": {
@@ -43214,11 +43161,6 @@
       "synonyms": [
         "beta-Sitosterol + NADPH + H+ + Oxygen <=> Stigmasterol + NADP+ + 2 H2O"
       ]
-    },
-    "R07490": {
-      "id": "R07490",
-      "name": "24-Methylenelophenol <=> Episterol",
-      "synonyms": []
     },
     "R07491": {
       "id": "R07491",
@@ -43248,11 +43190,6 @@
       "synonyms": [
         "3-Keto-4-methylzymosterol + NADPH + H+ <=> 4alpha-Methylzymosterol + NADP+"
       ]
-    },
-    "R07496": {
-      "id": "R07496",
-      "name": "4alpha-Methylzymosterol <=> Zymosterol",
-      "synonyms": []
     },
     "R07497": {
       "id": "R07497",
@@ -43330,7 +43267,7 @@
     },
     "R07509": {
       "id": "R07509",
-      "name": "14-Demethyllanosterol,ferrocytochrome-b5:oxygen oxidoreductase (hydroxylating)",
+      "name": "14-demethyllanosterol,ferrocytochrome-b5:oxygen oxidoreductase (hydroxylating)",
       "synonyms": [
         "14-Demethyllanosterol + 6 Ferrocytochrome b5 + 3 Oxygen + 6 H+ <=> 4alpha-Methylzymosterol-4-carboxylate + 6 Ferricytochrome b5 + 4 H2O"
       ]
@@ -44026,7 +43963,7 @@
       "id": "R07633",
       "name": "3-sulfolactate bisulfite-lyase",
       "synonyms": [
-        "3-Sulfolactate <=> Pyruvate + HSO3-"
+        "(2R)-3-Sulfolactate <=> Pyruvate + HSO3-"
       ]
     },
     "R07634": {
@@ -44777,8 +44714,10 @@
     },
     "R07759": {
       "id": "R07759",
-      "name": "3-Oxostearoyl-CoA + NADPH + H+ <=> 3-Hydroxyoctadecanoyl-CoA + NADP+",
-      "synonyms": []
+      "name": "3-hydroxyoctadecanoyl-CoA:NADP+ oxidoreductase",
+      "synonyms": [
+        "3-Oxostearoyl-CoA + NADPH + H+ <=> 3-Hydroxyoctadecanoyl-CoA + NADP+"
+      ]
     },
     "R07760": {
       "id": "R07760",
@@ -44818,28 +44757,21 @@
       "id": "R07766",
       "name": "octanoyl-[acp]:protein N6-octanoyltransferase",
       "synonyms": [
-        "Octanoyl-[acp] + Apoprotein <=> Protein N6-(octanoyl)lysine + Acyl-carrier protein"
+        "Octanoyl-[acp] + [Lipoyl-carrier protein]-L-lysine <=> [Protein]-N6-(octanoyl)-L-lysine + Acyl-carrier protein"
       ]
     },
     "R07767": {
       "id": "R07767",
-      "name": "protein N6-(octanoyl)lysine:sulfur sulfurtransferase",
+      "name": "[protein]-N6-(octanoyl)-L-lysine:an [Fe-S] cluster scaffold protein carrying a [4Fe-4S]2+ cluster sulfurtransferase",
       "synonyms": [
-        "Protein N6-(octanoyl)lysine + 2 Sulfur donor + 2 S-Adenosyl-L-methionine <=> Protein N6-(lipoyl)lysine + 2 L-Methionine + 2 5'-Deoxyadenosine"
-      ]
-    },
-    "R07768": {
-      "id": "R07768",
-      "name": "octanoyl-[acp]:sulfur sulfurtransferase",
-      "synonyms": [
-        "Octanoyl-[acp] + 2 Sulfur donor + 2 S-Adenosyl-L-methionine <=> Lipoyl-[acp] + 2 L-Methionine + 2 5'-Deoxyadenosine"
+        "[Protein]-N6-(octanoyl)-L-lysine + [Fe-S] cluster scaffold protein carrying a [4Fe-4S]2+ cluster + 2 S-Adenosyl-L-methionine + 2 Reduced [2Fe-2S] ferredoxin + 8 H+ <=> [Protein]-N6-[(R)-dihydrolipoyl]-L-lysine + [Fe-S] cluster scaffold protein + 2 Hydrogen sulfide + 4 Fe2+ + 2 L-Methionine + 2 5'-Deoxyadenosine + 2 Oxidized [2Fe-2S] ferredoxin"
       ]
     },
     "R07769": {
       "id": "R07769",
       "name": "lipoyl-[acp]:protein N6-lipoyltransferase",
       "synonyms": [
-        "Lipoyl-[acp] + Apoprotein <=> Protein N6-(lipoyl)lysine + Acyl-carrier protein"
+        "Lipoyl-[acp] + [Lipoyl-carrier protein]-L-lysine <=> Protein N6-(lipoyl)lysine + Acyl-carrier protein"
       ]
     },
     "R07770": {
@@ -44849,7 +44781,7 @@
     },
     "R07771": {
       "id": "R07771",
-      "name": "Lipoyl-AMP + Apoprotein <=> Protein N6-(lipoyl)lysine + AMP",
+      "name": "Lipoyl-AMP + [Lipoyl-carrier protein]-L-lysine <=> Protein N6-(lipoyl)lysine + AMP",
       "synonyms": []
     },
     "R07772": {
@@ -48368,11 +48300,6 @@
         "trans,trans-Farnesyl diphosphate + H2O <=> Nerolidol + Diphosphate"
       ]
     },
-    "R08375": {
-      "id": "R08375",
-      "name": "Dehydrodolichol diphosphate <=> Dolichyl diphosphate",
-      "synonyms": []
-    },
     "R08376": {
       "id": "R08376",
       "name": "(S)-2,3-Epoxysqualene <=> Euphol",
@@ -48869,7 +48796,7 @@
       "id": "R08465",
       "name": "S-Adenosyl-L-methionine:D-cathine N-methyltransferase",
       "synonyms": [
-        "D-Cathine + S-Adenosyl-L-methionine <=> (+)-Pseudoephedrine + S-Adenosyl-L-homocysteine"
+        "D-Cathine + S-Adenosyl-L-methionine <=> (+)-(1S,2S)-Pseudoephedrine + S-Adenosyl-L-homocysteine"
       ]
     },
     "R08466": {
@@ -49345,7 +49272,7 @@
       "id": "R08550",
       "name": "protein N6-(dihydrolipoyl)lysine:NAD+ oxidoreductase",
       "synonyms": [
-        "Protein N6-(dihydrolipoyl)lysine + NAD+ <=> Protein N6-(lipoyl)lysine + NADH + H+"
+        "[Protein]-N6-[(R)-dihydrolipoyl]-L-lysine + NAD+ <=> Protein N6-(lipoyl)lysine + NADH + H+"
       ]
     },
     "R08551": {
@@ -49941,7 +49868,7 @@
       "id": "R08652",
       "name": "L-phenylalanine,NADPH:oxygen oxidoreductase (N-hydroxylating, decarboxylating)",
       "synonyms": [
-        "L-Phenylalanine + 2 Oxygen + 2 [Reduced NADPH---hemoprotein reductase] <=> (Z)-Phenylacetaldehyde oxime + 2 2-Methylhomogentisate + CO2 + 3 H2O"
+        "L-Phenylalanine + 2 Oxygen + 2 [Reduced NADPH---hemoprotein reductase] <=> (Z)-Phenylacetaldehyde oxime + 2 [Oxidized NADPH---hemoprotein reductase] + CO2 + 3 H2O"
       ]
     },
     "R08653": {
@@ -50781,7 +50708,7 @@
       "id": "R08789",
       "name": "S-adenosyl-L-methionine:(S)-canadine N-methyltransferase",
       "synonyms": [
-        "S-Adenosyl-L-methionine + (S)-Canadine <=> S-Adenosyl-L-homocysteine + (S)-cis-N-Methylcanadine"
+        "S-Adenosyl-L-methionine + (S)-Canadine <=> S-Adenosyl-L-homocysteine + (S)-N-Methylcanadine"
       ]
     },
     "R08790": {
@@ -52525,10 +52452,8 @@
     },
     "R09096": {
       "id": "R09096",
-      "name": "acetyl-CoA decarbonylase / synthase (ACDS)",
-      "synonyms": [
-        "Acetyl-CoA + H+ + 5,6,7,8-Tetrahydromethanopterin <=> 5-Methyl-5,6,7,8-tetrahydromethanopterin + CO + CoA"
-      ]
+      "name": "Acetyl-CoA + 5,6,7,8-Tetrahydromethanopterin <=> CoA + 5-Methyl-5,6,7,8-tetrahydromethanopterin + CO",
+      "synonyms": []
     },
     "R09097": {
       "id": "R09097",
@@ -53658,8 +53583,10 @@
     },
     "R09290": {
       "id": "R09290",
-      "name": "UDP-D-xylose + G13051 <=> UDP + G03532",
-      "synonyms": []
+      "name": "UDP-alpha-D-xylose:[protein with EGF-like domain]-3-O-(beta-D-glucosyl)-L-serine 3-alpha-D-xylosyltransferase (configuration-retaining)",
+      "synonyms": [
+        "UDP-D-xylose + G13051 <=> UDP + G03532"
+      ]
     },
     "R09291": {
       "id": "R09291",
@@ -54210,7 +54137,7 @@
       "id": "R09385",
       "name": "(S)-limonene,NADH:oxygen oxidoreductase",
       "synonyms": [
-        "(-)-Limonene + NADH + H+ + Oxygen <=> (4S)-Limonene-1,2-epoxide + NAD+ + H2O"
+        "(S)-Limonene + NADH + H+ + Oxygen <=> (4S)-Limonene-1,2-epoxide + NAD+ + H2O"
       ]
     },
     "R09386": {
@@ -54238,7 +54165,7 @@
       "id": "R09389",
       "name": "(S)-limonene,NADPH:oxygen oxidoreductase",
       "synonyms": [
-        "(-)-Limonene + NADPH + Oxygen + H+ <=> (4S)-Limonene-1,2-epoxide + NADP+ + H2O"
+        "(S)-Limonene + NADPH + Oxygen + H+ <=> (4S)-Limonene-1,2-epoxide + NADP+ + H2O"
       ]
     },
     "R09390": {
@@ -54262,7 +54189,7 @@
       "id": "R09393",
       "name": "limonene,NADPH:oxygen oxidoreductase",
       "synonyms": [
-        "d-Limonene + NADPH + Oxygen + H+ <=> Limonene-1,2-epoxide + NADP+ + H2O"
+        "(R)-Limonene + NADPH + Oxygen + H+ <=> Limonene-1,2-epoxide + NADP+ + H2O"
       ]
     },
     "R09394": {
@@ -55486,7 +55413,7 @@
       "id": "R09587",
       "name": "progesterone,reduced-ferredoxin:oxygen oxidoreductase (15beta-hydroxylating)",
       "synonyms": [
-        "Progesterone + Reduced ferredoxin + Oxygen <=> 15beta-Hydroxyprogesterone + Oxidized ferredoxin + H2O"
+        "Progesterone + 2 Reduced [2Fe-2S] ferredoxin + Oxygen <=> 15beta-Hydroxyprogesterone + 2 Oxidized [2Fe-2S] ferredoxin + H2O"
       ]
     },
     "R09588": {
@@ -56805,7 +56732,7 @@
     },
     "R09779": {
       "id": "R09779",
-      "name": "LysW-gamma-L-lysine carboxypeptidase",
+      "name": "LysW-gamma-L-lysine amidohydrolase",
       "synonyms": [
         "LysW-gamma-L-lysine + H2O <=> L-Lysine + alpha-Aminoadipate carrier protein LysW"
       ]
@@ -58394,7 +58321,7 @@
     },
     "R10012": {
       "id": "R10012",
-      "name": "(2R,3R)-3-Methylornithinyl-N6-lysine + NAD+ + H2O <=> (2R,3R)-3-Methylglutamyl-5-semialdehyde-N6-lysine + Ammonia + NADH",
+      "name": "(2R,3R)-3-Methylornithinyl-N6-lysine + NAD+ + H2O <=> (2R,3R)-3-Methylglutamyl-5-semialdehyde-N6-lysine + Ammonia + NADH + H+",
       "synonyms": []
     },
     "R10013": {
@@ -58575,14 +58502,14 @@
     },
     "R10042": {
       "id": "R10042",
-      "name": "phenol hydroxylase",
+      "name": "benzene,NADH:oxygen oxidoreductase",
       "synonyms": [
         "Benzene + Oxygen + NADH + H+ <=> Phenol + NAD+ + H2O"
       ]
     },
     "R10043": {
       "id": "R10043",
-      "name": "phenol hydroxylase",
+      "name": "phenol,NADH:oxygen oxidoreductase (2-hydroxylating)",
       "synonyms": [
         "Phenol + Oxygen + NADH + H+ <=> Catechol + NAD+ + H2O"
       ]
@@ -58612,14 +58539,14 @@
       "id": "R10047",
       "name": "(+)-camphor,reduced putidaredoxin:oxygen oxidoreductase (6-endo-hydroxylating)",
       "synonyms": [
-        "(+)-Camphor + Putidaredoxin + Oxygen <=> (+)-6-endo-Hydroxycamphor + Oxidized putidaredoxin + H2O"
+        "(+)-Camphor + Reduced putidaredoxin + Oxygen <=> (+)-6-endo-Hydroxycamphor + Oxidized putidaredoxin + H2O"
       ]
     },
     "R10048": {
       "id": "R10048",
       "name": "putidaredoxin:NAD+ oxidoreductase",
       "synonyms": [
-        "Putidaredoxin + NAD+ <=> Oxidized putidaredoxin + NADH + H+"
+        "Reduced putidaredoxin + NAD+ <=> Oxidized putidaredoxin + NADH + H+"
       ]
     },
     "R10049": {
@@ -59695,9 +59622,15 @@
     },
     "R10219": {
       "id": "R10219",
-      "name": "acetyl-CoA decarbonylase / synthase (ACDS)",
+      "name": "Acetyl-CoA + Tetrahydrosarcinapterin <=> CoA + 5-Methyl-H4SPT + CO",
+      "synonyms": []
+    },
+    "R10220": {
+      "id": "R10220",
+      "name": "S-adenosyl-L-methionine:7-aminomethyl-7-deazaguanosine ribosyltransferase (ribosyl isomerizing",
       "synonyms": [
-        "Tetrahydrosarcinapterin + Acetyl-CoA <=> 5-Methyl-H4SPT + CoA + CO"
+        "L-methionine, adenine releasing)",
+        "S-Adenosyl-L-methionine + tRNA 7-aminomethyl-7-carbaguanine <=> L-Methionine + Adenine + Epoxyqueuosine in tRNA"
       ]
     },
     "R10221": {
@@ -62825,7 +62758,7 @@
     },
     "R10705": {
       "id": "R10705",
-      "name": "methyl-acetate acetylhydrolase",
+      "name": "methyl acetate acetohydrolase",
       "synonyms": [
         "Methyl acetate + H2O <=> Acetate + Methanol"
       ]
@@ -64327,7 +64260,7 @@
     },
     "R10933": {
       "id": "R10933",
-      "name": "LysW-L-ornithine carboxypeptidase",
+      "name": "LysW-L-ornithine amidohydrolase",
       "synonyms": [
         "LysW-L-ornithine + H2O <=> L-Ornithine + alpha-Aminoadipate carrier protein LysW"
       ]
@@ -65064,7 +64997,7 @@
       "id": "R11044",
       "name": "palmitoleoyl-CoA,ferrocytochrome b5:oxygen oxidoreductase (12,13 cis-dehydrogenating)",
       "synonyms": [
-        "Palmitoleoyl-CoA + 2 Ferrocytochrome b51 + Oxygen + 2 H+ <=> (9Z,12Z)-Hexadeca-9,12-dienoyl-CoA + 2 Ferricytochrome b5 + 2 H2O"
+        "Palmitoleoyl-CoA + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> (9Z,12Z)-Hexadeca-9,12-dienoyl-CoA + 2 Ferricytochrome b5 + 2 H2O"
       ]
     },
     "R11045": {
@@ -65678,7 +65611,7 @@
       "id": "R11143",
       "name": "[lipoyl-carrier protein]-L-lysine:lipoate ligase (AMP-forming)",
       "synonyms": [
-        "ATP + (R)-Lipoate + Apoprotein <=> Protein N6-(lipoyl)lysine + AMP + Diphosphate"
+        "ATP + (R)-Lipoate + [Lipoyl-carrier protein]-L-lysine <=> Protein N6-(lipoyl)lysine + AMP + Diphosphate"
       ]
     },
     "R11144": {
@@ -65817,7 +65750,7 @@
       "id": "R11164",
       "name": "dibenzothiophene-5,5-dioxide,FMNH2:oxygen oxidoreductase",
       "synonyms": [
-        "Dibenzothiophene-5,5-dioxide + 2 Reduced FMN + Oxygen <=> 2'-Hydroxybiphenyl-2-sulfinate + 2 FMN + H2O"
+        "Dibenzothiophene-5,5-dioxide + Reduced FMN + Oxygen + NADH <=> 2'-Hydroxybiphenyl-2-sulfinate + FMN + H2O + NAD+ + H+"
       ]
     },
     "R11165": {
@@ -67037,24 +66970,30 @@
     },
     "R11358": {
       "id": "R11358",
-      "name": "Cholest-4-en-3-one + 2 Reduced ferredoxin + Oxygen <=> (25R)-26-Hydroxycholest-4-en-3-one + 2 Oxidized ferredoxin + H2O",
-      "synonyms": []
+      "name": "cholest-4-en-3-one,reduced-[2Fe-2S]-ferredoxin:oxygen oxidoreductase [(25R)-26-hydroxycholest-4-en-3-one forming]",
+      "synonyms": [
+        "Cholest-4-en-3-one + 2 Reduced [2Fe-2S] ferredoxin + Oxygen <=> (25R)-26-Hydroxycholest-4-en-3-one + 2 Oxidized [2Fe-2S] ferredoxin + H2O"
+      ]
     },
     "R11359": {
       "id": "R11359",
-      "name": "(25R)-26-Hydroxycholest-4-en-3-one + 2 Reduced ferredoxin + Oxygen <=> (25R)-26-Oxocholest-4-en-3-one + 2 Oxidized ferredoxin + 2 H2O",
-      "synonyms": []
+      "name": "(25R)-26-hydroxycholest-4-en-3-one,reduced-[2Fe-2S]-ferredoxin:oxygen oxidoreductase [(25R)-26-oxocholest-4-en-3-one forming]",
+      "synonyms": [
+        "(25R)-26-Hydroxycholest-4-en-3-one + 2 Reduced [2Fe-2S] ferredoxin + Oxygen <=> (25R)-26-Oxocholest-4-en-3-one + 2 Oxidized [2Fe-2S] ferredoxin + 2 H2O"
+      ]
     },
     "R11360": {
       "id": "R11360",
-      "name": "(25R)-26-Oxocholest-4-en-3-one + 2 Reduced ferredoxin + Oxygen <=> (25R)-3-Oxocholest-4-en-26-oate + 2 Oxidized ferredoxin + H2O",
-      "synonyms": []
+      "name": "(25R)-26-oxocholest-4-en-3-one,reduced-[2Fe-2S]-ferredoxin:oxygen oxidoreductase [(25R)-3-oxocholest-4-en-26-oate forming]",
+      "synonyms": [
+        "(25R)-26-Oxocholest-4-en-3-one + 2 Reduced [2Fe-2S] ferredoxin + Oxygen <=> (25R)-3-Oxocholest-4-en-26-oate + 2 Oxidized [2Fe-2S] ferredoxin + H2O"
+      ]
     },
     "R11361": {
       "id": "R11361",
-      "name": "cholest-4-en-3-one,reduced [2Fe-2S] ferredoxin:oxygen oxidoreductase [(25R)-3-oxocholest-4-en-26-oate forming]",
+      "name": "cholest-4-en-3-one,reduced-2Fe-2S]-ferredoxin:oxygen oxidoreductase [(25R)-3-oxocholest-4-en-26-oate forming]",
       "synonyms": [
-        "Cholest-4-en-3-one + 6 Reduced ferredoxin + 3 Oxygen <=> (25R)-3-Oxocholest-4-en-26-oate + 6 Oxidized ferredoxin + 4 H2O"
+        "Cholest-4-en-3-one + 6 Reduced [2Fe-2S] ferredoxin + 3 Oxygen <=> (25R)-3-Oxocholest-4-en-26-oate + 6 Oxidized [2Fe-2S] ferredoxin + 4 H2O"
       ]
     },
     "R11362": {
@@ -68079,8 +68018,10 @@
     },
     "R11522": {
       "id": "R11522",
-      "name": "Fe-coproporphyrin III + 2 Hydrogen peroxide <=> Heme + 2 CO2 + 4 H2O",
-      "synonyms": []
+      "name": "Fe-coproporphyrin III:hydrogen peroxide oxidoreductase (decarboxylating)",
+      "synonyms": [
+        "Fe-coproporphyrin III + 2 Hydrogen peroxide <=> Heme + 2 CO2 + 4 H2O"
+      ]
     },
     "R11523": {
       "id": "R11523",
@@ -68260,8 +68201,10 @@
     },
     "R11549": {
       "id": "R11549",
-      "name": "Feruloyl-CoA + 2-Oxoglutarate + Oxygen <=> 6-Hydroxyferuloyl-CoA + Succinate + CO2",
-      "synonyms": []
+      "name": "feruloyl-CoA,2-oxoglutarate:oxygen oxidoreductase (6-hydroxylating)",
+      "synonyms": [
+        "Feruloyl-CoA + 2-Oxoglutarate + Oxygen <=> 6-Hydroxyferuloyl-CoA + Succinate + CO2"
+      ]
     },
     "R11550": {
       "id": "R11550",
@@ -68552,13 +68495,6 @@
       "name": "S-adenosyl-L-methionine:(S)-reticuline N-methyltransferase",
       "synonyms": [
         "S-Adenosyl-L-methionine + (S)-Reticuline <=> S-Adenosyl-L-homocysteine + (S)-Tembetarine"
-      ]
-    },
-    "R11596": {
-      "id": "R11596",
-      "name": "S-adenosyl-L-methionine:xanthohumol 4'-O-methyltransferase",
-      "synonyms": [
-        "S-Adenosyl-L-methionine + Xanthohumol <=> S-Adenosyl-L-homocysteine + 4'-O-Methylxanthohumol"
       ]
     },
     "R11597": {
@@ -69146,8 +69082,10 @@
     },
     "R11687": {
       "id": "R11687",
-      "name": "(S)-cis-N-Methylcanadine <=> (S)-1-Hydroxy-N-methylcanadine",
-      "synonyms": []
+      "name": "(S)-N-methylcanadine,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (1-hydroxylating)",
+      "synonyms": [
+        "(S)-N-Methylcanadine + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> (S)-1-Hydroxy-N-methylcanadine + [Oxidized NADPH---hemoprotein reductase] + H2O"
+      ]
     },
     "R11688": {
       "id": "R11688",
@@ -69158,13 +69096,17 @@
     },
     "R11689": {
       "id": "R11689",
-      "name": "(13S,14R)-1,13-Dihydroxy-N-methylcanadine <=> (13S,14R)-1-Hydroxy-13-O-acetyl-N-methylcanadine",
-      "synonyms": []
+      "name": "acetyl-CoA:(13S,14R)-1,13-dihydroxy-N-methylcanadine O-acetyltransferase",
+      "synonyms": [
+        "(13S,14R)-1,13-Dihydroxy-N-methylcanadine + Acetyl-CoA <=> (13S,14R)-1-Hydroxy-13-O-acetyl-N-methylcanadine + CoA"
+      ]
     },
     "R11690": {
       "id": "R11690",
-      "name": "(13S,14R)-1-Hydroxy-13-O-acetyl-N-methylcanadine <=> (13S,14R)-1,8-Dihydroxy-13-O-acetyl-N-methylcanadine",
-      "synonyms": []
+      "name": "(13S,14R)-13-O-acetyl-1-hydroxy-N-methylcanadine 8-hydroxylase,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (8-hydroxylating)",
+      "synonyms": [
+        "(13S,14R)-1-Hydroxy-13-O-acetyl-N-methylcanadine + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> (13S,14R)-1,8-Dihydroxy-13-O-acetyl-N-methylcanadine + [Oxidized NADPH---hemoprotein reductase] + H2O"
+      ]
     },
     "R11691": {
       "id": "R11691",
@@ -69173,18 +69115,24 @@
     },
     "R11692": {
       "id": "R11692",
-      "name": "4'-O-Desmethyl-3-O-acetylpapaveroxine + S-Adenosyl-L-methionine <=> 3-O-Acetylpapaveroxine + S-Adenosyl-L-homocysteine",
-      "synonyms": []
+      "name": "S-adenosyl-L-methionine:3-O-acetyl-4'-O-demethylpapaveroxine 4'-O-methyltransferase",
+      "synonyms": [
+        "4'-O-Desmethyl-3-O-acetylpapaveroxine + S-Adenosyl-L-methionine <=> 3-O-Acetylpapaveroxine + S-Adenosyl-L-homocysteine"
+      ]
     },
     "R11693": {
       "id": "R11693",
-      "name": "3-O-Acetylpapaveroxine <=> Papaveroxine",
-      "synonyms": []
+      "name": "3-O-acetylpapaveroxine acetatehydrolase",
+      "synonyms": [
+        "3-O-Acetylpapaveroxine + H2O <=> Papaveroxine + Acetate"
+      ]
     },
     "R11694": {
       "id": "R11694",
-      "name": "4'-O-Desmethyl-3-O-acetylpapaveroxine <=> 4'-O-Desmethylpapaveroxine",
-      "synonyms": []
+      "name": "4'-O-desmethyl-3-O-acetylpapaveroxine acetatehydrolase",
+      "synonyms": [
+        "4'-O-Desmethyl-3-O-acetylpapaveroxine + H2O <=> 4'-O-Desmethylpapaveroxine + Acetate"
+      ]
     },
     "R11695": {
       "id": "R11695",
@@ -69514,7 +69462,7 @@
     },
     "R11749": {
       "id": "R11749",
-      "name": "trans-aconitate carboxy-lyase",
+      "name": "trans-aconitate decarboxylase",
       "synonyms": [
         "trans-Aconitate <=> Itaconate + CO2"
       ]
@@ -70209,9 +70157,9 @@
     },
     "R11856": {
       "id": "R11856",
-      "name": "peregrinol-diphosphate diphosphate-lyase (9,13-epoxylabda-14-ene-forming)",
+      "name": "peregrinol-diphosphate diphosphate-lyase [(13R)-9,13-epoxylabd-14-ene-forming]",
       "synonyms": [
-        "Peregrinol diphosphate <=> 9,13-Epoxylabda-14-ene + Diphosphate"
+        "Peregrinol diphosphate <=> (13R)-9,13-Epoxylabd-14-ene + Diphosphate"
       ]
     },
     "R11857": {
@@ -71097,8 +71045,10 @@
     },
     "R12002": {
       "id": "R12002",
-      "name": "Fe-coproporphyrin III <=> Heme",
-      "synonyms": []
+      "name": "Fe-coproporphyrin III:S-adenosyl-L-methionine oxidoreductase (decarboxylating)",
+      "synonyms": [
+        "Fe-coproporphyrin III + 2 S-Adenosyl-L-methionine <=> Heme + 2 CO2 + 2 5'-Deoxyadenosine + 2 L-Methionine"
+      ]
     },
     "R12003": {
       "id": "R12003",
@@ -72165,20 +72115,6 @@
         "Palmitoyl-CoA + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> Palmitoleoyl-CoA + 2 Ferricytochrome b5 + 2 H2O"
       ]
     },
-    "R12174": {
-      "id": "R12174",
-      "name": "8-oxogeranial:NAD(P)+ oxidoreductase (cyclizing, cis-trans-nepetalactol forming)",
-      "synonyms": [
-        "(6E)-8-Oxogeranial + NADH + H+ <=> cis-trans-Nepetalactol + NAD+"
-      ]
-    },
-    "R12175": {
-      "id": "R12175",
-      "name": "8-oxogeranial:NAD(P)+ oxidoreductase (cyclizing, cis-trans-nepetalactol forming)",
-      "synonyms": [
-        "(6E)-8-Oxogeranial + NADPH + H+ <=> cis-trans-Nepetalactol + NADP+"
-      ]
-    },
     "R12176": {
       "id": "R12176",
       "name": "L-threonyl-[L-threonyl-carrier protein],2-oxoglutarate:oxygen oxidoreductase (4-halogenating)",
@@ -72256,6 +72192,20 @@
         "L-Cysteine-S-conjugate + H2O <=> Thiol + Ammonia + Pyruvate"
       ]
     },
+    "R12193": {
+      "id": "R12193",
+      "name": "octadecanoyl-[acyl-carrier protein]:KDO2-lipid-IVA O-octadecanoyltransferase",
+      "synonyms": [
+        "Octadecanoyl-[acyl-carrier protein] + H. pylori KDO2-lipid IVA <=> Stearoyl-KDO2-lipid IVA + Acyl-carrier protein"
+      ]
+    },
+    "R12194": {
+      "id": "R12194",
+      "name": "tetradecanoyl-[acyl-carrier protein]:octadecanoyl-KDO2-lipid-IVA O-tetradecanoyltransferase",
+      "synonyms": [
+        "Tetradecanoyl-[acp] + Stearoyl-KDO2-lipid IVA <=> H. pylori KDO2-lipid A + Acyl-carrier protein"
+      ]
+    },
     "R12196": {
       "id": "R12196",
       "name": "KDO2-lipid-A acyloxyacylhydrolase",
@@ -72295,7 +72245,7 @@
       "id": "R12201",
       "name": "hexa-acylated-KDO2-lipid-A phosphohydrolase",
       "synonyms": [
-        "Hexa-acylated KDO2-lipid A + H2O <=> 1-Dephospho-KDO2-lipid A + Orthophosphate"
+        "H. pylori KDO2-lipid A + H2O <=> 1-Dephospho-KDO2-lipid A + Orthophosphate"
       ]
     },
     "R12202": {
@@ -72399,13 +72349,17 @@
     },
     "R12216": {
       "id": "R12216",
-      "name": "Glutarate + 2-Oxoglutarate + Oxygen <=> (S)-2-Hydroxyglutarate + Succinate + CO2",
-      "synonyms": []
+      "name": "glutarate, 2-oxoglutarate:oxygen oxidoreductase ((S)-2-hydroxyglutarate-forming)",
+      "synonyms": [
+        "Glutarate + 2-Oxoglutarate + Oxygen <=> (S)-2-Hydroxyglutarate + Succinate + CO2"
+      ]
     },
     "R12217": {
       "id": "R12217",
-      "name": "(S)-2-Hydroxyglutarate + Quinone <=> 2-Oxoglutarate + Hydroquinone",
-      "synonyms": []
+      "name": "(S)-2-hydroxyglutarate:quinone oxidoreductase",
+      "synonyms": [
+        "(S)-2-Hydroxyglutarate + Quinone <=> 2-Oxoglutarate + Hydroquinone"
+      ]
     },
     "R12218": {
       "id": "R12218",
@@ -72676,6 +72630,2241 @@
       "name": "(R)-(indol-3-yl)lactate:NAD+ oxidoreductase",
       "synonyms": [
         "(R)-(Indol-3-yl)lactate + NAD+ <=> Indolepyruvate + NADH + H+"
+      ]
+    },
+    "R12257": {
+      "id": "R12257",
+      "name": "cis-3-alkyl-4-alkyloxetan-2-one carboxy-lyase (cis-alkene-forming)",
+      "synonyms": [
+        "cis-3-Alkyl-4-alkyloxetan-2-one <=> Alkene + CO2"
+      ]
+    },
+    "R12258": {
+      "id": "R12258",
+      "name": "ent-copalyl-diphosphate diphosphate-lyase (dolabradiene-forming)",
+      "synonyms": [
+        "ent-Copalyl diphosphate <=> Dolabradiene + Diphosphate"
+      ]
+    },
+    "R12259": {
+      "id": "R12259",
+      "name": "(2E,6E)-farnesyl-diphosphate diphosphate-lyase (cyclizing, 7-epi-ent-eudesmane-5,11-diol-forming)",
+      "synonyms": [
+        "trans,trans-Farnesyl diphosphate + 2 H2O <=> 7-epi-ent-Eudesmane-5,11-diol + Diphosphate"
+      ]
+    },
+    "R12260": {
+      "id": "R12260",
+      "name": "(2E,6E)-farnesyl-diphosphate diphosphate-lyase (cyclizing, alpha-selinene-forming)",
+      "synonyms": [
+        "trans,trans-Farnesyl diphosphate <=> alpha-Selinene + Diphosphate"
+      ]
+    },
+    "R12261": {
+      "id": "R12261",
+      "name": "(2E,6E)-farnesyl-diphosphate diphosphate-lyase [cyclizing, (-)-epieremophilene-forming]",
+      "synonyms": [
+        "trans,trans-Farnesyl diphosphate <=> (-)-5-Epieremophilene + Diphosphate"
+      ]
+    },
+    "R12262": {
+      "id": "R12262",
+      "name": "S-adenosyl-L-methionine:narcotoline 4'-O-methyltransferase",
+      "synonyms": [
+        "Narcotoline + S-Adenosyl-L-methionine <=> alpha-Narcotine + S-Adenosyl-L-homocysteine"
+      ]
+    },
+    "R12263": {
+      "id": "R12263",
+      "name": "S-adenosyl-L-methionine:nocamycin E O-methyltransferase",
+      "synonyms": [
+        "S-Adenosyl-L-methionine + Nocamycin E <=> S-Adenosyl-L-homocysteine + Nocamycin I"
+      ]
+    },
+    "R12264": {
+      "id": "R12264",
+      "name": "S-adenosyl-L-methionine:xanthohumol 4-O-methyltransferase",
+      "synonyms": [
+        "S-Adenosyl-L-methionine + Xanthohumol <=> S-Adenosyl-L-homocysteine + 4-O-Methylxanthohumol"
+      ]
+    },
+    "R12265": {
+      "id": "R12265",
+      "name": "isopyridoxal:NAD+ oxidoreductase (5-pyridoxate-forming)",
+      "synonyms": [
+        "Isopyridoxal + NAD+ + H2O <=> 3-Hydroxy-4-hydroxymethyl-2-methylpyridine-5-carboxylate + NADH + H+"
+      ]
+    },
+    "R12266": {
+      "id": "R12266",
+      "name": "germacra-1(10),4,11(13)-trien-12-oate,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (8beta-hydroxylating)",
+      "synonyms": [
+        "Germacrene A acid + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> 8beta-Hydroxygermacra-1(10),4,11(13)-trien-12-oate + [Oxidized NADPH---hemoprotein reductase] + H2O"
+      ]
+    },
+    "R12267": {
+      "id": "R12267",
+      "name": "8beta-hydroxygermacra-1(10),4,11(13)-trien-12-oate,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (6alpha-hydroxylating)",
+      "synonyms": [
+        "8beta-Hydroxygermacra-1(10),4,11(13)-trien-12-oate + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> 6alpha,8beta-Dihydroxygermacra-1(10),4,11(13)-trien-12-oate + [Oxidized NADPH---hemoprotein reductase] + H2O"
+      ]
+    },
+    "R12268": {
+      "id": "R12268",
+      "name": "6alpha,8beta-Dihydroxygermacra-1(10),4,11(13)-trien-12-oate <=> Eupatolide + H2O",
+      "synonyms": []
+    },
+    "R12269": {
+      "id": "R12269",
+      "name": "geranylgeranyl-diphosphate diphosphate-lyase (cyclizing, beta-pinacene-forming)",
+      "synonyms": [
+        "Geranylgeranyl diphosphate <=> beta-Pinacene + Diphosphate"
+      ]
+    },
+    "R12270": {
+      "id": "R12270",
+      "name": "8beta-hydroxygermacra-1(10),4,11(13)-trien-12-oate,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (6alpha-hydroxylating)",
+      "synonyms": [
+        "8beta-Hydroxygermacra-1(10),4,11(13)-trien-12-oate + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Eupatolide + [Oxidized NADPH---hemoprotein reductase] + 2 H2O"
+      ]
+    },
+    "R12271": {
+      "id": "R12271",
+      "name": "UDP-N-acetyl-alpha-D-muramoyl-L-alanyl-L-glutamate L-glutamate-epimerase",
+      "synonyms": [
+        "ATP + UDP-N-acetyl-alpha-D-muramoyl-L-alanyl-L-glutamate + H2O <=> AMP + Diphosphate + UDP-N-acetylmuramoyl-L-alanyl-D-glutamate"
+      ]
+    },
+    "R12272": {
+      "id": "R12272",
+      "name": "UDP-N-acetylmuramoyl-L-alanine---L-glutamate ligase (ADP-forming)",
+      "synonyms": [
+        "ATP + UDP-N-acetylmuramoyl-L-alanine + L-Glutamate <=> ADP + Orthophosphate + UDP-N-acetyl-alpha-D-muramoyl-L-alanyl-L-glutamate"
+      ]
+    },
+    "R12273": {
+      "id": "R12273",
+      "name": "germacra-1(10),4,11(13)-trien-12-oate,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (8alpha-hydroxylating)",
+      "synonyms": [
+        "Germacrene A acid + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> 8alpha-Hydroxygermacra-1(10),4,11(13)-trien-12-oate + [Oxidized NADPH---hemoprotein reductase] + H2O"
+      ]
+    },
+    "R12274": {
+      "id": "R12274",
+      "name": "8alpha-Hydroxygermacra-1(10),4,11(13)-trien-12-oate <=> 8-epi-Inunolide + H2O",
+      "synonyms": []
+    },
+    "R12275": {
+      "id": "R12275",
+      "name": "germacra-1(10),4,11(13)-trien-12-oate,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (8alpha-hydroxylating)",
+      "synonyms": [
+        "Germacrene A acid + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> 8-epi-Inunolide + [Oxidized NADPH---hemoprotein reductase] + 2 H2O"
+      ]
+    },
+    "R12276": {
+      "id": "R12276",
+      "name": "flavanone,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (flavone-forming)",
+      "synonyms": [
+        "Flavanone + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Flavone + [Oxidized NADPH---hemoprotein reductase] + 2 H2O"
+      ]
+    },
+    "R12277": {
+      "id": "R12277",
+      "name": "liquiritigenin,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (7,4'-dihydroxyflavone-forming)",
+      "synonyms": [
+        "Liquiritigenin + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> 7,4'-Dihydroxyflavone + [Oxidized NADPH---hemoprotein reductase] + 2 H2O"
+      ]
+    },
+    "R12278": {
+      "id": "R12278",
+      "name": "naringenin,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (apigenin-forming)",
+      "synonyms": [
+        "Naringenin + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Apigenin + [Oxidized NADPH---hemoprotein reductase] + 2 H2O"
+      ]
+    },
+    "R12279": {
+      "id": "R12279",
+      "name": "eriodictyol,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (luteolin-forming)",
+      "synonyms": [
+        "Eriodictyol + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Luteolin + [Oxidized NADPH---hemoprotein reductase] + 2 H2O"
+      ]
+    },
+    "R12280": {
+      "id": "R12280",
+      "name": "Prephytoene-diphosphate diphosphate-lyase",
+      "synonyms": [
+        "Prephytoene diphosphate + NADPH + H+ <=> Lycopaoctaene + Diphosphate + NADP+"
+      ]
+    },
+    "R12281": {
+      "id": "R12281",
+      "name": "geranylgeranyl diphosphate:geranylgeranyl diphosphate geranylgeranyltransferase",
+      "synonyms": [
+        "2 Geranylgeranyl diphosphate + NADPH + H+ <=> Lycopaoctaene + 2 Diphosphate + NADP+"
+      ]
+    },
+    "R12282": {
+      "id": "R12282",
+      "name": "Tetrahydroalstonine + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Alstonine + [Oxidized NADPH---hemoprotein reductase] + 2 H2O + 2 H+",
+      "synonyms": []
+    },
+    "R12283": {
+      "id": "R12283",
+      "name": "dimethylallyl-diphosphate:all-trans-lycopene dimethylallyltransferase (hydrating, nonaflavuxanthin-forming)",
+      "synonyms": [
+        "Dimethylallyl diphosphate + Lycopene + Acceptor + H2O <=> Nonaflavuxanthin + Reduced acceptor + Diphosphate"
+      ]
+    },
+    "R12284": {
+      "id": "R12284",
+      "name": "dimethylallyl-diphosphate:nonaflavuxanthin dimethylallyltransferase (hydrating, flavuxanthin-forming)",
+      "synonyms": [
+        "Dimethylallyl diphosphate + Nonaflavuxanthin + Acceptor + H2O <=> Flavuxanthin + Reduced acceptor + Diphosphate"
+      ]
+    },
+    "R12285": {
+      "id": "R12285",
+      "name": "dimethylallyl-diphosphate:all-trans-lycopene dimethylallyltransferase (hydrating, dihydroisopentenyldehydrorhodopin-forming)",
+      "synonyms": [
+        "Dimethylallyl diphosphate + Lycopene + H2O <=> Dihydroisopentenyldehydrorhodopin + Diphosphate"
+      ]
+    },
+    "R12286": {
+      "id": "R12286",
+      "name": "dimethylallyl-diphosphate:isopentenyldehydrorhodopin dimethylallyltransferase (hydrating, dihydrobisanhydrobacterioruberin-forming)",
+      "synonyms": [
+        "Dimethylallyl diphosphate + Isopentenyldehydrorhodopin + H2O <=> Dihydrobisanhydrobacterioruberin + Diphosphate"
+      ]
+    },
+    "R12287": {
+      "id": "R12287",
+      "name": "long-chain-fatty acyl-CoA:alpha,alpha-trehalose 2-acyltransferase",
+      "synonyms": [
+        "Long-chain acyl-CoA + alpha,alpha-Trehalose <=> 2-(Long-chain-fatty acyl)-trehalose + CoA"
+      ]
+    },
+    "R12288": {
+      "id": "R12288",
+      "name": "mycolipenoyl-CoA:2-(long-chain-fatty acyl)-trehalose 3-mycolipenoyltransferase",
+      "synonyms": [
+        "Mycolipenoyl-CoA + 2-(Long-chain-fatty acyl)-trehalose <=> 2-(Long-chain-fatty acyl)-3-mycolipenoyl-trehalose + CoA"
+      ]
+    },
+    "R12289": {
+      "id": "R12289",
+      "name": "3-oxoacyl-[acyl-carrier protein]:glycerone phosphate 3-oxonacylltransferase",
+      "synonyms": [
+        "Medium-chain 3-oxoacyl-[acyl-carrier protein] + Glycerone phosphate <=> 2-Oxo-3-(phosphooxy)propyl 3-oxoalkanoate + Acyl-carrier protein"
+      ]
+    },
+    "R12290": {
+      "id": "R12290",
+      "name": "UDP-alpha-D-glucose:2'-hydroxy-beta-oxodihydrochalcone C6/8-beta-D-glucosyltransferase",
+      "synonyms": [
+        "UDP-glucose + 2'-Hydroxy-beta-oxodihydrochalcone <=> UDP + 3'-(beta-D-Glucopyranosyl)-2'-hydroxy-beta-oxodihydrochalcone"
+      ]
+    },
+    "R12291": {
+      "id": "R12291",
+      "name": "5-methyltetrahydrosarcinapterin:CoM 2-methyltransferase",
+      "synonyms": [
+        "5-Methyl-H4SPT + Coenzyme M + 2 Sodium cation(in) <=> Tetrahydrosarcinapterin + 2-(Methylthio)ethanesulfonate + 2 Sodium cation(out)"
+      ]
+    },
+    "R12292": {
+      "id": "R12292",
+      "name": "G13087 + UDP-N-acetyl-D-galactosamine <=> O-mannose core M3 + UDP",
+      "synonyms": []
+    },
+    "R12293": {
+      "id": "R12293",
+      "name": "O-mannose core M3 + ATP <=> Phospho-core M3 + ADP",
+      "synonyms": []
+    },
+    "R12294": {
+      "id": "R12294",
+      "name": "Phospho-core M3 + CDP-ribitol <=> G13093 + CMP",
+      "synonyms": []
+    },
+    "R12295": {
+      "id": "R12295",
+      "name": "G13093 + CDP-ribitol <=> G13094 + CMP",
+      "synonyms": []
+    },
+    "R12296": {
+      "id": "R12296",
+      "name": "G13095 + UDP-D-glucuronate <=> G13096 + UDP",
+      "synonyms": []
+    },
+    "R12297": {
+      "id": "R12297",
+      "name": "G13096 + UDP-D-xylose <=> G13097 + UDP",
+      "synonyms": []
+    },
+    "R12298": {
+      "id": "R12298",
+      "name": "G13097 + UDP-D-glucuronate <=> G13098 + UDP",
+      "synonyms": []
+    },
+    "R12299": {
+      "id": "R12299",
+      "name": "ditrans,polycis-dolichol:NADP+ 2,3-oxidoreductase",
+      "synonyms": [
+        "Dolichol + NADP+ <=> Polyprenol + NADPH + H+"
+      ]
+    },
+    "R12300": {
+      "id": "R12300",
+      "name": "malonate:CoA ligase (AMP-forming)",
+      "synonyms": [
+        "ATP + Malonate + CoA <=> AMP + Diphosphate + Malonyl-CoA"
+      ]
+    },
+    "R12301": {
+      "id": "R12301",
+      "name": "o-Methoxyphenol + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Catechol + [Oxidized NADPH---hemoprotein reductase] + Formaldehyde + H2O",
+      "synonyms": []
+    },
+    "R12302": {
+      "id": "R12302",
+      "name": "isoeugenol:oxygen 7,8-oxidoreductase (bond-cleaving)",
+      "synonyms": [
+        "Isoeugenol + Oxygen <=> 4-Hydroxy-3-methoxy-benzaldehyde + Acetaldehyde"
+      ]
+    },
+    "R12303": {
+      "id": "R12303",
+      "name": "(1H-indol-3-yl)acetate carboxy-lyase (skatole-forming)",
+      "synonyms": [
+        "Indole-3-acetate <=> Skatole + CO2"
+      ]
+    },
+    "R12304": {
+      "id": "R12304",
+      "name": "D-ornithine carboxy-lyase",
+      "synonyms": [
+        "D-Ornithine <=> Putrescine + CO2"
+      ]
+    },
+    "R12305": {
+      "id": "R12305",
+      "name": "D-lysine carboxy-lyase",
+      "synonyms": [
+        "D-Lysine <=> Cadaverine + CO2"
+      ]
+    },
+    "R12306": {
+      "id": "R12306",
+      "name": "(2E)-3-(4-hydroxyphenyl)prop-2-enoyl-CoA,2-oxoglutarate:oxygen oxidoreductase (2-hydroxylating)",
+      "synonyms": [
+        "p-Coumaroyl-CoA + 2-Oxoglutarate + Oxygen <=> 2,4-Dihydroxycinnamoyl-CoA + Succinate + CO2"
+      ]
+    },
+    "R12307": {
+      "id": "R12307",
+      "name": "(4R)-4,2'-dihydroxyisoflavan hydro-lyase (pterocarpan-forming)",
+      "synonyms": [
+        "(4R)-4,2'-Dihydroxyisoflavan <=> Pterocarpan + H2O"
+      ]
+    },
+    "R12308": {
+      "id": "R12308",
+      "name": "L-2,3-diaminopropanoate:citrate ligase (2-[(L-alanin-3-ylcarbamoyl)methyl]-2-hydroxybutanedioate-forming)",
+      "synonyms": [
+        "ATP + L-2,3-Diaminopropanoate + Citrate <=> AMP + Diphosphate + 2-[(L-Alanin-3-ylcarbamoyl)methyl]-2-hydroxybutanedioate"
+      ]
+    },
+    "R12309": {
+      "id": "R12309",
+      "name": "2-[(L-alanin-3-ylcarbamoyl)methyl]-2-hydroxybutanedioate carboxy-lyase (2-[(2-aminoethylcarbamoyl)methyl]-2-hydroxybutanedioate-forming)",
+      "synonyms": [
+        "2-[(L-Alanin-3-ylcarbamoyl)methyl]-2-hydroxybutanedioate <=> 2-[(2-Aminoethylcarbamoyl)methyl]-2-hydroxybutanedioate + CO2"
+      ]
+    },
+    "R12310": {
+      "id": "R12310",
+      "name": "2,4-Dihydroxycinnamoyl-CoA <=> Umbelliferone + CoA",
+      "synonyms": []
+    },
+    "R12311": {
+      "id": "R12311",
+      "name": "2-[(2-aminoethylcarbamoyl)methyl]-2-hydroxybutanedioate:L-2,3-diaminopropanoate ligase {2-[(L-alanin-3-ylcarbamoyl)methyl]-3-(2-aminoethylcarbamoyl)-2-hydroxypropanoate-forming}",
+      "synonyms": [
+        "ATP + 2-[(2-Aminoethylcarbamoyl)methyl]-2-hydroxybutanedioate + L-2,3-Diaminopropanoate <=> AMP + Diphosphate + 2-[(L-Alanin-3-ylcarbamoyl)methyl]-3-(2-aminoethylcarbamoyl)-2-hydroxypropanoate"
+      ]
+    },
+    "R12312": {
+      "id": "R12312",
+      "name": "2-[(L-alanin-3-ylcarbamoyl)methyl]-3-(2-aminoethylcarbamoyl)-2-hydroxypropanoate:2-oxoglutarate ligase (staphyloferrin B-forming)",
+      "synonyms": [
+        "ATP + 2-[(L-Alanin-3-ylcarbamoyl)methyl]-3-(2-aminoethylcarbamoyl)-2-hydroxypropanoate + 2-Oxoglutarate <=> AMP + Diphosphate + Staphyloferrin B"
+      ]
+    },
+    "R12313": {
+      "id": "R12313",
+      "name": "histidine racemase",
+      "synonyms": [
+        "L-Histidine <=> D-Histidine"
+      ]
+    },
+    "R12314": {
+      "id": "R12314",
+      "name": "6-sulfo-D-quinovose 1-epimerase",
+      "synonyms": [
+        "6-Sulfo-alpha-D-quinovose <=> 6-Sulfo-beta-D-quinovose"
+      ]
+    },
+    "R12315": {
+      "id": "R12315",
+      "name": "[protein]-L-lysine,2-oxoglutarate:oxygen oxidoreductase (3S-hydroxylating)",
+      "synonyms": [
+        "Protein lysine + 2-Oxoglutarate + Oxygen <=> [Protein]-(3S)-3-hydroxy-L-lysine + Succinate + CO2"
+      ]
+    },
+    "R12316": {
+      "id": "R12316",
+      "name": "G10558 + UDP-N-acetyl-D-glucosamine <=> G13127 + UDP",
+      "synonyms": []
+    },
+    "R12317": {
+      "id": "R12317",
+      "name": "sterol,reduced ferredoxin:oxygen oxidoreductase (14-methyl cleaving)",
+      "synonyms": [
+        "14alpha-Methylsteroid + 6 Reduced ferredoxin + 6 H+ + 3 Oxygen <=> Delta14-Steroid + Formate + 6 Oxidized ferredoxin + 4 H2O"
+      ]
+    },
+    "R12318": {
+      "id": "R12318",
+      "name": "14alpha-Methylsteroid + 2 Reduced ferredoxin + 2 H+ + Oxygen <=> 14alpha-Hydroxymethylsteroid + 2 Oxidized ferredoxin + H2O",
+      "synonyms": []
+    },
+    "R12319": {
+      "id": "R12319",
+      "name": "dimethyl sulfide,NADH:oxygen oxidoreductase (S-oxidizing)",
+      "synonyms": [
+        "Dimethyl sulfide + NADH + H+ + Oxygen <=> Dimethyl sulfoxide + NAD+ + H2O"
+      ]
+    },
+    "R12320": {
+      "id": "R12320",
+      "name": "dimethyl sulfoxide,NADH:oxygen oxidoreductase (S-oxidizing)",
+      "synonyms": [
+        "Dimethyl sulfoxide + NADH + H+ + Oxygen <=> Dimethyl sulfone + NAD+ + H2O"
+      ]
+    },
+    "R12321": {
+      "id": "R12321",
+      "name": "14alpha-Hydroxymethylsteroid + 2 Reduced ferredoxin + 2 H+ + Oxygen <=> 14alpha-Formylsteroid + 2 Oxidized ferredoxin + 2 H2O",
+      "synonyms": []
+    },
+    "R12322": {
+      "id": "R12322",
+      "name": "14alpha-Formylsteroid + 2 Reduced ferredoxin + 2 H+ + Oxygen <=> Delta14-Steroid + Formate + 2 Oxidized ferredoxin + H2O",
+      "synonyms": []
+    },
+    "R12323": {
+      "id": "R12323",
+      "name": "lanosterol,reduced ferredoxin:oxygen oxidoreductase (14-methyl cleaving)",
+      "synonyms": [
+        "Lanosterol + 6 Reduced ferredoxin + 6 H+ + 3 Oxygen <=> 4,4-Dimethyl-5alpha-cholesta-8,14,24-trien-3beta-ol + Formate + 6 Oxidized ferredoxin + 4 H2O"
+      ]
+    },
+    "R12324": {
+      "id": "R12324",
+      "name": "luteothin,ferredoxin:oxygen oxidoreductase (aureothin-forming)",
+      "synonyms": [
+        "Luteothin + 4 Reduced ferredoxin + 2 Oxygen + 4 H+ <=> Aureothin + 4 Oxidized ferredoxin + 3 H2O"
+      ]
+    },
+    "R12325": {
+      "id": "R12325",
+      "name": "Luteothin + 2 Reduced ferredoxin + Oxygen + 2 H+ <=> (7R)-7-Hydroxyluteothin + 2 Oxidized ferredoxin + H2O",
+      "synonyms": []
+    },
+    "R12326": {
+      "id": "R12326",
+      "name": "(7R)-7-Hydroxyluteothin + 2 Reduced ferredoxin + Oxygen + 2 H+ <=> Aureothin + 2 Oxidized ferredoxin + 2 H2O",
+      "synonyms": []
+    },
+    "R12328": {
+      "id": "R12328",
+      "name": "acyl-CoA:malonyl-CoA C-acyltransferase (decarboxylating, oxoacyl- and enoyl-reducing, NADH)",
+      "synonyms": [
+        "Acetyl-CoA + n Malonyl-CoA + n NADPH + n NADH + 2n H+ <=> Long-chain acyl-CoA + n CoA + n CO2 + n NADP+ + n NAD+ + n H2O"
+      ]
+    },
+    "R12329": {
+      "id": "R12329",
+      "name": "long-chain acyl-[acyl-carrier protein] hydrolase",
+      "synonyms": [
+        "Long-chain acyl-[acyl-carrier protein] + H2O <=> Acyl-carrier protein + Long-chain fatty acid"
+      ]
+    },
+    "R12330": {
+      "id": "R12330",
+      "name": "beta-D-GlcNAc-(1->4)-Mur2Ac(oyl-L-Ala-gamma-D-Glu-L-Lys-D-Ala-D-Ala)-diphospho-ditrans,octacis-undecaprenol:L-glutamine amidoligase (ADP-forming)",
+      "synonyms": [
+        "ATP + Undecaprenyl-diphospho-N-acetylmuramoyl-(N-acetylglucosamine)-L-alanyl-gamma-D-glutamyl-L-lysyl-D-alanyl-D-alanine <=> ADP + beta-D-GlcNAc-(1->4)-Mur2Ac(oyl-L-Ala-gamma-D-O-P-Glu-L-Lys-D-Ala-D-Ala)-diphospho-ditrans,octacis-undecaprenol"
+      ]
+    },
+    "R12331": {
+      "id": "R12331",
+      "name": "beta-D-GlcNAc-(1->4)-Mur2Ac(oyl-L-Ala-gamma-D-Glu-L-Lys-D-Ala-D-Ala)-diphospho-ditrans,octacis-undecaprenol:L-glutamine amidoligase (ADP-forming)",
+      "synonyms": [
+        "beta-D-GlcNAc-(1->4)-Mur2Ac(oyl-L-Ala-gamma-D-O-P-Glu-L-Lys-D-Ala-D-Ala)-diphospho-ditrans,octacis-undecaprenol + Ammonia <=> Undecaprenyl-diphospho-N-acetylmuramoyl-(N-acetylglucosamine)-L-alanyl-D-isoglutaminyl-L-lysyl-D-alanyl-D-alanine + Orthophosphate"
+      ]
+    },
+    "R12332": {
+      "id": "R12332",
+      "name": "cyanuric acid amidohydrolase",
+      "synonyms": [
+        "Cyanuric acid + H2O <=> 1-Carboxybiuret"
+      ]
+    },
+    "R12333": {
+      "id": "R12333",
+      "name": "1-carboxybiuret amidohydrolase",
+      "synonyms": [
+        "1-Carboxybiuret + H2O <=> Urea-1,3-dicarboxylate + Ammonia"
+      ]
+    },
+    "R12334": {
+      "id": "R12334",
+      "name": "Urea-1,3-dicarboxylate <=> Urea-1-carboxylate + CO2",
+      "synonyms": []
+    },
+    "R12335": {
+      "id": "R12335",
+      "name": "1-Carboxybiuret <=> Biuret + CO2",
+      "synonyms": []
+    },
+    "R12336": {
+      "id": "R12336",
+      "name": "S-adenosyl-L-methionine:demethylluteothin O-methyltransferase",
+      "synonyms": [
+        "S-Adenosyl-L-methionine + Demethylluteothin <=> S-Adenosyl-L-homocysteine + Luteothin"
+      ]
+    },
+    "R12337": {
+      "id": "R12337",
+      "name": "malonyl-CoA:malonyl-CoA malonyltransferase ((2E,5S,6E,8E,10E)-5-hydroxydodeca-2,6,8,10-tetraenal-forming)",
+      "synonyms": [
+        "6 Malonyl-CoA + 5 NADPH + NADH + 6 H+ <=> (2E,5S,6E,8E,10E)-5-Hydroxydodeca-2,6,8,10-tetraenal + 6 CoA + 5 NADP+ + NAD+ + 6 CO2 + 4 H2O"
+      ]
+    },
+    "R12338": {
+      "id": "R12338",
+      "name": "GDP-alpha-D-mannose:bis(myo-inositol)-1,3'-phosphate 2-beta-D-mannosyltransferase",
+      "synonyms": [
+        "2 GDP-mannose + Bis(myo-inositol) 1,3'-phosphate <=> 2 GDP + 2-O-(beta-D-Mannosyl-(1->2)-beta-D-mannosyl)-bis(myo-inositol) 1,3'-phosphate"
+      ]
+    },
+    "R12339": {
+      "id": "R12339",
+      "name": "GDP-alpha-D-mannose:bis(myo-inositol)-1,3'-phosphate 2-beta-D-mannosyltransferase",
+      "synonyms": [
+        "GDP-mannose + Bis(myo-inositol) 1,3'-phosphate <=> GDP + 2-O-(beta-D-Mannosyl)-bis(myo-inositol) 1,3'-phosphate"
+      ]
+    },
+    "R12340": {
+      "id": "R12340",
+      "name": "GDP-alpha-D-mannose:2-O-(beta-D-mannosyl)-bis(myo-inositol) 1,3'-phosphate 2-beta-D-mannosyltransferase",
+      "synonyms": [
+        "GDP-mannose + 2-O-(beta-D-Mannosyl)-bis(myo-inositol) 1,3'-phosphate <=> GDP + 2-O-(beta-D-Mannosyl-(1->2)-beta-D-mannosyl)-bis(myo-inositol) 1,3'-phosphate"
+      ]
+    },
+    "R12341": {
+      "id": "R12341",
+      "name": "S-adenosyl-L-methionine:D-histidine N-[(3S)-3-amino-3-carboxypropyl]-transferase",
+      "synonyms": [
+        "S-Adenosyl-L-methionine + D-Histidine <=> (2S)-2-Amino-4-{[(1R)-1-carboxy-2-(1H-imidazol-4-yl)ethyl]amino}butanoate + 5'-Methylthioadenosine"
+      ]
+    },
+    "R12342": {
+      "id": "R12342",
+      "name": "ADP:L-serine 3-phosphotransferase",
+      "synonyms": [
+        "ADP + L-Serine <=> AMP + O-Phospho-L-serine"
+      ]
+    },
+    "R12343": {
+      "id": "R12343",
+      "name": "(2E,5S,6E,8E,10E)-1-aminododeca-2,6,8,10-tetraen-5-ol:pyruvate aminotransferase",
+      "synonyms": [
+        "(2E,5S,6E,8E,10E)-1-Aminododeca-2,6,8,10-tetraen-5-ol + Pyruvate <=> (2E,5S,6E,8E,10E)-5-Hydroxydodeca-2,6,8,10-tetraenal + L-Alanine"
+      ]
+    },
+    "R12344": {
+      "id": "R12344",
+      "name": "ATP:L-serine 3-phosphotransferase",
+      "synonyms": [
+        "ATP + L-Serine <=> ADP + O-Phospho-L-serine"
+      ]
+    },
+    "R12345": {
+      "id": "R12345",
+      "name": "cyclic bis(3'->5')diadenylate 3'-adenylylhydrolase",
+      "synonyms": [
+        "Cyclic di-3',5'-adenylate + H2O <=> 5'-O-Phosphonoadenylyl-(3'->5')-adenosine"
+      ]
+    },
+    "R12346": {
+      "id": "R12346",
+      "name": "5'-O-phosphonoadenylyl-(3'->5')-adenosine phosphohydrolase",
+      "synonyms": [
+        "5'-O-Phosphonoadenylyl-(3'->5')-adenosine + H2O <=> 2 AMP"
+      ]
+    },
+    "R12347": {
+      "id": "R12347",
+      "name": "3-O-acetylpapaveroxine acetatehydrolase",
+      "synonyms": [
+        "3-O-Acetylpapaveroxine + H2O <=> Narcotine hemiacetal + Acetate"
+      ]
+    },
+    "R12348": {
+      "id": "R12348",
+      "name": "3'-(hydroxy)phthioceranyl-2'-palmitoyl(stearoyl)-2-O-sulfo-alpha,alpha-trehalose:3'-(hydroxy)phthioceranyl-2'-palmitoyl(stearoyl)-2-O-sulfo-alpha,alpha-trehalose 6,6'-di(hydroxy)phthioceranyltransferase",
+      "synonyms": [
+        "3 3'-(Hydroxy)phthioceranyl-2'-palmitoyl(stearoyl)-2-O-sulfo-alpha,alpha-trehalose <=> 3,6,6'-Tris-(hydroxy)phthioceranyl-2-palmitoyl(stearoyl)-2'-sulfo-alpha,alpha-trehalose + 2 2'-Palmitoyl/stearoyl-2-O-sulfo-alpha,alpha-trehalose"
+      ]
+    },
+    "R12349": {
+      "id": "R12349",
+      "name": "sucrose:(1->6)-alpha-D-glucan 3-alpha-D-[(1->3)-alpha-D-glucosyl]-transferase",
+      "synonyms": [
+        "Sucrose + Dextran <=> D-Fructose + (1->6)-alpha-D-Glucan containing a (1->3)-alpha-D-glucose branch"
+      ]
+    },
+    "R12350": {
+      "id": "R12350",
+      "name": "G00146 + Dolichyl phosphate D-mannose <=> G13128 + Dolichyl phosphate",
+      "synonyms": []
+    },
+    "R12351": {
+      "id": "R12351",
+      "name": "G13128 + Phosphatidylethanolamine <=> G00148 + 1,2-Diacyl-sn-glycerol",
+      "synonyms": []
+    },
+    "R12352": {
+      "id": "R12352",
+      "name": "N3-Fumaroyl-L-2,3-diaminopropanoate + L-Glutamine + ATP + H2O <=> 3-{[(2E)-4-Amino-4-oxobut-2-enoyl]amino}-L-alanine + L-Glutamate + ADP + Orthophosphate",
+      "synonyms": []
+    },
+    "R12353": {
+      "id": "R12353",
+      "name": "D-Ornithine + Citrate + ATP <=> N5-Citryl-D-ornithine + AMP + Diphosphate",
+      "synonyms": []
+    },
+    "R12354": {
+      "id": "R12354",
+      "name": "N5-Citryl-D-ornithine + Citrate + ATP <=> Staphyloferrin A + AMP + Diphosphate",
+      "synonyms": []
+    },
+    "R12355": {
+      "id": "R12355",
+      "name": "Squalene + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> (S)-2,3-Epoxysqualene + 2 Ferricytochrome b5 + H2O",
+      "synonyms": []
+    },
+    "R12356": {
+      "id": "R12356",
+      "name": "propanoyl-CoA:oxygen 2-oxidoreductase",
+      "synonyms": [
+        "Propanoyl-CoA + Oxygen <=> Propenoyl-CoA + Hydrogen peroxide"
+      ]
+    },
+    "R12357": {
+      "id": "R12357",
+      "name": "3beta-hydroxy-4,4-dimethylsteroid,NADH:oxygen oxidoreductase",
+      "synonyms": [
+        "3beta-Hydroxy-4,4-dimethylsteroid + NADH + H+ + Oxygen <=> 3beta-Hydroxy-4beta-hydroxymethyl-4alpha-methylsteroid + NAD+ + H2O"
+      ]
+    },
+    "R12358": {
+      "id": "R12358",
+      "name": "3beta-hydroxy-4beta-hydroxymethyl-4alpha-methylsteroid,NADH:oxygen oxidoreductase",
+      "synonyms": [
+        "3beta-Hydroxy-4beta-hydroxymethyl-4alpha-methylsteroid + NADH + H+ + Oxygen <=> 3beta-Hydroxy-4beta-formyl-4alpha-methylsteroid + NAD+ + 2 H2O"
+      ]
+    },
+    "R12359": {
+      "id": "R12359",
+      "name": "3beta-hydroxy-4beta-formyl-4alpha-methylsteroid,NADH:oxygen oxidoreductase",
+      "synonyms": [
+        "3beta-Hydroxy-4beta-formyl-4alpha-methylsteroid + NADH + H+ + Oxygen <=> 3beta-Hydroxy-4alpha-methylsteroid-4beta-carboxylate + NAD+ + H2O"
+      ]
+    },
+    "R12360": {
+      "id": "R12360",
+      "name": "3beta-hydroxy-4,4-dimethylsteroid,NADH:oxygen oxidoreductase (C-4beta-hydroxylating)",
+      "synonyms": [
+        "3beta-Hydroxy-4,4-dimethylsteroid + 3 NADH + 3 H+ + 3 Oxygen <=> 3beta-Hydroxy-4alpha-methylsteroid-4beta-carboxylate + 3 NAD+ + 4 H2O"
+      ]
+    },
+    "R12361": {
+      "id": "R12361",
+      "name": "3beta-hydroxysteroid-4beta-carboxylate:NAD+ 3-oxidoreductase (decarboxylating)",
+      "synonyms": [
+        "3beta-Hydroxy-4alpha-methylsteroid-4beta-carboxylate + NAD+ <=> 4alpha-Methyl-3-oxosteroid + NADH + CO2 + H+"
+      ]
+    },
+    "R12362": {
+      "id": "R12362",
+      "name": "3beta-hydroxysteroid-4beta-carboxylate:NADP+ 3-oxidoreductase (decarboxylating)",
+      "synonyms": [
+        "3beta-Hydroxy-4alpha-methylsteroid-4beta-carboxylate + NADP+ <=> 4alpha-Methyl-3-oxosteroid + NADPH + CO2 + H+"
+      ]
+    },
+    "R12363": {
+      "id": "R12363",
+      "name": "geranylgeranyl-diphosphate diphosphate-lyase (cyclizing, hydropyrene-forming)",
+      "synonyms": [
+        "Geranylgeranyl diphosphate <=> Hydropyrene + Diphosphate"
+      ]
+    },
+    "R12364": {
+      "id": "R12364",
+      "name": "geranylgeranyl-diphosphate diphosphate-lyase (cyclizing, hydropyrenol-forming)",
+      "synonyms": [
+        "Geranylgeranyl diphosphate + H2O <=> Hydropyrenol + Diphosphate"
+      ]
+    },
+    "R12365": {
+      "id": "R12365",
+      "name": "geranylgeranyl-diphosphate diphosphate-lyase (cyclizing, isoelisabethatriene-forming)",
+      "synonyms": [
+        "Geranylgeranyl diphosphate <=> Isoelisabethatriene + Diphosphate"
+      ]
+    },
+    "R12366": {
+      "id": "R12366",
+      "name": "3beta-hydroxysteroid-4alpha-carboxylate:NAD+ 3-oxidoreductase (decarboxylating)",
+      "synonyms": [
+        "3beta-Hydroxysteroid-4alpha-carboxylate + NAD+ <=> 3-Oxosteroid + NADH + CO2 + H+"
+      ]
+    },
+    "R12367": {
+      "id": "R12367",
+      "name": "beta-amyrin,[reduced NADPH---hemoprotein reductase]:oxygen oxidoreductase (16alpha-hydroxylating)",
+      "synonyms": [
+        "beta-Amyrin + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> 16alpha-Hydroxy-beta-amyrin + [Oxidized NADPH---hemoprotein reductase] + H2O"
+      ]
+    },
+    "R12368": {
+      "id": "R12368",
+      "name": "24-methylidenecycloartanol,ferrocytochrome-b5:oxygen oxidoreductase",
+      "synonyms": [
+        "24-Methylidenecycloartanol + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> 4alpha-(Hydroxymethyl)-4beta,14alpha-dimethyl-9beta,19-cyclo-5alpha-ergost-24(24(1))-en-3beta-ol + 2 Ferricytochrome b5 + H2O"
+      ]
+    },
+    "R12369": {
+      "id": "R12369",
+      "name": "4alpha-(hydroxymethyl)-4beta,14alpha-dimethyl-9beta,19-cyclo-5alpha-ergost-24(24(1))-en-3beta-ol,ferrocytochrome-b5:oxygen oxidoreductase",
+      "synonyms": [
+        "4alpha-(Hydroxymethyl)-4beta,14alpha-dimethyl-9beta,19-cyclo-5alpha-ergost-24(24(1))-en-3beta-ol + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> 4alpha-Formyl-4beta,14alpha-dimethyl-9beta,19-cyclo-5alpha-ergost-24(24(1))-en-3beta-ol + 2 Ferricytochrome b5 + 2 H2O"
+      ]
+    },
+    "R12370": {
+      "id": "R12370",
+      "name": "4alpha-formyl-4beta,14alpha-dimethyl-9beta,19-cyclo-5alpha-ergost-24(24(1))-en-3beta-ol,ferrocytochrome-b5:oxygen oxidoreductase",
+      "synonyms": [
+        "4alpha-Formyl-4beta,14alpha-dimethyl-9beta,19-cyclo-5alpha-ergost-24(24(1))-en-3beta-ol + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> 3beta-Hydroxy-4beta,14alpha-dimethyl-9beta,19-cyclo-5alpha-ergost-24(24(1))-en-4alpha-carboxylate + 2 Ferricytochrome b5 + H2O"
+      ]
+    },
+    "R12371": {
+      "id": "R12371",
+      "name": "3beta-hydroxy-4beta,14alpha-dimethyl-9beta,19-cyclo-5alpha-ergost-24(24(1))-en-4alpha-carboxylate:NAD+ 3-oxidoreductase (decarboxylating)",
+      "synonyms": [
+        "3beta-Hydroxy-4beta,14alpha-dimethyl-9beta,19-cyclo-5alpha-ergost-24(24(1))-en-4alpha-carboxylate + NAD+ <=> Cycloeucalenone + NADH + CO2 + H+"
+      ]
+    },
+    "R12372": {
+      "id": "R12372",
+      "name": "24-methylenelophenol,ferrocytochrome-b5:oxygen oxidoreductase",
+      "synonyms": [
+        "24-Methylenelophenol + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> 4alpha-(Hydroxymethyl)ergosta-7,24(24(1))-dien-3beta-ol + 2 Ferricytochrome b5 + H2O"
+      ]
+    },
+    "R12373": {
+      "id": "R12373",
+      "name": "4alpha-(hydroxymethyl)ergosta-7,24(241)-dien-3beta-ol,ferrocytochrome-b5:oxygen oxidoreductase",
+      "synonyms": [
+        "4alpha-(Hydroxymethyl)ergosta-7,24(24(1))-dien-3beta-ol + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> 4alpha-Formylergosta-7,24(24(1))-dien-3beta-ol + 2 Ferricytochrome b5 + 2 H2O"
+      ]
+    },
+    "R12374": {
+      "id": "R12374",
+      "name": "4alpha-formylergosta-7,24(24(1))-dien-3beta-ol,ferrocytochrome-b5:oxygen oxidoreductase",
+      "synonyms": [
+        "4alpha-Formylergosta-7,24(24(1))-dien-3beta-ol + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> 3beta-Hydroxyergosta-7,24(24(1))-dien-4alpha-carboxylate + 2 Ferricytochrome b5 + H2O"
+      ]
+    },
+    "R12375": {
+      "id": "R12375",
+      "name": "3beta-hydroxyergosta-7,24(24(1))-dien-4alpha-carboxylate:NAD+ 3-oxidoreductase (decarboxylating)",
+      "synonyms": [
+        "3beta-Hydroxyergosta-7,24(24(1))-dien-4alpha-carboxylate + NAD+ <=> Episterone + NADH + CO2 + H+"
+      ]
+    },
+    "R12376": {
+      "id": "R12376",
+      "name": "4alpha-carboxy-stigmasta-7,24(24(1))-dien-3beta-ol:NAD+ 3-oxidoreductase (decarboxylating)",
+      "synonyms": [
+        "4alpha-Carboxy-stigmasta-7,24(24(1))-dien-3beta-ol + NAD+ <=> Avenastenone + NADH + CO2 + H+"
+      ]
+    },
+    "R12377": {
+      "id": "R12377",
+      "name": "24-methylidenecycloartanol,ferrocytochrome-b5:oxygen oxidoreductase (C-4alpha-methyl-hydroxylating)",
+      "synonyms": [
+        "24-Methylidenecycloartanol + 6 Ferrocytochrome b5 + 3 Oxygen + 6 H+ <=> 3beta-Hydroxy-4beta,14alpha-dimethyl-9beta,19-cyclo-5alpha-ergost-24(24(1))-en-4alpha-carboxylate + 6 Ferricytochrome b5 + 4 H2O"
+      ]
+    },
+    "R12378": {
+      "id": "R12378",
+      "name": "24-methylenelophenol,ferrocytochrome-b5:oxygen oxidoreductase (C-4alpha-methyl-hydroxylating)",
+      "synonyms": [
+        "24-Methylenelophenol + 6 Ferrocytochrome b5 + 3 Oxygen + 6 H+ <=> 3beta-Hydroxyergosta-7,24(24(1))-dien-4alpha-carboxylate + 6 Ferricytochrome b5 + 4 H2O"
+      ]
+    },
+    "R12379": {
+      "id": "R12379",
+      "name": "24-ethylidenelophenol,ferrocytochrome-b5:oxygen oxidoreductase (C-4alpha-methyl-hydroxylating)",
+      "synonyms": [
+        "24-Ethylidenelophenol + 6 Ferrocytochrome b5 + 3 Oxygen + 6 H+ <=> 4alpha-Carboxy-stigmasta-7,24(24(1))-dien-3beta-ol + 6 Ferricytochrome b5 + 4 H2O"
+      ]
+    },
+    "R12380": {
+      "id": "R12380",
+      "name": "(S)-methylmalonyl-CoA:palmitoyl-[(hydroxy)phthioceranic acid synthase] methylmalonyltransferase (phthioceranyl-[(hydroxy)phthioceranic acid synthase]-forming)",
+      "synonyms": [
+        "8 (S)-Methylmalonyl-CoA + Palmitoyl-[(hydroxy)phthioceranic acid synthase] + 16 NADPH + 16 H+ <=> 8 CoA + C40-Phthioceranyl-[(hydroxy)phthioceranic acid synthase] + 16 NADP+ + 8 CO2 + 8 H2O"
+      ]
+    },
+    "R12381": {
+      "id": "R12381",
+      "name": "(S)-methylmalonyl-CoA:palmitoyl-[(hydroxy)phthioceranic acid synthase] methylmalonyltransferase (phthioceranyl-[(hydroxy)phthioceranic acid synthase]-forming)",
+      "synonyms": [
+        "7 (S)-Methylmalonyl-CoA + Palmitoyl-[(hydroxy)phthioceranic acid synthase] + 14 NADPH + 14 H+ <=> 7 CO2 + C37-Phthioceranyl-[(hydroxy)phthioceranic acid synthase] + 14 NADP+ + 7 CoA + 7 H2O"
+      ]
+    },
+    "R12382": {
+      "id": "R12382",
+      "name": "UDP-alpha-D-glucose:(20S)-protopanaxadiol 20-O-glucosyltransferase (configuration-inverting)",
+      "synonyms": [
+        "UDP-glucose + Protopanaxadiol <=> UDP + Ginsenoside C-K"
+      ]
+    },
+    "R12383": {
+      "id": "R12383",
+      "name": "UDP-alpha-D-glucose:protopanaxadiol-type ginsenoside 3-O-glucosyltransferase (configuration-retaining)",
+      "synonyms": [
+        "UDP-glucose + Protopanaxadiol <=> UDP + (20S)-Ginsenoside Rh2"
+      ]
+    },
+    "R12384": {
+      "id": "R12384",
+      "name": "UDP-alpha-D-glucose:protopanaxadiol-type ginsenoside 3-O-glucosyltransferase (configuration-retaining)",
+      "synonyms": [
+        "UDP-glucose + Ginsenoside C-K <=> UDP + Ginsenoside F2"
+      ]
+    },
+    "R12385": {
+      "id": "R12385",
+      "name": "UDP-alpha-D-glucose:3-O-glucosyl-protopanaxadiol-type ginsenoside 2''-O-glucosyltransferase",
+      "synonyms": [
+        "UDP-glucose + (20S)-Ginsenoside Rh2 <=> UDP + Ginsenoside Rg3"
+      ]
+    },
+    "R12386": {
+      "id": "R12386",
+      "name": "UDP-alpha-D-glucose:3-O-glucosyl-protopanaxadiol-type ginsenoside 2''-O-glucosyltransferase",
+      "synonyms": [
+        "UDP-glucose + Ginsenoside F2 <=> UDP + Ginsenoside Rd"
+      ]
+    },
+    "R12387": {
+      "id": "R12387",
+      "name": "UDP-alpha-D-glucose:ginsenoside F1 6-O-glucosyltransferase",
+      "synonyms": [
+        "UDP-glucose + Ginsenoside F1 <=> UDP + Ginsenoside Rg1"
+      ]
+    },
+    "R12388": {
+      "id": "R12388",
+      "name": "UDP-alpha-D-glucose:ginsenoside 6-O-glucosyltransferase",
+      "synonyms": [
+        "UDP-glucose + Protopanaxatriol <=> UDP + Ginsenoside Rh1"
+      ]
+    },
+    "R12389": {
+      "id": "R12389",
+      "name": "UDP-alpha-D-glucose:oleanolate 3-O-glucosyltransferase",
+      "synonyms": [
+        "UDP-glucose + Oleanolic acid <=> UDP + Oleanolate 3-O-beta-D-glucoside"
+      ]
+    },
+    "R12390": {
+      "id": "R12390",
+      "name": "O-acetyl-ADP-D-ribose carboxylesterase",
+      "synonyms": [
+        "3''-O-Acetyl-ADP-D-ribose + H2O <=> ADP-ribose + Acetate"
+      ]
+    },
+    "R12391": {
+      "id": "R12391",
+      "name": "O-acetyl-ADP-D-ribose carboxylesterase",
+      "synonyms": [
+        "O-Acetyl-ADP-ribose + H2O <=> ADP-ribose + Acetate"
+      ]
+    },
+    "R12392": {
+      "id": "R12392",
+      "name": "2,4-diacetylphloroglucinol acetylhydrolase",
+      "synonyms": [
+        "2,4-Diacetylphloroglucinol + H2O <=> 2-Acetylphloroglucinol + Acetate"
+      ]
+    },
+    "R12393": {
+      "id": "R12393",
+      "name": "palmitate:holo-[(hydroxy)phthioceranic acid synthase] ligase",
+      "synonyms": [
+        "ATP + Octadecanoic acid <=> Diphosphate + (Stearoyl)adenylate"
+      ]
+    },
+    "R12394": {
+      "id": "R12394",
+      "name": "palmitate:holo-[(hydroxy)phthioceranic acid synthase] ligase",
+      "synonyms": [
+        "(Stearoyl)adenylate + Peptidyl-carrier protein <=> AMP + Stearoyl-[(hydroxy)phthioceranic acid synthase]"
+      ]
+    },
+    "R12395": {
+      "id": "R12395",
+      "name": "palmitate:holo-[(hydroxy)phthioceranic acid synthase] ligase",
+      "synonyms": [
+        "ATP + Octadecanoic acid + Peptidyl-carrier protein <=> AMP + Diphosphate + Stearoyl-[(hydroxy)phthioceranic acid synthase]"
+      ]
+    },
+    "R12396": {
+      "id": "R12396",
+      "name": "palmitate:holo-[(hydroxy)phthioceranic acid synthase] ligase",
+      "synonyms": [
+        "ATP + Hexadecanoic acid <=> Diphosphate + (Palmitoyl)adenylate"
+      ]
+    },
+    "R12397": {
+      "id": "R12397",
+      "name": "palmitate:holo-[(hydroxy)phthioceranic acid synthase] ligase",
+      "synonyms": [
+        "(Palmitoyl)adenylate + Peptidyl-carrier protein <=> AMP + Palmitoyl-[(hydroxy)phthioceranic acid synthase]"
+      ]
+    },
+    "R12398": {
+      "id": "R12398",
+      "name": "palmitate:holo-[(hydroxy)phthioceranic acid synthase] ligase",
+      "synonyms": [
+        "ATP + Hexadecanoic acid + Peptidyl-carrier protein <=> AMP + Diphosphate + Palmitoyl-[(hydroxy)phthioceranic acid synthase]"
+      ]
+    },
+    "R12399": {
+      "id": "R12399",
+      "name": "cycloeucalenol:NADP+ 3-oxidoreductase",
+      "synonyms": [
+        "Cycloeucalenone + NADPH + H+ <=> Cycloeucalenol + NADP+"
+      ]
+    },
+    "R12400": {
+      "id": "R12400",
+      "name": "episterol:NADP+ 3-oxidoreductase",
+      "synonyms": [
+        "Episterone + NADPH + H+ <=> Episterol + NADP+"
+      ]
+    },
+    "R12401": {
+      "id": "R12401",
+      "name": "delta7-avenasterol:NADP+ 3-oxidoreductase",
+      "synonyms": [
+        "Avenastenone + NADPH + H+ <=> Delta7-Avenasterol + NADP+"
+      ]
+    },
+    "R12402": {
+      "id": "R12402",
+      "name": "3beta-hydroxysteroid:NADP+ 3-oxidoreductase",
+      "synonyms": [
+        "3beta-Hydroxysteroid + NADP+ <=> 3-Oxosteroid + NADPH + H+"
+      ]
+    },
+    "R12403": {
+      "id": "R12403",
+      "name": "4alpha-methylzymosterol,ferrocytochrome-b5:oxygen oxidoreductase (hydroxylating)",
+      "synonyms": [
+        "4alpha-Methylzymosterol + 6 Ferrocytochrome b5 + 3 Oxygen + 6 H+ <=> 4alpha-Carboxy-5alpha-cholesta-8,24-dien-3beta-ol + 6 Ferricytochrome b5 + 4 H2O"
+      ]
+    },
+    "R12404": {
+      "id": "R12404",
+      "name": "4alpha-carboxy-5alpha-cholesta-8,24-dien-3beta-ol:NADP+ 3-oxidoreductase (decarboxylating)",
+      "synonyms": [
+        "4alpha-Carboxy-5alpha-cholesta-8,24-dien-3beta-ol + NADP+ <=> Zymosterone + NADPH + H+ + CO2"
+      ]
+    },
+    "R12405": {
+      "id": "R12405",
+      "name": "zymosterol:NADP+ 3-oxidoreductase",
+      "synonyms": [
+        "Zymosterone + NADPH + H+ <=> Zymosterol + NADP+"
+      ]
+    },
+    "R12406": {
+      "id": "R12406",
+      "name": "3beta-hydroxysteroid-4alpha-carboxylate:NADP+ 3-oxidoreductase (decarboxylating)",
+      "synonyms": [
+        "3beta-Hydroxysteroid-4alpha-carboxylate + NADP+ <=> 3-Oxosteroid + CO2 + NADPH + H+"
+      ]
+    },
+    "R12407": {
+      "id": "R12407",
+      "name": "L-lysine,2-oxoglutarate:oxygen oxidoreductase (4-halogenating)",
+      "synonyms": [
+        "L-Lysine + 2-Oxoglutarate + Oxygen + Cl- + H+ <=> 4-Chloro-L-lysine + Succinate + CO2 + H2O"
+      ]
+    },
+    "R12408": {
+      "id": "R12408",
+      "name": "4-chloro-L-lysine,hydrogen-donor:oxygen oxidoreductase",
+      "synonyms": [
+        "4-Chloro-L-lysine + Reduced acceptor + Oxygen <=> 2-Amino-4-chloro-4-pentenoic acid + Acceptor + Formaldehyde + Ammonia + H2O"
+      ]
+    },
+    "R12409": {
+      "id": "R12409",
+      "name": "2-Amino-4-chloro-4-pentenoic acid <=> L-Propargylglycine + Cl- + H+",
+      "synonyms": []
+    },
+    "R12410": {
+      "id": "R12410",
+      "name": "L-Propargylglycine + L-Glutamate <=> gamma-L-Glutamyl-L-propargylglycine",
+      "synonyms": []
+    },
+    "R12411": {
+      "id": "R12411",
+      "name": "gamma-L-glutamyl-L-propargylglycine,2-oxoglutarate:oxygen oxidoreductase",
+      "synonyms": [
+        "gamma-L-Glutamyl-L-propargylglycine + 2-Oxoglutarate + Oxygen <=> L-gamma-Glutamyl-(3R)-L-beta-ethynylserine + Succinate + CO2"
+      ]
+    },
+    "R12412": {
+      "id": "R12412",
+      "name": "L-gamma-Glutamyl-(3R)-L-beta-ethynylserine + H2O <=> L-beta-Ethynylserine + L-Glutamate",
+      "synonyms": []
+    },
+    "R12413": {
+      "id": "R12413",
+      "name": "L-Tryptophan + L-Phenylalanine <=> Cyclo(L-Trp-L-Phe)",
+      "synonyms": []
+    },
+    "R12414": {
+      "id": "R12414",
+      "name": "S-adenosyl-L-methionine:cyclo(L-Trp-L-Phe) N-methyltransferase",
+      "synonyms": [
+        "Cyclo(L-Trp-L-Phe) + S-Adenosyl-L-methionine <=> N-Methyl-cyclo(L-Trp-L-Phe) + S-Adenosyl-L-homocysteine"
+      ]
+    },
+    "R12415": {
+      "id": "R12415",
+      "name": "2 N-Methyl-cyclo(L-Trp-L-Phe) <=> (-)-Ditryptophenaline",
+      "synonyms": []
+    },
+    "R12416": {
+      "id": "R12416",
+      "name": "(9Z,12Z)-octadeca-9,12-dienoyl-[glycerolipid],ferrocytochrome b5:oxygen oxidoreductase (15,16 cis-dehydrogenating)",
+      "synonyms": [
+        "Linoleoyl-[glycerolipid] + 2 Ferrocytochrome b5 + Oxygen + 2 H+ <=> alpha-Linolenoyl-[glycerolipid] + 2 Ferricytochrome b5 + 2 H2O"
+      ]
+    },
+    "R12417": {
+      "id": "R12417",
+      "name": "Anthranilate + L-Tryptophan + L-Alanine + 3 ATP <=> Fumiquinazoline F + 3 AMP + 3 Diphosphate + H2O",
+      "synonyms": []
+    },
+    "R12418": {
+      "id": "R12418",
+      "name": "Fumiquinazoline F + 3 [Reduced NADPH---hemoprotein reductase] + 2 Oxygen <=> Fumiquinazoline F-indoline-2',3'-diol + 3 [Oxidized NADPH---hemoprotein reductase] + 2 H2O",
+      "synonyms": []
+    },
+    "R12419": {
+      "id": "R12419",
+      "name": "Fumiquinazoline F-indoline-2',3'-diol + L-Alanine + ATP <=> Fumiquinazoline A + AMP + Diphosphate + H2O",
+      "synonyms": []
+    },
+    "R12420": {
+      "id": "R12420",
+      "name": "Fumiquinazoline A + Oxygen <=> Fumiquinazoline C + Hydrogen peroxide",
+      "synonyms": []
+    },
+    "R12421": {
+      "id": "R12421",
+      "name": "Fumiquinazoline C <=> Fumiquinazoline D",
+      "synonyms": []
+    },
+    "R12422": {
+      "id": "R12422",
+      "name": "[2Fe-2S]-ferredoxin:NADP+ oxidoreductase",
+      "synonyms": [
+        "2 Reduced [2Fe-2S] ferredoxin + NADP+ + H+ <=> 2 Oxidized [2Fe-2S] ferredoxin + NADPH"
+      ]
+    },
+    "R12423": {
+      "id": "R12423",
+      "name": "[lipoyl-carrier protein E2]-N6-(octanoyl)-L-lysine:[Fe-S] cluster scaffold protein carrying a [4Fe-4S]2+ cluster sulfurtransferase",
+      "synonyms": [
+        "[Lipoyl-carrier protein E2]-N6-octanoyl-L-lysine + [Fe-S] cluster scaffold protein carrying a [4Fe-4S]2+ cluster + 2 S-Adenosyl-L-methionine + 2 Reduced [2Fe-2S] ferredoxin + 8 H+ <=> Enzyme N6-(dihydrolipoyl)lysine + [Fe-S] cluster scaffold protein + 2 Hydrogen sulfide + 4 Fe2+ + 2 L-Methionine + 2 5'-Deoxyadenosine + 2 Oxidized [2Fe-2S] ferredoxin"
+      ]
+    },
+    "R12424": {
+      "id": "R12424",
+      "name": "[glycine cleavage system H]-N6-octanoyl-L-lysine:[Fe-S] cluster scaffold protein carrying a [4Fe-4S]2+ cluster sulfurtransferase",
+      "synonyms": [
+        "[Glycine cleavage system H]-N6-octanoyl-L-lysine + [Fe-S] cluster scaffold protein carrying a [4Fe-4S]2+ cluster + 2 S-Adenosyl-L-methionine + 2 Reduced [2Fe-2S] ferredoxin + 8 H+ <=> Dihydrolipoylprotein + [Fe-S] cluster scaffold protein + 2 Hydrogen sulfide + 4 Fe2+ + 2 L-Methionine + 2 5'-Deoxyadenosine + 2 Oxidized [2Fe-2S] ferredoxin"
+      ]
+    },
+    "R12425": {
+      "id": "R12425",
+      "name": "[glycine cleavage system H]-N6-octanoyl-L-lysine:[lipoyl-carrier protein E2]-L-lysine octanoyltransferase",
+      "synonyms": [
+        "[Glycine cleavage system H]-N6-octanoyl-L-lysine + Lipoyl-carrier protein E2 <=> Glycine cleavage system H + [Lipoyl-carrier protein E2]-N6-octanoyl-L-lysine"
+      ]
+    },
+    "R12426": {
+      "id": "R12426",
+      "name": "[glycine cleavage system H]-N6-lipoyl-L-lysine:[lipoyl-carrier protein]-L-lysine lipoyltransferase",
+      "synonyms": [
+        "Lipoylprotein + Lipoyl-carrier protein E2 <=> Glycine cleavage system H + Enzyme N6-(lipoyl)lysine"
+      ]
+    },
+    "R12427": {
+      "id": "R12427",
+      "name": "octanoyl-[acp]:lipoyl-carrier-protein-E2 N-octanoyltransferase",
+      "synonyms": [
+        "Octanoyl-[acp] + Lipoyl-carrier protein E2 <=> [Lipoyl-carrier protein E2]-N6-octanoyl-L-lysine + Acyl-carrier protein"
+      ]
+    },
+    "R12428": {
+      "id": "R12428",
+      "name": "octanoyl-[acp]:Glycine-cleavage-system-H N-octanoyltransferase",
+      "synonyms": [
+        "Octanoyl-[acp] + Glycine cleavage system H <=> [Glycine cleavage system H]-N6-octanoyl-L-lysine + Acyl-carrier protein"
+      ]
+    },
+    "R12429": {
+      "id": "R12429",
+      "name": "[lipoyl-carrier protein E2]-L-lysine:octanoate ligase (AMP-forming)",
+      "synonyms": [
+        "ATP + Octanoic acid + Lipoyl-carrier protein E2 <=> [Lipoyl-carrier protein E2]-N6-octanoyl-L-lysine + AMP + Diphosphate"
+      ]
+    },
+    "R12430": {
+      "id": "R12430",
+      "name": "octanoyl-[acp]:CoA S-octanoyltransferase",
+      "synonyms": [
+        "Octanoyl-[acp] + CoA <=> Octanoyl-CoA + Acyl-carrier protein"
+      ]
+    },
+    "R12431": {
+      "id": "R12431",
+      "name": "octanoyl-CoA:lipoyl-carrier-protein-E2 N-octanoyltransferase",
+      "synonyms": [
+        "Octanoyl-CoA + Lipoyl-carrier protein E2 <=> [Lipoyl-carrier protein E2]-N6-octanoyl-L-lysine + CoA"
+      ]
+    },
+    "R12432": {
+      "id": "R12432",
+      "name": "[glycine cleavage system H]-N6-[(R)-dihydrolipoyl]-L-lysine:[Lipoyl-carrier protein E2]-L-lysine dihydrolipoyltransferase",
+      "synonyms": [
+        "Dihydrolipoylprotein + Lipoyl-carrier protein E2 <=> Glycine cleavage system H + Enzyme N6-(dihydrolipoyl)lysine"
+      ]
+    },
+    "R12433": {
+      "id": "R12433",
+      "name": "[glycine cleavage system H]-L-lysine:(R)-lipoate ligase (AMP-forming)",
+      "synonyms": [
+        "ATP + (R)-Lipoate + Glycine cleavage system H <=> Lipoylprotein + AMP + Diphosphate"
+      ]
+    },
+    "R12434": {
+      "id": "R12434",
+      "name": "ATP + Dihydrolipoate <=> Dihydrolipoyl-AMP + Diphosphate",
+      "synonyms": []
+    },
+    "R12435": {
+      "id": "R12435",
+      "name": "Dihydrolipoyl-AMP + Lipoyl-carrier protein E2 <=> Enzyme N6-(lipoyl)lysine + AMP + 2 H+",
+      "synonyms": []
+    },
+    "R12436": {
+      "id": "R12436",
+      "name": "L-Tryptophan + L-Histidine <=> Histidyltryptophyldiketopiperazine",
+      "synonyms": []
+    },
+    "R12437": {
+      "id": "R12437",
+      "name": "Histidyltryptophyldiketopiperazine + Dimethylallyl diphosphate <=> Roquefortine D + Diphosphate",
+      "synonyms": []
+    },
+    "R12438": {
+      "id": "R12438",
+      "name": "Histidyltryptophyldiketopiperazine <=> Dehydrohistidyltryptophyldiketopiperazine",
+      "synonyms": []
+    },
+    "R12439": {
+      "id": "R12439",
+      "name": "Dehydrohistidyltryptophyldiketopiperazine + Dimethylallyl diphosphate <=> Roquefortine C + Diphosphate",
+      "synonyms": []
+    },
+    "R12440": {
+      "id": "R12440",
+      "name": "Roquefortine D <=> Roquefortine C",
+      "synonyms": []
+    },
+    "R12441": {
+      "id": "R12441",
+      "name": "Roquefortine C + 2 [Reduced NADPH---hemoprotein reductase] + 2 Oxygen <=> Glandicoline A + 2 [Oxidized NADPH---hemoprotein reductase] + 3 H2O",
+      "synonyms": []
+    },
+    "R12442": {
+      "id": "R12442",
+      "name": "Glandicoline A + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Glandicoline B + [Oxidized NADPH---hemoprotein reductase] + H2O",
+      "synonyms": []
+    },
+    "R12443": {
+      "id": "R12443",
+      "name": "Glandicoline B + S-Adenosyl-L-methionine <=> Meleagrin + S-Adenosyl-L-homocysteine",
+      "synonyms": []
+    },
+    "R12444": {
+      "id": "R12444",
+      "name": "Roquefortine C + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> N1-Hydroxy-roquefortine C + [Oxidized NADPH---hemoprotein reductase] + H2O",
+      "synonyms": []
+    },
+    "R12445": {
+      "id": "R12445",
+      "name": "N1-Hydroxy-roquefortine C + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Roquefortine L + [Oxidized NADPH---hemoprotein reductase] + 2 H2O",
+      "synonyms": []
+    },
+    "R12446": {
+      "id": "R12446",
+      "name": "Roquefortine L + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Glandicoline B + [Oxidized NADPH---hemoprotein reductase] + H2O",
+      "synonyms": []
+    },
+    "R12447": {
+      "id": "R12447",
+      "name": "N1-Hydroxy-roquefortine C + S-Adenosyl-L-methionine <=> Roquefortine F + S-Adenosyl-L-homocysteine",
+      "synonyms": []
+    },
+    "R12448": {
+      "id": "R12448",
+      "name": "Roquefortine F + [Reduced NADPH---hemoprotein reductase] + Oxygen <=> Neoxaline + [Oxidized NADPH---hemoprotein reductase] + H2O",
+      "synonyms": []
+    },
+    "R12449": {
+      "id": "R12449",
+      "name": "[lipoyl-carrier protein E2]-L-lysine:(R)-lipoate ligase (AMP-forming)",
+      "synonyms": [
+        "ATP + (R)-Lipoate + Lipoyl-carrier protein E2 <=> Enzyme N6-(lipoyl)lysine + AMP + Diphosphate"
+      ]
+    },
+    "R12450": {
+      "id": "R12450",
+      "name": "Lipoyl-AMP + Lipoyl-carrier protein E2 <=> Enzyme N6-(lipoyl)lysine + AMP",
+      "synonyms": []
+    },
+    "R12451": {
+      "id": "R12451",
+      "name": "(hydroxymethyl)phosphonate:oxygen 1-oxidoreductase (formate-forming)",
+      "synonyms": [
+        "Hydroxymethylphosphonate + Oxygen <=> Formate + Orthophosphate"
+      ]
+    },
+    "R12452": {
+      "id": "R12452",
+      "name": "methylphosphonate,2-oxoglutarate:oxygen oxidoreductase (1-hydroxylating)",
+      "synonyms": [
+        "Methylphosphonate + 2-Oxoglutarate + Oxygen <=> Hydroxymethylphosphonate + Succinate + CO2"
+      ]
+    },
+    "R12453": {
+      "id": "R12453",
+      "name": "cyclohexane-1-carbonyl-CoA:NADP+ 1-oxidoreductase",
+      "synonyms": [
+        "Cyclohexane-1-carboxyl-CoA + NADP+ <=> Cyclohex-1-ene-1-carboxyl-CoA + NADPH + H+"
+      ]
+    },
+    "R12454": {
+      "id": "R12454",
+      "name": "Fe-coproporphyrin III + Hydrogen peroxide <=> Harderoheme III + CO2 + 2 H2O",
+      "synonyms": []
+    },
+    "R12455": {
+      "id": "R12455",
+      "name": "Harderoheme III + Hydrogen peroxide <=> Heme + CO2 + 2 H2O",
+      "synonyms": []
+    },
+    "R12456": {
+      "id": "R12456",
+      "name": "(2E,6E)-farnesyl-diphosphate diphosphate-lyase (valerianol-forming)",
+      "synonyms": [
+        "trans,trans-Farnesyl diphosphate + H2O <=> Valerianol + Diphosphate"
+      ]
+    },
+    "R12457": {
+      "id": "R12457",
+      "name": "methanethiol:NAD+ oxidoreductase (dimethyl disulfide-forming)",
+      "synonyms": [
+        "2 Methanethiol + NAD+ <=> Dimethyl disulfide + NADH + H+"
+      ]
+    },
+    "R12458": {
+      "id": "R12458",
+      "name": "S-adenosyl-L-methionine:cycloartenol 24-C-methyltransferase",
+      "synonyms": [
+        "S-Adenosyl-L-methionine + Cycloartenol <=> S-Adenosyl-L-homocysteine + Cyclolaudenol"
+      ]
+    },
+    "R12459": {
+      "id": "R12459",
+      "name": "protein N6,N6,N6-trimethyl-L-lysine,2-oxoglutarate:oxygen oxidoreductase",
+      "synonyms": [
+        "Protein N6,N6,N6-trimethyl-L-lysine + 2 2-Oxoglutarate + 2 Oxygen <=> Protein N6-methyl-L-lysine + 2 Succinate + 2 Formaldehyde + 2 CO2"
+      ]
+    },
+    "R12460": {
+      "id": "R12460",
+      "name": "protein N6,N6,N6-trimethyl-L-lysine,2-oxoglutarate:oxygen oxidoreductase",
+      "synonyms": [
+        "Protein N6,N6,N6-trimethyl-L-lysine + 2-Oxoglutarate + Oxygen <=> Protein N6,N6-dimethyl-L-lysine + Succinate + Formaldehyde + CO2"
+      ]
+    },
+    "R12461": {
+      "id": "R12461",
+      "name": "protein N6,N6,N6-trimethyl-L-lysine,2-oxoglutarate:oxygen oxidoreductase",
+      "synonyms": [
+        "Protein N6,N6,N6-trimethyl-L-lysine + 3 2-Oxoglutarate + 3 Oxygen <=> Protein lysine + 3 Succinate + 3 Formaldehyde + 3 CO2"
+      ]
+    },
+    "R12462": {
+      "id": "R12462",
+      "name": "protein-N6,N6-dimethyl-L-lysine:acceptor oxidoreductase (demethylating)",
+      "synonyms": [
+        "Protein N6,N6-dimethyl-L-lysine + 2 Acceptor + 2 H2O <=> Protein lysine + 2 Formaldehyde + 2 Reduced acceptor"
+      ]
+    },
+    "R12463": {
+      "id": "R12463",
+      "name": "protein-N6,N6-dimethyl-L-lysine:acceptor oxidoreductase (demethylating)",
+      "synonyms": [
+        "Protein N6,N6-dimethyl-L-lysine + Acceptor + H2O <=> Protein N6-methyl-L-lysine + Formaldehyde + Reduced acceptor"
+      ]
+    },
+    "R12464": {
+      "id": "R12464",
+      "name": "protein N6-methyl-L-lysine:acceptor oxidoreductase (demethylating)",
+      "synonyms": [
+        "Protein N6-methyl-L-lysine + Acceptor + H2O <=> Protein lysine + Formaldehyde + Reduced acceptor"
+      ]
+    },
+    "R12465": {
+      "id": "R12465",
+      "name": "stearoyl-CoA:2-O-sulfo-alpha,alpha-trehalose 2'-stearoyltransferase",
+      "synonyms": [
+        "Stearoyl-CoA + 2-Sulfotrehalose <=> 2-O-Sulfo-2'-stearoyl-alpha,alpha-trehalose + CoA"
+      ]
+    },
+    "R12466": {
+      "id": "R12466",
+      "name": "palmitoyl-CoA:2-O-sulfo-alpha,alpha-trehalose 2'-palmitoyltransferase",
+      "synonyms": [
+        "Palmitoyl-CoA + 2-Sulfotrehalose <=> 2-O-Sulfo-2'-palmitoyl-alpha,alpha-trehalose + CoA"
+      ]
+    },
+    "R12467": {
+      "id": "R12467",
+      "name": "malonyl-CoA/(S)-methylmalonyl-CoA:4-nitrobenzoyl-CoA (methyl)malonyltransferase (demethylluteothin-forming)",
+      "synonyms": [
+        "4-Nitrobenzoyl-CoA + Malonyl-CoA + 4 (S)-Methylmalonyl-CoA + 4 NADPH + 4 H+ <=> Demethylluteothin + 5 CO2 + 6 CoA + 4 NADP+ + 3 H2O"
+      ]
+    },
+    "R12468": {
+      "id": "R12468",
+      "name": "malonyl-CoA/(S)-methylmalonyl-CoA:4-nitrobenzoyl-CoA (methyl)malonyltransferase (demethyldeoxyspectinabilin-forming)",
+      "synonyms": [
+        "4-Nitrobenzoyl-CoA + Malonyl-CoA + 6 (S)-Methylmalonyl-CoA + 6 NADPH + 6 H+ <=> Demethyldeoxyspectinabilin + 7 CO2 + 8 CoA + 6 NADP+ + 5 H2O"
+      ]
+    },
+    "R12469": {
+      "id": "R12469",
+      "name": "UDP-alpha-D-glucose:enterobactin 5'-C-beta-D-glucosyltransferase (configuration-inverting)",
+      "synonyms": [
+        "UDP-glucose + Enterochelin <=> UDP + Monoglucosyl-enterobactin"
+      ]
+    },
+    "R12470": {
+      "id": "R12470",
+      "name": "UDP-alpha-D-glucose:monoglucosyl-enterobactin 5'-C-beta-D-glucosyltransferase (configuration-inverting)",
+      "synonyms": [
+        "UDP-glucose + Monoglucosyl-enterobactin <=> UDP + Diglucosyl-enterobactin"
+      ]
+    },
+    "R12471": {
+      "id": "R12471",
+      "name": "UDP-alpha-D-glucose:diglucosyl-enterobactin 5'-C-beta-D-glucosyltransferase (configuration-inverting)",
+      "synonyms": [
+        "UDP-glucose + Diglucosyl-enterobactin <=> UDP + Triglucosyl-enterobactin"
+      ]
+    },
+    "R12472": {
+      "id": "R12472",
+      "name": "GDP-alpha-D-mannose:inositol phospho-(2'R)-2'-hydroxyphytoceramide mannosyltransferase",
+      "synonyms": [
+        "GDP-mannose + Very-long-chain inositol phospho-(2'R)-2'-hydroxyphytoceramide <=> Very-long-chain mannosylinositol phospho-(2'R)-2'-hydroxyphytoceramide + GDP"
+      ]
+    },
+    "R12473": {
+      "id": "R12473",
+      "name": "apo-salmochelin esterase",
+      "synonyms": [
+        "Enterochelin + H2O <=> N-(2,3-Dihydroxybenzoyl)-L-serine trimer"
+      ]
+    },
+    "R12474": {
+      "id": "R12474",
+      "name": "apo-triglucosyl-salmochelin esterase",
+      "synonyms": [
+        "Triglucosyl-enterobactin + H2O <=> Triglucosyl-(2,3-dihydroxybenzoylserine)3"
+      ]
+    },
+    "R12475": {
+      "id": "R12475",
+      "name": "apo-diglucosyl-salmochelin esterase",
+      "synonyms": [
+        "Diglucosyl-enterobactin + H2O <=> Diglucosyl-(2,3-dihydroxybenzoylserine)3"
+      ]
+    },
+    "R12476": {
+      "id": "R12476",
+      "name": "apo-monoglucosyl-salmochelin esterase",
+      "synonyms": [
+        "Monoglucosyl-enterobactin + H2O <=> Monoglucosyl-(2,3-dihydroxybenzoylserine)3"
+      ]
+    },
+    "R12477": {
+      "id": "R12477",
+      "name": "Man9GlcNAc2-[protein]2-alpha-mannohydrolase (configuration-inverting)",
+      "synonyms": [
+        "G00374 + H2O <=> G00272 + D-Mannose"
+      ]
+    },
+    "R12478": {
+      "id": "R12478",
+      "name": "Nalpha-acyl-L-glutamine amidohydrolase (carboxylate-forming)",
+      "synonyms": [
+        "N-Acyl-L-glutamine + H2O <=> L-Glutamine + Carboxylate"
+      ]
+    },
+    "R12479": {
+      "id": "R12479",
+      "name": "G10694 + 3 H2O <=> G00012 + 3 D-Mannose",
+      "synonyms": []
+    },
+    "R12481": {
+      "id": "R12481",
+      "name": "Bilirubin + Oxidised coenzyme F420-(gamma-Glu)n <=> Biliverdin + Reduced coenzyme F420-(gamma-Glu)n",
+      "synonyms": []
+    },
+    "R12482": {
+      "id": "R12482",
+      "name": "UDP-D-glucuronate + T antigen <=> UDP + Glucuronylated core 1 glycans (linear)",
+      "synonyms": []
+    },
+    "R12483": {
+      "id": "R12483",
+      "name": "nepetalactol:NAD+ 1-oxidoreductase",
+      "synonyms": [
+        "(+)-cis,cis-Nepetalactol + NAD+ <=> (+)-cis,cis-Nepetalactone + NADH + H+"
+      ]
+    },
+    "R12484": {
+      "id": "R12484",
+      "name": "nepetalactol:NAD+ 1-oxidoreductase",
+      "synonyms": [
+        "cis-trans-Nepetalactol + NAD+ <=> Nepetalactone cis-trans-form + NADH + H+"
+      ]
+    },
+    "R12485": {
+      "id": "R12485",
+      "name": "isophthalate:CoA ligase (AMP-forming)",
+      "synonyms": [
+        "ATP + Isophthalate + CoA <=> AMP + Diphosphate + Isophthalyl-CoA"
+      ]
+    },
+    "R12486": {
+      "id": "R12486",
+      "name": "isophthalyl-CoA carboxy-lyase",
+      "synonyms": [
+        "Isophthalyl-CoA <=> Benzoyl-CoA + CO2"
+      ]
+    },
+    "R12487": {
+      "id": "R12487",
+      "name": "(R)-3-(aryl)lactoyl-CoA hydro-lyase",
+      "synonyms": [
+        "(R)-Phenyllactyl-CoA <=> (E)-Cinnamoyl-CoA + H2O"
+      ]
+    },
+    "R12488": {
+      "id": "R12488",
+      "name": "(R)-3-(aryl)lactoyl-CoA hydro-lyase",
+      "synonyms": [
+        "(R)-3-(4-Hydroxyphenyl)lactoyl-CoA <=> p-Coumaroyl-CoA + H2O"
+      ]
+    },
+    "R12489": {
+      "id": "R12489",
+      "name": "(R)-3-(aryl)lactoyl-CoA hydro-lyase",
+      "synonyms": [
+        "(R)-3-(Indol-3-yl)lactoyl-CoA <=> 3-(Indol-3-yl)acryloyl-CoA + H2O"
+      ]
+    },
+    "R12490": {
+      "id": "R12490",
+      "name": "pre-sodorifen diphosphate-lyase [sodorifen-forming]",
+      "synonyms": [
+        "Pre-sodorifen diphosphate <=> Sodorifen + Diphosphate"
+      ]
+    },
+    "R12491": {
+      "id": "R12491",
+      "name": "4-amino-4-deoxychorismate pyruvatemutase",
+      "synonyms": [
+        "4-Amino-4-deoxychorismate <=> 4-Amino-4-deoxyprephenate"
+      ]
+    },
+    "R12492": {
+      "id": "R12492",
+      "name": "(E)-4-coumaroyl-CoA:(R)-3-(4-hydroxyphenyl)lactate CoA-transferase",
+      "synonyms": [
+        "p-Coumaroyl-CoA + (R)-3-(4-Hydroxyphenyl)lactate <=> 4-Coumarate + (R)-3-(4-Hydroxyphenyl)lactoyl-CoA"
+      ]
+    },
+    "R12493": {
+      "id": "R12493",
+      "name": "3-(indol-3-yl)acryloyl-CoA:(R)-3-(indol-3-yl)lactate CoA-transferase",
+      "synonyms": [
+        "3-(Indol-3-yl)acryloyl-CoA + (R)-(Indol-3-yl)lactate <=> 3-Indoleacrylate + (R)-3-(Indol-3-yl)lactoyl-CoA"
+      ]
+    },
+    "R12494": {
+      "id": "R12494",
+      "name": "marinolic acid:CoA ligase (AMP-forming)",
+      "synonyms": [
+        "ATP + Marinolic acid <=> AMP + Diphosphate + Marinoloyl-CoA"
+      ]
+    },
+    "R12495": {
+      "id": "R12495",
+      "name": "marinolic acid:CoA ligase (AMP-forming)",
+      "synonyms": [
+        "ATP + Pseudomonic acid <=> AMP + Diphosphate + Pseudomonoyl-CoA"
+      ]
+    },
+    "R12496": {
+      "id": "R12496",
+      "name": "long-chain acyl-CoA:sterol O-acyltransferase",
+      "synonyms": [
+        "Long-chain acyl-CoA + Sterol <=> CoA + Long-chain 3-hydroxysterol ester"
+      ]
+    },
+    "R12497": {
+      "id": "R12497",
+      "name": "S-adenosyl-L-methionine:cytidine 5'-{[hydroxy(2-hydroxyethyl)phosphonoyl]phosphate} C-methyltransferase",
+      "synonyms": [
+        "2 S-Adenosyl-L-methionine + Cytidine 5'-{[hydroxy(2-hydroxyethyl)phosphonoyl]phosphate} + Reduced acceptor <=> S-Adenosyl-L-homocysteine + 5'-Deoxyadenosine + L-Methionine + Cytidine 5'-{[hydroxy(2-hydroxypropyl)phosphonoyl]phosphate} + Acceptor"
+      ]
+    },
+    "R12498": {
+      "id": "R12498",
+      "name": "2-Hydroxyethylphosphonate + CTP <=> Cytidine 5'-{[hydroxy(2-hydroxyethyl)phosphonoyl]phosphate} + Diphosphate",
+      "synonyms": []
+    },
+    "R12499": {
+      "id": "R12499",
+      "name": "Cytidine 5'-{[hydroxy(2-hydroxypropyl)phosphonoyl]phosphate} + H2O <=> (S)-2-Hydroxypropylphosphonate + CMP",
+      "synonyms": []
+    },
+    "R12500": {
+      "id": "R12500",
+      "name": "queuosine34 in tRNA:acceptor oxidoreductase",
+      "synonyms": [
+        "tRNA queuine + Acceptor + H2O <=> Epoxyqueuosine in tRNA + Reduced acceptor"
+      ]
+    },
+    "R12501": {
+      "id": "R12501",
+      "name": "Indole-3-acetate + 2-Oxoglutarate + Oxygen <=> 2-Oxoindole-3-acetate + Succinate + CO2",
+      "synonyms": []
+    },
+    "R12502": {
+      "id": "R12502",
+      "name": "D-apiofuranose:NAD+ 1-oxidoreductase",
+      "synonyms": [
+        "D-Apiofuranose + NAD+ <=> D-Apionolactone + NADH + H+"
+      ]
+    },
+    "R12503": {
+      "id": "R12503",
+      "name": "D-apionate:NAD+ oxidoreductase (isomerizing)",
+      "synonyms": [
+        "D-Apionate + NAD+ <=> 3-Oxo-D-isoapionate + NADH + H+"
+      ]
+    },
+    "R12504": {
+      "id": "R12504",
+      "name": "phenylacetate carboxy-lyase",
+      "synonyms": [
+        "Phenylacetic acid <=> Toluene + CO2"
+      ]
+    },
+    "R12505": {
+      "id": "R12505",
+      "name": "hydrogen sulfide:L-aspartate-4-semialdehyde sulfurtransferase",
+      "synonyms": [
+        "Hydrogen sulfide + L-Aspartate 4-semialdehyde + 2 Reduced ferredoxin + 2 H+ <=> L-Homocysteine + H2O + 2 Oxidized ferredoxin"
+      ]
+    },
+    "R12506": {
+      "id": "R12506",
+      "name": "L-arginine:L-lysine amidinotransferase",
+      "synonyms": [
+        "L-Arginine + L-Lysine <=> L-Ornithine + Homoarginine"
+      ]
+    },
+    "R12507": {
+      "id": "R12507",
+      "name": "L-glutamine:4-(methylsulfanyl)-2-oxobutanoate aminotransferase",
+      "synonyms": [
+        "L-Glutamine + 4-Methylthio-2-oxobutanoic acid <=> 2-Oxoglutaramate + L-Methionine"
+      ]
+    },
+    "R12508": {
+      "id": "R12508",
+      "name": "ubiquinol:oxygen oxidoreductase (superoxide-forming)",
+      "synonyms": [
+        "2 Oxygen + Ubiquinol <=> 2 Superoxide + Ubiquinone + 2 H+"
+      ]
+    },
+    "R12509": {
+      "id": "R12509",
+      "name": "7-deoxycylindrospermopsin,2-oxoglutarate:oxygen oxidoreductase (7-hydroxylating)",
+      "synonyms": [
+        "7-Deoxycylindrospermopsin + 2-Oxoglutarate + Oxygen <=> Cylindrospermopsin + Succinate + CO2"
+      ]
+    },
+    "R12510": {
+      "id": "R12510",
+      "name": "7-deoxycylindrospermopsin,2-oxoglutarate:oxygen oxidoreductase (7-hydroxylating)",
+      "synonyms": [
+        "7-Deoxycylindrospermopsin + 2-Oxoglutarate + Oxygen <=> 7-epi-Cylindrospermopsin + Succinate + CO2"
+      ]
+    },
+    "R12511": {
+      "id": "R12511",
+      "name": "L-proline betaine,NADH:oxygen oxidoreductase (formaldehyde-forming)",
+      "synonyms": [
+        "Stachydrine + NADH + H+ + Oxygen <=> N-Methyl-L-proline + Formaldehyde + NAD+ + H2O"
+      ]
+    },
+    "R12512": {
+      "id": "R12512",
+      "name": "L-proline betaine,NADPH:oxygen oxidoreductase (formaldehyde-forming)",
+      "synonyms": [
+        "Stachydrine + NADPH + H+ + Oxygen <=> N-Methyl-L-proline + Formaldehyde + NADP+ + H2O"
+      ]
+    },
+    "R12513": {
+      "id": "R12513",
+      "name": "(indol-3-yl)acetyl-L-aspartate amidohydrolase",
+      "synonyms": [
+        "(Indol-3-yl)acetyl-L-aspartate + H2O <=> Indole-3-acetate + L-Aspartate"
+      ]
+    },
+    "R12514": {
+      "id": "R12514",
+      "name": "cysteinylglycine-S-conjugate dipeptide hydrolase",
+      "synonyms": [
+        "R-S-Cysteinylglycine + H2O <=> L-Cysteine-S-conjugate + Glycine"
+      ]
+    },
+    "R12515": {
+      "id": "R12515",
+      "name": "ethyl acetate acetohydrolase",
+      "synonyms": [
+        "Ethyl acetate + H2O <=> Acetate + Ethanol"
+      ]
+    },
+    "R12516": {
+      "id": "R12516",
+      "name": "3-methylbutyl acetate acetohydrolase",
+      "synonyms": [
+        "Isoamyl acetate + H2O <=> 3-Methylbutanol + Acetate"
+      ]
+    },
+    "R12517": {
+      "id": "R12517",
+      "name": "(S)-8-oxocitronellyl enol:NAD+ oxidoreductase",
+      "synonyms": [
+        "(6E)-8-Oxogeranial + NADH + H+ <=> (S)-8-Oxocitronellyl enol + NAD+"
+      ]
+    },
+    "R12518": {
+      "id": "R12518",
+      "name": "(S)-8-oxocitronellyl enol:NADP+ oxidoreductase",
+      "synonyms": [
+        "(6E)-8-Oxogeranial + NADPH + H+ <=> (S)-8-Oxocitronellyl enol + NADP+"
+      ]
+    },
+    "R12520": {
+      "id": "R12520",
+      "name": "(S)-8-oxocitronellyl enol cyclase [(+)-cis,trans-nepetalactol-forming]",
+      "synonyms": [
+        "(S)-8-Oxocitronellyl enol <=> cis-trans-Nepetalactol"
+      ]
+    },
+    "R12521": {
+      "id": "R12521",
+      "name": "(S)-8-oxocitronellyl enol cyclase [(+)-cis,cis-nepetalactol-forming]",
+      "synonyms": [
+        "(S)-8-Oxocitronellyl enol <=> (+)-cis,cis-Nepetalactol"
+      ]
+    },
+    "R12522": {
+      "id": "R12522",
+      "name": "(+)-(1S,2S)-pseudoephedrine:NAD+ 1-oxoreductase",
+      "synonyms": [
+        "(+)-(1S,2S)-Pseudoephedrine + NAD+ <=> (S)-2-(Methylamino)-1-phenylpropan-1-one + NADH + H+"
+      ]
+    },
+    "R12523": {
+      "id": "R12523",
+      "name": "4-amino-4-deoxyprephenate:NAD+ oxidoreductase (decarboxylating)",
+      "synonyms": [
+        "4-Amino-4-deoxyprephenate + NAD+ <=> 3-(4-Aminophenyl)pyruvate + NADH + CO2 + H+"
+      ]
+    },
+    "R12524": {
+      "id": "R12524",
+      "name": "(2E,6E)-farnesyl diphosphate 10-C-methyltransferase (cyclyzing, pre-sodorifen diphosphate producing)",
+      "synonyms": [
+        "S-Adenosyl-L-methionine + trans,trans-Farnesyl diphosphate <=> S-Adenosyl-L-homocysteine + Pre-sodorifen diphosphate"
+      ]
+    },
+    "R12525": {
+      "id": "R12525",
+      "name": "GDP-alpha-D-mannose:[alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-Man-(1->2)-alpha-D-Man-(1->2)]n-alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-GlcNAc-diphospho-ditrans,octacis-undecaprenol 2-alpha-mannosyltransferase (configuration-retaining)",
+      "synonyms": [
+        "2 GDP-mannose + [alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-Man-(1->2)-alpha-D-Man-(1->2)]n-alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-GlcNAc-diphospho-ditrans,octacis-undecaprenol <=> 2 GDP + alpha-D-Man-(1->2)-alpha-D-Man-(1->2)-[alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-Man-(1->2)-alpha-D-Man-(1->2)]n-alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-GlcNAc-diphospho-ditrans,octacis-undecaprenol"
+      ]
+    },
+    "R12526": {
+      "id": "R12526",
+      "name": "GDP-alpha-D-mannose:alpha-D-Man-(1->2)-alpha-D-Man-(1->2)-[alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-Man-(1->2)-alpha-D-Man-(1->2)]n-alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-GlcNAc-diphospho-ditrans,octacis-undecaprenol 3-alpha-mannosyltransferase (configuration-retaining)",
+      "synonyms": [
+        "2 GDP-mannose + alpha-D-Man-(1->2)-alpha-D-Man-(1->2)-[alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-Man-(1->2)-alpha-D-Man-(1->2)]n-alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-GlcNAc-diphospho-ditrans,octacis-undecaprenol <=> 2 GDP + [alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-Man-(1->2)-alpha-D-Man-(1->2)]n-alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-Man-(1->3)-alpha-D-GlcNAc-diphospho-ditrans,octacis-undecaprenol"
+      ]
+    },
+    "R12527": {
+      "id": "R12527",
+      "name": "sucrose:(1->3)-alpha-D-glucan 3-alpha-D-glucosyltransferase",
+      "synonyms": [
+        "Sucrose + 1,3-alpha-D-Glucan(n) <=> D-Fructose + 1,3-alpha-D-Glucan(n+1)"
+      ]
+    },
+    "R12528": {
+      "id": "R12528",
+      "name": "sucrose:(1->6)-alpha-D-glucan 2-alpha-D-glucosyl-transferase",
+      "synonyms": [
+        "Sucrose + Dextran <=> D-Fructose + (1->6)-alpha-D-Glucan containing a (1->2)-alpha-D-glucose branch"
+      ]
+    },
+    "R12529": {
+      "id": "R12529",
+      "name": "DP-alpha-D-mannose:(1->2)-beta-D-mannan mannosyltransferase (configuration-inverting)",
+      "synonyms": [
+        "GDP-mannose + 1,2-beta-Oligomannan(n) <=> GDP + 1,2-beta-Oligomannan(n+1)"
+      ]
+    },
+    "R12530": {
+      "id": "R12530",
+      "name": "ATP:amicoumacin A 2-phosphotransferase",
+      "synonyms": [
+        "ATP + Amicoumacin A <=> ADP + Amicoumacin A 2-phosphate"
+      ]
+    },
+    "R12531": {
+      "id": "R12531",
+      "name": "amicoumacin 2-phosphate phosphohydrolase",
+      "synonyms": [
+        "Amicoumacin A 2-phosphate + H2O <=> Amicoumacin A + Orthophosphate"
+      ]
+    },
+    "R12532": {
+      "id": "R12532",
+      "name": "8-oxo-GTP diphosphohydrolase",
+      "synonyms": [
+        "8-Oxo-GTP + H2O <=> 8-Oxo-GDP + Orthophosphate"
+      ]
+    },
+    "R12533": {
+      "id": "R12533",
+      "name": "8-oxo-dGTP diphosphohydrolase",
+      "synonyms": [
+        "8-Oxo-dGTP + H2O <=> 8-Oxo-dGDP + Orthophosphate"
+      ]
+    },
+    "R12534": {
+      "id": "R12534",
+      "name": "phloretate:electron-transfer flavoprotein 2,3-oxidoreductase",
+      "synonyms": [
+        "Phloretate + Electron-transferring flavoprotein <=> 4-Coumarate + Reduced electron-transferring flavoprotein"
+      ]
+    },
+    "R12535": {
+      "id": "R12535",
+      "name": "3-(phenyl)propanoate:electron-transfer flavoprotein 2,3-oxidoreductase",
+      "synonyms": [
+        "Phenylpropanoate + Electron-transferring flavoprotein <=> trans-Cinnamate + Reduced electron-transferring flavoprotein"
+      ]
+    },
+    "R12536": {
+      "id": "R12536",
+      "name": "3-(1H-indol-3-yl)propanoate:electron-transfer flavoprotein 2,3-oxidoreductase",
+      "synonyms": [
+        "3-(1H-Indol-3-yl)propanoate + Electron-transferring flavoprotein <=> 3-Indoleacrylate + Reduced electron-transferring flavoprotein"
+      ]
+    },
+    "R12537": {
+      "id": "R12537",
+      "name": "3-sn-phosphatidyl-L-serine sn-1 acylhydrolase",
+      "synonyms": [
+        "1-Acyl-sn-glycero-3-phosphoserine + H2O <=> Glycerophosphoserine + Fatty acid"
+      ]
+    },
+    "R12538": {
+      "id": "R12538",
+      "name": "Dibenzothiophene-5,5-dioxide + Reduced FMN + Oxygen <=> 2'-Hydroxybiphenyl-2-sulfinate + FMN-N5-oxide",
+      "synonyms": []
+    },
+    "R12539": {
+      "id": "R12539",
+      "name": "FMN-N5-oxide + NADH <=> FMN + H2O + NAD+ + H+",
+      "synonyms": []
+    },
+    "R12540": {
+      "id": "R12540",
+      "name": "L-phenylalanine,tetrahydropteridine:oxygen oxidoreductase (4-hydroxylating)",
+      "synonyms": [
+        "L-Phenylalanine + Tetrahydropteridine + Oxygen <=> L-Tyrosine + 4a-Hydroxy-5,6,7,8-tetrahydropteridine"
+      ]
+    },
+    "R12541": {
+      "id": "R12541",
+      "name": "L-tyrosine,tetrahydropteridine:oxygen oxidoreductase (3-hydroxylating)",
+      "synonyms": [
+        "L-Tyrosine + Tetrahydropteridine + Oxygen <=> 3,4-Dihydroxy-L-phenylalanine + 4a-Hydroxy-5,6,7,8-tetrahydropteridine"
+      ]
+    },
+    "R12542": {
+      "id": "R12542",
+      "name": "L-tryptophan,tetrahydropteridine:oxygen oxidoreductase (5-hydroxylating)",
+      "synonyms": [
+        "L-Tryptophan + Tetrahydropteridine + Oxygen <=> 5-Hydroxy-L-tryptophan + 4a-Hydroxy-5,6,7,8-tetrahydropteridine"
+      ]
+    },
+    "R12543": {
+      "id": "R12543",
+      "name": "L-phenylalanine,tetrahydropteridine:oxygen oxidoreductase (3-hydroxylating)",
+      "synonyms": [
+        "L-Phenylalanine + Tetrahydropteridine + Oxygen <=> 3-Hydroxy-L-phenylalanine + 4a-Hydroxy-5,6,7,8-tetrahydropteridine"
+      ]
+    },
+    "R12544": {
+      "id": "R12544",
+      "name": "uracil,FMNH2:oxygen oxidoreductase (uracil hydroxylating, ring-opening)",
+      "synonyms": [
+        "Uracil + Reduced FMN + Oxygen + NADH <=> Ureidoacrylate + H2O + FMN + NAD+ + H+"
+      ]
+    },
+    "R12545": {
+      "id": "R12545",
+      "name": "Uracil + Reduced FMN + Oxygen <=> Ureidoacrylate + FMN-N5-oxide",
+      "synonyms": []
+    },
+    "R12546": {
+      "id": "R12546",
+      "name": "thymine,FMNH2:oxygen oxidoreductase (thymine hydroxylating, ring-opening)",
+      "synonyms": [
+        "Thymine + Reduced FMN + Oxygen + NADH <=> Methylureidoacrylate + H2O + FMN + NAD+ + H+"
+      ]
+    },
+    "R12547": {
+      "id": "R12547",
+      "name": "Thymine + Reduced FMN + Oxygen <=> Methylureidoacrylate + FMN-N5-oxide",
+      "synonyms": []
+    },
+    "R12548": {
+      "id": "R12548",
+      "name": "5,10-methylenetetrahydrofolate:tRNA (uracil54-C5)-methyltransferase",
+      "synonyms": [
+        "5,10-Methylenetetrahydrofolate + tRNA containing uridine at position 54 + NADH + H+ <=> Tetrahydrofolate + tRNA containing ribothymidine at position 54 + NAD+"
+      ]
+    },
+    "R12549": {
+      "id": "R12549",
+      "name": "Acetyl-CoA + dTDP-3-amino-3,6-dideoxy-D-glucose <=> CoA + dTDP-3-acetamido-3,6-dideoxy-alpha-D-glucose",
+      "synonyms": []
+    },
+    "R12551": {
+      "id": "R12551",
+      "name": "UDP-2-acetamido-2,6-dideoxy-beta-L-mannose <=> UDP-2-acetamido-2,6-dideoxy-beta-L-glucose",
+      "synonyms": []
+    },
+    "R12552": {
+      "id": "R12552",
+      "name": "UDP-2-acetamido-2,6-dideoxy-beta-L-lyxo-4-hexulose + NADPH + H+ <=> UDP-2-acetamido-2,6-dideoxy-beta-L-talose + NADP+",
+      "synonyms": []
+    },
+    "R12553": {
+      "id": "R12553",
+      "name": "UDP-2-acetamido-2,6-dideoxy-beta-L-arabino-hexos-4-ulose <=> UDP-2-acetamido-2,6-dideoxy-beta-L-lyxo-4-hexulose",
+      "synonyms": []
+    },
+    "R12554": {
+      "id": "R12554",
+      "name": "UDP-2-acetamido-2,6-dideoxy-beta-L-arabino-hexos-4-ulose <=> UDP-2-acetamido-4-dehydro-2,6-dideoxyglucose",
+      "synonyms": []
+    },
+    "R12555": {
+      "id": "R12555",
+      "name": "UDP-2-acetamido-4-dehydro-2,6-dideoxyglucose <=> UDP-2-acetamido-2,6-dideoxy-alpha-D-galactose",
+      "synonyms": []
+    },
+    "R12556": {
+      "id": "R12556",
+      "name": "UDP-2-acetamido-4-dehydro-2,6-dideoxyglucose + NADPH + H+ <=> UDP-2-acetamido-2,6-dideoxy-alpha-D-glucose + NADP+",
+      "synonyms": []
+    },
+    "R12557": {
+      "id": "R12557",
+      "name": "UDP-2-acetamido-4-amino-2,4,6-trideoxy-alpha-D-glucose + D-Alanine <=> UDP-2-acetamido-4-(D-alanylamino)-2,4,6-trideoxy-alpha-D-glucose + H2O",
+      "synonyms": []
+    },
+    "R12558": {
+      "id": "R12558",
+      "name": "UDP-2-acetamido-4-(D-alanylamino)-2,4,6-trideoxy-alpha-D-glucose <=> UDP-2-acetamido-4-(D-alanylamino)-2,4,6-trideoxy-alpha-D-mannopyranose",
+      "synonyms": []
+    },
+    "R12559": {
+      "id": "R12559",
+      "name": "UDP-2-acetamido-4-(D-alanylamino)-2,4,6-trideoxy-alpha-D-mannopyranose + H2O <=> 2-Acetamido-4-(D-alanylamino)-2,4,6-trideoxy-D-mannopyranose + UDP",
+      "synonyms": []
+    },
+    "R12560": {
+      "id": "R12560",
+      "name": "(-)-(1R,2S)-ephedrine:NAD+ 1-oxoreductase",
+      "synonyms": [
+        "Ephedrine + NAD+ <=> (S)-2-(Methylamino)-1-phenylpropan-1-one + NADH + H+"
+      ]
+    },
+    "R12561": {
+      "id": "R12561",
+      "name": "UDP-4-amino-4,6-dideoxy-N-acetyl-beta-L-idosamine + Acetyl-CoA <=> UDP-2,4-diacetamido-2,4,6-trideoxy-beta-L-idose + CoA",
+      "synonyms": []
+    },
+    "R12562": {
+      "id": "R12562",
+      "name": "5-N-Acetyl-7-N-(D-alanyl)-legionaminic acid + CTP <=> CMP-5-N-acetyl-7-N-(D-alanyl)-legionaminic acid + Diphosphate",
+      "synonyms": []
+    },
+    "R12563": {
+      "id": "R12563",
+      "name": "UDP-2,4-diacetamido-2,4,6-trideoxy-beta-L-idose <=> UDP-2,4-diacetamido-2,4,6-trideoxy-beta-L-gulose",
+      "synonyms": []
+    },
+    "R12564": {
+      "id": "R12564",
+      "name": "UDP-2,4-diacetamido-2,4,6-trideoxy-beta-L-gulose + H2O <=> 2,4-Diacetamido-2,4,6-trideoxy-beta-L-gulose + UDP",
+      "synonyms": []
+    },
+    "R12565": {
+      "id": "R12565",
+      "name": "2,4-Diacetamido-2,4,6-trideoxy-beta-L-gulose + Phosphoenolpyruvate + H2O <=> 5,7-Diacetamido-3,5,7,9-tetradeoxy-L-glycero-D-galacto-non-2-ulosonic acid + Orthophosphate",
+      "synonyms": []
+    },
+    "R12566": {
+      "id": "R12566",
+      "name": "feruloyl-CoA hydro-lyase/vanillin-lyase (acetyl-CoA-forming)",
+      "synonyms": [
+        "Feruloyl-CoA + H2O <=> 4-Hydroxy-3-methoxy-benzaldehyde + Acetyl-CoA"
+      ]
+    },
+    "R12567": {
+      "id": "R12567",
+      "name": "2-Acetamido-4-(D-alanylamino)-2,4,6-trideoxy-D-mannopyranose + Phosphoenolpyruvate + H2O <=> 5-N-Acetyl-7-N-(D-alanyl)-legionaminic acid + Orthophosphate",
+      "synonyms": []
+    },
+    "R12568": {
+      "id": "R12568",
+      "name": "CTP + 5,7-Diacetamido-3,5,7,9-tetradeoxy-L-glycero-D-galacto-non-2-ulosonic acid <=> CMP-5,7-diacetamido-3,5,7,9-tetradeoxy-L-glycero-D-galacto-non-2-ulosonic acid + Diphosphate",
+      "synonyms": []
+    },
+    "R12569": {
+      "id": "R12569",
+      "name": "[sulfatase]-L-serine:S-adenosyl-L-methionine oxidoreductase (3-oxo-L-alanine-forming)",
+      "synonyms": [
+        "[Sulfatase]-L-serine + S-Adenosyl-L-methionine <=> [Sulfatase]-3-oxo-L-alanine + 5'-Deoxyadenosine + L-Methionine"
+      ]
+    },
+    "R12570": {
+      "id": "R12570",
+      "name": "thioredoxin:hydroperoxide oxidoreductase",
+      "synonyms": [
+        "Thioredoxin + ROOH <=> Thioredoxin disulfide + H2O + ROH"
+      ]
+    },
+    "R12571": {
+      "id": "R12571",
+      "name": "glutaredoxin:hydroperoxide oxidoreductase",
+      "synonyms": [
+        "Glutaredoxin + ROOH <=> Glutaredoxin disulfide + H2O + ROH"
+      ]
+    },
+    "R12572": {
+      "id": "R12572",
+      "name": "ATP + L-Arginine <=> Diphosphate + (L-Arginyl)adenylate",
+      "synonyms": []
+    },
+    "R12573": {
+      "id": "R12573",
+      "name": "L-arginine:[L-arginyl-carrier protein] ligase (AMP-forming)",
+      "synonyms": [
+        "L-Arginine + Peptidyl-carrier protein + ATP <=> L-Arginyl-[pcp] + AMP + Diphosphate"
+      ]
+    },
+    "R12574": {
+      "id": "R12574",
+      "name": "(L-Arginyl)adenylate + Peptidyl-carrier protein <=> AMP + L-Arginyl-[pcp]",
+      "synonyms": []
+    },
+    "R12575": {
+      "id": "R12575",
+      "name": "L-proline:[L-prolyl-carrier protein] ligase (AMP-forming)",
+      "synonyms": [
+        "ATP + L-Proline + Aryl-carrier protein <=> AMP + Diphosphate + 3,4-Dihydroxybenzoyl-[aryl-carrier protein]"
+      ]
+    },
+    "R12576": {
+      "id": "R12576",
+      "name": "ATP + 3,4-Dihydroxybenzoate <=> Diphosphate + (3,4-Dihydroxybenzoyl)adenylate",
+      "synonyms": []
+    },
+    "R12577": {
+      "id": "R12577",
+      "name": "(3,4-Dihydroxybenzoyl)adenylate + Aryl-carrier protein <=> AMP + 3,4-Dihydroxybenzoyl-[aryl-carrier protein]",
+      "synonyms": []
+    },
+    "R12578": {
+      "id": "R12578",
+      "name": "glutathione:hydroperoxide oxidoreductase",
+      "synonyms": [
+        "2 Glutathione + ROOH <=> Glutathione disulfide + H2O + ROH"
+      ]
+    },
+    "R12579": {
+      "id": "R12579",
+      "name": "NADH:hydroperoxide oxidoreductase",
+      "synonyms": [
+        "NADH + ROOH + H+ <=> NAD+ + H2O + ROH"
+      ]
+    },
+    "R12580": {
+      "id": "R12580",
+      "name": "geranyl diphosphate/selenophosphate:tRNA 5-methylaminomethyl-2-thiouridine34 geranyl/selenophosphatetransferase",
+      "synonyms": [
+        "Selenophosphoric acid + Geranyl diphosphate + tRNA containing 5-methylaminomethyl-2-thiouridylate + H2O <=> 5-Methylaminomethyl-2-selenouridine34 in tRNA + (2E)-3,7-Dimethylocta-2,6-diene-1-thiol + Diphosphate + Orthophosphate"
+      ]
+    },
+    "R12581": {
+      "id": "R12581",
+      "name": "geranyl diphosphate:tRNA 5-methylaminomethyl-2-thiouridine34 geranyltransferase",
+      "synonyms": [
+        "Geranyl diphosphate + tRNA containing 5-methylaminomethyl-2-thiouridylate <=> 5-Methylaminomethyl-2-(S-geranyl)thiouridine34 in tRNA + Diphosphate"
+      ]
+    },
+    "R12582": {
+      "id": "R12582",
+      "name": "selenophosphate:5-methylaminomethyl-2-(S-geranyl)thiouridine34 selenophosphatetransferase",
+      "synonyms": [
+        "Selenophosphoric acid + 5-Methylaminomethyl-2-(S-geranyl)thiouridine34 in tRNA <=> 5-Methylaminomethyl-2-(Se-phospho)selenouridine34 in tRNA + (2E)-3,7-Dimethylocta-2,6-diene-1-thiol"
+      ]
+    },
+    "R12583": {
+      "id": "R12583",
+      "name": "5-methylaminomethyl-2-(Se-phospho)selenouridine34 phosphohydrolase",
+      "synonyms": [
+        "5-Methylaminomethyl-2-(Se-phospho)selenouridine34 in tRNA + H2O <=> 5-Methylaminomethyl-2-selenouridine34 in tRNA + Orthophosphate"
+      ]
+    },
+    "R12584": {
+      "id": "R12584",
+      "name": "UDP-N-acetyl-beta-L-fucosamine <=> UDP-2,6-dideoxy-2-acetamidino-beta-L-galactose",
+      "synonyms": []
+    },
+    "R12585": {
+      "id": "R12585",
+      "name": "2-hydroxy fatty acid:oxygen oxidoreductase (CO2,H2O-forming)",
+      "synonyms": [
+        "(2R)-2-Hydroxy fatty acid + Oxygen <=> Fatty acid + H2O + CO2"
+      ]
+    },
+    "R12586": {
+      "id": "R12586",
+      "name": "UDP-2,3-diacetamido-2,3-dideoxy-alpha-D-mannuronate <=> UDP-2,3-dideoxy-2-acetamido-3-acetamidino-alpha-D-mannuronic acid",
+      "synonyms": []
+    },
+    "R12587": {
+      "id": "R12587",
+      "name": "NADPH 2'-phosphohydrolase",
+      "synonyms": [
+        "NADPH + H2O <=> NADH + Orthophosphate"
+      ]
+    },
+    "R12588": {
+      "id": "R12588",
+      "name": "S-inosyl-L-homocysteine hydrolase (inosine-forming)",
+      "synonyms": [
+        "S-Inosyl-L-homocysteine + H2O <=> Inosine + L-Homocysteine"
+      ]
+    },
+    "R12589": {
+      "id": "R12589",
+      "name": "xanthosine 5'-triphosphate phosphohydrolase",
+      "synonyms": [
+        "XTP + H2O <=> XDP + Orthophosphate"
+      ]
+    },
+    "R12590": {
+      "id": "R12590",
+      "name": "UDP-N-acetyl-D-galactosaminuronic acid + ATP + L-Glutamine + H2O <=> UDP-2-acetamido-2-deoxy-alpha-D-galacturonamide + AMP + L-Glutamate + Diphosphate",
+      "synonyms": []
+    },
+    "R12591": {
+      "id": "R12591",
+      "name": "limonene:acceptor oxidoreductase (7-hydroxylating)",
+      "synonyms": [
+        "(S)-Limonene + H2O + Acceptor <=> (-)-Perillyl alcohol + Reduced acceptor"
+      ]
+    },
+    "R12592": {
+      "id": "R12592",
+      "name": "limonene:acceptor oxidoreductase (7-hydroxylating)",
+      "synonyms": [
+        "(R)-Limonene + H2O + Acceptor <=> (+)-Perillyl alcohol + Reduced acceptor"
+      ]
+    },
+    "R12593": {
+      "id": "R12593",
+      "name": "1-alkyl-sn-glycerol,tetrahydrobiopteridine:oxygen oxidoreductase",
+      "synonyms": [
+        "1-Alkyl-sn-glycerol + Tetrahydropteridine + Oxygen <=> 1-Hydroxyalkyl-sn-glycerol + 4a-Hydroxy-5,6,7,8-tetrahydropteridine"
+      ]
+    },
+    "R12594": {
+      "id": "R12594",
+      "name": "ADP:D-glucosamine 6-phosphotransferase",
+      "synonyms": [
+        "ADP + D-Glucosamine <=> AMP + D-Glucosamine 6-phosphate"
+      ]
+    },
+    "R12595": {
+      "id": "R12595",
+      "name": "8-oxo-GDP phosphohydrolase",
+      "synonyms": [
+        "8-Oxo-GDP + H2O <=> 8-Oxo-GMP + Orthophosphate"
+      ]
+    },
+    "R12596": {
+      "id": "R12596",
+      "name": "Spermidine + Citrate + ATP <=> N-Citryl-spermidine + AMP + Diphosphate",
+      "synonyms": []
+    },
+    "R12597": {
+      "id": "R12597",
+      "name": "N-Citryl-spermidine + 3,4-Dihydroxybenzoyl-[aryl-carrier protein] <=> N1-(3,4-Dihydroxybenzoyl)-N8-citryl spermidine + Aryl-carrier protein",
+      "synonyms": []
+    },
+    "R12598": {
+      "id": "R12598",
+      "name": "N-Citryl-spermidine + Spermidine + ATP <=> N8,N'8-Citryl-bis(spermidine) + AMP + Diphosphate",
+      "synonyms": []
+    },
+    "R12599": {
+      "id": "R12599",
+      "name": "N1-(3,4-Dihydroxybenzoyl)-N8-citryl spermidine + Spermidine + ATP <=> N1-(3,4-Dihydroxybenzoyl)-N8,N'8-citryl-bis(spermidine) + AMP + Diphosphate",
+      "synonyms": []
+    },
+    "R12600": {
+      "id": "R12600",
+      "name": "N8,N'8-Citryl-bis(spermidine) + 3,4-Dihydroxybenzoyl-[aryl-carrier protein] <=> N1-(3,4-Dihydroxybenzoyl)-N8,N'8-citryl-bis(spermidine) + Aryl-carrier protein",
+      "synonyms": []
+    },
+    "R12601": {
+      "id": "R12601",
+      "name": "N1-(3,4-Dihydroxybenzoyl)-N8,N'8-citryl-bis(spermidine) + 3,4-Dihydroxybenzoyl-[aryl-carrier protein] <=> Petrobactin + Aryl-carrier protein",
+      "synonyms": []
+    },
+    "R12602": {
+      "id": "R12602",
+      "name": "lipoyl:hydroperoxide oxidoreductase",
+      "synonyms": [
+        "[Protein]-N6-[(R)-dihydrolipoyl]-L-lysine + ROOH <=> Protein N6-(lipoyl)lysine + H2O + ROH"
+      ]
+    },
+    "R12603": {
+      "id": "R12603",
+      "name": "lipoyl:hydroperoxide oxidoreductase",
+      "synonyms": [
+        "Enzyme N6-(dihydrolipoyl)lysine + ROOH <=> Enzyme N6-(lipoyl)lysine + H2O + ROH"
+      ]
+    },
+    "R12604": {
+      "id": "R12604",
+      "name": "UDP-2-acetamido-2,6-dideoxy-beta-L-lyxo-4-hexulose + NADPH + H+ <=> UDP-2-acetamido-2,6-dideoxy-beta-L-mannose + NADP+",
+      "synonyms": []
+    },
+    "R12605": {
+      "id": "R12605",
+      "name": "Protoporphyrinogen IX + 3 Acceptor <=> Protoporphyrin + 3 Reduced acceptor",
+      "synonyms": []
+    },
+    "R12606": {
+      "id": "R12606",
+      "name": "UDP-2-acetamido-2,6-dideoxy-beta-L-arabino-hexos-4-ulose + L-Glutamate <=> UDP-4-amino-4,6-dideoxy-N-acetyl-beta-L-idosamine + 2-Oxoglutarate",
+      "synonyms": []
+    },
+    "R12608": {
+      "id": "R12608",
+      "name": "GTP:3'-dephospho-CoA 3'-phosphotransferase",
+      "synonyms": [
+        "GTP + Dephospho-CoA <=> GDP + CoA"
       ]
     }
   }
