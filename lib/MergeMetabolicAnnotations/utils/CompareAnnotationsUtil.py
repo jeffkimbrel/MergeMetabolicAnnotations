@@ -260,6 +260,8 @@ class CompareAnnotationsUtil:
 
     def run(self, ctx, params):
 
+        logging.info(params['annotations_to_compare'])
+
         # collect some metadata
         self.get_genome(params['genome'])
         self.get_ontology_events(self.genome)

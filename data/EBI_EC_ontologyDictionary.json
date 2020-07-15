@@ -1,6 +1,6 @@
 {
-  "data_version": "07-Nov-2018",
-  "date": "2018-11-30 13:50:36",
+  "data_version": "17-Jun-2020",
+  "date": "2020-06-30 12:21:59",
   "format_version": "N/A",
   "ontology": "ec_orthology",
   "term_hash": {
@@ -148,8 +148,6 @@
       "id": "1.1.1.19",
       "name": "Glucuronate reductase.",
       "synonyms": [
-        "Aldehyde reductase.",
-        "Aldehyde reductase II.",
         "D-glucuronate dehydrogenase.",
         "D-glucuronate reductase.",
         "Glucuronate dehydrogenase.",
@@ -165,9 +163,9 @@
     },
     "1.1.1.21": {
       "id": "1.1.1.21",
-      "name": "Aldehyde reductase.",
+      "name": "Aldose reductase.",
       "synonyms": [
-        "Aldose reductase.",
+        "Aldehyde reductase.",
         "Polyol dehydrogenase (NADP(+))."
       ]
     },
@@ -665,7 +663,7 @@
       "id": "1.1.1.88",
       "name": "Hydroxymethylglutaryl-CoA reductase.",
       "synonyms": [
-        "3-hydroxy-3-methylglutaryl-coenzyme A reductase.",
+        "3-hydroxy-3-methylglutaryl coenzyme A reductase.",
         "Beta-hydroxy-beta-methylglutaryl CoA-reductase.",
         "Beta-hydroxy-beta-methylglutaryl coenzyme A reductase.",
         "HMG-CoA reductase.",
@@ -824,9 +822,12 @@
     },
     "1.1.1.110": {
       "id": "1.1.1.110",
-      "name": "Indolelactate dehydrogenase.",
+      "name": "Aromatic 2-oxoacid reductase.",
       "synonyms": [
-        "Indole-3-lactate dehydrogenase."
+        "(R)-4-hydroxyphenyllactate dehydrogenase.",
+        "(R)-aromatic lactate dehydrogenase.",
+        "Indole-3-lactate dehydrogenase.",
+        "Indolelactate dehydrogenase."
       ]
     },
     "1.1.1.111": {
@@ -930,6 +931,7 @@
       "id": "1.1.1.127",
       "name": "2-dehydro-3-deoxy-D-gluconate 5-dehydrogenase.",
       "synonyms": [
+        "2-keto-3-deoxy-D-gluconate dehydrogenase.",
         "2-keto-3-deoxygluconate dehydrogenase."
       ]
     },
@@ -1939,7 +1941,10 @@
     "1.1.1.282": {
       "id": "1.1.1.282",
       "name": "Quinate/shikimate dehydrogenase.",
-      "synonyms": []
+      "synonyms": [
+        "Quinate dehydrogenase.",
+        "Quinic dehydrogenase."
+      ]
     },
     "1.1.1.283": {
       "id": "1.1.1.283",
@@ -2762,6 +2767,53 @@
       "name": "L-galactonate 5-dehydrogenase.",
       "synonyms": []
     },
+    "1.1.1.415": {
+      "id": "1.1.1.415",
+      "name": "Noscapine synthase.",
+      "synonyms": []
+    },
+    "1.1.1.416": {
+      "id": "1.1.1.416",
+      "name": "Isopyridoxal dehydrogenase (5-pyridoxolactone-forming).",
+      "synonyms": []
+    },
+    "1.1.1.417": {
+      "id": "1.1.1.417",
+      "name": "3-beta-hydroxysteroid-4-beta-carboxylate 3-dehydrogenase(decarboxylating).",
+      "synonyms": []
+    },
+    "1.1.1.418": {
+      "id": "1.1.1.418",
+      "name": "Plant 3-beta-hydroxysteroid-4-alpha-carboxylate 3-dehydrogenase(decarboxylating).",
+      "synonyms": [
+        "3-beta-hydroxysteroid dehydrogenases/C-4 decarboxylase."
+      ]
+    },
+    "1.1.1.419": {
+      "id": "1.1.1.419",
+      "name": "Nepetalactol dehydrogenase.",
+      "synonyms": []
+    },
+    "1.1.1.420": {
+      "id": "1.1.1.420",
+      "name": "D-apiose dehydrogenase.",
+      "synonyms": []
+    },
+    "1.1.1.421": {
+      "id": "1.1.1.421",
+      "name": "D-apionate oxidoisomerase.",
+      "synonyms": []
+    },
+    "1.1.1.422": {
+      "id": "1.1.1.422",
+      "name": "Pseudoephedrine dehydrogenase.",
+      "synonyms": []
+    },
+    "1.1.1.423": {
+      "id": "1.1.1.423",
+      "name": "Ephedrine dehydrogenase.",
+      "synonyms": []
+    },
     "1.1.1.n1": {
       "id": "1.1.1.n1",
       "name": "Transferred entry: 1.1.1.305.",
@@ -2896,6 +2948,15 @@
       "name": "1-butanol dehydrogenase (cytochrome c).",
       "synonyms": [
         "BDH."
+      ]
+    },
+    "1.1.2.10": {
+      "id": "1.1.2.10",
+      "name": "Lanthanide-dependent methanol dehydrogenase.",
+      "synonyms": [
+        "Ce(3+)-induced methanol dehydrogenase.",
+        "Cerium dependent MDH.",
+        "La(3+)-dependent MDH."
       ]
     },
     "1.1.3.1": {
@@ -3136,6 +3197,7 @@
       "name": "D-mannitol oxidase.",
       "synonyms": [
         "D-arabinitol oxidase.",
+        "D-arabitol oxidase.",
         "Mannitol oxidase."
       ]
     },
@@ -3299,6 +3361,13 @@
       "name": "D-lactate dehydrogenase (quinone).",
       "synonyms": []
     },
+    "1.1.5.13": {
+      "id": "1.1.5.13",
+      "name": "(S)-2-hydroxyglutarate dehydrogenase.",
+      "synonyms": [
+        "L-2-hydroxyglutarate dehydrogenase."
+      ]
+    },
     "1.1.5.n1": {
       "id": "1.1.5.n1",
       "name": "Quinoprotein inositol dehydrogenase.",
@@ -3354,6 +3423,11 @@
       "synonyms": [
         "Anaerobic ribonucleoside-triphosphate reductase."
       ]
+    },
+    "1.1.98.7": {
+      "id": "1.1.98.7",
+      "name": "Serine-type anaerobic sulfatase-maturating enzyme.",
+      "synonyms": []
     },
     "1.1.99.1": {
       "id": "1.1.99.1",
@@ -3776,8 +3850,11 @@
     },
     "1.2.1.25": {
       "id": "1.2.1.25",
-      "name": "2-oxoisovalerate dehydrogenase (acylating).",
-      "synonyms": []
+      "name": "Branched-chain alpha-keto acid dehydrogenase system.",
+      "synonyms": [
+        "2-oxoisovalerate dehydrogenase (acylating).",
+        "Branched-chain alpha-keto acid dehydrogenase complex."
+      ]
     },
     "1.2.1.26": {
       "id": "1.2.1.26",
@@ -3805,8 +3882,10 @@
     },
     "1.2.1.30": {
       "id": "1.2.1.30",
-      "name": "Aryl-aldehyde dehydrogenase (NADP(+)).",
-      "synonyms": []
+      "name": "Carboxylate reductase (NADP(+)).",
+      "synonyms": [
+        "Aryl-aldehyde dehydrogenase (NADP(+))."
+      ]
     },
     "1.2.1.31": {
       "id": "1.2.1.31",
@@ -4234,6 +4313,21 @@
       "name": "5-formyl-3-hydroxy-2-methylpyridine 4-carboxylate 5-dehydrogenase.",
       "synonyms": []
     },
+    "1.2.1.101": {
+      "id": "1.2.1.101",
+      "name": "L-tyrosine reductase.",
+      "synonyms": []
+    },
+    "1.2.1.102": {
+      "id": "1.2.1.102",
+      "name": "Isopyridoxal dehydrogenase (5-pyridoxate-forming).",
+      "synonyms": []
+    },
+    "1.2.1.103": {
+      "id": "1.2.1.103",
+      "name": "[Amino group carrier protein]-6-phospho-L-2-aminoadipate reductase.",
+      "synonyms": []
+    },
     "1.2.1.n1": {
       "id": "1.2.1.n1",
       "name": "Transferred entry: 1.2.1.77.",
@@ -4366,7 +4460,6 @@
       "id": "1.2.4.1",
       "name": "Pyruvate dehydrogenase (acetyl-transferring).",
       "synonyms": [
-        "MtPDC (mitochondrial pyruvate dehydrogenase complex).",
         "Pyruvate decarboxylase.",
         "Pyruvate dehydrogenase.",
         "Pyruvate dehydrogenase (lipoamide).",
@@ -4382,8 +4475,6 @@
       "synonyms": [
         "2-ketoglutarate dehydrogenase.",
         "2-oxoglutarate dehydrogenase.",
-        "2-oxoglutarate: lipoate oxidoreductase.",
-        "2-oxoglutarate:lipoamide 2-oxidoreductase (decarboxylating and acceptor- succinylating).",
         "AKGDH.",
         "Alpha-ketoglutarate dehydrogenase.",
         "Alpha-ketoglutaric acid dehydrogenase.",
@@ -4391,7 +4482,6 @@
         "Alpha-oxoglutarate dehydrogenase.",
         "Ketoglutaric dehydrogenase.",
         "OGDC.",
-        "Oxoglutarate decarboxylase.",
         "Oxoglutarate dehydrogenase.",
         "Oxoglutarate dehydrogenase (lipoamide)."
       ]
@@ -4408,7 +4498,6 @@
         "2-oxoisocaproate dehydrogenase.",
         "2-oxoisovalerate (lipoate) dehydrogenase.",
         "3-methyl-2-oxobutanoate dehydrogenase (lipoamide).",
-        "3-methyl-2-oxobutanoate:lipoamide oxidoreductase (decarboxylating and acceptor-2-methylpropanoylating).",
         "Alpha-keto-alpha-methylvalerate dehydrogenase.",
         "Alpha-ketoisocaproate dehydrogenase.",
         "Alpha-ketoisocaproic dehydrogenase.",
@@ -4425,8 +4514,7 @@
         "Branched-chain alpha-oxo acid dehydrogenase.",
         "Branched-chain keto acid dehydrogenase.",
         "Branched-chain ketoacid dehydrogenase.",
-        "Dehydrogenase, 2-oxoisovalerate (lipoate).",
-        "Dehydrogenase, branched chain alpha-keto acid."
+        "Dehydrogenase, 2-oxoisovalerate (lipoate)."
       ]
     },
     "1.2.5.1": {
@@ -5271,7 +5359,7 @@
     },
     "1.3.1.99": {
       "id": "1.3.1.99",
-      "name": "Iridoid synthase.",
+      "name": "Transferred entry: 1.3.1.122.",
       "synonyms": []
     },
     "1.3.1.100": {
@@ -5386,6 +5474,40 @@
       "synonyms": [
         "Hydroxycinnamoyl-CoA double bond reductase."
       ]
+    },
+    "1.3.1.118": {
+      "id": "1.3.1.118",
+      "name": "Meromycolic acid enoyl-[acyl-carrier-protein] reductase.",
+      "synonyms": []
+    },
+    "1.3.1.119": {
+      "id": "1.3.1.119",
+      "name": "Chlorobenzene dihydrodiol dehydrogenase.",
+      "synonyms": []
+    },
+    "1.3.1.120": {
+      "id": "1.3.1.120",
+      "name": "Cyclohexane-1-carbonyl-CoA reductase (NADP(+)).",
+      "synonyms": [
+        "1-cyclohexenylcarbonyl-CoA reductase."
+      ]
+    },
+    "1.3.1.121": {
+      "id": "1.3.1.121",
+      "name": "4-amino-4-deoxyprephenate dehydrogenase.",
+      "synonyms": []
+    },
+    "1.3.1.122": {
+      "id": "1.3.1.122",
+      "name": "(S)-8-oxocitronellyl enol synthase.",
+      "synonyms": [
+        "Iridoid synthase."
+      ]
+    },
+    "1.3.1.123": {
+      "id": "1.3.1.123",
+      "name": "7-epi-iridoid synthase.",
+      "synonyms": []
     },
     "1.3.1.n1": {
       "id": "1.3.1.n1",
@@ -5734,8 +5856,10 @@
     },
     "1.3.8.11": {
       "id": "1.3.8.11",
-      "name": "Cyclohexane-1-carbonyl-CoA dehydrogenase.",
-      "synonyms": []
+      "name": "Cyclohexane-1-carbonyl-CoA dehydrogenase (electron-transferflavoprotein).",
+      "synonyms": [
+        "Cyclohexane-1-carbonyl-CoA dehydrogenase."
+      ]
     },
     "1.3.8.12": {
       "id": "1.3.8.12",
@@ -5750,6 +5874,11 @@
     "1.3.8.14": {
       "id": "1.3.8.14",
       "name": "L-prolyl-[peptidyl-carrier protein] dehydrogenase.",
+      "synonyms": []
+    },
+    "1.3.8.15": {
+      "id": "1.3.8.15",
+      "name": "3-(aryl)acrylate reductase.",
       "synonyms": []
     },
     "1.3.98.1": {
@@ -5784,6 +5913,20 @@
         "12-dehydrotetracycline dehydrogenase.",
         "12-dehydrotetracycline reductase.",
         "Dehydrooxytetracycline dehydrogenase."
+      ]
+    },
+    "1.3.98.5": {
+      "id": "1.3.98.5",
+      "name": "Hydrogen peroxide-dependent heme synthase.",
+      "synonyms": [
+        "Coproheme III oxidative decarboxylase."
+      ]
+    },
+    "1.3.98.6": {
+      "id": "1.3.98.6",
+      "name": "AdoMet-dependent heme synthase.",
+      "synonyms": [
+        "SAM-dependent heme synthase."
       ]
     },
     "1.3.99.1": {
@@ -6850,6 +6993,13 @@
       "name": "N-((2S)-2-amino-2-carboxyethyl)-L-glutamate dehydrogenase.",
       "synonyms": []
     },
+    "1.5.1.52": {
+      "id": "1.5.1.52",
+      "name": "Staphylopine dehydrogenase.",
+      "synonyms": [
+        "Staphylopine synthase."
+      ]
+    },
     "1.5.3.1": {
       "id": "1.5.3.1",
       "name": "Sarcosine oxidase.",
@@ -7541,10 +7691,8 @@
     },
     "1.6.6.9": {
       "id": "1.6.6.9",
-      "name": "Trimethylamine-N-oxide reductase.",
-      "synonyms": [
-        "Trimethylamine oxidase."
-      ]
+      "name": "Deleted entry.",
+      "synonyms": []
     },
     "1.6.6.10": {
       "id": "1.6.6.10",
@@ -7875,10 +8023,11 @@
     },
     "1.7.2.3": {
       "id": "1.7.2.3",
-      "name": "Trimethylamine-N-oxide reductase (cytochrome c).",
+      "name": "Trimethylamine-N-oxide reductase.",
       "synonyms": [
         "TMAO reductase.",
-        "TOR."
+        "TOR.",
+        "Trimethylamine-N-oxide reductase (cytochrome c)."
       ]
     },
     "1.7.2.4": {
@@ -8207,6 +8356,11 @@
       "name": "4,4'-dithiodibutanoate disulfide reductase.",
       "synonyms": []
     },
+    "1.8.1.21": {
+      "id": "1.8.1.21",
+      "name": "Dissimilatory dimethyldisulfide reductase.",
+      "synonyms": []
+    },
     "1.8.2.1": {
       "id": "1.8.2.1",
       "name": "Sulfite dehydrogenase (cytochrome).",
@@ -8407,6 +8561,16 @@
         "FRMsr."
       ]
     },
+    "1.8.4.15": {
+      "id": "1.8.4.15",
+      "name": "Protein dithiol oxidoreductase (disulfide-forming).",
+      "synonyms": []
+    },
+    "1.8.4.16": {
+      "id": "1.8.4.16",
+      "name": "Thioredoxin:protein disulfide reductase.",
+      "synonyms": []
+    },
     "1.8.5.1": {
       "id": "1.8.5.1",
       "name": "Glutathione dehydrogenase (ascorbate).",
@@ -8423,8 +8587,9 @@
     },
     "1.8.5.3": {
       "id": "1.8.5.3",
-      "name": "Dimethylsulfoxide reductase.",
+      "name": "Respiratory dimethylsulfoxide reductase.",
       "synonyms": [
+        "Dimethylsulfoxide reductase.",
         "DMSO reductase."
       ]
     },
@@ -8456,6 +8621,11 @@
       "synonyms": [
         "SQOR."
       ]
+    },
+    "1.8.5.9": {
+      "id": "1.8.5.9",
+      "name": "Protein dithiol:quinone oxidoreductase DsbB.",
+      "synonyms": []
     },
     "1.8.6.1": {
       "id": "1.8.6.1",
@@ -8516,6 +8686,14 @@
       "name": "Formate:CoB-CoM heterodisulfide,ferredoxin reductase.",
       "synonyms": []
     },
+    "1.8.98.7": {
+      "id": "1.8.98.7",
+      "name": "Cysteine-type anaerobic sulfatase-maturating enzyme.",
+      "synonyms": [
+        "Anaerobic sulfatase maturase.",
+        "Cys-type anaerobic sulfatase-maturating enzyme."
+      ]
+    },
     "1.8.99.1": {
       "id": "1.8.99.1",
       "name": "Deleted entry.",
@@ -8545,14 +8723,8 @@
     },
     "1.9.3.1": {
       "id": "1.9.3.1",
-      "name": "Cytochrome-c oxidase.",
-      "synonyms": [
-        "Complex IV (mitochondrial electron transport).",
-        "Cytochrome a3.",
-        "Cytochrome aa3.",
-        "Cytochrome oxidase.",
-        "Warburg's respiratory enzyme."
-      ]
+      "name": "Transferred entry: 7.1.1.9.",
+      "synonyms": []
     },
     "1.9.3.2": {
       "id": "1.9.3.2",
@@ -8586,13 +8758,8 @@
     },
     "1.10.2.2": {
       "id": "1.10.2.2",
-      "name": "Quinol--cytochrome-c reductase.",
-      "synonyms": [
-        "Complex III (mitochondrial electron transport).",
-        "Cytochrome bc1 complex.",
-        "Ubiquinol--cytochrome-c reductase.",
-        "Ubiquinone--cytochrome-c oxidoreductase."
-      ]
+      "name": "Transferred entry: 7.1.1.8.",
+      "synonyms": []
     },
     "1.10.3.1": {
       "id": "1.10.3.1",
@@ -8655,12 +8822,8 @@
     },
     "1.10.3.10": {
       "id": "1.10.3.10",
-      "name": "Ubiquinol oxidase (H(+)-transporting).",
-      "synonyms": [
-        "Cytochrome bb3 oxidase.",
-        "Cytochrome bd-II oxidase.",
-        "Cytochrome bo oxidase."
-      ]
+      "name": "Transferred entry: 7.1.1.3.",
+      "synonyms": []
     },
     "1.10.3.11": {
       "id": "1.10.3.11",
@@ -8673,29 +8836,18 @@
     },
     "1.10.3.12": {
       "id": "1.10.3.12",
-      "name": "Menaquinol oxidase (H(+)-transporting).",
-      "synonyms": [
-        "Cytochrome aa3-600 oxidase.",
-        "Cytochrome bd oxidase."
-      ]
+      "name": "Transferred entry: 7.1.1.5.",
+      "synonyms": []
     },
     "1.10.3.13": {
       "id": "1.10.3.13",
-      "name": "Caldariellaquinol oxidase (H(+)-transporting).",
-      "synonyms": [
-        "Aa(3) quinol oxidase.",
-        "Aa(3)-type quinol oxidase.",
-        "Cytochrome aa3.",
-        "Cytochrome aa3-type oxidase.",
-        "Terminal quinol oxidase."
-      ]
+      "name": "Transferred entry: 7.1.1.4.",
+      "synonyms": []
     },
     "1.10.3.14": {
       "id": "1.10.3.14",
-      "name": "Ubiquinol oxidase (electrogenic, non H(+)-transporting).",
-      "synonyms": [
-        "Cytochrome bd-I oxidase."
-      ]
+      "name": "Transferred entry: 7.1.1.7.",
+      "synonyms": []
     },
     "1.10.3.15": {
       "id": "1.10.3.15",
@@ -8706,6 +8858,13 @@
       "id": "1.10.3.16",
       "name": "Dihydrophenazinedicarboxylate synthase.",
       "synonyms": []
+    },
+    "1.10.3.17": {
+      "id": "1.10.3.17",
+      "name": "Superoxide oxidase.",
+      "synonyms": [
+        "Cytochrome b(561)."
+      ]
     },
     "1.10.5.1": {
       "id": "1.10.5.1",
@@ -8720,14 +8879,12 @@
     },
     "1.10.9.1": {
       "id": "1.10.9.1",
-      "name": "Plastoquinol--plastocyanin reductase.",
-      "synonyms": [
-        "Cytochrome b6f complex."
-      ]
+      "name": "Transferred entry: 7.1.1.6.",
+      "synonyms": []
     },
     "1.10.99.1": {
       "id": "1.10.99.1",
-      "name": "Transferred entry: 1.10.9.1.",
+      "name": "Transferred entry: 7.1.1.6.",
       "synonyms": []
     },
     "1.10.99.2": {
@@ -8782,8 +8939,6 @@
       "name": "Iodide peroxidase.",
       "synonyms": [
         "Iodinase.",
-        "Iodotyrosine deiodase.",
-        "Iodotyrosine deiodinase.",
         "Thyroid peroxidase.",
         "Thyroperoxidase.",
         "TPO."
@@ -8836,17 +8991,8 @@
     },
     "1.11.1.15": {
       "id": "1.11.1.15",
-      "name": "Peroxiredoxin.",
-      "synonyms": [
-        "AhpC.",
-        "Alkyl hydroperoxide reductase C22.",
-        "PRDX.",
-        "Prx.",
-        "Thioredoxin peroxidase.",
-        "TrxPx.",
-        "Tryparedoxin peroxidase.",
-        "TXNPx."
-      ]
+      "name": "Transferred entry: 1.11.1.24.",
+      "synonyms": []
     },
     "1.11.1.16": {
       "id": "1.11.1.16",
@@ -8906,6 +9052,40 @@
         "2-hydroxypropylphosphonic acid epoxidase.",
         "HPP epoxidase."
       ]
+    },
+    "1.11.1.24": {
+      "id": "1.11.1.24",
+      "name": "Thioredoxin-dependent peroxiredoxin.",
+      "synonyms": [
+        "Thioredoxin peroxidase."
+      ]
+    },
+    "1.11.1.25": {
+      "id": "1.11.1.25",
+      "name": "Glutaredoxin-dependent peroxiredoxin.",
+      "synonyms": []
+    },
+    "1.11.1.26": {
+      "id": "1.11.1.26",
+      "name": "NADH-dependent peroxiredoxin.",
+      "synonyms": [
+        "Alkyl hydroperoxide reductase."
+      ]
+    },
+    "1.11.1.27": {
+      "id": "1.11.1.27",
+      "name": "Glutathione-dependent peroxiredoxin.",
+      "synonyms": []
+    },
+    "1.11.1.28": {
+      "id": "1.11.1.28",
+      "name": "Lipoyl-dependent peroxiredoxin.",
+      "synonyms": []
+    },
+    "1.11.1.29": {
+      "id": "1.11.1.29",
+      "name": "Mycoredoxin-dependent peroxiredoxin.",
+      "synonyms": []
     },
     "1.11.2.1": {
       "id": "1.11.2.1",
@@ -9715,8 +9895,10 @@
     },
     "1.13.11.79": {
       "id": "1.13.11.79",
-      "name": "5,6-dimethylbenzimidazole synthase.",
-      "synonyms": []
+      "name": "Aerobic 5,6-dimethylbenzimidazole synthase.",
+      "synonyms": [
+        "Flavin reductase."
+      ]
     },
     "1.13.11.80": {
       "id": "1.13.11.80",
@@ -9755,6 +9937,23 @@
     "1.13.11.86": {
       "id": "1.13.11.86",
       "name": "5-aminosalicylate 1,2-dioxygenase.",
+      "synonyms": []
+    },
+    "1.13.11.87": {
+      "id": "1.13.11.87",
+      "name": "Endo-cleaving rubber dioxygenase.",
+      "synonyms": [
+        "Latex clearing protein."
+      ]
+    },
+    "1.13.11.88": {
+      "id": "1.13.11.88",
+      "name": "Isoeugenol monooxygenase.",
+      "synonyms": []
+    },
+    "1.13.11.89": {
+      "id": "1.13.11.89",
+      "name": "(Hydroxymethyl)phosphonate dioxygenase.",
       "synonyms": []
     },
     "1.13.11.n1": {
@@ -10267,8 +10466,9 @@
     },
     "1.14.11.27": {
       "id": "1.14.11.27",
-      "name": "[Histone H3]-lysine-36 demethylase.",
+      "name": "[Histone H3]-dimethyl-L-lysine(36) demethylase.",
       "synonyms": [
+        "[Histone-H3]-lysine-36 demethylase.",
         "H3-K36-specific demethylase.",
         "Histone demethylase.",
         "Histone-lysine (H3-K36) demethylase.",
@@ -10397,7 +10597,7 @@
     },
     "1.14.11.47": {
       "id": "1.14.11.47",
-      "name": "50S ribosomal protein L16 3-hydroxylase.",
+      "name": "[50S ribosomal protein L16]-arginine 3-hydroxylase.",
       "synonyms": []
     },
     "1.14.11.48": {
@@ -10467,6 +10667,69 @@
       "synonyms": [
         "DIBOA-Glc dioxygenase."
       ]
+    },
+    "1.14.11.60": {
+      "id": "1.14.11.60",
+      "name": "Scopoletin 8-hydroxylase.",
+      "synonyms": []
+    },
+    "1.14.11.61": {
+      "id": "1.14.11.61",
+      "name": "Feruloyl-CoA 6-hydroxylase.",
+      "synonyms": []
+    },
+    "1.14.11.62": {
+      "id": "1.14.11.62",
+      "name": "Trans-4-coumaroyl-CoA 2'-hydroxylase.",
+      "synonyms": []
+    },
+    "1.14.11.63": {
+      "id": "1.14.11.63",
+      "name": "Peptidyl-lysine (3S)-dioxygenase.",
+      "synonyms": [
+        "JmjC domain-containing protein 7.",
+        "Jumonji domain-containing protein 7."
+      ]
+    },
+    "1.14.11.64": {
+      "id": "1.14.11.64",
+      "name": "Glutarate dioxygenase.",
+      "synonyms": []
+    },
+    "1.14.11.65": {
+      "id": "1.14.11.65",
+      "name": "[Histone H3]-dimethyl-L-lysine(9) demethylase.",
+      "synonyms": []
+    },
+    "1.14.11.66": {
+      "id": "1.14.11.66",
+      "name": "[Histone H3]-trimethyl-L-lysine(9) demethylase.",
+      "synonyms": []
+    },
+    "1.14.11.67": {
+      "id": "1.14.11.67",
+      "name": "[Histone H3]-trimethyl-L-lysine(4) demethylase.",
+      "synonyms": []
+    },
+    "1.14.11.68": {
+      "id": "1.14.11.68",
+      "name": "[Histone H3]-trimethyl-L-lysine(27) demethylase.",
+      "synonyms": []
+    },
+    "1.14.11.69": {
+      "id": "1.14.11.69",
+      "name": "[Histone H3]-trimethyl-L-lysine(36) demethylase.",
+      "synonyms": []
+    },
+    "1.14.11.70": {
+      "id": "1.14.11.70",
+      "name": "7-deoxycylindrospermopsin hydroxylase.",
+      "synonyms": []
+    },
+    "1.14.11.71": {
+      "id": "1.14.11.71",
+      "name": "Methylphosphonate hydroxylase.",
+      "synonyms": []
     },
     "1.14.11.n1": {
       "id": "1.14.11.n1",
@@ -10646,6 +10909,11 @@
     "1.14.12.25": {
       "id": "1.14.12.25",
       "name": "p-cumate 2,3-dioxygenase.",
+      "synonyms": []
+    },
+    "1.14.12.26": {
+      "id": "1.14.12.26",
+      "name": "Chlorobenzene dioxygenase.",
       "synonyms": []
     },
     "1.14.12.n1": {
@@ -11455,8 +11723,10 @@
     },
     "1.14.13.131": {
       "id": "1.14.13.131",
-      "name": "Dimethyl-sulfide monooxygenase.",
+      "name": "Dissimilatory dimethyl-sulfide monooxygenase.",
       "synonyms": [
+        "Dimethyl sulfide C-monooxygenase.",
+        "Dimethyl sulfide monooxygenase.",
         "Dimethylsulfide monooxygenase."
       ]
     },
@@ -12064,6 +12334,35 @@
         "Methylhydroxypyridine carboxylate dioxygenase.",
         "Methylhydroxypyridinecarboxylate oxidase.",
         "MHPCO."
+      ]
+    },
+    "1.14.13.243": {
+      "id": "1.14.13.243",
+      "name": "Toluene 2-monooxygenase.",
+      "synonyms": [
+        "Toluene ortho-monooxygenase."
+      ]
+    },
+    "1.14.13.244": {
+      "id": "1.14.13.244",
+      "name": "Phenol 2-monooxygenase (NADH).",
+      "synonyms": []
+    },
+    "1.14.13.245": {
+      "id": "1.14.13.245",
+      "name": "Assimilatory dimethylsulfide S-monooxygenase.",
+      "synonyms": []
+    },
+    "1.14.13.246": {
+      "id": "1.14.13.246",
+      "name": "4-beta-methylsterol monooxygenase.",
+      "synonyms": []
+    },
+    "1.14.13.247": {
+      "id": "1.14.13.247",
+      "name": "Stachydrine N-demethylase.",
+      "synonyms": [
+        "L-proline betaine N-demethylase."
       ]
     },
     "1.14.13.n1": {
@@ -12740,8 +13039,11 @@
     },
     "1.14.14.85": {
       "id": "1.14.14.85",
-      "name": "7-deoxyloganin 7-hydroxylase.",
-      "synonyms": []
+      "name": "7-deoxyloganate 7-hydroxylase.",
+      "synonyms": [
+        "7-deoxyloganin 7-hydroxylase.",
+        "CYP72A224."
+      ]
     },
     "1.14.14.86": {
       "id": "1.14.14.86",
@@ -13318,6 +13620,101 @@
         "LUT1."
       ]
     },
+    "1.14.14.159": {
+      "id": "1.14.14.159",
+      "name": "Dolabradiene monooxygenase.",
+      "synonyms": [
+        "CYP71Z16."
+      ]
+    },
+    "1.14.14.160": {
+      "id": "1.14.14.160",
+      "name": "Zealexin A1 synthase.",
+      "synonyms": [
+        "CYP71Z18."
+      ]
+    },
+    "1.14.14.161": {
+      "id": "1.14.14.161",
+      "name": "Nepetalactol monooxygenase.",
+      "synonyms": [
+        "CYP76A26.",
+        "Iridoid oxidase."
+      ]
+    },
+    "1.14.14.162": {
+      "id": "1.14.14.162",
+      "name": "Flavanone 2-hydroxylase.",
+      "synonyms": [
+        "CYP93B1.",
+        "CYP93G2."
+      ]
+    },
+    "1.14.14.163": {
+      "id": "1.14.14.163",
+      "name": "(S)-1-hydroxy-N-methylcanadine 13-hydroxylase.",
+      "synonyms": [
+        "CYP82X2."
+      ]
+    },
+    "1.14.14.164": {
+      "id": "1.14.14.164",
+      "name": "Fraxetin 5-hydroxylase.",
+      "synonyms": [
+        "CYP82C4.",
+        "Fraxetin 5-monooxygenase."
+      ]
+    },
+    "1.14.14.165": {
+      "id": "1.14.14.165",
+      "name": "Indole-3-carbonyl nitrile 4-hydroxylase.",
+      "synonyms": [
+        "CYP82C2."
+      ]
+    },
+    "1.14.14.166": {
+      "id": "1.14.14.166",
+      "name": "(S)-N-methylcanadine 1-hydroxylase.",
+      "synonyms": [
+        "CYP82Y1."
+      ]
+    },
+    "1.14.14.167": {
+      "id": "1.14.14.167",
+      "name": "(13S,14R)-13-O-acetyl-1-hydroxy-N-methylcanadine 8-hydroxylase.",
+      "synonyms": [
+        "CYP82X1."
+      ]
+    },
+    "1.14.14.168": {
+      "id": "1.14.14.168",
+      "name": "Germacreene A acid 8-beta-hydroxylase.",
+      "synonyms": [
+        "CYP71BL1.",
+        "CYP71BL6."
+      ]
+    },
+    "1.14.14.169": {
+      "id": "1.14.14.169",
+      "name": "Eupatolide synthase.",
+      "synonyms": [
+        "CYP71DD6."
+      ]
+    },
+    "1.14.14.170": {
+      "id": "1.14.14.170",
+      "name": "8-epi-inunolide synthase.",
+      "synonyms": [
+        "CYP71BL1."
+      ]
+    },
+    "1.14.14.171": {
+      "id": "1.14.14.171",
+      "name": "Beta-amyrin 16-alpha-hydroxylase.",
+      "synonyms": [
+        "CYP87D16."
+      ]
+    },
     "1.14.14.n1": {
       "id": "1.14.14.n1",
       "name": "Transferred entry: 1.14.99.46.",
@@ -13586,6 +13983,18 @@
         "DEB hydroxylase."
       ]
     },
+    "1.14.15.36": {
+      "id": "1.14.15.36",
+      "name": "Sterol 14-alpha-demethylase (ferredoxin).",
+      "synonyms": [
+        "CYP51."
+      ]
+    },
+    "1.14.15.37": {
+      "id": "1.14.15.37",
+      "name": "Luteothin monooxygenase.",
+      "synonyms": []
+    },
     "1.14.16.1": {
       "id": "1.14.16.1",
       "name": "Phenylalanine 4-monooxygenase.",
@@ -13652,6 +14061,7 @@
       "id": "1.14.17.1",
       "name": "Dopamine beta-monooxygenase.",
       "synonyms": [
+        "(3,4-dihydroxyphenethylamine)-beta-monooxygenase.",
         "Dopamine beta-hydroxylase."
       ]
     },
@@ -13746,11 +14156,27 @@
     },
     "1.14.18.9": {
       "id": "1.14.18.9",
-      "name": "Methylsterol monooxygenase.",
+      "name": "4-alpha-methylsterol monooxygenase.",
       "synonyms": [
         "4-methylsterol oxidase.",
-        "Methylsterol hydroxylase."
+        "Methylsterol hydroxylase.",
+        "Methylsterol monooxygenase."
       ]
+    },
+    "1.14.18.10": {
+      "id": "1.14.18.10",
+      "name": "Plant 4,4-dimethylsterol C-4-alpha-methyl-monooxygenase.",
+      "synonyms": []
+    },
+    "1.14.18.11": {
+      "id": "1.14.18.11",
+      "name": "Plant 4-alpha-monomethylsterol monooxygenase.",
+      "synonyms": []
+    },
+    "1.14.18.12": {
+      "id": "1.14.18.12",
+      "name": "2-hydroxy fatty acid dioxygenase.",
+      "synonyms": []
     },
     "1.14.19.1": {
       "id": "1.14.19.1",
@@ -14073,6 +14499,7 @@
       "name": "Acyl-lipid (9-3)-desaturase.",
       "synonyms": [
         "Acyl-lipid 6-desaturase.",
+        "Acyl-lipid Delta(6)-desaturase.",
         "Delta(6)-desaturase."
       ]
     },
@@ -14248,6 +14675,19 @@
         "Sesamin synthase."
       ]
     },
+    "1.14.19.75": {
+      "id": "1.14.19.75",
+      "name": "Very-long-chain acyl-lipid omega-9 desaturase.",
+      "synonyms": []
+    },
+    "1.14.19.76": {
+      "id": "1.14.19.76",
+      "name": "Flavone synthase II.",
+      "synonyms": [
+        "CYP93B16.",
+        "CYP93G1."
+      ]
+    },
     "1.14.19.n1": {
       "id": "1.14.19.n1",
       "name": "Transferred entry: 1.14.19.4.",
@@ -14265,7 +14705,7 @@
     },
     "1.14.19.n4": {
       "id": "1.14.19.n4",
-      "name": "Stearoyl-CoA 9-desaturase.",
+      "name": "Stearoyl-CoA 9-desaturase (NADPH).",
       "synonyms": []
     },
     "1.14.19.n5": {
@@ -14804,6 +15244,18 @@
       "name": "Zeaxanthin 4-ketolase.",
       "synonyms": []
     },
+    "1.14.99.65": {
+      "id": "1.14.99.65",
+      "name": "4-amino-L-phenylalanyl-[CmlP-peptidyl-carrier-protein] 3-hydroxylase.",
+      "synonyms": []
+    },
+    "1.14.99.66": {
+      "id": "1.14.99.66",
+      "name": "[Histone-H3]-N(6),N(6)-dimethyl-L-lysine(4) FAD-dependent demethylase.",
+      "synonyms": [
+        "Lysine-specific histone demethylase 1."
+      ]
+    },
     "1.14.99.n1": {
       "id": "1.14.99.n1",
       "name": "Transferred entry: 1.13.11.75.",
@@ -14954,10 +15406,8 @@
     },
     "1.16.5.1": {
       "id": "1.16.5.1",
-      "name": "Ascorbate ferrireductase (transmembrane).",
-      "synonyms": [
-        "Cytochrome b(561)."
-      ]
+      "name": "Transferred entry: 7.2.1.3.",
+      "synonyms": []
     },
     "1.16.8.1": {
       "id": "1.16.8.1",
@@ -15272,6 +15722,11 @@
         "Formate dehydrogenase O."
       ]
     },
+    "1.17.99.8": {
+      "id": "1.17.99.8",
+      "name": "Limonene dehydrogenase.",
+      "synonyms": []
+    },
     "1.18.1.1": {
       "id": "1.18.1.1",
       "name": "Rubredoxin--NAD(+) reductase.",
@@ -15393,8 +15848,10 @@
     },
     "1.20.4.1": {
       "id": "1.20.4.1",
-      "name": "Arsenate reductase (glutaredoxin).",
-      "synonyms": []
+      "name": "Arsenate reductase (glutathione/glutaredoxin).",
+      "synonyms": [
+        "Arsenate reductase (glutaredoxin)."
+      ]
     },
     "1.20.4.2": {
       "id": "1.20.4.2",
@@ -15520,6 +15977,11 @@
     "1.21.4.4": {
       "id": "1.21.4.4",
       "name": "Betaine reductase.",
+      "synonyms": []
+    },
+    "1.21.4.5": {
+      "id": "1.21.4.5",
+      "name": "Tetrachlorohydroquinone reductive dehalogenase.",
       "synonyms": []
     },
     "1.21.98.1": {
@@ -16139,13 +16601,8 @@
     },
     "2.1.1.43": {
       "id": "2.1.1.43",
-      "name": "Histone-lysine N-methyltransferase.",
-      "synonyms": [
-        "Protein methylase 3.",
-        "Protein methylase III.",
-        "Protein methyltransferase II.",
-        "Protein-lysine N-methyltransferase."
-      ]
+      "name": "Transferred entry: 2.1.1.354.",
+      "synonyms": []
     },
     "2.1.1.44": {
       "id": "2.1.1.44",
@@ -16275,7 +16732,11 @@
     "2.1.1.64": {
       "id": "2.1.1.64",
       "name": "3-demethylubiquinol 3-O-methyltransferase.",
-      "synonyms": []
+      "synonyms": [
+        "2-octaprenyl-3-methyl-5-hydroxy-6-methoxy-1,4-benzoquinone methyltransferase.",
+        "3-demethylubiquinone-9 3-methyltransferase.",
+        "5-demethylubiquinone-9 methyltransferase."
+      ]
     },
     "2.1.1.65": {
       "id": "2.1.1.65",
@@ -16340,7 +16801,7 @@
     },
     "2.1.1.74": {
       "id": "2.1.1.74",
-      "name": "Methylenetetrahydrofolate--tRNA-(uracil(54)-C(5))-methyltransferase(FADH(2)-oxidizing).",
+      "name": "Methylenetetrahydrofolate--tRNA-(uracil(54)-C(5))-methyltransferase(NAD(P)H-oxidizing).",
       "synonyms": [
         "Folate-dependent ribothymidyl synthase.",
         "Folate/FAD-dependent tRNA T54 methyltransferase."
@@ -16492,8 +16953,10 @@
     },
     "2.1.1.95": {
       "id": "2.1.1.95",
-      "name": "Tocopherol O-methyltransferase.",
-      "synonyms": []
+      "name": "Tocopherol C-methyltransferase.",
+      "synonyms": [
+        "Tocopherol O-methyltransferase."
+      ]
     },
     "2.1.1.96": {
       "id": "2.1.1.96",
@@ -17835,7 +18298,7 @@
     },
     "2.1.1.308": {
       "id": "2.1.1.308",
-      "name": "2-hydroxyethylphosphonate methyltransferase.",
+      "name": "Cytidylyl-2-hydroxyethylphosphonate methyltransferase.",
       "synonyms": []
     },
     "2.1.1.309": {
@@ -18058,6 +18521,76 @@
       "name": "Toxoflavin synthase.",
       "synonyms": []
     },
+    "2.1.1.350": {
+      "id": "2.1.1.350",
+      "name": "Menaquinone C(8)-methyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.351": {
+      "id": "2.1.1.351",
+      "name": "Nocamycin O-methyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.352": {
+      "id": "2.1.1.352",
+      "name": "3-O-acetyl-4'-O-demethylpapaveroxine 4'-O-methyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.353": {
+      "id": "2.1.1.353",
+      "name": "Demethylluteothin O-methyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.354": {
+      "id": "2.1.1.354",
+      "name": "[Histone H3]-lysine(4) N-trimethyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.355": {
+      "id": "2.1.1.355",
+      "name": "[Histone H3]-lysine(9) N-trimethyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.356": {
+      "id": "2.1.1.356",
+      "name": "[Histone H3]-lysine(27) N-trimethyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.357": {
+      "id": "2.1.1.357",
+      "name": "[Histone H3]-lysine(36) N-dimethyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.358": {
+      "id": "2.1.1.358",
+      "name": "[Histone H3]-dimethyl-L-lysine(36) N-methyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.359": {
+      "id": "2.1.1.359",
+      "name": "[Histone H3]-lysine(36) N-trimethyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.360": {
+      "id": "2.1.1.360",
+      "name": "[Histone H3]-lysine(79) N-trimethyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.361": {
+      "id": "2.1.1.361",
+      "name": "[Histone H4]-lysine(20) N-methyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.362": {
+      "id": "2.1.1.362",
+      "name": "[Histone H4]-N-methyl-L-lysine(20) N-methyltransferase.",
+      "synonyms": []
+    },
+    "2.1.1.363": {
+      "id": "2.1.1.363",
+      "name": "Pre-sodorifen synthase.",
+      "synonyms": []
+    },
     "2.1.1.n1": {
       "id": "2.1.1.n1",
       "name": "Resorcinol O-methyltransferase.",
@@ -18152,7 +18685,7 @@
     },
     "2.1.2.2": {
       "id": "2.1.2.2",
-      "name": "Phosphoribosylglycinamide formyltransferase.",
+      "name": "Phosphoribosylglycinamide formyltransferase 1.",
       "synonyms": [
         "2-amino-N-ribosylacetamide 5'-phosphate transformylase.",
         "5'-phosphoribosylglycinamide transformylase.",
@@ -18384,6 +18917,11 @@
         "L-arginine:inosamine phosphate amidinotransferase.",
         "L-arginine:inosamine-P-amidinotransferase."
       ]
+    },
+    "2.1.4.3": {
+      "id": "2.1.4.3",
+      "name": "L-arginine:L-lysine amidinotransferase.",
+      "synonyms": []
     },
     "2.1.5.1": {
       "id": "2.1.5.1",
@@ -18736,7 +19274,6 @@
         "Acetylglutamate-acetylornithine transacetylase.",
         "Acetylglutamic synthetase.",
         "Acetylglutamic-acetylornithine transacetylase.",
-        "Acetylornithinase.",
         "Acetylornithine glutamate acetyltransferase.",
         "Glutamate acetyltransferase.",
         "N-acetyl-L-glutamate synthetase.",
@@ -18765,7 +19302,6 @@
       "id": "2.3.1.38",
       "name": "[Acyl-carrier-protein] S-acetyltransferase.",
       "synonyms": [
-        "ACAT.",
         "Acetyl coenzyme A-acyl-carrier-protein transacylase.",
         "ACP acetyltransferase.",
         "Acyl-carrier-protein acetyltransferase."
@@ -19116,13 +19652,16 @@
     },
     "2.3.1.85": {
       "id": "2.3.1.85",
-      "name": "Fatty-acid synthase.",
-      "synonyms": []
+      "name": "Fatty-acid synthase system.",
+      "synonyms": [
+        "Fatty-acid synthase."
+      ]
     },
     "2.3.1.86": {
       "id": "2.3.1.86",
-      "name": "Fatty-acyl-CoA synthase.",
+      "name": "Fatty-acyl-CoA synthase system.",
       "synonyms": [
+        "Fatty-acyl-CoA synthase.",
         "Yeast fatty acid synthase."
       ]
     },
@@ -20329,13 +20868,8 @@
         "DGG octanoyltransferase."
       ]
     },
-    "2.3.1.n1": {
-      "id": "2.3.1.n1",
-      "name": "Transferred entry: 2.3.1.191.",
-      "synonyms": []
-    },
-    "2.3.1.n2": {
-      "id": "2.3.1.n2",
+    "2.3.1.274": {
+      "id": "2.3.1.274",
       "name": "Phosphate acyltransferase.",
       "synonyms": [
         "Acyl-[acyl-carrier-protein]--phosphate acyltransferase.",
@@ -20343,17 +20877,176 @@
         "Phosphate-acyl-ACP acyltransferase."
       ]
     },
-    "2.3.1.n3": {
-      "id": "2.3.1.n3",
-      "name": "Glycerol-3-phosphate acyltransferase (acyl-phosphate transferring).",
+    "2.3.1.275": {
+      "id": "2.3.1.275",
+      "name": "Acyl phosphate:glycerol-3-phosphate acyltransferase.",
       "synonyms": [
         "Acyl-phosphate--glycerol-3-phosphate acyltransferase.",
         "Acyl-PO(4) G3P acyltransferase.",
         "G3P acyltransferase.",
+        "Glycerol-3-phosphate acyltransferase (acyl-phosphate transferring).",
         "GPAT.",
         "LPA synthase.",
         "Lysophosphatidic acid synthase."
       ]
+    },
+    "2.3.1.276": {
+      "id": "2.3.1.276",
+      "name": "Galactosamine-1-phosphate N-acetyltransferase.",
+      "synonyms": []
+    },
+    "2.3.1.277": {
+      "id": "2.3.1.277",
+      "name": "2-oxo-3-(phosphooxy)propyl 3-oxoalkanoate synthase.",
+      "synonyms": []
+    },
+    "2.3.1.278": {
+      "id": "2.3.1.278",
+      "name": "Mycolipenoyl-CoA--2-(long-chain-fatty acyl)-trehalosemycolipenoyltransferase.",
+      "synonyms": []
+    },
+    "2.3.1.279": {
+      "id": "2.3.1.279",
+      "name": "Long-chain-acyl-CoA--trehalose acyltransferase.",
+      "synonyms": []
+    },
+    "2.3.1.280": {
+      "id": "2.3.1.280",
+      "name": "(Aminoalkyl)phosphonate N-acetyltransferase.",
+      "synonyms": []
+    },
+    "2.3.1.281": {
+      "id": "2.3.1.281",
+      "name": "Coelimycin P1 polyketide synthase.",
+      "synonyms": []
+    },
+    "2.3.1.282": {
+      "id": "2.3.1.282",
+      "name": "Phenolphthiocerol/phthiocerol/phthiodiolone dimycocerosyl transferase.",
+      "synonyms": []
+    },
+    "2.3.1.283": {
+      "id": "2.3.1.283",
+      "name": "2'-acyl-2-O-sulfo-trehalose (hydroxy)phthioceranyltransferase.",
+      "synonyms": []
+    },
+    "2.3.1.284": {
+      "id": "2.3.1.284",
+      "name": "3'-(hydroxy)phthioceranyl-2'-palmitoyl(stearoyl)-2-O-sulfo-trehalose(hydroxy)phthioceranyltransferase.",
+      "synonyms": []
+    },
+    "2.3.1.285": {
+      "id": "2.3.1.285",
+      "name": "(13S,14R)-1,13-dihydroxy-N-methylcanadine 13-O-acetyltransferase.",
+      "synonyms": []
+    },
+    "2.3.1.286": {
+      "id": "2.3.1.286",
+      "name": "Protein acetyllysine N-acetyltransferase.",
+      "synonyms": [
+        "NAD(+)-dependent protein deacetylase.",
+        "Protein lysine deacetylase."
+      ]
+    },
+    "2.3.1.287": {
+      "id": "2.3.1.287",
+      "name": "Phthioceranic/hydroxyphthioceranic acid synthase.",
+      "synonyms": [
+        "PKS2."
+      ]
+    },
+    "2.3.1.288": {
+      "id": "2.3.1.288",
+      "name": "2-O-sulfo trehalose long-chain-acyltransferase.",
+      "synonyms": []
+    },
+    "2.3.1.289": {
+      "id": "2.3.1.289",
+      "name": "Aureothin polyketide synthase system.",
+      "synonyms": [
+        "Aureothin polyketide synthase complex."
+      ]
+    },
+    "2.3.1.290": {
+      "id": "2.3.1.290",
+      "name": "Spectinabilin polyketide synthase system.",
+      "synonyms": [
+        "Spectinabilin polyketide synthase complex."
+      ]
+    },
+    "2.3.1.291": {
+      "id": "2.3.1.291",
+      "name": "Sphingoid base N-palmitoyltransferase.",
+      "synonyms": [
+        "Mammalian ceramide synthase 5."
+      ]
+    },
+    "2.3.1.292": {
+      "id": "2.3.1.292",
+      "name": "(Phenol)carboxyphthiodiolenone synthase.",
+      "synonyms": []
+    },
+    "2.3.1.293": {
+      "id": "2.3.1.293",
+      "name": "Meromycolic acid 3-oxoacyl-(acyl carrier protein) synthase I.",
+      "synonyms": [
+        "Beta-ketoacyl-acyl carrier protein synthase KasA."
+      ]
+    },
+    "2.3.1.294": {
+      "id": "2.3.1.294",
+      "name": "Meromycolic acid 3-oxoacyl-(acyl carrier protein) synthase II.",
+      "synonyms": [
+        "Beta-ketoacyl-acyl carrier protein synthase KasB."
+      ]
+    },
+    "2.3.1.295": {
+      "id": "2.3.1.295",
+      "name": "Mycoketide-CoA synthase.",
+      "synonyms": []
+    },
+    "2.3.1.296": {
+      "id": "2.3.1.296",
+      "name": "Omega-hydroxyceramide transacylase.",
+      "synonyms": []
+    },
+    "2.3.1.297": {
+      "id": "2.3.1.297",
+      "name": "Very-long-chain ceramide synthase.",
+      "synonyms": [
+        "Mammalian ceramide synthase 2.",
+        "Sphingoid base N-very-long-chain fatty acyl-coA transferase."
+      ]
+    },
+    "2.3.1.298": {
+      "id": "2.3.1.298",
+      "name": "Ultra-long-chain ceramide synthase.",
+      "synonyms": [
+        "Mammalian ceramide synthase 3.",
+        "Sphingoid base N-ultra-long-chain fatty acyl-coA transferase."
+      ]
+    },
+    "2.3.1.299": {
+      "id": "2.3.1.299",
+      "name": "Sphingoid base N-stearoyltransferase.",
+      "synonyms": [
+        "Mammalian ceramide synthase 1."
+      ]
+    },
+    "2.3.1.n1": {
+      "id": "2.3.1.n1",
+      "name": "Transferred entry: 2.3.1.191.",
+      "synonyms": []
+    },
+    "2.3.1.n2": {
+      "id": "2.3.1.n2",
+      "name": "Transferred entry: 2.3.1.274.",
+      "synonyms": []
+    },
+    "2.3.1.n3": {
+      "id": "2.3.1.n3",
+      "name": "Transferred entry: 2.3.1.275.",
+      "synonyms": []
     },
     "2.3.1.n4": {
       "id": "2.3.1.n4",
@@ -20608,6 +21301,14 @@
       "id": "2.3.2.32",
       "name": "Cullin-RING-type E3 NEDD8 transferase.",
       "synonyms": []
+    },
+    "2.3.2.33": {
+      "id": "2.3.2.33",
+      "name": "RCR-type E3 ubiquitin transferase.",
+      "synonyms": [
+        "MYCBP2.",
+        "PHR1."
+      ]
     },
     "2.3.3.1": {
       "id": "2.3.3.1",
@@ -23324,6 +24025,106 @@
         "UGT71K3."
       ]
     },
+    "2.4.1.359": {
+      "id": "2.4.1.359",
+      "name": "Glucosylglycerol phosphorylase (configuration-retaining).",
+      "synonyms": [
+        "2-O-alpha-D-glucosylglycerol phosphorylase (retaining)."
+      ]
+    },
+    "2.4.1.360": {
+      "id": "2.4.1.360",
+      "name": "2-hydroxyflavanone C-glucosyltransferase.",
+      "synonyms": []
+    },
+    "2.4.1.361": {
+      "id": "2.4.1.361",
+      "name": "GDP-mannose:di-myo-inositol-1,3'-phosphate beta-1,2-mannosyltransferase.",
+      "synonyms": [
+        "MDIP synthase."
+      ]
+    },
+    "2.4.1.362": {
+      "id": "2.4.1.362",
+      "name": "Alpha-(1->3) branching sucrase.",
+      "synonyms": [
+        "Branching sucrase A.",
+        "BRS-A."
+      ]
+    },
+    "2.4.1.363": {
+      "id": "2.4.1.363",
+      "name": "Ginsenoside 20-O-glucosyltransferase.",
+      "synonyms": [
+        "UGT71A27."
+      ]
+    },
+    "2.4.1.364": {
+      "id": "2.4.1.364",
+      "name": "Protopanaxadiol-type ginsenoside 3-O-glucosyltransferase.",
+      "synonyms": [
+        "UGT74AE2."
+      ]
+    },
+    "2.4.1.365": {
+      "id": "2.4.1.365",
+      "name": "Protopanaxadiol-type ginsenoside-3-O-glucoside 2''-O-glucosyltransferase.",
+      "synonyms": [
+        "UGT94Q2."
+      ]
+    },
+    "2.4.1.366": {
+      "id": "2.4.1.366",
+      "name": "Ginsenoside F1 6-O-glucosyltransferase.",
+      "synonyms": [
+        "UGTPg101."
+      ]
+    },
+    "2.4.1.367": {
+      "id": "2.4.1.367",
+      "name": "Ginsenoside 6-O-glucosyltransferase.",
+      "synonyms": [
+        "UGTPg100."
+      ]
+    },
+    "2.4.1.368": {
+      "id": "2.4.1.368",
+      "name": "Oleanolate 3-O-glucosyltransferase.",
+      "synonyms": [
+        "UGT73C10.",
+        "UGT73C11."
+      ]
+    },
+    "2.4.1.369": {
+      "id": "2.4.1.369",
+      "name": "Enterobactin C-glucosyltransferase.",
+      "synonyms": []
+    },
+    "2.4.1.370": {
+      "id": "2.4.1.370",
+      "name": "Inositol phosphorylceramide mannosyltransferase.",
+      "synonyms": []
+    },
+    "2.4.1.371": {
+      "id": "2.4.1.371",
+      "name": "Polymannosyl GlcNAc-diphospho-ditrans,octacis-undecaprenol 2,3-alpha-mannosylpolymerase.",
+      "synonyms": []
+    },
+    "2.4.1.372": {
+      "id": "2.4.1.372",
+      "name": "Mutansucrase.",
+      "synonyms": []
+    },
+    "2.4.1.373": {
+      "id": "2.4.1.373",
+      "name": "Alpha-(1->2) branching sucrase.",
+      "synonyms": []
+    },
+    "2.4.1.374": {
+      "id": "2.4.1.374",
+      "name": "Beta-1,2-mannooligosaccharide synthase.",
+      "synonyms": []
+    },
     "2.4.1.n1": {
       "id": "2.4.1.n1",
       "name": "Transferred entry: 2.4.1.245.",
@@ -23463,7 +24264,7 @@
     },
     "2.4.2.16": {
       "id": "2.4.2.16",
-      "name": "Urate-ribonucleotide phosphorylase.",
+      "name": "Urate-ribonucleoside phosphorylase.",
       "synonyms": []
     },
     "2.4.2.17": {
@@ -23668,7 +24469,8 @@
       "id": "2.4.2.42",
       "name": "UDP-D-xylose:beta-D-glucoside alpha-1,3-D-xylosyltransferase.",
       "synonyms": [
-        "Beta-glucoside alpha-1,3-xylosyltransferase."
+        "Beta-glucoside alpha-1,3-xylosyltransferase.",
+        "UDP-alpha-D-xylose:beta-D-glucoside 3-alpha-D-xylosyltransferase."
       ]
     },
     "2.4.2.43": {
@@ -23796,6 +24598,11 @@
       "synonyms": [
         "ADP-thiazole synthase."
       ]
+    },
+    "2.4.2.61": {
+      "id": "2.4.2.61",
+      "name": "Alpha-dystroglycan beta-1,4-xylosyltransferase.",
+      "synonyms": []
     },
     "2.4.2.n1": {
       "id": "2.4.2.n1",
@@ -24352,7 +25159,6 @@
       "synonyms": [
         "Cystathionine synthase.",
         "Cystathionine synthetase.",
-        "Homoserine O-transsuccinylase.",
         "Homoserine transsuccinylase.",
         "O-succinyl-L-homoserine succinate-lyase (adding cysteine).",
         "O-succinylhomoserine (thiol)-lyase.",
@@ -25089,6 +25895,31 @@
     "2.5.1.147": {
       "id": "2.5.1.147",
       "name": "5-amino-6-(D-ribitylamino)uracil--L-tyrosine 4-hydroxyphenyl transferase.",
+      "synonyms": []
+    },
+    "2.5.1.148": {
+      "id": "2.5.1.148",
+      "name": "Lycopaoctaene synthase.",
+      "synonyms": []
+    },
+    "2.5.1.149": {
+      "id": "2.5.1.149",
+      "name": "Lycopene elongase/hydratase (flavuxanthin-forming).",
+      "synonyms": []
+    },
+    "2.5.1.150": {
+      "id": "2.5.1.150",
+      "name": "Lycopene elongase/hydratase (dihydrobisanhydrobacterioruberin-forming).",
+      "synonyms": []
+    },
+    "2.5.1.151": {
+      "id": "2.5.1.151",
+      "name": "Alkylcobalamin dealkylase.",
+      "synonyms": []
+    },
+    "2.5.1.152": {
+      "id": "2.5.1.152",
+      "name": "D-histidine 2-aminobutanoyltransferase.",
       "synonyms": []
     },
     "2.5.1.n1": {
@@ -26033,6 +26864,26 @@
     "2.6.1.114": {
       "id": "2.6.1.114",
       "name": "8-demethyl-8-aminoriboflavin-5'-phosphate synthase.",
+      "synonyms": []
+    },
+    "2.6.1.115": {
+      "id": "2.6.1.115",
+      "name": "5-hydroxydodecatetraenal 1-aminotransferase.",
+      "synonyms": []
+    },
+    "2.6.1.116": {
+      "id": "2.6.1.116",
+      "name": "6-aminohexanoate aminotransferase.",
+      "synonyms": []
+    },
+    "2.6.1.117": {
+      "id": "2.6.1.117",
+      "name": "L-glutamine--4-(methylsulfanyl)-2-oxobutanoate aminotransferase.",
+      "synonyms": []
+    },
+    "2.6.1.118": {
+      "id": "2.6.1.118",
+      "name": "[Amino group carrier protein]-gamma-(L-lysyl)-L-glutamateaminotransferase.",
       "synonyms": []
     },
     "2.6.1.n1": {
@@ -27013,9 +27864,10 @@
     },
     "2.7.1.147": {
       "id": "2.7.1.147",
-      "name": "ADP-specific glucokinase.",
+      "name": "ADP-specific glucose/glucosamine kinase.",
       "synonyms": [
-        "ADP-dependent glucokinase."
+        "ADP-dependent glucokinase.",
+        "ADP-specific glucokinase."
       ]
     },
     "2.7.1.148": {
@@ -27525,6 +28377,46 @@
       "name": "4-hydroxytryptamine kinase.",
       "synonyms": []
     },
+    "2.7.1.223": {
+      "id": "2.7.1.223",
+      "name": "Aminoimidazole riboside kinase.",
+      "synonyms": []
+    },
+    "2.7.1.224": {
+      "id": "2.7.1.224",
+      "name": "Cytidine diphosphoramidate kinase.",
+      "synonyms": []
+    },
+    "2.7.1.225": {
+      "id": "2.7.1.225",
+      "name": "L-serine kinase (ATP).",
+      "synonyms": []
+    },
+    "2.7.1.226": {
+      "id": "2.7.1.226",
+      "name": "L-serine kinase (ADP).",
+      "synonyms": []
+    },
+    "2.7.1.227": {
+      "id": "2.7.1.227",
+      "name": "Inositol phosphorylceramide synthase.",
+      "synonyms": []
+    },
+    "2.7.1.228": {
+      "id": "2.7.1.228",
+      "name": "Mannosyl-inositol-phosphoceramide inositolphosphotransferase.",
+      "synonyms": []
+    },
+    "2.7.1.229": {
+      "id": "2.7.1.229",
+      "name": "Deoxyribokinase.",
+      "synonyms": []
+    },
+    "2.7.1.230": {
+      "id": "2.7.1.230",
+      "name": "Amicoumacin kinase.",
+      "synonyms": []
+    },
     "2.7.1.n1": {
       "id": "2.7.1.n1",
       "name": "Transferred entry: 2.7.1.170.",
@@ -27654,6 +28546,16 @@
       "synonyms": [
         "Propionate/acetate kinase."
       ]
+    },
+    "2.7.2.16": {
+      "id": "2.7.2.16",
+      "name": "2-phosphoglycerate kinase.",
+      "synonyms": []
+    },
+    "2.7.2.17": {
+      "id": "2.7.2.17",
+      "name": "[Amino group carrier protein]-L-2-aminoadipate 6-kinase.",
+      "synonyms": []
     },
     "2.7.3.1": {
       "id": "2.7.3.1",
@@ -28060,7 +28962,7 @@
     },
     "2.7.7.2": {
       "id": "2.7.7.2",
-      "name": "FAD synthetase.",
+      "name": "FAD synthase.",
       "synonyms": [
         "FAD diphosphorylase.",
         "FAD pyrophosphorylase.",
@@ -28185,12 +29087,12 @@
     },
     "2.7.7.16": {
       "id": "2.7.7.16",
-      "name": "Transferred entry: 3.1.27.5.",
+      "name": "Transferred entry: 4.6.1.18.",
       "synonyms": []
     },
     "2.7.7.17": {
       "id": "2.7.7.17",
-      "name": "Transferred entry: 3.1.27.1.",
+      "name": "Transferred entry: 4.6.1.19.",
       "synonyms": []
     },
     "2.7.7.18": {
@@ -28252,7 +29154,7 @@
     },
     "2.7.7.26": {
       "id": "2.7.7.26",
-      "name": "Transferred entry: 3.1.27.3.",
+      "name": "Transferred entry: 4.6.1.24.",
       "synonyms": []
     },
     "2.7.7.27": {
@@ -28585,8 +29487,10 @@
     },
     "2.7.7.68": {
       "id": "2.7.7.68",
-      "name": "2-phospho-L-lactate guanylyltransferase.",
-      "synonyms": []
+      "name": "Phosphoenolpyruvate guanylyltransferase.",
+      "synonyms": [
+        "2-phospho-L-lactate guanylyltransferase."
+      ]
     },
     "2.7.7.69": {
       "id": "2.7.7.69",
@@ -28781,9 +29685,27 @@
         "SAMP-activating enzyme E1."
       ]
     },
+    "2.7.7.101": {
+      "id": "2.7.7.101",
+      "name": "DNA primase DnaG.",
+      "synonyms": []
+    },
+    "2.7.7.102": {
+      "id": "2.7.7.102",
+      "name": "DNA primase AEP.",
+      "synonyms": [
+        "Archaeo-eukaryotic primase.",
+        "PrimPol."
+      ]
+    },
+    "2.7.7.103": {
+      "id": "2.7.7.103",
+      "name": "L-glutamine-phosphate cytidylyltransferase.",
+      "synonyms": []
+    },
     "2.7.7.n1": {
       "id": "2.7.7.n1",
-      "name": "Adenosine monophosphate-protein transferase.",
+      "name": "Protein adenylyltransferase.",
       "synonyms": []
     },
     "2.7.7.n2": {
@@ -29023,7 +29945,7 @@
     },
     "2.7.8.28": {
       "id": "2.7.8.28",
-      "name": "2-phospho-L-lactate transferase.",
+      "name": "Phosphoenolpyruvate transferase.",
       "synonyms": []
     },
     "2.7.8.29": {
@@ -29799,6 +30721,11 @@
       "name": "tRNA-5-methyluridine(54) 2-sulfurtransferase.",
       "synonyms": []
     },
+    "2.8.1.16": {
+      "id": "2.8.1.16",
+      "name": "L-aspartate semialdehyde sulfurtransferase.",
+      "synonyms": []
+    },
     "2.8.1.n1": {
       "id": "2.8.1.n1",
       "name": "Transferred entry: 2.8.1.11.",
@@ -30174,7 +31101,7 @@
     },
     "2.8.3.17": {
       "id": "2.8.3.17",
-      "name": "Cinnamoyl-CoA:phenyllactate CoA-transferase.",
+      "name": "3-(aryl)acryloyl-CoA:(R)-3-(aryl)lactate CoA-transferase.",
       "synonyms": [
         "FldA."
       ]
@@ -30225,6 +31152,11 @@
       "synonyms": [
         "Bile acid coenzyme A transferase."
       ]
+    },
+    "2.8.3.26": {
+      "id": "2.8.3.26",
+      "name": "Succinyl-CoA:mesaconate CoA transferase.",
+      "synonyms": []
     },
     "2.8.4.1": {
       "id": "2.8.4.1",
@@ -30290,6 +31222,11 @@
         "O-phosphoseryl-tRNA:selenocysteinyl-tRNA synthase.",
         "SepSecS."
       ]
+    },
+    "2.9.1.3": {
+      "id": "2.9.1.3",
+      "name": "tRNA 2-selenouridine synthase.",
+      "synonyms": []
     },
     "2.9.1.n1": {
       "id": "2.9.1.n1",
@@ -31013,6 +31950,65 @@
     "3.1.1.103": {
       "id": "3.1.1.103",
       "name": "Teichoic acid D-alanine hydrolase.",
+      "synonyms": []
+    },
+    "3.1.1.104": {
+      "id": "3.1.1.104",
+      "name": "5-phospho-D-xylono-1,4-lactonase.",
+      "synonyms": []
+    },
+    "3.1.1.105": {
+      "id": "3.1.1.105",
+      "name": "3-O-acetylpapaveroxine carboxylesterase.",
+      "synonyms": []
+    },
+    "3.1.1.106": {
+      "id": "3.1.1.106",
+      "name": "O-acetyl-ADP-ribose deacetylase.",
+      "synonyms": []
+    },
+    "3.1.1.107": {
+      "id": "3.1.1.107",
+      "name": "Apo-salmochelin esterase.",
+      "synonyms": []
+    },
+    "3.1.1.108": {
+      "id": "3.1.1.108",
+      "name": "Iron(III) enterobactin esterase.",
+      "synonyms": []
+    },
+    "3.1.1.109": {
+      "id": "3.1.1.109",
+      "name": "Iron(III) salmochelin esterase.",
+      "synonyms": []
+    },
+    "3.1.1.110": {
+      "id": "3.1.1.110",
+      "name": "Xylono-1,5-lactonase.",
+      "synonyms": [
+        "D-xylono-1,5-lactone lactonase."
+      ]
+    },
+    "3.1.1.111": {
+      "id": "3.1.1.111",
+      "name": "Phosphatidylserine sn-1 acylhydrolase.",
+      "synonyms": [
+        "Phosphatidylserine-specific phospholipase A(1)."
+      ]
+    },
+    "3.1.1.112": {
+      "id": "3.1.1.112",
+      "name": "Isoamyl acetate esterase.",
+      "synonyms": []
+    },
+    "3.1.1.113": {
+      "id": "3.1.1.113",
+      "name": "Ethyl acetate hydrolase.",
+      "synonyms": []
+    },
+    "3.1.1.114": {
+      "id": "3.1.1.114",
+      "name": "Methyl acetate hydrolase.",
       "synonyms": []
     },
     "3.1.1.n1": {
@@ -31947,6 +32943,25 @@
       "name": "N-acetyl-D-muramate 6-phosphate phosphatase.",
       "synonyms": []
     },
+    "3.1.3.106": {
+      "id": "3.1.3.106",
+      "name": "2-lysophosphatidate phosphatase.",
+      "synonyms": [
+        "1-acyl-sn-glycerol 3-phosphatase."
+      ]
+    },
+    "3.1.3.107": {
+      "id": "3.1.3.107",
+      "name": "Amicoumacin phosphatase.",
+      "synonyms": []
+    },
+    "3.1.3.108": {
+      "id": "3.1.3.108",
+      "name": "Nocturnin.",
+      "synonyms": [
+        "Nocturnin (curled)."
+      ]
+    },
     "3.1.3.n1": {
       "id": "3.1.3.n1",
       "name": "Transferred entry: 3.1.3.86.",
@@ -32039,7 +33054,7 @@
     },
     "3.1.4.8": {
       "id": "3.1.4.8",
-      "name": "Transferred entry: 3.1.27.3.",
+      "name": "Transferred entry: 4.6.1.24.",
       "synonyms": []
     },
     "3.1.4.9": {
@@ -32126,12 +33141,12 @@
     },
     "3.1.4.22": {
       "id": "3.1.4.22",
-      "name": "Transferred entry: 3.1.27.5.",
+      "name": "Transferred entry: 4.6.1.18.",
       "synonyms": []
     },
     "3.1.4.23": {
       "id": "3.1.4.23",
-      "name": "Transferred entry: 3.1.27.1.",
+      "name": "Transferred entry: 4.6.1.19.",
       "synonyms": []
     },
     "3.1.4.24": {
@@ -32352,6 +33367,18 @@
       "name": "RNA 2',3'-cyclic 3'-phosphodiesterase.",
       "synonyms": []
     },
+    "3.1.4.59": {
+      "id": "3.1.4.59",
+      "name": "Cyclic-di-AMP phosphodiesterase.",
+      "synonyms": []
+    },
+    "3.1.4.60": {
+      "id": "3.1.4.60",
+      "name": "PApA phosphodiesterase.",
+      "synonyms": [
+        "PApA hydrolase."
+      ]
+    },
     "3.1.4.n1": {
       "id": "3.1.4.n1",
       "name": "Transferred entry: 3.1.4.53.",
@@ -32367,7 +33394,7 @@
     },
     "3.1.6.1": {
       "id": "3.1.6.1",
-      "name": "Arylsulfatase.",
+      "name": "Arylsulfatase (type I).",
       "synonyms": [
         "Aryl-sulfate sulphohydrolase.",
         "Sulfatase."
@@ -32650,20 +33677,13 @@
     },
     "3.1.11.7": {
       "id": "3.1.11.7",
-      "name": "Adenosine-5'-diphospho-5'-(DNA) diphosphatase.",
-      "synonyms": [
-        "5'-app5'-DNA adenylate hydrolase.",
-        "Aprataxin."
-      ]
+      "name": "Transferred entry: 3.6.1.71.",
+      "synonyms": []
     },
     "3.1.11.8": {
       "id": "3.1.11.8",
-      "name": "Guaosine-5'-diphospho-5'-(DNA) diphosphatase.",
-      "synonyms": [
-        "Aprataxin.",
-        "Pp5'G5'-DNA guanylate hydrolase.",
-        "Pp5'G5'DNA diphosphatase."
-      ]
+      "name": "Transferred entry: 3.6.1.70.",
+      "synonyms": []
     },
     "3.1.12.1": {
       "id": "3.1.12.1",
@@ -32674,11 +33694,8 @@
     },
     "3.1.12.2": {
       "id": "3.1.12.2",
-      "name": "DNA-3'-diphospho-5'-guanosine diphosphatase.",
-      "synonyms": [
-        "Aprataxin.",
-        "DNA-3'pp5'G guanylate hydrolase."
-      ]
+      "name": "Transferred entry: 3.6.1.72.",
+      "synonyms": []
     },
     "3.1.13.1": {
       "id": "3.1.13.1",
@@ -33277,49 +34294,32 @@
     },
     "3.1.27.1": {
       "id": "3.1.27.1",
-      "name": "Ribonuclease T(2).",
-      "synonyms": [
-        "Ribonuclease II.",
-        "Ribonuclease T2."
-      ]
+      "name": "Transferred entry: 4.6.1.19.",
+      "synonyms": []
     },
     "3.1.27.2": {
       "id": "3.1.27.2",
-      "name": "Bacillus subtilis ribonuclease.",
+      "name": "Transferred entry: 4.6.1.22.",
       "synonyms": []
     },
     "3.1.27.3": {
       "id": "3.1.27.3",
-      "name": "Ribonuclease T(1).",
-      "synonyms": [
-        "Aspergillus oryzae ribonuclease.",
-        "Guanyloribonuclease.",
-        "Ribonuclease T1.",
-        "RNase N1.",
-        "RNase N2."
-      ]
+      "name": "Transferred entry: 4.6.1.24.",
+      "synonyms": []
     },
     "3.1.27.4": {
       "id": "3.1.27.4",
-      "name": "Ribonuclease U(2).",
-      "synonyms": [
-        "Ribonuclease U2."
-      ]
+      "name": "Transferred entry: 4.6.1.20.",
+      "synonyms": []
     },
     "3.1.27.5": {
       "id": "3.1.27.5",
-      "name": "Pancreatic ribonuclease.",
-      "synonyms": [
-        "Pancreatic RNase.",
-        "Ribonuclease I.",
-        "RNase.",
-        "RNase A.",
-        "RNase I."
-      ]
+      "name": "Transferred entry: 4.6.1.18.",
+      "synonyms": []
     },
     "3.1.27.6": {
       "id": "3.1.27.6",
-      "name": "Enterobacter ribonuclease.",
+      "name": "Transferred entry: 4.6.1.21.",
       "synonyms": []
     },
     "3.1.27.7": {
@@ -33343,10 +34343,8 @@
     },
     "3.1.27.10": {
       "id": "3.1.27.10",
-      "name": "rRNA endonuclease.",
-      "synonyms": [
-        "Alpha-sarcin."
-      ]
+      "name": "Transferred entry: 4.6.1.23.",
+      "synonyms": []
     },
     "3.1.30.1": {
       "id": "3.1.30.1",
@@ -33484,10 +34482,11 @@
     },
     "3.2.1.15": {
       "id": "3.2.1.15",
-      "name": "Polygalacturonase.",
+      "name": "Endo-polygalacturonase.",
       "synonyms": [
         "Pectin depolymerase.",
-        "Pectinase."
+        "Pectinase.",
+        "Polygalacturonase."
       ]
     },
     "3.2.1.16": {
@@ -33694,7 +34693,7 @@
     },
     "3.2.1.44": {
       "id": "3.2.1.44",
-      "name": "Fucoidanase.",
+      "name": "Transferred entry: 3.2.1.211.",
       "synonyms": []
     },
     "3.2.1.45": {
@@ -33859,9 +34858,10 @@
     },
     "3.2.1.67": {
       "id": "3.2.1.67",
-      "name": "Galacturan 1,4-alpha-galacturonidase.",
+      "name": "Galacturonan 1,4-alpha-galacturonidase.",
       "synonyms": [
         "Exopolygalacturonase.",
+        "Galacturan 1,4-alpha-galacturonidase.",
         "Poly(galacturonate) hydrolase."
       ]
     },
@@ -33972,8 +34972,9 @@
     },
     "3.2.1.82": {
       "id": "3.2.1.82",
-      "name": "Exo-poly-alpha-galacturonosidase.",
+      "name": "Exo-poly-alpha-digalacturonosidase.",
       "synonyms": [
+        "Exo-poly-alpha-galacturonosidase.",
         "Exopolygalacturanosidase."
       ]
     },
@@ -34482,8 +35483,11 @@
     },
     "3.2.1.155": {
       "id": "3.2.1.155",
-      "name": "Xyloglucan-specific exo-beta-1,4-glucanase.",
-      "synonyms": []
+      "name": "Xyloglucan-specific endo-processive beta-1,4-glucanase.",
+      "synonyms": [
+        "((1->6)-alpha-D-xylo)-(1->4)-beta-D-glucan exo-glucohydrolase.",
+        "Xyloglucan-specific exo-beta-1,4-glucanase."
+      ]
     },
     "3.2.1.156": {
       "id": "3.2.1.156",
@@ -34589,9 +35593,7 @@
     "3.2.1.170": {
       "id": "3.2.1.170",
       "name": "Mannosylglycerate hydrolase.",
-      "synonyms": [
-        "2-O-(6-phospho-mannosyl)-D-glycerate hydrolase."
-      ]
+      "synonyms": []
     },
     "3.2.1.171": {
       "id": "3.2.1.171",
@@ -34830,6 +35832,44 @@
         "Alpha-glucosidase II.",
         "ER glucosidase II.",
         "Trimming glucosidase II."
+      ]
+    },
+    "3.2.1.208": {
+      "id": "3.2.1.208",
+      "name": "Glucosylglycerate hydrolase.",
+      "synonyms": []
+    },
+    "3.2.1.209": {
+      "id": "3.2.1.209",
+      "name": "Endoplasmic reticulum Man(9)GlcNAc(2) 1,2-alpha-mannosidase.",
+      "synonyms": []
+    },
+    "3.2.1.210": {
+      "id": "3.2.1.210",
+      "name": "Endoplasmic reticulum Man(8)GlcNAc(2) 1,2-alpha-mannosidase.",
+      "synonyms": []
+    },
+    "3.2.1.211": {
+      "id": "3.2.1.211",
+      "name": "Endo-(1->3)-fucoidanase.",
+      "synonyms": [
+        "Alpha-L-fucosidase.",
+        "Poly(1,3-alpha-L-fucoside-2/4-sulfate) glycanohydrolase."
+      ]
+    },
+    "3.2.1.212": {
+      "id": "3.2.1.212",
+      "name": "Endo-(1->4)-fucoidanase.",
+      "synonyms": [
+        "Alpha-L-fucosidase.",
+        "Poly(1,4-alpha-L-fucoside-2/3-sulfate) glycanohydrolase."
+      ]
+    },
+    "3.2.1.213": {
+      "id": "3.2.1.213",
+      "name": "Galactan exo-1,6-beta-galactobiohydrolase (non-reducing end).",
+      "synonyms": [
+        "Exo-beta-1,6-galactobiohydrolase."
       ]
     },
     "3.2.1.n1": {
@@ -35898,6 +36938,11 @@
         "D-alanyl-D-alanine dipeptidase."
       ]
     },
+    "3.4.13.23": {
+      "id": "3.4.13.23",
+      "name": "Cysteinylglycine-S-conjugate dipeptidase.",
+      "synonyms": []
+    },
     "3.4.14.1": {
       "id": "3.4.14.1",
       "name": "Dipeptidyl-peptidase I.",
@@ -36282,6 +37327,14 @@
         "Angiotensin converting enzyme-2."
       ]
     },
+    "3.4.17.24": {
+      "id": "3.4.17.24",
+      "name": "Tubulin-glutamate carboxypeptidase.",
+      "synonyms": [
+        "Cytosolic carboxypeptidase 1.",
+        "Cytosolic carboxypeptidase 5."
+      ]
+    },
     "3.4.17.n1": {
       "id": "3.4.17.n1",
       "name": "Transferred entry: 3.13.1.6.",
@@ -36400,7 +37453,7 @@
     },
     "3.4.19.13": {
       "id": "3.4.19.13",
-      "name": "Glutathione hydrolase.",
+      "name": "Glutathione gamma-glutamate hydrolase.",
       "synonyms": [
         "Gamma-glutamyltranspeptidase.",
         "Glutathionase."
@@ -39945,7 +40998,7 @@
     },
     "3.5.1.110": {
       "id": "3.5.1.110",
-      "name": "Peroxyureidoacrylate/ureidoacrylate amidohydrolase.",
+      "name": "Ureidoacrylate amidohydrolase.",
       "synonyms": []
     },
     "3.5.1.111": {
@@ -40057,6 +41110,43 @@
       "name": "Deaminated glutathione amidase.",
       "synonyms": [
         "DGSH deaminase."
+      ]
+    },
+    "3.5.1.129": {
+      "id": "3.5.1.129",
+      "name": "N(5)-(cytidine 5'-diphosphoramidyl)-L-glutamine hydrolase.",
+      "synonyms": [
+        "N(5)-(cytidine 5'-diphosphoramidyl)-L-glutamine deacylase."
+      ]
+    },
+    "3.5.1.130": {
+      "id": "3.5.1.130",
+      "name": "[Amino group carrier protein]-lysine hydrolase.",
+      "synonyms": []
+    },
+    "3.5.1.131": {
+      "id": "3.5.1.131",
+      "name": "1-carboxybiuret hydrolase.",
+      "synonyms": []
+    },
+    "3.5.1.132": {
+      "id": "3.5.1.132",
+      "name": "[Amino group carrier protein]-ornithine hydrolase.",
+      "synonyms": []
+    },
+    "3.5.1.133": {
+      "id": "3.5.1.133",
+      "name": "N(alpha)-acyl-L-glutamine aminoacylase.",
+      "synonyms": [
+        "AMRE.",
+        "Axillary malodor releasing enzyme."
+      ]
+    },
+    "3.5.1.134": {
+      "id": "3.5.1.134",
+      "name": "(Indol-3-yl)acetyl-L-aspartate hydrolase.",
+      "synonyms": [
+        "Indole-3-acetyl-L-aspartate hydrolase."
       ]
     },
     "3.5.1.n1": {
@@ -41053,12 +42143,12 @@
     },
     "3.6.1.32": {
       "id": "3.6.1.32",
-      "name": "Transferred entry: 3.6.4.1.",
+      "name": "Transferred entry: 5.6.1.8.",
       "synonyms": []
     },
     "3.6.1.33": {
       "id": "3.6.1.33",
-      "name": "Transferred entry: 3.6.4.2.",
+      "name": "Transferred entry: 5.6.1.2.",
       "synonyms": []
     },
     "3.6.1.34": {
@@ -41073,12 +42163,12 @@
     },
     "3.6.1.36": {
       "id": "3.6.1.36",
-      "name": "Transferred entry: 3.6.3.10.",
+      "name": "Transferred entry: 7.2.2.19.",
       "synonyms": []
     },
     "3.6.1.37": {
       "id": "3.6.1.37",
-      "name": "Transferred entry: 3.6.3.9.",
+      "name": "Transferred entry: 7.2.2.13.",
       "synonyms": []
     },
     "3.6.1.38": {
@@ -41289,6 +42379,41 @@
       "name": "Geranyl diphosphate phosphohydrolase.",
       "synonyms": []
     },
+    "3.6.1.69": {
+      "id": "3.6.1.69",
+      "name": "8-oxo-(d)GTP phosphatase.",
+      "synonyms": []
+    },
+    "3.6.1.70": {
+      "id": "3.6.1.70",
+      "name": "Guaosine-5'-diphospho-5'-(DNA) diphosphatase.",
+      "synonyms": [
+        "Aprataxin.",
+        "Pp5'G5'-DNA guanylate hydrolase.",
+        "Pp5'G5'DNA diphosphatase."
+      ]
+    },
+    "3.6.1.71": {
+      "id": "3.6.1.71",
+      "name": "Adenosine-5'-diphospho-5'-(DNA) diphosphatase.",
+      "synonyms": [
+        "5'-app5'-DNA adenylate hydrolase.",
+        "Aprataxin."
+      ]
+    },
+    "3.6.1.72": {
+      "id": "3.6.1.72",
+      "name": "DNA-3'-diphospho-5'-guanosine diphosphatase.",
+      "synonyms": [
+        "Aprataxin.",
+        "DNA-3'pp5'G guanylate hydrolase."
+      ]
+    },
+    "3.6.1.73": {
+      "id": "3.6.1.73",
+      "name": "Inosine/xanthosine triphosphatase.",
+      "synonyms": []
+    },
     "3.6.1.n1": {
       "id": "3.6.1.n1",
       "name": "D-tyrosyl-tRNA(Tyr) hydrolase.",
@@ -41341,33 +42466,23 @@
     },
     "3.6.3.2": {
       "id": "3.6.3.2",
-      "name": "Magnesium-importing ATPase.",
-      "synonyms": [
-        "Magnesium-translocating P-type ATPase.",
-        "Mg(2+)-importing ATPase."
-      ]
+      "name": "Transferred entry: 7.2.2.14.",
+      "synonyms": []
     },
     "3.6.3.3": {
       "id": "3.6.3.3",
-      "name": "Cadmium-exporting ATPase.",
-      "synonyms": [
-        "Cadmium-translocating P-type ATPase.",
-        "Cd(2+)-exporting ATPase."
-      ]
+      "name": "Transferred entry: 7.2.2.21.",
+      "synonyms": []
     },
     "3.6.3.4": {
       "id": "3.6.3.4",
-      "name": "Cu(2+)-exporting ATPase.",
+      "name": "Transferred entry: 7.2.2.9.",
       "synonyms": []
     },
     "3.6.3.5": {
       "id": "3.6.3.5",
-      "name": "Zinc-exporting ATPase.",
-      "synonyms": [
-        "P(1B)-type ATPase.",
-        "Zinc-translocating P-type ATPase.",
-        "Zn(2+)-exporting ATPase."
-      ]
+      "name": "Transferred entry: 7.2.2.12.",
+      "synonyms": []
     },
     "3.6.3.6": {
       "id": "3.6.3.6",
@@ -41381,52 +42496,28 @@
     },
     "3.6.3.8": {
       "id": "3.6.3.8",
-      "name": "Calcium-transporting ATPase.",
-      "synonyms": [
-        "Ca(2+)-transporting ATPase.",
-        "Calcium pump.",
-        "Calcium-translocating P-type ATPase."
-      ]
+      "name": "Transferred entry: 7.2.2.10.",
+      "synonyms": []
     },
     "3.6.3.9": {
       "id": "3.6.3.9",
-      "name": "Sodium/potassium-exchanging ATPase.",
-      "synonyms": [
-        "Na(+)/K(+)-ATPase.",
-        "Na(+)/K(+)-exchanging ATPase.",
-        "Na,K-activated ATPase.",
-        "Sodium pump.",
-        "Sodium/potassium-transporting ATPase."
-      ]
+      "name": "Transferred entry: 7.2.2.13.",
+      "synonyms": []
     },
     "3.6.3.10": {
       "id": "3.6.3.10",
-      "name": "Hydrogen/potassium-exchanging ATPase.",
-      "synonyms": [
-        "Gastric H(+)/K(+) ATPase.",
-        "H(+)/K(+)-ATPase.",
-        "H(+)/K(+)-exchanging ATPase.",
-        "Potassium-transporting ATPase.",
-        "Proton pump."
-      ]
+      "name": "Transferred entry: 7.2.2.19.",
+      "synonyms": []
     },
     "3.6.3.11": {
       "id": "3.6.3.11",
       "name": "Chloride-transporting ATPase.",
-      "synonyms": [
-        "Chloride-motive ATPase.",
-        "Chloride-translocating ATPase.",
-        "Cl(-)-transporting ATPase."
-      ]
+      "synonyms": []
     },
     "3.6.3.12": {
       "id": "3.6.3.12",
-      "name": "Potassium-transporting ATPase.",
-      "synonyms": [
-        "K(+)-importing ATPase.",
-        "K(+)-transporting ATPase.",
-        "Potassium-importing ATPase."
-      ]
+      "name": "Transferred entry: 7.2.2.6.",
+      "synonyms": []
     },
     "3.6.3.13": {
       "id": "3.6.3.13",
@@ -41445,16 +42536,12 @@
     },
     "3.6.3.16": {
       "id": "3.6.3.16",
-      "name": "Arsenite-transporting ATPase.",
-      "synonyms": [
-        "Arsenical pump-driving ATPase.",
-        "Arsenical resistance ATPase.",
-        "Arsenite-translocating ATPase."
-      ]
+      "name": "Transferred entry: 7.3.2.7.",
+      "synonyms": []
     },
     "3.6.3.17": {
       "id": "3.6.3.17",
-      "name": "Monosaccharide-transporting ATPase.",
+      "name": "Transferred entry: 7.5.2.8.",
       "synonyms": []
     },
     "3.6.3.18": {
@@ -41469,7 +42556,7 @@
     },
     "3.6.3.20": {
       "id": "3.6.3.20",
-      "name": "Glycerol-3-phosphate-transporting ATPase.",
+      "name": "Transferred entry: 7.6.2.10.",
       "synonyms": []
     },
     "3.6.3.21": {
@@ -41484,24 +42571,22 @@
     },
     "3.6.3.23": {
       "id": "3.6.3.23",
-      "name": "Oligopeptide-transporting ATPase.",
-      "synonyms": [
-        "Oligopeptide permease."
-      ]
+      "name": "Transferred entry: 7.4.2.6.",
+      "synonyms": []
     },
     "3.6.3.24": {
       "id": "3.6.3.24",
-      "name": "Nickel-transporting ATPase.",
+      "name": "Transferred entry: 7.2.2.11.",
       "synonyms": []
     },
     "3.6.3.25": {
       "id": "3.6.3.25",
-      "name": "Sulfate-transporting ATPase.",
+      "name": "Transferred entry: 7.3.2.3.",
       "synonyms": []
     },
     "3.6.3.26": {
       "id": "3.6.3.26",
-      "name": "Nitrate-transporting ATPase.",
+      "name": "Transferred entry: 7.3.2.4.",
       "synonyms": []
     },
     "3.6.3.27": {
@@ -41516,79 +42601,77 @@
     },
     "3.6.3.29": {
       "id": "3.6.3.29",
-      "name": "Molybdate-transporting ATPase.",
+      "name": "Transferred entry: 7.3.2.5.",
       "synonyms": []
     },
     "3.6.3.30": {
       "id": "3.6.3.30",
-      "name": "Fe(3+)-transporting ATPase.",
+      "name": "Transferred entry: 7.2.2.7.",
       "synonyms": []
     },
     "3.6.3.31": {
       "id": "3.6.3.31",
-      "name": "Polyamine-transporting ATPase.",
+      "name": "Transferred entry: 7.6.2.11.",
       "synonyms": []
     },
     "3.6.3.32": {
       "id": "3.6.3.32",
-      "name": "Quaternary-amine-transporting ATPase.",
+      "name": "Transferred entry: 7.6.2.9.",
       "synonyms": []
     },
     "3.6.3.33": {
       "id": "3.6.3.33",
-      "name": "Vitamin B12-transporting ATPase.",
+      "name": "Transferred entry: 7.6.2.8.",
       "synonyms": []
     },
     "3.6.3.34": {
       "id": "3.6.3.34",
-      "name": "Iron-chelate-transporting ATPase.",
+      "name": "Transferred entry: 7.2.2.16.",
       "synonyms": []
     },
     "3.6.3.35": {
       "id": "3.6.3.35",
-      "name": "Manganese-transporting ATPase.",
-      "synonyms": [
-        "ABC-type manganese permease complex."
-      ]
+      "name": "Transferred entry: 7.2.2.5.",
+      "synonyms": []
     },
     "3.6.3.36": {
       "id": "3.6.3.36",
-      "name": "Taurine-transporting ATPase.",
+      "name": "Transferred entry: 7.6.2.7.",
       "synonyms": []
     },
     "3.6.3.37": {
       "id": "3.6.3.37",
-      "name": "Guanine-transporting ATPase.",
+      "name": "Transferred entry: 7.6.2.6.",
       "synonyms": []
     },
     "3.6.3.38": {
       "id": "3.6.3.38",
-      "name": "Capsular-polysaccharide-transporting ATPase.",
+      "name": "Transferred entry: 7.6.2.12.",
       "synonyms": []
     },
     "3.6.3.39": {
       "id": "3.6.3.39",
-      "name": "Lipopolysaccharide-transporting ATPase.",
+      "name": "Transferred entry: 7.5.2.5.",
       "synonyms": []
     },
     "3.6.3.40": {
       "id": "3.6.3.40",
-      "name": "Teichoic-acid-transporting ATPase.",
+      "name": "Transferred entry: 7.5.2.4.",
       "synonyms": []
     },
     "3.6.3.41": {
       "id": "3.6.3.41",
-      "name": "Heme-transporting ATPase.",
+      "name": "Transferred entry: 7.6.2.5.",
       "synonyms": []
     },
     "3.6.3.42": {
       "id": "3.6.3.42",
-      "name": "Beta-glucan-transporting ATPase.",
+      "name": "Transferred entry: 7.5.2.3.",
       "synonyms": []
     },
     "3.6.3.43": {
       "id": "3.6.3.43",
-      "name": "Peptide-transporting ATPase.",
+      "name": "Transferred entry: 7.4.2.5.",
       "synonyms": []
     },
     "3.6.3.44": {
@@ -41608,69 +42691,62 @@
     },
     "3.6.3.47": {
       "id": "3.6.3.47",
-      "name": "Fatty-acyl-CoA-transporting ATPase.",
+      "name": "Transferred entry: 7.6.2.4.",
       "synonyms": []
     },
     "3.6.3.48": {
       "id": "3.6.3.48",
-      "name": "Alpha-factor-transporting ATPase.",
+      "name": "Transferred entry: 7.4.2.7.",
       "synonyms": []
     },
     "3.6.3.49": {
       "id": "3.6.3.49",
-      "name": "Channel-conductance-controlling ATPase.",
-      "synonyms": [
-        "Cystic-fibrosis membrane-conductance-regulating protein."
-      ]
+      "name": "Transferred entry: 5.6.1.6.",
+      "synonyms": []
     },
     "3.6.3.50": {
       "id": "3.6.3.50",
-      "name": "Protein-secreting ATPase.",
+      "name": "Transferred entry: 7.4.2.8.",
       "synonyms": []
     },
     "3.6.3.51": {
       "id": "3.6.3.51",
-      "name": "Mitochondrial protein-transporting ATPase.",
+      "name": "Transferred entry: 7.4.2.3.",
       "synonyms": []
     },
     "3.6.3.52": {
       "id": "3.6.3.52",
-      "name": "Chloroplast protein-transporting ATPase.",
+      "name": "Transferred entry: 7.4.2.4.",
       "synonyms": []
     },
     "3.6.3.53": {
       "id": "3.6.3.53",
-      "name": "Ag(+)-exporting ATPase.",
+      "name": "Transferred entry: 7.2.2.15.",
       "synonyms": []
     },
     "3.6.3.54": {
       "id": "3.6.3.54",
-      "name": "Cu(+) exporting ATPase.",
+      "name": "Transferred entry: 7.2.2.8.",
       "synonyms": []
     },
     "3.6.3.55": {
       "id": "3.6.3.55",
-      "name": "Tungstate-importing ATPase.",
-      "synonyms": [
-        "Tungstate transporter.",
-        "Tungstate-specific ABC transporter."
-      ]
+      "name": "Transferred entry: 7.3.2.6.",
+      "synonyms": []
     },
     "3.6.3.n1": {
       "id": "3.6.3.n1",
-      "name": "Transferred entry: 3.6.3.54.",
+      "name": "Transferred entry: 7.2.2.8.",
       "synonyms": []
     },
     "3.6.4.1": {
       "id": "3.6.4.1",
-      "name": "Myosin ATPase.",
-      "synonyms": [
-        "Actomyosin."
-      ]
+      "name": "Transferred entry: 5.6.1.8.",
+      "synonyms": []
     },
     "3.6.4.2": {
       "id": "3.6.4.2",
-      "name": "Dynein ATPase.",
+      "name": "Transferred entry: 5.6.1.2.",
       "synonyms": []
     },
     "3.6.4.3": {
@@ -41680,14 +42756,12 @@
     },
     "3.6.4.4": {
       "id": "3.6.4.4",
-      "name": "Plus-end-directed kinesin ATPase.",
-      "synonyms": [
-        "Kinesin."
-      ]
+      "name": "Transferred entry: 5.6.1.3.",
+      "synonyms": []
     },
     "3.6.4.5": {
       "id": "3.6.4.5",
-      "name": "Minus-end-directed kinesin ATPase.",
+      "name": "Transferred entry: 5.6.1.4.",
       "synonyms": []
     },
     "3.6.4.6": {
@@ -41704,18 +42778,13 @@
     },
     "3.6.4.8": {
       "id": "3.6.4.8",
-      "name": "Proteasome ATPase.",
-      "synonyms": [
-        "RP triphosphatase.",
-        "RP triple-A protein."
-      ]
+      "name": "Transferred entry: 5.6.1.5.",
+      "synonyms": []
     },
     "3.6.4.9": {
       "id": "3.6.4.9",
-      "name": "Chaperonin ATPase.",
-      "synonyms": [
-        "Chaperonin."
-      ]
+      "name": "Transferred entry: 5.6.1.7.",
+      "synonyms": []
     },
     "3.6.4.10": {
       "id": "3.6.4.10",
@@ -41912,6 +42981,25 @@
       "id": "3.7.1.23",
       "name": "Maleylpyruvate hydrolase.",
       "synonyms": []
+    },
+    "3.7.1.24": {
+      "id": "3.7.1.24",
+      "name": "2,4-diacetylphloroglucinol hydrolase.",
+      "synonyms": []
+    },
+    "3.7.1.25": {
+      "id": "3.7.1.25",
+      "name": "2-hydroxy-6-oxohepta-2,4-dienoate hydrolase.",
+      "synonyms": [
+        "2-hydroxy-5-methylmuconate semialdehyde hydrolase."
+      ]
+    },
+    "3.7.1.26": {
+      "id": "3.7.1.26",
+      "name": "2,4-didehydro-3-deoxy-L-rhamnonate hydrolase.",
+      "synonyms": [
+        "L-2,4-diketo-3-deoxyrhamnonate hydrolase."
+      ]
     },
     "3.7.1.n1": {
       "id": "3.7.1.n1",
@@ -42140,6 +43228,11 @@
         "SAM hydroxide adenosyltransferase."
       ]
     },
+    "3.13.1.9": {
+      "id": "3.13.1.9",
+      "name": "S-inosyl-L-homocysteine hydrolase.",
+      "synonyms": []
+    },
     "4.1.1.1": {
       "id": "4.1.1.1",
       "name": "Pyruvate decarboxylase.",
@@ -42178,7 +43271,7 @@
     },
     "4.1.1.6": {
       "id": "4.1.1.6",
-      "name": "Aconitate decarboxylase.",
+      "name": "Cis-aconitate decarboxylase.",
       "synonyms": [
         "CAD.",
         "Cis-aconitate carboxy-lyase.",
@@ -42680,12 +43773,8 @@
     },
     "4.1.1.70": {
       "id": "4.1.1.70",
-      "name": "Glutaconyl-CoA decarboxylase.",
-      "synonyms": [
-        "4-carboxybut-2-enoyl-CoA carboxy-lyase.",
-        "Glutaconyl coenzyme A decarboxylase.",
-        "Pent-2-enoyl-CoA carboxy-lyase."
-      ]
+      "name": "Transferred entry: 7.2.4.5.",
+      "synonyms": []
     },
     "4.1.1.71": {
       "id": "4.1.1.71",
@@ -42836,11 +43925,8 @@
     },
     "4.1.1.89": {
       "id": "4.1.1.89",
-      "name": "Biotin-dependent malonate decarboxylase.",
-      "synonyms": [
-        "Malonate carboxy-lyase (biotin-dependent).",
-        "Malonate decarboxylase."
-      ]
+      "name": "Transferred entry: 7.2.4.4.",
+      "synonyms": []
     },
     "4.1.1.90": {
       "id": "4.1.1.90",
@@ -42977,6 +44063,47 @@
         "Oxalate beta-decarboxylase.",
         "Oxaloacetate carboxy-lyase."
       ]
+    },
+    "4.1.1.113": {
+      "id": "4.1.1.113",
+      "name": "Trans-aconitate decarboxylase.",
+      "synonyms": []
+    },
+    "4.1.1.114": {
+      "id": "4.1.1.114",
+      "name": "Cis-3-alkyl-4-alkyloxetan-2-one decarboxylase.",
+      "synonyms": []
+    },
+    "4.1.1.115": {
+      "id": "4.1.1.115",
+      "name": "Indoleacetate decarboxylase.",
+      "synonyms": [
+        "IAD."
+      ]
+    },
+    "4.1.1.116": {
+      "id": "4.1.1.116",
+      "name": "D-ornithine/D-lysine decarboxylase.",
+      "synonyms": [
+        "DOKDC."
+      ]
+    },
+    "4.1.1.117": {
+      "id": "4.1.1.117",
+      "name": "2-((L-alanin-3-ylcarbamoyl)methyl)-2-hydroxybutanedioate decarboxylase.",
+      "synonyms": []
+    },
+    "4.1.1.118": {
+      "id": "4.1.1.118",
+      "name": "Isophthalyl-CoA decarboxylase.",
+      "synonyms": [
+        "IPCD."
+      ]
+    },
+    "4.1.1.119": {
+      "id": "4.1.1.119",
+      "name": "Phenylacetate decarboxylase.",
+      "synonyms": []
     },
     "4.1.1.n1": {
       "id": "4.1.1.n1",
@@ -43297,7 +44424,7 @@
     },
     "4.1.2.41": {
       "id": "4.1.2.41",
-      "name": "Vanillin synthase.",
+      "name": "Transferred entry: 4.1.2.61.",
       "synonyms": []
     },
     "4.1.2.42": {
@@ -43433,6 +44560,11 @@
     "4.1.2.60": {
       "id": "4.1.2.60",
       "name": "Dihydroneopterin triphosphate aldolase.",
+      "synonyms": []
+    },
+    "4.1.2.61": {
+      "id": "4.1.2.61",
+      "name": "Feruloyl-CoA hydratase/lyase.",
       "synonyms": []
     },
     "4.1.2.n1": {
@@ -44470,7 +45602,7 @@
     },
     "4.2.1.88": {
       "id": "4.2.1.88",
-      "name": "(R)-synephrine.",
+      "name": "Synephrine dehydratase.",
       "synonyms": []
     },
     "4.2.1.89": {
@@ -44818,11 +45950,13 @@
     },
     "4.2.1.139": {
       "id": "4.2.1.139",
-      "name": "Medicarpin synthase.",
+      "name": "Pterocarpan synthase.",
       "synonyms": [
         "2',7-dihydroxy-4'-methoxyisoflavanol dehydratase.",
+        "2'-hydroxyisoflavanol 4,2'-dehydratase.",
         "7,2'-dihydroxy-4'-methoxyisoflavanol dehydratase.",
-        "Medicarpan synthase."
+        "Medicarpan synthase.",
+        "Medicarpin synthase."
       ]
     },
     "4.2.1.140": {
@@ -45035,6 +46169,14 @@
       "id": "4.2.1.174",
       "name": "Peregrinol diphosphate synthase.",
       "synonyms": []
+    },
+    "4.2.1.175": {
+      "id": "4.2.1.175",
+      "name": "(R)-3-(aryl)lactoyl-CoA dehydratase.",
+      "synonyms": [
+        "(R)-phenyllactoyl-CoA dehydratase.",
+        "Aryllactyl-CoA dehydratase."
+      ]
     },
     "4.2.1.n1": {
       "id": "4.2.1.n1",
@@ -45289,6 +46431,13 @@
       "synonyms": [
         "Exo-oligoalginate lyase.",
         "Oligoalginate lyase."
+      ]
+    },
+    "4.2.2.27": {
+      "id": "4.2.2.27",
+      "name": "Pectin monosaccharide-lyase.",
+      "synonyms": [
+        "Exo-pectin lyase."
       ]
     },
     "4.2.2.n1": {
@@ -46448,6 +47597,56 @@
       "name": "Rhizathalene A synthase.",
       "synonyms": []
     },
+    "4.2.3.196": {
+      "id": "4.2.3.196",
+      "name": "Dolabradiene synthase.",
+      "synonyms": []
+    },
+    "4.2.3.197": {
+      "id": "4.2.3.197",
+      "name": "Eudesmane-5,11-diol synthase.",
+      "synonyms": []
+    },
+    "4.2.3.198": {
+      "id": "4.2.3.198",
+      "name": "Alpha-selinene synthase.",
+      "synonyms": []
+    },
+    "4.2.3.199": {
+      "id": "4.2.3.199",
+      "name": "(-)-5-epieremophilene synthase.",
+      "synonyms": []
+    },
+    "4.2.3.200": {
+      "id": "4.2.3.200",
+      "name": "Beta-pinacene synthase.",
+      "synonyms": []
+    },
+    "4.2.3.201": {
+      "id": "4.2.3.201",
+      "name": "Hydropyrene synthase.",
+      "synonyms": []
+    },
+    "4.2.3.202": {
+      "id": "4.2.3.202",
+      "name": "Hydropyrenol synthase.",
+      "synonyms": []
+    },
+    "4.2.3.203": {
+      "id": "4.2.3.203",
+      "name": "Isoelisabethatriene synthase.",
+      "synonyms": []
+    },
+    "4.2.3.204": {
+      "id": "4.2.3.204",
+      "name": "Valerianol synthase.",
+      "synonyms": []
+    },
+    "4.2.3.205": {
+      "id": "4.2.3.205",
+      "name": "Sodorifen synthase.",
+      "synonyms": []
+    },
     "4.2.3.n1": {
       "id": "4.2.3.n1",
       "name": "Transferred entry: 4.2.3.38.",
@@ -46500,7 +47699,7 @@
     },
     "4.2.3.n11": {
       "id": "4.2.3.n11",
-      "name": "Selinene synthase.",
+      "name": "Transferred entry: 4.2.3.198.",
       "synonyms": []
     },
     "4.2.3.n12": {
@@ -46650,6 +47849,13 @@
       "id": "4.2.99.23",
       "name": "Tuliposide B-converting enzyme.",
       "synonyms": []
+    },
+    "4.2.99.24": {
+      "id": "4.2.99.24",
+      "name": "Thebaine synthase.",
+      "synonyms": [
+        "THS."
+      ]
     },
     "4.2.99.n1": {
       "id": "4.2.99.n1",
@@ -47445,6 +48651,77 @@
       "name": "Cyclic pyranopterin monophosphate synthase.",
       "synonyms": []
     },
+    "4.6.1.18": {
+      "id": "4.6.1.18",
+      "name": "Pancreatic ribonuclease.",
+      "synonyms": [
+        "Pancreatic RNase.",
+        "Ribonuclease I.",
+        "RNA lyase ((RNA)-3'-cytidine/uridine-3'-phosphate and 5'-hydroxy- ribonucleotide-3'-(RNA) producing).",
+        "RNase.",
+        "RNase A.",
+        "RNase I."
+      ]
+    },
+    "4.6.1.19": {
+      "id": "4.6.1.19",
+      "name": "Ribonuclease T(2).",
+      "synonyms": [
+        "(RNA) 5'-hydroxy-ribonucleotide-3'-(RNA fragment)-lyase (cyclicizing; (RNA fragment)-3'- nucleoside-2',3'-cyclophosphate-forming and hydrolyzing).",
+        "Ribonuclease II.",
+        "Ribonuclease T2."
+      ]
+    },
+    "4.6.1.20": {
+      "id": "4.6.1.20",
+      "name": "Ribonuclease U(2).",
+      "synonyms": [
+        "(RNA)-purine 5'-hydroxy-ribonucleotide-3'-(RNA fragment)-lyase (cyclicizing; (RNA fragment)-3'-purine-nucleoside -2',3'-cyclophosphate- forming and hydrolyzing).",
+        "Ribonuclease U2.",
+        "RNase U(2)."
+      ]
+    },
+    "4.6.1.21": {
+      "id": "4.6.1.21",
+      "name": "Enterobacter ribonuclease.",
+      "synonyms": [
+        "(RNA)-adenosine-cytidine 5'-hydroxy-adenosoine ribonucleotide-3'-(RNA fragment)-lyase (cyclicizing; (RNA fragment)-3'-cytidine- 2',3'-cyclophosphate-forming and hydrolyzing)."
+      ]
+    },
+    "4.6.1.22": {
+      "id": "4.6.1.22",
+      "name": "Bacillus subtilis ribonuclease.",
+      "synonyms": [
+        "(RNA) 5'-hydroxy-ribonucleotide-3'-(RNA fragment)-lyase (cyclicizing; (RNA fragment)-3'- nucleoside -2',3'-cyclophosphate-forming).",
+        "Bacterial RNA lyase."
+      ]
+    },
+    "4.6.1.23": {
+      "id": "4.6.1.23",
+      "name": "Ribotoxin.",
+      "synonyms": [
+        "(28S-rRNA)-guanosine-adenosine 5'-hydroxy-guanosine-ribonucleotide- 3'-(RNA fragment)-lyase (cyclicizing; (RNA fragment)-3'-adenosine- 2',3'-cyclophosphate-forming and hydrolyzing).",
+        "Alpha-sarcin.",
+        "rRNA endonuclease."
+      ]
+    },
+    "4.6.1.24": {
+      "id": "4.6.1.24",
+      "name": "Ribonuclease T(1).",
+      "synonyms": [
+        "(RNA)-guanosine 5'-hydroxy-ribonucleotide-3'-(RNA fragment)-lyase (cyclicizing; (RNA fragment)-3'-guanosine-2',3'-cyclophosphate-forming and hydrolyzing).",
+        "Aspergillus oryzae ribonuclease.",
+        "Guanyloribonuclease.",
+        "Ribonuclease T1.",
+        "RNase N(1).",
+        "RNase N(2)."
+      ]
+    },
+    "4.6.1.25": {
+      "id": "4.6.1.25",
+      "name": "Bacteriophage T(4) restriction endoribonuclease RegB.",
+      "synonyms": []
+    },
     "4.7.1.1": {
       "id": "4.7.1.1",
       "name": "Alpha-D-ribose 1-methylphosphonate 5-phosphate C-P-lyase.",
@@ -47654,6 +48931,18 @@
     "5.1.1.22": {
       "id": "5.1.1.22",
       "name": "4-hydroxyproline betaine 2-epimerase.",
+      "synonyms": []
+    },
+    "5.1.1.23": {
+      "id": "5.1.1.23",
+      "name": "UDP-N-acetyl-alpha-D-muramoyl-L-alanyl-L-glutamate epimerase.",
+      "synonyms": [
+        "UDP-MurNAc-L-Ala-L-Glu epimerase."
+      ]
+    },
+    "5.1.1.24": {
+      "id": "5.1.1.24",
+      "name": "Histidine racemase.",
       "synonyms": []
     },
     "5.1.1.n1": {
@@ -48009,6 +49298,16 @@
     "5.1.3.41": {
       "id": "5.1.3.41",
       "name": "Fructoselysine 3-epimerase.",
+      "synonyms": []
+    },
+    "5.1.3.42": {
+      "id": "5.1.3.42",
+      "name": "D-glucosamine-6-phosphate 4-epimerase.",
+      "synonyms": []
+    },
+    "5.1.3.43": {
+      "id": "5.1.3.43",
+      "name": "Sulfoquinovose mutarotase.",
       "synonyms": []
     },
     "5.1.3.n1": {
@@ -48891,6 +50190,11 @@
         "Phosphoglyceromutase."
       ]
     },
+    "5.4.2.13": {
+      "id": "5.4.2.13",
+      "name": "Phosphogalactosamine mutase.",
+      "synonyms": []
+    },
     "5.4.3.1": {
       "id": "5.4.3.1",
       "name": "Deleted entry.",
@@ -49421,6 +50725,11 @@
       "name": "Alpha-onocerin synthase.",
       "synonyms": []
     },
+    "5.4.99.67": {
+      "id": "5.4.99.67",
+      "name": "4-amino-4-deoxychorismate mutase.",
+      "synonyms": []
+    },
     "5.4.99.n1": {
       "id": "5.4.99.n1",
       "name": "Transferred entry: 5.4.99.39.",
@@ -49650,6 +50959,16 @@
       "name": "12-epi-fischerindole U synthase.",
       "synonyms": []
     },
+    "5.5.1.34": {
+      "id": "5.5.1.34",
+      "name": "(+)-cis,trans-nepetalactol synthase.",
+      "synonyms": []
+    },
+    "5.5.1.35": {
+      "id": "5.5.1.35",
+      "name": "(+)-cis,cis-nepetalactol synthase.",
+      "synonyms": []
+    },
     "5.5.1.n1": {
       "id": "5.5.1.n1",
       "name": "Transferred entry: 5.4.99.62.",
@@ -49667,15 +50986,62 @@
         "Katanin."
       ]
     },
-    "5.99.1.1": {
-      "id": "5.99.1.1",
-      "name": "Thiocyanate isomerase.",
+    "5.6.1.2": {
+      "id": "5.6.1.2",
+      "name": "Dynein ATPase.",
       "synonyms": [
-        "Isothiocyanate isomerase."
+        "Dynein adenosine 5'-triphosphatase."
       ]
     },
-    "5.99.1.2": {
-      "id": "5.99.1.2",
+    "5.6.1.3": {
+      "id": "5.6.1.3",
+      "name": "Plus-end-directed kinesin ATPase.",
+      "synonyms": [
+        "Kinesin."
+      ]
+    },
+    "5.6.1.4": {
+      "id": "5.6.1.4",
+      "name": "Minus-end-directed kinesin ATPase.",
+      "synonyms": [
+        "Non-claret disjunctional."
+      ]
+    },
+    "5.6.1.5": {
+      "id": "5.6.1.5",
+      "name": "Proteasome ATPase.",
+      "synonyms": []
+    },
+    "5.6.1.6": {
+      "id": "5.6.1.6",
+      "name": "Channel-conductance-controlling ATPase.",
+      "synonyms": [
+        "CFTR.",
+        "Cystic-fibrosis membrane-conductance-regulating protein."
+      ]
+    },
+    "5.6.1.7": {
+      "id": "5.6.1.7",
+      "name": "Chaperonin ATPase.",
+      "synonyms": [
+        "Chaperonin."
+      ]
+    },
+    "5.6.1.8": {
+      "id": "5.6.1.8",
+      "name": "Myosin ATPase.",
+      "synonyms": []
+    },
+    "5.6.1.9": {
+      "id": "5.6.1.9",
+      "name": "(R)-2-hydroxyacyl-CoA dehydratase activating ATPase.",
+      "synonyms": [
+        "(R)-2-hydroxyacyl-CoA dehydratase activase.",
+        "Archerase."
+      ]
+    },
+    "5.6.2.1": {
+      "id": "5.6.2.1",
       "name": "DNA topoisomerase.",
       "synonyms": [
         "DNA topoisomerase I.",
@@ -49687,14 +51053,31 @@
         "Untwisting enzyme."
       ]
     },
-    "5.99.1.3": {
-      "id": "5.99.1.3",
+    "5.6.2.2": {
+      "id": "5.6.2.2",
       "name": "DNA topoisomerase (ATP-hydrolyzing).",
       "synonyms": [
         "DNA gyrase.",
         "DNA topoisomerase II.",
         "Type II DNA topoisomerase."
       ]
+    },
+    "5.99.1.1": {
+      "id": "5.99.1.1",
+      "name": "Thiocyanate isomerase.",
+      "synonyms": [
+        "Isothiocyanate isomerase."
+      ]
+    },
+    "5.99.1.2": {
+      "id": "5.99.1.2",
+      "name": "Transferred entry: 5.6.2.1.",
+      "synonyms": []
+    },
+    "5.99.1.3": {
+      "id": "5.99.1.3",
+      "name": "Transferred entry: 5.6.2.2.",
+      "synonyms": []
     },
     "5.99.1.4": {
       "id": "5.99.1.4",
@@ -50261,8 +51644,9 @@
     },
     "6.2.1.40": {
       "id": "6.2.1.40",
-      "name": "4-hydroxybutyrate--CoA ligase.",
+      "name": "4-hydroxybutyrate--CoA ligase (AMP-forming).",
       "synonyms": [
+        "4-hydroxybutyrate--CoA ligase.",
         "4-hydroxybutyrate-CoA synthetase."
       ]
     },
@@ -50356,6 +51740,52 @@
       "synonyms": [
         "SAMP-activating enzyme E1."
       ]
+    },
+    "6.2.1.56": {
+      "id": "6.2.1.56",
+      "name": "4-hydroxybutyrate--CoA ligase (ADP-forming).",
+      "synonyms": []
+    },
+    "6.2.1.57": {
+      "id": "6.2.1.57",
+      "name": "Long-chain fatty acid adenylase/transferase FadD23.",
+      "synonyms": [
+        "Long-chain fatty acid adenylyltransferase FadD23."
+      ]
+    },
+    "6.2.1.58": {
+      "id": "6.2.1.58",
+      "name": "Isophthalate--CoA ligase.",
+      "synonyms": [
+        "IPCL."
+      ]
+    },
+    "6.2.1.59": {
+      "id": "6.2.1.59",
+      "name": "Long-chain fatty acid adenylase/transferase FadD26.",
+      "synonyms": [
+        "FadD26."
+      ]
+    },
+    "6.2.1.60": {
+      "id": "6.2.1.60",
+      "name": "Marinolic acid--CoA ligase.",
+      "synonyms": []
+    },
+    "6.2.1.61": {
+      "id": "6.2.1.61",
+      "name": "Salicylate--[aryl-carrier protein] ligase.",
+      "synonyms": []
+    },
+    "6.2.1.62": {
+      "id": "6.2.1.62",
+      "name": "3,4-dihydroxybenzoate--[aryl-carrier protein] ligase.",
+      "synonyms": []
+    },
+    "6.2.1.63": {
+      "id": "6.2.1.63",
+      "name": "L-arginine--[L-arginyl-carrier protein] ligase.",
+      "synonyms": []
     },
     "6.2.1.n1": {
       "id": "6.2.1.n1",
@@ -50871,7 +52301,7 @@
     },
     "6.3.2.43": {
       "id": "6.3.2.43",
-      "name": "[Lysine-biosynthesis-protein LysW]--L-2-aminoadipate ligase.",
+      "name": "[Amino group carrier protein]--L-2-aminoadipate ligase.",
       "synonyms": [
         "AAA--LysW ligase.",
         "Alpha-aminoadipate-lysW ligase."
@@ -50931,7 +52361,42 @@
     },
     "6.3.2.52": {
       "id": "6.3.2.52",
-      "name": "Jasmonoyl--L-amino acid synthetase.",
+      "name": "Jasmonoyl--L-amino acid ligase.",
+      "synonyms": []
+    },
+    "6.3.2.53": {
+      "id": "6.3.2.53",
+      "name": "UDP-N-acetylmuramoyl-L-alanine--L-glutamate ligase.",
+      "synonyms": [
+        "UDP-MurNAc-L-Ala-L-Glu synthetase.",
+        "UDP-N-acetyl-alpha-D-muramoyl-L-alanyl-L-glutamate synthetase."
+      ]
+    },
+    "6.3.2.54": {
+      "id": "6.3.2.54",
+      "name": "L-2,3-diaminopropanoate--citrate ligase.",
+      "synonyms": [
+        "2-((L-alanin-3-ylcarbamoyl)methyl)-2-hydroxybutanedioate synthtase."
+      ]
+    },
+    "6.3.2.55": {
+      "id": "6.3.2.55",
+      "name": "2-((L-alanin-3-ylcarbamoyl)methyl)-3-(2-aminoethylcarbamoyl)-2-hydroxypropanoate synthase.",
+      "synonyms": []
+    },
+    "6.3.2.56": {
+      "id": "6.3.2.56",
+      "name": "Staphyloferrin B synthase.",
+      "synonyms": []
+    },
+    "6.3.2.57": {
+      "id": "6.3.2.57",
+      "name": "Staphyloferrin A synthase.",
+      "synonyms": []
+    },
+    "6.3.2.58": {
+      "id": "6.3.2.58",
+      "name": "D-ornithine--citrate ligase.",
       "synonyms": []
     },
     "6.3.2.n1": {
@@ -51274,13 +52739,17 @@
       "synonyms": [
         "Asp-AdT.",
         "Asp-tRNA(Asn) amidotransferase.",
-        "Aspartyl-tRNA(Asn) amidotransferase."
+        "Aspartyl-tRNA(Asn) amidotransferase.",
+        "GatCAB."
       ]
     },
     "6.3.5.7": {
       "id": "6.3.5.7",
       "name": "Glutaminyl-tRNA synthase (glutamine-hydrolyzing).",
       "synonyms": [
+        "GatCAB.",
+        "GatDE.",
+        "GatFAB.",
         "Glu-AdT.",
         "Glu-tRNA(Gln) amidotransferase.",
         "Glutamyl-tRNA(Gln) amidotransferase."
@@ -51315,6 +52784,11 @@
     "6.3.5.12": {
       "id": "6.3.5.12",
       "name": "Ni-sirohydrochlorin a,c-diamide synthase.",
+      "synonyms": []
+    },
+    "6.3.5.13": {
+      "id": "6.3.5.13",
+      "name": "Lipid II isoglutaminyl synthase (glutamine-hydrolyzing).",
       "synonyms": []
     },
     "6.4.1.1": {
@@ -51487,6 +52961,73 @@
         "Ubiquinone reductase."
       ]
     },
+    "7.1.1.3": {
+      "id": "7.1.1.3",
+      "name": "Ubiquinol oxidase (H(+)-transporting).",
+      "synonyms": [
+        "Cytochrome bb3 oxidase.",
+        "Cytochrome bo oxidase.",
+        "Cytochrome bo(3) oxidase."
+      ]
+    },
+    "7.1.1.4": {
+      "id": "7.1.1.4",
+      "name": "Caldariellaquinol oxidase (H(+)-transporting).",
+      "synonyms": [
+        "Aa(3) quinol oxidase.",
+        "Aa(3)-type quinol oxidase.",
+        "Cytochrome aa3.",
+        "Cytochrome aa3-type oxidase.",
+        "Terminal quinol oxidase."
+      ]
+    },
+    "7.1.1.5": {
+      "id": "7.1.1.5",
+      "name": "Menaquinol oxidase (H(+)-transporting).",
+      "synonyms": [
+        "Cytochrome aa3-600 oxidase.",
+        "Cytochrome bd oxidase."
+      ]
+    },
+    "7.1.1.6": {
+      "id": "7.1.1.6",
+      "name": "Plastoquinol--plastocyanin reductase.",
+      "synonyms": [
+        "Cytochrome b6f complex."
+      ]
+    },
+    "7.1.1.7": {
+      "id": "7.1.1.7",
+      "name": "Ubiquinol oxidase (electrogenic, proton-motive force generating).",
+      "synonyms": [
+        "Cytochrome bd-I oxidase."
+      ]
+    },
+    "7.1.1.8": {
+      "id": "7.1.1.8",
+      "name": "Quinol--cytochrome-c reductase.",
+      "synonyms": [
+        "Complex III (mitochondrial electron transport).",
+        "Cytochrome bc1 complex.",
+        "Ubiquinol--cytochrome-c reductase.",
+        "Ubiquinone--cytochrome-c oxidoreductase."
+      ]
+    },
+    "7.1.1.9": {
+      "id": "7.1.1.9",
+      "name": "Cytochrome-c oxidase.",
+      "synonyms": [
+        "Complex IV (mitochondrial electron transport).",
+        "Cytochrome a3.",
+        "Cytochrome aa3.",
+        "Cytochrome ba(3).",
+        "Cytochrome bb3.",
+        "Cytochrome caa(3).",
+        "Cytochrome cbb(3).",
+        "Cytochrome oxidase.",
+        "Warburg's respiratory enzyme."
+      ]
+    },
     "7.1.2.1": {
       "id": "7.1.2.1",
       "name": "P-type H(+)-exporting transporter.",
@@ -51516,7 +53057,7 @@
       "synonyms": [
         "H(+)-PPase.",
         "Hydrogen-translocating pyrophosphatase.",
-        "Proton-pumping dihosphatase.",
+        "Proton-pumping diphosphatase.",
         "Proton-pumping pyrophosphatase.",
         "Vacuolar H(+)-pyrophosphatase."
       ]
@@ -51534,6 +53075,13 @@
       "name": "Ferredoxin--NAD(+) oxidoreductase (Na(+)-transporting).",
       "synonyms": [
         "Rnf complex."
+      ]
+    },
+    "7.2.1.3": {
+      "id": "7.2.1.3",
+      "name": "Ascorbate ferrireductase (transmembrane).",
+      "synonyms": [
+        "Cytochrome b(561)."
       ]
     },
     "7.2.2.1": {
@@ -51569,6 +53117,146 @@
       "name": "ABC-type Na(+) transporter.",
       "synonyms": []
     },
+    "7.2.2.5": {
+      "id": "7.2.2.5",
+      "name": "ABC-type Mn(2+) transporter.",
+      "synonyms": [
+        "ABC-type manganese permease complex.",
+        "Manganese-transporting ATPase."
+      ]
+    },
+    "7.2.2.6": {
+      "id": "7.2.2.6",
+      "name": "P-type K(+) transporter.",
+      "synonyms": [
+        "K(+)-importing ATPase.",
+        "K(+)-transporting ATPase.",
+        "Potassium-importing ATPase."
+      ]
+    },
+    "7.2.2.7": {
+      "id": "7.2.2.7",
+      "name": "ABC-type Fe(3+) transporter.",
+      "synonyms": [
+        "Fe(3+)-transporting ATPase."
+      ]
+    },
+    "7.2.2.8": {
+      "id": "7.2.2.8",
+      "name": "P-type Cu(+) transporter.",
+      "synonyms": [
+        "Cu(+)-exporting ATPase."
+      ]
+    },
+    "7.2.2.9": {
+      "id": "7.2.2.9",
+      "name": "P-type Cu(2+) transporter.",
+      "synonyms": [
+        "Cu(2+)-exporting ATPase."
+      ]
+    },
+    "7.2.2.10": {
+      "id": "7.2.2.10",
+      "name": "P-type Ca(2+) transporter.",
+      "synonyms": [
+        "Ca(2+)-transporting ATPase.",
+        "Calcium pump.",
+        "Calcium-translocating P-type ATPase."
+      ]
+    },
+    "7.2.2.11": {
+      "id": "7.2.2.11",
+      "name": "ABC-type Ni(2+) transporter.",
+      "synonyms": [
+        "ABC-type nickel-transporter.",
+        "Nickel ABC transporter.",
+        "Nickel-transporting ATPase."
+      ]
+    },
+    "7.2.2.12": {
+      "id": "7.2.2.12",
+      "name": "P-type Zn(2+) transporter.",
+      "synonyms": [
+        "P(1B)-type ATPase.",
+        "Zinc-translocating P-type ATPase.",
+        "Zn(2+)-exporting ATPase."
+      ]
+    },
+    "7.2.2.13": {
+      "id": "7.2.2.13",
+      "name": "Na(+)/K(+)-exchanging ATPase.",
+      "synonyms": [
+        "Na(+)/K(+)-ATPase.",
+        "Na,K-activated ATPase.",
+        "Sodium pump.",
+        "Sodium/potassium-transporting ATPase."
+      ]
+    },
+    "7.2.2.14": {
+      "id": "7.2.2.14",
+      "name": "P-type Mg(2+) transporter.",
+      "synonyms": [
+        "Magnesium-translocating P-type ATPase.",
+        "Mg(2+)-importing ATPase.",
+        "Mg(2+)-transporting ATPase.",
+        "Mg(2+)-transporting P-type ATPase."
+      ]
+    },
+    "7.2.2.15": {
+      "id": "7.2.2.15",
+      "name": "P-type Ag(+) transporter.",
+      "synonyms": []
+    },
+    "7.2.2.16": {
+      "id": "7.2.2.16",
+      "name": "ABC-type ferric hydroxamate transporter.",
+      "synonyms": [
+        "Iron(III) hydroxamate ABC transporter.",
+        "Iron(III) hydroxamate transporting ATPase."
+      ]
+    },
+    "7.2.2.17": {
+      "id": "7.2.2.17",
+      "name": "ABC-type ferric enterobactin transporter.",
+      "synonyms": [
+        "Ferric enterobactin ABC transporter.",
+        "Ferric enterobactin transporting ATPase."
+      ]
+    },
+    "7.2.2.18": {
+      "id": "7.2.2.18",
+      "name": "ABC-type ferric citrate transporter.",
+      "synonyms": [
+        "Ferric citrate ABC transporter.",
+        "Ferric citrate transporting ATPase."
+      ]
+    },
+    "7.2.2.19": {
+      "id": "7.2.2.19",
+      "name": "H(+)/K(+)-exchanging ATPase.",
+      "synonyms": [
+        "Gastric H(+)/K(+) ATPase.",
+        "H(+)/K(+)-ATPase.",
+        "Potassium-transporting ATPase.",
+        "Proton pump."
+      ]
+    },
+    "7.2.2.20": {
+      "id": "7.2.2.20",
+      "name": "ABC-type Zn(2+) transporter.",
+      "synonyms": [
+        "Zn(2+) ABC transporter.",
+        "Zn(2+)-transporting ATPase."
+      ]
+    },
+    "7.2.2.21": {
+      "id": "7.2.2.21",
+      "name": "Cd(2+)-exporting ATPase.",
+      "synonyms": [
+        "Cadmium-exporting ATPase.",
+        "Cadmium-translocating P-type ATPase."
+      ]
+    },
     "7.2.4.1": {
       "id": "7.2.4.1",
       "name": "Carboxybiotin decarboxylase.",
@@ -51594,6 +53282,23 @@
         "Methylmalonyl-coenzyme A decarboxylase."
       ]
     },
+    "7.2.4.4": {
+      "id": "7.2.4.4",
+      "name": "Biotin-dependent malonate decarboxylase.",
+      "synonyms": [
+        "Malonate carboxy-lyase (biotin-dependent).",
+        "Malonate decarboxylase."
+      ]
+    },
+    "7.2.4.5": {
+      "id": "7.2.4.5",
+      "name": "Glutaconyl-CoA decarboxylase.",
+      "synonyms": [
+        "4-carboxybut-2-enoyl-CoA carboxy-lyase.",
+        "Glutaconyl coenzyme A decarboxylase.",
+        "Pent-2-enoyl-CoA carboxy-lyase."
+      ]
+    },
     "7.3.2.1": {
       "id": "7.3.2.1",
       "name": "ABC-type phosphate transporter.",
@@ -51607,6 +53312,45 @@
       "name": "ABC-type phosphonate transporter.",
       "synonyms": [
         "Phosphonate-transporting ATPase."
+      ]
+    },
+    "7.3.2.3": {
+      "id": "7.3.2.3",
+      "name": "ABC-type sulfate transporter.",
+      "synonyms": [
+        "Sulfate ABC transporter.",
+        "Sulfate-transporting ATPase."
+      ]
+    },
+    "7.3.2.4": {
+      "id": "7.3.2.4",
+      "name": "ABC-type nitrate transporter.",
+      "synonyms": []
+    },
+    "7.3.2.5": {
+      "id": "7.3.2.5",
+      "name": "ABC-type molybdate transporter.",
+      "synonyms": [
+        "Molybdate ABC transporter.",
+        "Molybdate-transporting ATPase."
+      ]
+    },
+    "7.3.2.6": {
+      "id": "7.3.2.6",
+      "name": "ABC-type tungstate transporter.",
+      "synonyms": [
+        "Tungstate transporter.",
+        "Tungstate-importing ATPase.",
+        "Tungstate-specific ABC transporter."
+      ]
+    },
+    "7.3.2.7": {
+      "id": "7.3.2.7",
+      "name": "Arsenite-transporting ATPase.",
+      "synonyms": [
+        "Arsenical pump-driving ATPase.",
+        "Arsenical resistance ATPase.",
+        "Arsenite-translocating ATPase."
       ]
     },
     "7.4.2.1": {
@@ -51624,6 +53368,82 @@
         "Nonpolar-amino-acid-transporting ATPase."
       ]
     },
+    "7.4.2.3": {
+      "id": "7.4.2.3",
+      "name": "Mitochondrial protein-transporting ATPase.",
+      "synonyms": []
+    },
+    "7.4.2.4": {
+      "id": "7.4.2.4",
+      "name": "Chloroplast protein-transporting ATPase.",
+      "synonyms": []
+    },
+    "7.4.2.5": {
+      "id": "7.4.2.5",
+      "name": "Bacterial ABC-type protein transporter.",
+      "synonyms": [
+        "Peptide-transporting ATPase."
+      ]
+    },
+    "7.4.2.6": {
+      "id": "7.4.2.6",
+      "name": "ABC-type oligopeptide transporter.",
+      "synonyms": [
+        "Oligopeptide ABC transporter.",
+        "Oligopeptide permease.",
+        "Oligopeptide-transporting ATPase."
+      ]
+    },
+    "7.4.2.7": {
+      "id": "7.4.2.7",
+      "name": "ABC-type alpha-factor-pheromone transporter.",
+      "synonyms": [
+        "Alpha-factor-pheromone transporting ATPase.",
+        "Alpha-factor-transporting ATPase."
+      ]
+    },
+    "7.4.2.8": {
+      "id": "7.4.2.8",
+      "name": "Protein-secreting ATPase.",
+      "synonyms": []
+    },
+    "7.4.2.9": {
+      "id": "7.4.2.9",
+      "name": "ABC-type dipeptide transporter.",
+      "synonyms": [
+        "Dipeptide ABC transporter.",
+        "Dipeptide transporting ATPase."
+      ]
+    },
+    "7.4.2.10": {
+      "id": "7.4.2.10",
+      "name": "ABC-type glutathione transporter.",
+      "synonyms": [
+        "Glutathione ABC transporter.",
+        "Glutathione transporting ATPase."
+      ]
+    },
+    "7.4.2.11": {
+      "id": "7.4.2.11",
+      "name": "ABC-type methionine transporter.",
+      "synonyms": [
+        "Methionine ABC transporter.",
+        "Methionine transporting ATPase."
+      ]
+    },
+    "7.4.2.12": {
+      "id": "7.4.2.12",
+      "name": "ABC-type cystine transporter.",
+      "synonyms": [
+        "Cystine ABC transporter.",
+        "Cystine transporting ATPase."
+      ]
+    },
+    "7.4.2.13": {
+      "id": "7.4.2.13",
+      "name": "ABC-type tyrosine transporter.",
+      "synonyms": []
+    },
     "7.5.2.1": {
       "id": "7.5.2.1",
       "name": "ABC-type maltose transporter.",
@@ -51638,13 +53458,94 @@
         "Oligosaccharide-transporting ATPase."
       ]
     },
+    "7.5.2.3": {
+      "id": "7.5.2.3",
+      "name": "ABC-type beta-glucan transporter.",
+      "synonyms": [
+        "Beta-glucan-transporting ATPase."
+      ]
+    },
+    "7.5.2.4": {
+      "id": "7.5.2.4",
+      "name": "ABC-type teichoic-acid transporter.",
+      "synonyms": [
+        "Teichoic-acid-transporting ATPase."
+      ]
+    },
+    "7.5.2.5": {
+      "id": "7.5.2.5",
+      "name": "ABC-type lipopolysaccharide transporter.",
+      "synonyms": [
+        "Lipopolysaccharide transport system.",
+        "Lipopolysaccharide-transporting ATPase."
+      ]
+    },
+    "7.5.2.6": {
+      "id": "7.5.2.6",
+      "name": "ABC-type lipid A-core oligosaccharide transporter.",
+      "synonyms": [
+        "ATP-dependent lipid A-core flippase.",
+        "Lipid flippase."
+      ]
+    },
+    "7.5.2.7": {
+      "id": "7.5.2.7",
+      "name": "ABC-type D-ribose transporter.",
+      "synonyms": [
+        "D-ribose ABC transporter.",
+        "D-ribose transporting ATPase."
+      ]
+    },
+    "7.5.2.8": {
+      "id": "7.5.2.8",
+      "name": "ABC-type D-allose transporter.",
+      "synonyms": [
+        "D-allose ABC transporter.",
+        "D-allose transporting ATPase."
+      ]
+    },
+    "7.5.2.9": {
+      "id": "7.5.2.9",
+      "name": "ABC-type D-galactofuranose transporter.",
+      "synonyms": [
+        "D-galactofuranose ABC transporter.",
+        "D-galactofuranose transporting ATPase."
+      ]
+    },
+    "7.5.2.10": {
+      "id": "7.5.2.10",
+      "name": "ABC-type D-xylose transporter.",
+      "synonyms": [
+        "D-xylose ABC transporter.",
+        "D-xylose transporting ATPase."
+      ]
+    },
+    "7.5.2.11": {
+      "id": "7.5.2.11",
+      "name": "ABC-type D-galactose transporter.",
+      "synonyms": [
+        "D-galactose ABC transporter.",
+        "D-galactose transporting ATPase."
+      ]
+    },
+    "7.5.2.12": {
+      "id": "7.5.2.12",
+      "name": "ABC-type L-arabinose transporter.",
+      "synonyms": [
+        "L-arabinose ABC transporter.",
+        "L-arabinose transporting ATPase."
+      ]
+    },
+    "7.5.2.13": {
+      "id": "7.5.2.13",
+      "name": "ABC-type D-xylose/L-arabinose transporter.",
+      "synonyms": []
+    },
     "7.6.2.1": {
       "id": "7.6.2.1",
       "name": "P-type phospholipid transporter.",
       "synonyms": [
         "Flippase.",
-        "Magnesium-ATPase.",
-        "Mg(2+)-ATPase.",
         "Phospholipid-transporting ATPase."
       ]
     },
@@ -51670,6 +53571,111 @@
         "Multidrug resistance-associated protein 1.",
         "YBT1 (gene name).",
         "YCF1 (gene name)."
+      ]
+    },
+    "7.6.2.4": {
+      "id": "7.6.2.4",
+      "name": "ABC-type fatty-acyl-CoA transporter.",
+      "synonyms": [
+        "Fatty-acyl-CoA-transporting ATPase."
+      ]
+    },
+    "7.6.2.5": {
+      "id": "7.6.2.5",
+      "name": "ABC-type heme transporter.",
+      "synonyms": [
+        "Heme-transporting ATPase."
+      ]
+    },
+    "7.6.2.6": {
+      "id": "7.6.2.6",
+      "name": "ABC-type guanine transporter.",
+      "synonyms": [
+        "Guanine-transporting ATPase."
+      ]
+    },
+    "7.6.2.7": {
+      "id": "7.6.2.7",
+      "name": "ABC-type taurine transporter.",
+      "synonyms": [
+        "Taurine ABC transporter.",
+        "Taurine-transporting ATPase."
+      ]
+    },
+    "7.6.2.8": {
+      "id": "7.6.2.8",
+      "name": "ABC-type vitamin B12 transporter.",
+      "synonyms": [
+        "Vitamin B12 ABC transporter.",
+        "Vitamin B12-transporting ATPase."
+      ]
+    },
+    "7.6.2.9": {
+      "id": "7.6.2.9",
+      "name": "ABC-type quaternary amine transporter.",
+      "synonyms": [
+        "Glycine betaine ABC transporter.",
+        "Quaternary-amine ABC transporter.",
+        "Quaternary-amine-transporting ATPase."
+      ]
+    },
+    "7.6.2.10": {
+      "id": "7.6.2.10",
+      "name": "ABC-type glycerol 3-phosphate transporter.",
+      "synonyms": [
+        "Glycerol-3-phosphate ABC transporter.",
+        "Glycerol-3-phosphate-transporting ATPase."
+      ]
+    },
+    "7.6.2.11": {
+      "id": "7.6.2.11",
+      "name": "ABC-type polyamine transporter.",
+      "synonyms": [
+        "Polyamine ABC transporter.",
+        "Polyamine-transporting ATPase."
+      ]
+    },
+    "7.6.2.12": {
+      "id": "7.6.2.12",
+      "name": "ABC-type capsular-polysaccharide transporter.",
+      "synonyms": [
+        "Capsular-polysaccharide-transporting ATPase."
+      ]
+    },
+    "7.6.2.13": {
+      "id": "7.6.2.13",
+      "name": "ABC-type autoinducer-2 transporter.",
+      "synonyms": [
+        "Autoinducer-2 ABC transporter.",
+        "Autoinducer-2 transporting ATPase.",
+        "LsrACDB (gene names)."
+      ]
+    },
+    "7.6.2.14": {
+      "id": "7.6.2.14",
+      "name": "ABC-type aliphatic sulfonate transporter.",
+      "synonyms": [
+        "Aliphatic sulfonate ABC transporter.",
+        "Aliphatic sulfonate transporting ATPase.",
+        "Alkane sulfonate ABC transporter."
+      ]
+    },
+    "7.6.2.15": {
+      "id": "7.6.2.15",
+      "name": "ABC-type thiamine transporter.",
+      "synonyms": [
+        "Thiamine ABC transporter.",
+        "Thiamine ABC transporter.",
+        "Thiamine transporting ATPase.",
+        "Thiamine transporting ATPase."
+      ]
+    },
+    "7.6.2.16": {
+      "id": "7.6.2.16",
+      "name": "ABC-type putrescine transporter.",
+      "synonyms": [
+        "Putrescine ABC transporter.",
+        "Putrescine transporting ATPase."
       ]
     }
   }
