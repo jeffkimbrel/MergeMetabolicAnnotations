@@ -87,7 +87,8 @@ class CompareAnnotationsUtil:
 
         # add ontology events
         for count, oe in enumerate(gto['ontology_events']):
-            summary['ontology_events'][count] = oe
+            if gto['ontology_events']['description'] in params['annotations_to_compare']:
+                summary['ontology_events'][count] = oe
 
         # add gene id to summary
         for feature in gto['features']:
@@ -259,9 +260,6 @@ class CompareAnnotationsUtil:
                 'report_ref': output['ref']}
 
     def run(self, ctx, params):
-
-        for thing in params['annotations_to_compare']:
-            logging.info("annotations_to_compare: " + thing)
 
         # collect some metadata
         self.get_genome(params['genome'])
