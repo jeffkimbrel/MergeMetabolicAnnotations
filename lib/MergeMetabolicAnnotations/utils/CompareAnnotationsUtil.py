@@ -77,7 +77,7 @@ class CompareAnnotationsUtil:
         ecList = re.findall(r"\(*[0-9]+\.[0-9\-]+\.[0-9\-]+\.[0-9\-]+", line)
         return(ecList)
 
-    def summarize_gto(self, gto, translations):
+    def summarize_gto(self, gto, translations, params):
         summary = {"genes": {},
                    "terms": {},
                    "rxns": {},
@@ -86,8 +86,10 @@ class CompareAnnotationsUtil:
                    }
 
         # add ontology events
+        retained_ontology_events = []
         for count, oe in enumerate(gto['ontology_events']):
-            if gto['ontology_events']['description'] in params['annotations_to_compare']:
+            if gto['ontology_events'][count]['description'] in params['annotations_to_compare']:
+                retained_ontology_events.append(count)
                 summary['ontology_events'][count] = oe
 
         # add gene id to summary
@@ -104,64 +106,65 @@ class CompareAnnotationsUtil:
 
                     for term in term_dict:
                         for oe in term_dict[term]:
+                            if oe in retained_ontology_events:
 
-                            rxn = "none"
+                                rxn = "none"
 
-                            # get rxn
-                            ontology_type = summary['ontology_events'][oe]['id']
+                                # get rxn
+                                ontology_type = summary['ontology_events'][oe]['id']
 
-                            # fix metacyc terms
-                            if ontology_type == 'metacyc':
-                                if term.startswith("META:"):
-                                    term = term.replace('META:', '')
+                                # fix metacyc terms
+                                if ontology_type == 'metacyc':
+                                    if term.startswith("META:"):
+                                        term = term.replace('META:', '')
 
-                            # fix go terms
-                            if ontology_type == 'go':
-                                if term.startswith("GO:"):
-                                    term = term.replace('GO:', '')
+                                # fix go terms
+                                if ontology_type == 'go':
+                                    if term.startswith("GO:"):
+                                        term = term.replace('GO:', '')
 
-                            # fix SSO terms
-                            if ontology_type == 'SSO':
+                                # fix SSO terms
+                                if ontology_type == 'SSO':
 
-                                if term in gto['ontologies_present']['SSO']:
-                                    if gto['ontologies_present']['SSO'][term] != 'Unknown':
-                                        term = gto['ontologies_present']['SSO'][term]
+                                    if term in gto['ontologies_present']['SSO']:
+                                        if gto['ontologies_present']['SSO'][term] != 'Unknown':
+                                            term = gto['ontologies_present']['SSO'][term]
 
-                            # convert terms to rxns
-                            if term in translations[ontology_type]:
-                                rxn = translations[ontology_type][term]
-                            else:
-                                if oe in summary["orphan_terms"]:
-                                    summary["orphan_terms"][oe].append(term)
-                                    summary["orphan_terms"][oe] = list(
-                                        set(summary["orphan_terms"][oe]))
+                                # convert terms to rxns
+                                if term in translations[ontology_type]:
+                                    rxn = translations[ontology_type][term]
                                 else:
-                                    summary["orphan_terms"][oe] = [term]
+                                    if oe in summary["orphan_terms"]:
+                                        summary["orphan_terms"][oe].append(term)
+                                        summary["orphan_terms"][oe] = list(
+                                            set(summary["orphan_terms"][oe]))
+                                    else:
+                                        summary["orphan_terms"][oe] = [term]
 
-                            # terms
-                            if term in summary["genes"][gene_id]['terms']:
-                                summary["genes"][gene_id]['terms'][term].append(oe)
-                            else:
-                                summary["genes"][gene_id]['terms'][term] = [oe]
-
-                            if term in summary['terms']:
-                                summary['terms'][term].append(oe)
-                                summary['terms'][term] = list(set(summary['terms'][term]))
-                            else:
-                                summary['terms'][term] = [oe]
-
-                            # rxns
-                            if rxn != "none":
-                                if rxn in summary["genes"][gene_id]['rxns']:
-                                    summary["genes"][gene_id]['rxns'][rxn].append(oe)
+                                # terms
+                                if term in summary["genes"][gene_id]['terms']:
+                                    summary["genes"][gene_id]['terms'][term].append(oe)
                                 else:
-                                    summary["genes"][gene_id]['rxns'][rxn] = [oe]
+                                    summary["genes"][gene_id]['terms'][term] = [oe]
 
-                                if rxn in summary['rxns']:
-                                    summary['rxns'][rxn].append(oe)
-                                    summary['rxns'][rxn] = list(set(summary['rxns'][rxn]))
+                                if term in summary['terms']:
+                                    summary['terms'][term].append(oe)
+                                    summary['terms'][term] = list(set(summary['terms'][term]))
                                 else:
-                                    summary['rxns'][rxn] = [oe]
+                                    summary['terms'][term] = [oe]
+
+                                # rxns
+                                if rxn != "none":
+                                    if rxn in summary["genes"][gene_id]['rxns']:
+                                        summary["genes"][gene_id]['rxns'][rxn].append(oe)
+                                    else:
+                                        summary["genes"][gene_id]['rxns'][rxn] = [oe]
+
+                                    if rxn in summary['rxns']:
+                                        summary['rxns'][rxn].append(oe)
+                                        summary['rxns'][rxn] = list(set(summary['rxns'][rxn]))
+                                    else:
+                                        summary['rxns'][rxn] = [oe]
 
         with open(os.path.join(self.scratch, "summary_dump.json"), 'w') as outfile:
             json.dump(summary, outfile, indent=2)
@@ -267,7 +270,7 @@ class CompareAnnotationsUtil:
         self.get_translations()
 
         # make reports
-        summary = self.summarize_gto(self.genome, self.translations)
+        summary = self.summarize_gto(self.genome, self.translations, params)
 
         report = self.html_summary(params, summary)
         return report
