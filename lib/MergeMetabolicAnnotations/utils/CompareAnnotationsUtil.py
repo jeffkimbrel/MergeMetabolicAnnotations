@@ -260,7 +260,8 @@ class CompareAnnotationsUtil:
 
     def run(self, ctx, params):
 
-        logging.info("annotations_to_compare\t" + params['annotations_to_compare'])
+        for thing in params['annotations_to_compare']:
+            logging.info("annotations_to_compare: " + thing)
 
         # collect some metadata
         self.get_genome(params['genome'])
