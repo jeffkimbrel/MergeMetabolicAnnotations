@@ -92,7 +92,7 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
             "debug": True,
             "genome": "27005/9/1",
             "output_name": "compareGenome_temp",
-            "annotations_to_compare": ["KEGG KOs", "KOFAM93"],
+            "annotations_to_compare": ["KEGG KOs", "KOFAM93", "annotate_genome"],
             "workspace_name": self.wsName
         }
         ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)

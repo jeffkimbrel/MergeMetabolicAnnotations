@@ -51,14 +51,17 @@ class CompareAnnotationsUtil:
         self.genome = self.genome_api.get_genome_v1({"genomes": [{"ref": genome_ref}], 'downgrade': 0})[
             "genomes"][0]['data']
 
-    def get_ontology_events(self, genome_dict):
+    def get_ontology_events(self, genome_dict, params):
         if 'ontology_events' in genome_dict:
             for event, ontology in enumerate(genome_dict['ontology_events']):
-                self.events[event] = {}
-                for term in ontology:
-                    self.events[event][term] = ontology[term]
+                if ontology['description'] in params['annotations_to_compare']:
+                    self.events[event] = {}
+                    for term in ontology:
+                        self.events[event][term] = ontology[term]
         else:
             logging.info("No ontology events in this genome!")
+
+        logging.info(self.events)
 
     def get_translations(self):
         self.translations = {}
@@ -86,11 +89,8 @@ class CompareAnnotationsUtil:
                    }
 
         # add ontology events
-        retained_ontology_events = []
-        for count, oe in enumerate(gto['ontology_events']):
-            if gto['ontology_events'][count]['description'] in params['annotations_to_compare']:
-                retained_ontology_events.append(count)
-                summary['ontology_events'][count] = oe
+        for oe in self.events:
+            summary['ontology_events'][oe] = self.events[oe]
 
         # add gene id to summary
         for feature in gto['features']:
@@ -106,7 +106,9 @@ class CompareAnnotationsUtil:
 
                     for term in term_dict:
                         for oe in term_dict[term]:
-                            if oe in retained_ontology_events:
+
+                            # is this ontology event in the user-selected list?
+                            if oe in self.events:
 
                                 rxn = "none"
 
@@ -125,7 +127,6 @@ class CompareAnnotationsUtil:
 
                                 # fix SSO terms
                                 if ontology_type == 'SSO':
-
                                     if term in gto['ontologies_present']['SSO']:
                                         if gto['ontologies_present']['SSO'][term] != 'Unknown':
                                             term = gto['ontologies_present']['SSO'][term]
@@ -262,19 +263,6 @@ class CompareAnnotationsUtil:
         return {'report_name': output['name'],
                 'report_ref': output['ref']}
 
-    def run(self, ctx, params):
-
-        # collect some metadata
-        self.get_genome(params['genome'])
-        self.get_ontology_events(self.genome)
-        self.get_translations()
-
-        # make reports
-        summary = self.summarize_gto(self.genome, self.translations, params)
-
-        report = self.html_summary(params, summary)
-        return report
-
 # plotting functions
     def plot_totals(self, summary):
         descriptions = {}
@@ -366,7 +354,7 @@ class CompareAnnotationsUtil:
         descriptions = {}
         for o in summary["ontology_events"]:
             descriptions[o] = summary["ontology_events"][o].get(
-                'description', summary["ontology_events"][o]['method']) + '_' + str(o)
+                'description', summary["ontology_events"][o]['method']) + ' (#' + str(o) + ')'
 
         events = sorted(summary['ontology_events'].keys())
         rxns = summary[summary_type]
@@ -455,3 +443,16 @@ class CompareAnnotationsUtil:
         # https://stackoverflow.com/a/21839239
         max_key, max_value = max(s.items(), key=lambda x: len(x[1]))
         return(max_key)
+
+    def run(self, ctx, params):
+
+        # collect some metadata
+        self.get_genome(params['genome'])
+        self.get_ontology_events(self.genome, params)
+        self.get_translations()
+
+        # make reports
+        summary = self.summarize_gto(self.genome, self.translations, params)
+
+        report = self.html_summary(params, summary)
+        return report
