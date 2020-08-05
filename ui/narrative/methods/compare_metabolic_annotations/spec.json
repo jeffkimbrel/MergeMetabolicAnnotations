@@ -44,7 +44,7 @@
               ],
               "selection_description": ["id", "timestamp", "description", "method"],
               "description_template" : "<strong>{{id}}</strong> ontology terms from <strong>{{method}}</strong> added <strong>{{timestamp}}</strong>",
-              "selection_id" : "{{*}} {{description}}"
+              "selection_id" : "{{[*]}} {{description}}"
            },
            "multiselection" : true
         },
