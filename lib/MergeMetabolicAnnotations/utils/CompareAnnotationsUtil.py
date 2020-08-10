@@ -54,7 +54,7 @@ class CompareAnnotationsUtil:
     def get_ontology_events(self, genome_dict, params):
         if 'ontology_events' in genome_dict:
             for event, ontology in enumerate(genome_dict['ontology_events']):
-                if ontology['description'] in params['annotations_to_compare']:
+                if ontology['description'] in params['annotations_to_compare'] or len(params['annotations_to_compare']) == 0:
                     self.events[event] = {}
                     for term in ontology:
                         self.events[event][term] = ontology[term]
