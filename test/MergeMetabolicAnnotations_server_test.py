@@ -65,16 +65,16 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # self.assertEqual(ret[...], ...) or other unittest methods
 
         # # import app
-        # params_import = {
-        #     "debug": True,
-        #     "ontology": "keggko",
-        #     "annotation_file": "ARW1R1.KOALA.20191015.forUpload.txt",
-        #     "description": "koala",
-        #     "genome": "27005/3/1",
-        #     "output_name": "import_genome",
-        #     "workspace_name": self.wsName
-        # }
-        # ret = self.serviceImpl.import_annotations(self.ctx, params_import)
+        params_import = {
+            "debug": True,
+            "ontology": "keggko",
+            "annotation_file": "K_algicida_OT-1_protein_IDs.faa.kofam93.txt",
+            "description": "alias_test",
+            "genome": "44643/3/1",
+            "output_name": "import_genome",
+            "workspace_name": self.wsName
+        }
+        ret = self.serviceImpl.import_annotations(self.ctx, params_import)
 
         # bulk import app
         # params_import = {
@@ -88,11 +88,11 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # ret = self.serviceImpl.import_bulk_annotations(self.ctx, params_import)
 
         # compare app
-        params_compare = {
-            "debug": True,
-            "genome": "27005/9/1",
-            "output_name": "compareGenome_temp",
-            "annotations_to_compare": ["KEGG KOs", "KOFAM93", "annotate_genome"],
-            "workspace_name": self.wsName
-        }
-        ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)
+        # params_compare = {
+        #     "debug": True,
+        #     "genome": "27005/9/1",
+        #     "output_name": "compareGenome_temp",
+        #     "annotations_to_compare": ["KEGG KOs", "KOFAM93", "annotate_genome"],
+        #     "workspace_name": self.wsName
+        # }
+        # ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)

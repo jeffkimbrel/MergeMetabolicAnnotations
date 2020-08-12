@@ -133,6 +133,7 @@ class ImportAnnotationsUtil:
         annotations = mu.get_annotations_file(params, self.staging_dir)
 
         self.genes = mu.annotations_to_genes(annotations, self.genes)
+
         genome_dict = mu.add_ontology_event(genome_dict, params, self.sso_ref, self.timestamp)
 
         # fix missing descriptions
@@ -151,7 +152,10 @@ class ImportAnnotationsUtil:
         # process
         for gene in self.genes:
             self.genes[gene].validateGeneID(genome_dict)
+            # logging.info(self.genes[gene].id)
             self.genes[gene].validateAnnotationID(ontology_dict, params['ontology'])
+
+        # logging.info(self.genes.keys())
 
         genome_dict = mu.update_genome(
             genome_dict, params['ontology'], self.genes, self.current_ontology_event)

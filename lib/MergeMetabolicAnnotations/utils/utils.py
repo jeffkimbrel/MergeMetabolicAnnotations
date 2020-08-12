@@ -10,6 +10,7 @@ class Gene:
         self.valid = 0
         self.annotations = []
         self.ontologyChecked = []
+        self.feature = None
 
     def addAnnotation(self, annotation):
         self.annotations.append(annotation)
@@ -19,10 +20,11 @@ class Gene:
         for feature in genome_dict['features']:
             if feature['id'] == self.id:
                 self.valid = 1
+                self.feature = feature['id']
             else:  # this changes the import gene id to match the feature id if it is found as an alias
                 for alias in feature['aliases']:
                     if self.id == alias[1]:
-                        self.id = feature['id']
+                        self.feature = feature['id']
                         self.valid = 1
 
     def validateAnnotationID(self, ontology_dict, ontology):
@@ -178,38 +180,38 @@ def add_ontology_event(genome_dict, params, sso_ref, timestamp):
 
 
 def update_genome(genome_dict, ontology, genes, current_ontology_event):
+    # logging.info(genes.keys())
     for feature in genome_dict['features']:
 
-        geneID = feature['id']
+        featureID = feature['id']
 
-        if geneID in genes:
+        for gene in genes:
+            if genes[gene].hasValidAnnotations() is True:
+                if featureID == genes[gene].feature:
+                    # create some things if they don't exist
+                    if 'ontology_terms' not in feature:
+                        feature['ontology_terms'] = {}
 
-            if genes[geneID].hasValidAnnotations() is True:
+                    if ontology not in feature['ontology_terms']:
+                        feature['ontology_terms'][ontology] = {}
 
-                # create some things if they don't exist
-                if 'ontology_terms' not in feature:
-                    feature['ontology_terms'] = {}
+                    for annotation in genes[gene].ontologyChecked:
+                        if annotation['valid'] == 1:
 
-                if ontology not in feature['ontology_terms']:
-                    feature['ontology_terms'][ontology] = {}
+                            # add to ontologies present
+                            if ontology not in genome_dict['ontologies_present']:
+                                genome_dict['ontologies_present'][ontology] = {}
 
-                for annotation in genes[geneID].ontologyChecked:
-                    if annotation['valid'] == 1:
+                            if annotation['id'] not in genome_dict['ontologies_present'][ontology]:
+                                genome_dict['ontologies_present'][ontology][annotation['id']
+                                                                            ] = annotation['name']
 
-                        # add to ontologies present
-                        if ontology not in genome_dict['ontologies_present']:
-                            genome_dict['ontologies_present'][ontology] = {}
-
-                        if annotation['id'] not in genome_dict['ontologies_present'][ontology]:
-                            genome_dict['ontologies_present'][ontology][annotation['id']
-                                                                        ] = annotation['name']
-
-                        if annotation['id'] not in feature['ontology_terms'][ontology]:
-                            feature['ontology_terms'][ontology][annotation['id']] = [
-                                current_ontology_event]
-                        else:
-                            feature['ontology_terms'][ontology][annotation['id']].append(
-                                current_ontology_event)
+                            if annotation['id'] not in feature['ontology_terms'][ontology]:
+                                feature['ontology_terms'][ontology][annotation['id']] = [
+                                    current_ontology_event]
+                            else:
+                                feature['ontology_terms'][ontology][annotation['id']].append(
+                                    current_ontology_event)
 
     return(genome_dict)
 
