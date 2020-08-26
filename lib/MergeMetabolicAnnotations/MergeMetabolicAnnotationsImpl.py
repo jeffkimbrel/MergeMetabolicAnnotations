@@ -12,6 +12,9 @@ from MergeMetabolicAnnotations.utils.ImportBulkAnnotationsUtil import ImportBulk
 from .utils.CompareAnnotationsUtil import CompareAnnotationsUtil
 from MergeMetabolicAnnotations.utils.CompareAnnotationsUtil import CompareAnnotationsUtil
 
+from .utils.MergeAnnotationsUtil import MergeAnnotationsUtil
+from MergeMetabolicAnnotations.utils.MergeAnnotationsUtil import MergeAnnotationsUtil
+
 from installed_clients.KBaseReportClient import KBaseReport
 #END_HEADER
 
@@ -118,6 +121,8 @@ class MergeMetabolicAnnotations:
         #ctx is the context object
         #return variables are: output
         #BEGIN merge_metabolic_annotations
+        import_runner = MergeAnnotationsUtil(self.config)
+        output = import_runner.run(ctx, params)
         #END merge_metabolic_annotations
 
         #At some point might do deeper type checking...

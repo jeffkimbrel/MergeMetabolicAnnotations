@@ -344,19 +344,19 @@ class Application(object):
                              types=[dict])
         self.method_authentication['MergeMetabolicAnnotations.import_annotations'] = 'required'  # noqa
         self.rpc_service.add(impl_MergeMetabolicAnnotations.import_bulk_annotations,
-                             name='MergeMetabolicAnnotations.import_bulk_annotations',
+name='MergeMetabolicAnnotations.import_bulk_annotations',
                              types=[dict])
         self.method_authentication['MergeMetabolicAnnotations.import_bulk_annotations'] = 'required'  # noqa
         self.rpc_service.add(impl_MergeMetabolicAnnotations.compare_metabolic_annotations,
-                             name='MergeMetabolicAnnotations.compare_metabolic_annotations',
+name='MergeMetabolicAnnotations.compare_metabolic_annotations',
                              types=[dict])
         self.method_authentication['MergeMetabolicAnnotations.compare_metabolic_annotations'] = 'required'  # noqa
         self.rpc_service.add(impl_MergeMetabolicAnnotations.merge_metabolic_annotations,
-                             name='MergeMetabolicAnnotations.merge_metabolic_annotations',
+name='MergeMetabolicAnnotations.merge_metabolic_annotations',
                              types=[dict])
         self.method_authentication['MergeMetabolicAnnotations.merge_metabolic_annotations'] = 'required'  # noqa
         self.rpc_service.add(impl_MergeMetabolicAnnotations.run_MergeMetabolicAnnotations,
-                             name='MergeMetabolicAnnotations.run_MergeMetabolicAnnotations',
+name='MergeMetabolicAnnotations.run_MergeMetabolicAnnotations',
                              types=[dict])
         self.method_authentication['MergeMetabolicAnnotations.run_MergeMetabolicAnnotations'] = 'required'  # noqa
         self.rpc_service.add(impl_MergeMetabolicAnnotations.status,
