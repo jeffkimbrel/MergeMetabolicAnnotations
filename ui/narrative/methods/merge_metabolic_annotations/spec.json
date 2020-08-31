@@ -11,7 +11,7 @@
   },
   "parameter-groups": [
        {
-           "id": "annotation_to_merge",
+           "id": "annotations_to_merge",
            "parameters": [
                "annotation_source",
                "annotation_weight"
@@ -49,12 +49,15 @@
                  "ontology_events"
               ],
               "parameter_id" : "genome",
-              "selection_id" : "id",
               "subdata_included" : [
                  "ontology_events/[*]/id",
                  "ontology_events/[*]/timestamp",
-                 "ontology_events/[*]/description"
-              ]
+                 "ontology_events/[*]/description",
+                 "ontology_events/[*]/method"
+              ],
+              "selection_description": ["id", "timestamp", "description", "method"],
+              "description_template" : "<strong>{{id}}</strong> ontology terms from <strong>{{method}}</strong> added <strong>{{timestamp}}</strong>",
+              "selection_id" : "description"
            },
            "multiselection" : false
         },
@@ -143,8 +146,8 @@
                "input_parameter" : "genome"
            },
            {
-               "target_property" : "annotation_to_merge",
-               "input_parameter" : "annotation_to_merge"
+               "target_property" : "annotations_to_merge",
+               "input_parameter" : "annotations_to_merge"
            },
            {
                "target_property" : "annotation_threshold",

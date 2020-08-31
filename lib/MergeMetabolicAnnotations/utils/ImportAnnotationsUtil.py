@@ -134,7 +134,7 @@ class ImportAnnotationsUtil:
 
         self.genes = mu.annotations_to_genes(annotations, self.genes)
 
-        genome_dict = mu.add_ontology_event(genome_dict, params, self.sso_ref, self.timestamp)
+        genome_dict = mu.add_ontology_event(genome_dict, params, self.sso_ref, self.timestamp, "Import Annotations")
 
         # fix missing descriptions
         logging.info(genome_dict['ontology_events'])

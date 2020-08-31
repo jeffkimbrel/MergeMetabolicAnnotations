@@ -96,3 +96,19 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         #     "workspace_name": self.wsName
         # }
         # ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)
+
+        # merge app
+        # params_merge = {
+        #     "debug": True,
+        #     "genome": "27005/9/1",
+        #     "output_name": "mergeGenome_temp",
+        #     "annotations_to_merge": [{
+        #          "annotation_source": ["KEGG KOs"],
+        #          "annotation_weight": 1.0
+        #     }, {
+        #          "annotation_source": ["KOFAM93"],
+        #          "annotation_weight": 0.5
+        #     }],
+        #     "workspace_name": self.wsName
+        # }
+        # ret = self.serviceImpl.merge_metabolic_annotations(self.ctx, params_compare)

@@ -46,19 +46,21 @@ class MergeAnnotationsUtil:
             "genomes"][0]['data']
 
     def get_ontology_events(self, genome_dict, params):
+        for annot_item in params['annotations_to_merge']:
+            self.weights[annot_item['annotation_source'][0]] = annot_item['annotation_weight']
         if 'ontology_events' in genome_dict:
             for event, ontology in enumerate(genome_dict['ontology_events']):
-                if 'annotation_to_merge' not in params or 'annotation_source' not in params['annotation_to_merge'] or len(params['annotations_to_merge']) == 0 or ontology['description'] in params['annotations_to_merge']['annotation_source:
+                if ontology['description'] in self.weights or len(self.weights) == 0:
                     self.events[event] = {}
-                    if 'annotation_to_merge' not in params or 'annotation_weight' not in params['annotation_to_merge'] or params['annotation_to_merge']['annotation_weight'] <0: 
-                        self.weights[event] = 1
-                    else: self.weights[event] = params['annotation_to_merge']['annotation_weight']
+                    if len(self.weights) == 0:
+                        self.weights[ontology['description']] = 1
                     for term in ontology:
                         self.events[event][term] = ontology[term]
         else:
             logging.info("No ontology events in this genome!")
 
         logging.info(self.events)
+        logging.info(self.weights)
 
     def get_translations(self):
         self.translations = {}
@@ -287,4 +289,3 @@ class MergeAnnotationsUtil:
         report = self.generate_report(params, genome_ref)
 
         return report
-

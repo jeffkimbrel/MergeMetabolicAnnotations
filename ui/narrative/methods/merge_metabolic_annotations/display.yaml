@@ -81,7 +81,7 @@ parameters :
         long-hint : |
             Name for new genome with merged annotations
 parameter-groups:
-    annotation_to_merge:
+    annotations_to_merge:
         ui-name: |
             Annotation events to merge with associated weights to use
         short-hint: |

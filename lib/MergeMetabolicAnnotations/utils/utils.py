@@ -157,7 +157,7 @@ def annotations_to_genes(annotations, genes):
     return(genes)
 
 
-def add_ontology_event(genome_dict, params, sso_ref, timestamp):
+def add_ontology_event(genome_dict, params, sso_ref, timestamp, method):
 
     if 'ontology_events' not in genome_dict:
         genome_dict['ontology_events'] = []
@@ -168,7 +168,7 @@ def add_ontology_event(genome_dict, params, sso_ref, timestamp):
     genome_dict['ontology_events'].append(
         {
             "id": params['ontology'],
-            "method": "Import Annotations",
+            "method": method,
             "method_version": get_app_version(),
             "description": params['description'],
             "ontology_ref": sso_ref,
