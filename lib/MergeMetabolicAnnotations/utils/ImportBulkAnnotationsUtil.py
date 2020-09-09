@@ -26,7 +26,8 @@ class ImportBulkAnnotationsUtil:
         "keggro": "KEGG_RXN_ontologyDictionary.json",
         "metacyc": "MetaCyc_RXN_ontologyDictionary.json",
         "modelseed": "ModelSEED_RXN_ontologyDictionary.json",
-        "go": "GO_ontologyDictionary.json"
+        "go": "GO_ontologyDictionary.json",
+        "sso": "SSO_ontologyDictionary.json"
     }
 
     def __init__(self, config):
@@ -136,7 +137,8 @@ class ImportBulkAnnotationsUtil:
 
             genes = {}
             sso_ref = mu.get_sso_data(pair_params['ontology'], self.ws_client)
-            genome_dict = mu.add_ontology_event(genome_dict, pair_params, sso_ref, self.timestamp, "Import Annotations")
+            genome_dict = mu.add_ontology_event(
+                genome_dict, pair_params, sso_ref, self.timestamp, "Import Annotations")
             current_ontology_event = len(genome_dict['ontology_events']) - 1
             ontology_dict = mu.get_ontology_dict(
                 pair_params['ontology'], self.datadir, self.ontology_lookup)

@@ -26,7 +26,8 @@ class ImportAnnotationsUtil:
         "keggro": "KEGG_RXN_ontologyDictionary.json",
         "metacyc": "MetaCyc_RXN_ontologyDictionary.json",
         "modelseed": "ModelSEED_RXN_ontologyDictionary.json",
-        "go": "GO_ontologyDictionary.json"
+        "go": "GO_ontologyDictionary.json",
+        "sso": "SSO_ontologyDictionary.json"
     }
 
     def __init__(self, config):
@@ -134,7 +135,8 @@ class ImportAnnotationsUtil:
 
         self.genes = mu.annotations_to_genes(annotations, self.genes)
 
-        genome_dict = mu.add_ontology_event(genome_dict, params, self.sso_ref, self.timestamp, "Import Annotations")
+        genome_dict = mu.add_ontology_event(
+            genome_dict, params, self.sso_ref, self.timestamp, "Import Annotations")
 
         # fix missing descriptions
         logging.info(genome_dict['ontology_events'])
