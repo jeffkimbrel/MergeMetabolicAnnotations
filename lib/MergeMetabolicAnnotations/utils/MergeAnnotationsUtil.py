@@ -46,16 +46,18 @@ class MergeAnnotationsUtil:
             "genomes"][0]['data']
 
     def get_ontology_events(self, genome_dict, params):
-        for annot_item in params['annotations_to_merge']:
-            self.weights[annot_item['annotation_source'][0]] = annot_item['annotation_weight']
         if 'ontology_events' in genome_dict:
             for event, ontology in enumerate(genome_dict['ontology_events']):
-                if ontology['description'] in self.weights or len(self.weights) == 0:
+                if ontology['description'] in params['annotations_to_merge'] or len(params['annotations_to_merge']) == 0:
                     self.events[event] = {}
-                    if len(self.weights) == 0:
-                        self.weights[ontology['description']] = 1
                     for term in ontology:
                         self.events[event][term] = ontology[term]
+                    if len(params['annotations_to_merge']) == 0:
+                        self.weights[event] = 1  # If no annotations selected, weight them all equally
+                    else:
+                        for annot_item in params['annotations_to_merge']:
+                            if annot_item['annotation_source'][0] == ontology['description']:
+                                 self.weights[event] = annot_item['annotation_weight']
         else:
             logging.info("No ontology events in this genome!")
 
@@ -75,13 +77,14 @@ class MergeAnnotationsUtil:
                     rxn = entry['equiv_term']
                     self.translations[type][term] = rxn
 
-    def summarize_genome_dict(self, genome_dict, translations, params):
+    def merge_and_summarize_genome_dict(self, genome_dict, translations, params):
         summary = {"genes": {},
                    "terms": {},
                    "rxns": {},
                    "ontology_events": {},
                    "orphan_terms": {}
                    }
+        genes = {}
 
         # add ontology events
         for oe in self.events:
@@ -93,6 +96,7 @@ class MergeAnnotationsUtil:
             summary["genes"][gene_id] = {"terms": {},
                                          "rxns": {}
                                          }
+            reactions = {}
 
             # get ontology term
             if "ontology_terms" in feature:
@@ -162,10 +166,23 @@ class MergeAnnotationsUtil:
                                     else:
                                         summary['rxns'][rxn] = [oe]
 
+                                    # add up the weighted score for each reaction
+                                    if rxn in reactions:
+                                        reactions[rxn] = reactions[rxn] + self.weights[oe]
+                                    else: reactions[rxn] = self.weights[oe]
+
+                for rxn, score in reactions:
+                    # keep rxn if score > threshold, and is max score OR user wants to keep all above threshold
+                    if score >= params['annotation_threshold'] and (score == max(reactions.values()) or not params['keep_best_annotation_only']):
+                        # collect gene_id:rxn in "genes" dict to be added using update_genome later
+                        if gene_id not in genes:
+                            genes[gene_id] = mu.Gene(gene_id)
+                        genes[gene_id].addAnnotation(rxn)
+
         with open(os.path.join(self.scratch, "summary_dump.json"), 'w') as outfile:
             json.dump(summary, outfile, indent=2)
 
-        return summary
+        return genes, summary
 
     def html_summary(self, params, summary):
 
@@ -265,14 +282,16 @@ class MergeAnnotationsUtil:
         self.get_ontology_events(self.genome, params)
         self.get_translations()
 
+        genome_dict = mu.add_ontology_event(genome_dict, params, self.sso_ref, self.timestamp, "Merge Annotations")
+        self.current_ontology_event = len(genome_dict['ontology_events']) - 1
+
         # make reports
-        summary = self.summarize_genome_dict(self.genome, self.translations, params)
+        genes, summary = self.merge_and_summarize_genome_dict(self.genome, self.translations, params)
 
 #        report = self.html_summary(params, summary)
 
-
         genome_dict = mu.update_genome(
-            genome_dict, params['ontology'], self.genes, self.current_ontology_event)
+            genome_dict, params['ontology'], genes, self.current_ontology_event)
 
         # overwrite object with new genome
         self.genome_full['data'] = genome_dict
