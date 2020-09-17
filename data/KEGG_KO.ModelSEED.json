@@ -1,6 +1,6 @@
 {
   "ontology2": "38284/9/1",
-  "comment": "KEGG_KO->MS TranlationTable",
+  "comment": "KEGG_KO->MS TranslationTable",
   "translation": {
     "K17229": {
       "equiv_terms": [
