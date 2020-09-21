@@ -58,11 +58,12 @@ class MergeAnnotationsUtil:
                     for term in ontology:
                         self.events[event][term] = ontology[term]
                     if len(params['annotations_to_merge']) == 0:
-                        self.weights[event] = 1  # If no annotations selected, weight them all equally
+                        # If no annotations selected, weight them all equally
+                        self.weights[event] = 1
                     else:
                         for annot_item in params['annotations_to_merge']:
                             if annot_item['annotation_source'][0] == ontology['description']:
-                                 self.weights[event] = annot_item['annotation_weight']
+                                self.weights[event] = annot_item['annotation_weight']
         else:
             logging.info("No ontology events in this genome!")
 
@@ -91,11 +92,11 @@ class MergeAnnotationsUtil:
         summary = {}
         genes = {}
 
-        summary[self.merged_ontology_event]= {"genes": set(),
-                                              "terms": set(),
-                                              "rxns": set(),
-                                              "orphan_terms": set()
-                                              }
+        summary[self.merged_ontology_event] = {"genes": set(),
+                                               "terms": set(),
+                                               "rxns": set(),
+                                               "orphan_terms": set()
+                                               }
 
         # add gene id to summary
         for feature in genome_dict['features']:
@@ -153,7 +154,8 @@ class MergeAnnotationsUtil:
                                 # add up the weighted score for each reaction
                                 if rxn in reactions:
                                     reactions[rxn] = reactions[rxn] + self.weights[oe]
-                                else: reactions[rxn] = self.weights[oe]
+                                else:
+                                    reactions[rxn] = self.weights[oe]
 
                 for rxn, score in reactions:
                     # keep rxn if score > threshold, and is max score OR user wants to keep all above threshold
@@ -162,7 +164,7 @@ class MergeAnnotationsUtil:
                         if gene_id not in genes:
                             genes[gene_id] = mu.Gene(gene_id)
                         genes[gene_id].addAnnotation(rxn)
-                        genes[gene_id].valid=1
+                        genes[gene_id].valid = 1
                         summary[self.merged_ontology_event]["genes"].add(gene_id)
                         summary[self.merged_ontology_event]["terms"].add(rxn)
                         summary[self.merged_ontology_event]["rxns"].add(rxn)
@@ -322,13 +324,13 @@ class MergeAnnotationsUtil:
             # RAST/PROKKA don't have descriptions, but they have methods
             description = self.events[event].get('description', self.events[event]['method'])
             type = self.events[event]['id']
-            table_lines.append('<tr><td>' + str(event) + \
-                              '</td><td>' + description + \
-                              '</td><td>' + type + \
-                              '</td><td>' + str(len(summary[event]["genes"])) + \
-                              '</td><td>' + str(len(summary[event]["terms"])) + \
-                              '</td><td>' + str(len(summary[event]["rxns"])) + \
-                              '</td></tr>')
+            table_lines.append('<tr><td>' + str(event) +
+                               '</td><td>' + description +
+                               '</td><td>' + type +
+                               '</td><td>' + str(len(summary[event]["genes"])) +
+                               '</td><td>' + str(len(summary[event]["terms"])) +
+                               '</td><td>' + str(len(summary[event]["rxns"])) +
+                               '</td></tr>')
         table_lines.append('</table>')
 
         # Write to file
@@ -377,8 +379,8 @@ class MergeAnnotationsUtil:
 
         # read and prepare objects/files
         mu.validate()
-        self.sso_ref = mu.get_sso_data("KBaseOntology/seed_subsystem_ontology", \
-                       self.ws_client)
+        self.sso_ref = mu.get_sso_data("KBaseOntology/seed_subsystem_ontology",
+                                       self.ws_client)
 
         # get genome
         get_genome_results = mu.get_genome(params['genome'], self.genome_api)
@@ -396,11 +398,12 @@ class MergeAnnotationsUtil:
                                              "description": "Merged annotations"},
                                             self.sso_ref, self.timestamp,
                                             "Merge Annotations")
+
         self.merged_ontology_event = len(genome_dict['ontology_events']) - 1
 
         # make reports
-        genes, summary = self.merge_and_summarize_genome_dict(genome_dict, \
-                         self.translations, params)
+        genes, summary = self.merge_and_summarize_genome_dict(genome_dict,
+                                                              self.translations, params)
 
 #        report = self.html_summary(params, summary)
 
@@ -408,11 +411,11 @@ class MergeAnnotationsUtil:
         # for gene in self.genes:
         #     self.genes[gene].validateGeneID(genome_dict)
         #     # logging.info(self.genes[gene].id)
-        for gene in self.genes:
-            self.genes[gene].validateAnnotationID(ontology_dict, "modelseed"")
+        for gene in genes:
+            genes[gene].validateAnnotationID(ontology_dict, "modelseed")
 
-        genome_dict = mu.update_genome(genome_dict, "modelseed", \
-                      genes, self.merged_ontology_event)
+        genome_dict = mu.update_genome(genome_dict, "modelseed",
+                                       genes, self.merged_ontology_event)
 
         # overwrite object with new genome
         self.genome_full['data'] = genome_dict
@@ -426,6 +429,11 @@ class MergeAnnotationsUtil:
         genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
         logging.info("*** Genome ID: " + str(genome_ref))
 
-        report = self.generate_report(params, genome_ref)
+        # add event for reporting
+        self.events[self.merged_ontology_event] = {"ontology": "modelseed",
+                                                   "description": "Merged annotations",
+                                                   "method": "Merged annotations",
+                                                   "id": "modelseed"}
+        report = self.html_summary(params, summary)
 
         return report
