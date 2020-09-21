@@ -111,4 +111,4 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         #     }],
         #     "workspace_name": self.wsName
         # }
-        # ret = self.serviceImpl.merge_metabolic_annotations(self.ctx, params_compare)
+        # ret = self.serviceImpl.merge_metabolic_annotations(self.ctx, params_merge)
