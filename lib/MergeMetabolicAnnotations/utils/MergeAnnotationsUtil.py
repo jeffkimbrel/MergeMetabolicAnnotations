@@ -25,6 +25,15 @@ class MergeAnnotationsUtil:
                              'metacyc': 'Metacyc_RXN.ModelSEED.json',
                              'SSO': 'SSO.ModelSEED.json',
                              'go': 'GO.ModelSEED.json'}
+    ontology_lookup = {
+        "ec": "EBI_EC_ontologyDictionary.json",
+        "keggko": "KEGG_KO_ontologyDictionary.json",
+        "keggro": "KEGG_RXN_ontologyDictionary.json",
+        "metacyc": "MetaCyc_RXN_ontologyDictionary.json",
+        "modelseed": "ModelSEED_RXN_ontologyDictionary.json",
+        "go": "GO_ontologyDictionary.json",
+        "sso": "SSO_ontologyDictionary.json"
+    }
 
     def __init__(self, config):
         os.makedirs(self.workdir, exist_ok=True)
@@ -153,12 +162,14 @@ class MergeAnnotationsUtil:
                         if gene_id not in genes:
                             genes[gene_id] = mu.Gene(gene_id)
                         genes[gene_id].addAnnotation(rxn)
+                        genes[gene_id].valid=1
                         summary[self.merged_ontology_event]["genes"].add(gene_id)
                         summary[self.merged_ontology_event]["terms"].add(rxn)
                         summary[self.merged_ontology_event]["rxns"].add(rxn)
 
-        with open(os.path.join(self.scratch, "summary_dump.json"), 'w') as outfile:
-            json.dump(summary, outfile, indent=2)
+        # # caution: json.dump cannot handle objects wit sets in them?
+        # with open(os.path.join(self.scratch, "summary_dump.json"), 'w') as outfile:
+        #     json.dump(summary, outfile, indent=2)
 
         return genes, summary
 
@@ -374,6 +385,8 @@ class MergeAnnotationsUtil:
         genome_dict = get_genome_results[0]
         self.genome_full = get_genome_results[1]
 
+        ontology_dict = mu.get_ontology_dict(params['ontology'], self.datadir, self.ontology_lookup)
+
         # collect some metadata
         self.get_ontology_events(genome_dict, params)
         self.get_translations()
@@ -395,7 +408,8 @@ class MergeAnnotationsUtil:
         # for gene in self.genes:
         #     self.genes[gene].validateGeneID(genome_dict)
         #     # logging.info(self.genes[gene].id)
-        #     self.genes[gene].validateAnnotationID(ontology_dict, params['ontology'])
+        for gene in self.genes:
+            self.genes[gene].validateAnnotationID(ontology_dict, "modelseed"")
 
         genome_dict = mu.update_genome(genome_dict, "modelseed", \
                       genes, self.merged_ontology_event)
