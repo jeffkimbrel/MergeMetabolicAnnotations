@@ -110,6 +110,8 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
                 "annotation_source": ["KOFAM93"],
                 "annotation_weight": 0.5
             }],
+            "annotation_threshold": 1.3,
+            "keep_best_annotation_only": 0,
             "workspace_name": self.wsName
         }
         ret = self.serviceImpl.merge_metabolic_annotations(self.ctx, params_merge)
