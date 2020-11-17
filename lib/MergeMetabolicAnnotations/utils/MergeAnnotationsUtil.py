@@ -19,20 +19,20 @@ class MergeAnnotationsUtil:
     staging_dir = "/staging/"
     datadir = "/kb/module/data/"
 
-    translation_locations = {'ec': 'EBI_EC.ModelSEED.json',
-                             'keggro': 'KEGG_RXN.ModelSEED.json',
-                             'keggko': 'KEGG_KO.ModelSEED.json',
-                             'metacyc': 'Metacyc_RXN.ModelSEED.json',
+    translation_locations = {'EC': 'EBI_EC.ModelSEED.json',
+                             'RO': 'KEGG_RXN.ModelSEED.json',
+                             'KO': 'KEGG_KO.ModelSEED.json',
+                             'META': 'Metacyc_RXN.ModelSEED.json',
                              'SSO': 'SSO.ModelSEED.json',
-                             'go': 'GO.ModelSEED.json'}
+                             'GO': 'GO.ModelSEED.json'}
     ontology_lookup = {
-        "ec": "EBI_EC_ontologyDictionary.json",
-        "keggko": "KEGG_KO_ontologyDictionary.json",
-        "keggro": "KEGG_RXN_ontologyDictionary.json",
-        "metacyc": "MetaCyc_RXN_ontologyDictionary.json",
-        "modelseed": "ModelSEED_RXN_ontologyDictionary.json",
-        "go": "GO_ontologyDictionary.json",
-        "sso": "SSO_ontologyDictionary.json"
+        "EC": "EBI_EC_ontologyDictionary.json",
+        "KO": "KEGG_KO_ontologyDictionary.json",
+        "RO": "KEGG_RXN_ontologyDictionary.json",
+        "META": "MetaCyc_RXN_ontologyDictionary.json",
+        "MSRXN": "ModelSEED_RXN_ontologyDictionary.json",
+        "GO": "GO_ontologyDictionary.json",
+        "SSO": "SSO_ontologyDictionary.json"
     }
 
     def __init__(self, config):
@@ -379,8 +379,8 @@ class MergeAnnotationsUtil:
 
         # read and prepare objects/files
         mu.validate()
-        self.sso_ref = mu.get_sso_data("KBaseOntology/seed_subsystem_ontology",
-                                       self.ws_client)
+        # self.sso_ref = mu.get_sso_data("KBaseOntology/seed_subsystem_ontology",
+        #                                self.ws_client)
 
         # get genome
         get_genome_results = mu.get_genome(params['genome'], self.genome_api)
@@ -394,9 +394,9 @@ class MergeAnnotationsUtil:
         self.get_translations()
 
         genome_dict = mu.add_ontology_event(genome_dict,
-                                            {"ontology": "modelseed",
+                                            {"ontology": "MSRXN",
                                              "description": "Merged annotations"},
-                                            self.sso_ref, self.timestamp,
+                                            self.timestamp,
                                             "Merge Annotations")
 
         self.merged_ontology_event = len(genome_dict['ontology_events']) - 1
@@ -430,10 +430,10 @@ class MergeAnnotationsUtil:
         logging.info("*** Genome ID: " + str(genome_ref))
 
         # add event for reporting
-        self.events[self.merged_ontology_event] = {"ontology": "modelseed",
+        self.events[self.merged_ontology_event] = {"ontology": "MSRXN",
                                                    "description": "Merged annotations",
                                                    "method": "Merged annotations",
-                                                   "id": "modelseed"}
+                                                   "id": "MSRXN"}
         report = self.html_summary(params, summary)
 
         return report

@@ -32,27 +32,31 @@
         [
           {
               "display": "EC",
-              "value": "ec"
+              "value": "EC"
           },
           {
               "display": "KEGG KO",
-              "value": "keggko"
+              "value": "KO"
           },
           {
               "display": "KEGG RO",
-              "value": "keggro"
+              "value": "RO"
           },
           {
               "display": "MetaCyc reactions",
-              "value": "metacyc"
+              "value": "META"
           },
           {
               "display": "ModelSEED",
-              "value": "modelseed"
+              "value": "MSRXN"
           },
           {
               "display": "GO",
-              "value": "go"
+              "value": "GO"
+          },
+          {
+              "display": "SSO",
+              "value": "SSO"
           }
         ]
       }

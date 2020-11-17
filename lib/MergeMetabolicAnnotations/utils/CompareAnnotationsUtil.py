@@ -26,12 +26,13 @@ class CompareAnnotationsUtil:
     staging_dir = "/staging/"
     datadir = "/kb/module/data/"
 
-    translation_locations = {'ec': 'EBI_EC.ModelSEED.json',
-                             'keggro': 'KEGG_RXN.ModelSEED.json',
-                             'keggko': 'KEGG_KO.ModelSEED.json',
-                             'metacyc': 'Metacyc_RXN.ModelSEED.json',
+    # to make case-insensitive, these are upper case, and the utils.get_ontology_dict() will convert to upper
+    translation_locations = {'EC': 'EBI_EC.ModelSEED.json',
+                             'RO': 'KEGG_RXN.ModelSEED.json',
+                             'KO': 'KEGG_KO.ModelSEED.json',
+                             'META': 'Metacyc_RXN.ModelSEED.json',
                              'SSO': 'SSO.ModelSEED.json',
-                             'go': 'GO.ModelSEED.json'}
+                             'GO': 'GO.ModelSEED.json'}
 
     def __init__(self, config):
         os.makedirs(self.workdir, exist_ok=True)
@@ -56,6 +57,8 @@ class CompareAnnotationsUtil:
             for event, ontology in enumerate(genome_dict['ontology_events']):
                 if ontology['description'] in params['annotations_to_compare'] or len(params['annotations_to_compare']) == 0:
                     self.events[event] = {}
+                    # logging.info("**********" + str(ontology))
+                    ontology["id"] = ontology["id"].upper()
                     for term in ontology:
                         self.events[event][term] = ontology[term]
         else:
@@ -72,8 +75,15 @@ class CompareAnnotationsUtil:
             self.translations[type] = {}
 
             for term in ontology_translations['translation']:
+
                 for entry in ontology_translations['translation'][term]['equiv_terms']:
                     rxn = entry['equiv_term']
+
+                    # EC HACK
+                    logging.info(type)
+                    if type == "EC":
+                        term = "EC:" + term
+
                     self.translations[type][term] = rxn
 
     def search_for_ec(self, line):
@@ -112,16 +122,16 @@ class CompareAnnotationsUtil:
 
                                 rxn = "none"
 
-                                # get rxn
-                                ontology_type = summary['ontology_events'][oe]['id']
+                                # get rxn, convert to upper case to make case insensitive
+                                ontology_type = summary['ontology_events'][oe]['id'].upper()
 
                                 # fix metacyc terms
-                                if ontology_type == 'metacyc':
+                                if ontology_type == 'METACYC':
                                     if term.startswith("META:"):
                                         term = term.replace('META:', '')
 
                                 # fix go terms
-                                if ontology_type == 'go':
+                                if ontology_type == 'GO':
                                     if term.startswith("GO:"):
                                         term = term.replace('GO:', '')
 
