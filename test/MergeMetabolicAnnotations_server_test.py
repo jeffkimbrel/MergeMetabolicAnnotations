@@ -65,27 +65,27 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # self.assertEqual(ret[...], ...) or other unittest methods
 
         # # import app
-        params_import = {
-            "debug": True,
-            "ontology": "KO",
-            "annotation_file": "K_algicida_OT-1_protein_IDs.faa.kofam93.txt",
-            "description": "alias_test",
-            "genome": "44643/3/1",
-            "output_name": "import_genome",
-            "workspace_name": self.wsName
-        }
-        ret = self.serviceImpl.import_annotations(self.ctx, params_import)
-
-        # bulk import app
         # params_import = {
         #     "debug": True,
-        #     "annotation_file": "pt32_bulk.txt",
-        #     "description": "test",
-        #     "genome": "30128/3/1",
-        #     "output_name": "import_bulk_genome",
+        #     "ontology": "KO",
+        #     "annotation_file": "K_algicida_OT-1_protein_IDs.faa.kofam93.txt",
+        #     "description": "alias_test",
+        #     "genome": "44643/3/1",
+        #     "output_name": "import_genome",
         #     "workspace_name": self.wsName
         # }
-        # ret = self.serviceImpl.import_bulk_annotations(self.ctx, params_import)
+        # ret = self.serviceImpl.import_annotations(self.ctx, params_import)
+
+        # bulk import app
+        params_import = {
+            "debug": True,
+            "annotation_file": "pt32_bulk.txt",
+            "description": "test",
+            "genome": "30128/3/1",
+            "output_name": "import_bulk_genome",
+            "workspace_name": self.wsName
+        }
+        ret = self.serviceImpl.import_bulk_annotations(self.ctx, params_import)
 
         # compare app
         # params_compare = {

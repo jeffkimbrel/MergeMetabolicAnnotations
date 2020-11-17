@@ -149,6 +149,9 @@ def get_annotations_file(params, staging_dir):
     # add prefix
     ontology_type = params['ontology'].upper()
     for index, row in annotations.iterrows():
+        if pd.isnull(row['term']):
+            row['term'] = "NA"
+
         if not row['term'].upper().startswith(ontology_type + ':'):
             row['term'] = ontology_type + ":" + row['term']
 
@@ -267,6 +270,10 @@ def summarize(params, genes):
 
 
 def get_bulk_annotations_file(params, staging_dir):
+    '''
+    Also adds the "ontology:" prefix, if missing
+    '''
+
     if 'debug' in params and params['debug'] is True:
         annotations_file_path = '/kb/module/test/test_data/' + params.get('annotation_file')
     else:
@@ -277,6 +284,15 @@ def get_bulk_annotations_file(params, staging_dir):
                      header=None,
                      names=['description', 'ontology', 'gene', 'term']
                      )
+
+    # add prefix
+    for index, row in df.iterrows():
+
+        if pd.isnull(row['term']):
+            row['term'] = "NA"
+        if not row['term'].upper().startswith(row['ontology'] + ':'):
+            row['term'] = row['ontology'] + ":" + row['term']
+
     return df
 
 
