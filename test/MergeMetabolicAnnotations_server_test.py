@@ -77,25 +77,26 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # ret = self.serviceImpl.import_annotations(self.ctx, params_import)
 
         # bulk import app
-        params_import = {
-            "debug": True,
-            "annotation_file": "pt32_bulk.txt",
-            "description": "test",
-            "genome": "30128/3/1",
-            "output_name": "import_bulk_genome",
-            "workspace_name": self.wsName
-        }
-        ret = self.serviceImpl.import_bulk_annotations(self.ctx, params_import)
-
-        # compare app
-        # params_compare = {
+        # params_import = {
         #     "debug": True,
-        #     "genome": "27005/29/1",
-        #     "output_name": "compareGenome_temp",
-        #     "annotations_to_compare": ["ProkkaAnnotation:2.1.5:EC:2020_10_13_20_07_38"],
+        #     "annotation_file": "pt32_bulk.txt",
+        #     "description": "test",
+        #     "genome": "30128/3/1",
+        #     "output_name": "import_bulk_genome",
         #     "workspace_name": self.wsName
         # }
-        # ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)
+        # ret = self.serviceImpl.import_bulk_annotations(self.ctx, params_import)
+
+        # compare app
+        params_compare = {
+            "debug": True,
+            "genome": "27005/29/1",
+            "output_name": "compareGenome_temp",
+            "annotations_to_compare": [],
+            # "annotations_to_compare": ["ProkkaAnnotation:2.1.5:EC:2020_10_13_20_07_38", "KOFAM93", "annotate_genome"],
+            "workspace_name": self.wsName
+        }
+        ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)
 
         # merge app
         # params_merge = {
