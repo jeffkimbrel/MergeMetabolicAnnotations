@@ -50,9 +50,9 @@ class MergeAnnotationsUtil:
         self.events = {}
         self.weights = {}
 
-    def get_ontology_events(self, genome_dict, params):
-        if 'ontology_events' in genome_dict:
-            for event, ontology in enumerate(genome_dict['ontology_events']):
+    def get_ontology_events(self, params):
+        if 'ontology_events' in self.genome:
+            for event, ontology in enumerate(self.genome['ontology_events']):
                 if ontology['description'] in params['annotations_to_merge'] or len(params['annotations_to_merge']) == 0:
                     self.events[event] = {}
                     for term in ontology:
@@ -67,7 +67,7 @@ class MergeAnnotationsUtil:
         else:
             logging.info("No ontology events in this genome!")
 
-        logging.info(self.events)
+        logging.info("******************"+str(self.events))
         logging.info(self.weights)
 
     def get_translations(self):
@@ -83,7 +83,7 @@ class MergeAnnotationsUtil:
                     rxn = entry['equiv_term']
                     self.translations[type][term] = rxn
 
-    def merge_and_summarize_genome_dict(self, genome_dict, translations, params):
+    def merge_and_summarize_genome_dict(self, params):
         # summary = {"genes": set(),
         #            "terms": set(),
         #            "rxns": set(),
@@ -99,7 +99,7 @@ class MergeAnnotationsUtil:
                                                }
 
         # add gene id to summary
-        for feature in genome_dict['features']:
+        for feature in self.genome['features']:
             gene_id = feature['id']
             reactions = {}
 
@@ -138,9 +138,9 @@ class MergeAnnotationsUtil:
 
                                 # fix SSO terms
                                 if ontology_type == 'SSO':
-                                    if term in genome_dict['ontologies_present']['SSO']:
-                                        if genome_dict['ontologies_present']['SSO'][term] != 'Unknown':
-                                            term = genome_dict['ontologies_present']['SSO'][term]
+                                    if term in self.genome['ontologies_present']['SSO']:
+                                        if self.genome['ontologies_present']['SSO'][term] != 'Unknown':
+                                            term = self.genome['ontologies_present']['SSO'][term]
 
                                 summary[oe]["terms"].add(term)
 
@@ -383,27 +383,24 @@ class MergeAnnotationsUtil:
         #                                self.ws_client)
 
         # get genome
-        get_genome_results = mu.get_genome(params['genome'], self.genome_api)
-        genome_dict = get_genome_results[0]
-        self.genome_full = get_genome_results[1]
+        self.genome = mu.get_genome(params['genome'], self.genome_api)
 
         ontology_dict = mu.get_ontology_dict(params['ontology'], self.datadir, self.ontology_lookup)
 
         # collect some metadata
-        self.get_ontology_events(genome_dict, params)
+        self.get_ontology_events(params)
         self.get_translations()
 
-        genome_dict = mu.add_ontology_event(genome_dict,
+        self.genome = mu.add_ontology_event(self.genome,
                                             {"ontology": "MSRXN",
                                              "description": "Merged annotations"},
                                             self.timestamp,
                                             "Merge Annotations")
 
-        self.merged_ontology_event = len(genome_dict['ontology_events']) - 1
+        self.merged_ontology_event = len(self.genome['ontology_events']) - 1
 
         # make reports
-        genes, summary = self.merge_and_summarize_genome_dict(genome_dict,
-                                                              self.translations, params)
+        genes, summary = self.merge_and_summarize_genome_dict(params)
 
 #        report = self.html_summary(params, summary)
 
@@ -412,19 +409,18 @@ class MergeAnnotationsUtil:
         #     self.genes[gene].validateGeneID(genome_dict)
         #     # logging.info(self.genes[gene].id)
         for gene in genes:
-            genes[gene].validateAnnotationID(ontology_dict, "modelseed")
+            genes[gene].validateAnnotationID(ontology_dict, "MSRXN")
 
-        genome_dict = mu.update_genome(genome_dict, "modelseed",
+        self.genome = mu.update_genome(self.genome, "MSRXN",
                                        genes, self.merged_ontology_event)
 
         # overwrite object with new genome
-        self.genome_full['data'] = genome_dict
+        # self.genome_full['data'] = genome_dict
 
-        prov = ctx.provenance()
         info = self.gfu.save_one_genome({'workspace': params['workspace_name'],
                                          'name': params['output_name'],
-                                         'data': self.genome_full['data'],
-                                         'provenance': prov})['info']
+                                         'data': self.genome,
+                                         'provenance': ctx.provenance()})['info']
 
         genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
         logging.info("*** Genome ID: " + str(genome_ref))

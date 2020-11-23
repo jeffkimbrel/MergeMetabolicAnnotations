@@ -60,6 +60,8 @@ class CompareAnnotationsUtil:
 
         if 'ontology_events' in self.genome:
             for event, ontology in enumerate(self.genome['ontology_events']):
+                if 'description' not in ontology:
+                    ontology['description'] = ontology['method']
                 if ontology['description'] in params['annotations_to_compare'] or len(params['annotations_to_compare']) == 0:
                     self.events[event] = {}
 

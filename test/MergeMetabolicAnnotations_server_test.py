@@ -88,31 +88,31 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # ret = self.serviceImpl.import_bulk_annotations(self.ctx, params_import)
 
         # compare app
-        params_compare = {
-            "debug": True,
-            "genome": "27005/29/1",
-            "output_name": "compareGenome_temp",
-            "annotations_to_compare": [],
-            # "annotations_to_compare": ["ProkkaAnnotation:2.1.5:EC:2020_10_13_20_07_38", "KOFAM93", "annotate_genome"],
-            "workspace_name": self.wsName
-        }
-        ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)
-
-        # merge app
-        # params_merge = {
+        # params_compare = {
         #     "debug": True,
-        #     "genome": "27005/9/1",
-        #     "ontology": "modelseed",
-        #     "output_name": "mergeGenome_temp",
-        #     "annotations_to_merge": [{
-        #         "annotation_source": ["KEGG KOs"],
-        #         "annotation_weight": 1.0
-        #     }, {
-        #         "annotation_source": ["KOFAM93"],
-        #         "annotation_weight": 0.5
-        #     }],
-        #     "annotation_threshold": 1.3,
-        #     "keep_best_annotation_only": 0,
+        #     "genome": "27005/29/1",
+        #     "output_name": "compareGenome_temp",
+        #     "annotations_to_compare": [],
+        #     # "annotations_to_compare": ["ProkkaAnnotation:2.1.5:EC:2020_10_13_20_07_38", "KOFAM93", "annotate_genome"],
         #     "workspace_name": self.wsName
         # }
-        # ret = self.serviceImpl.merge_metabolic_annotations(self.ctx, params_merge)
+        # ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)
+
+        # merge app
+        params_merge = {
+            "debug": True,
+            "genome": "27005/9/1",
+            "ontology": "MSRXN",
+            "output_name": "mergeGenome_temp",
+            "annotations_to_merge": [{
+                "annotation_source": ["KEGG KOs"],
+                "annotation_weight": 1.0
+            }, {
+                "annotation_source": ["KOFAM93"],
+                "annotation_weight": 0.5
+            }],
+            "annotation_threshold": 1.3,
+            "keep_best_annotation_only": 0,
+            "workspace_name": self.wsName
+        }
+        ret = self.serviceImpl.merge_metabolic_annotations(self.ctx, params_merge)
