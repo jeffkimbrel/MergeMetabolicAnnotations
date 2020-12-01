@@ -101,18 +101,23 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # merge app
         params_merge = {
             "debug": True,
-            "genome": "27005/9/1",
-            "ontology": "MSRXN",
+            "genome": "27005/29/1",
             "output_name": "mergeGenome_temp",
-            "annotations_to_merge": [{
-                "annotation_source": ["KEGG KOs"],
-                "annotation_weight": 1.0
-            }, {
-                "annotation_source": ["KOFAM93"],
-                "annotation_weight": 0.5
-            }],
-            "annotation_threshold": 1.3,
+            "annotations_to_merge": [
+                {
+                    "annotation_source": ["KEGG KOs"],
+                    "annotation_weight": 0.9
+                }, {
+                    "annotation_source": ["KOFAM93"],
+                    "annotation_weight": 0.5
+                }, {
+                    "annotation_source": ['ProkkaAnnotation:2.1.5:EC:2020_10_13_20_07_38'],
+                    "annotation_weight": 1
+                }
+            ],
+            "annotation_threshold": 1.0,
             "keep_best_annotation_only": 0,
+            "description": "Merged annotations",
             "workspace_name": self.wsName
         }
         ret = self.serviceImpl.merge_metabolic_annotations(self.ctx, params_merge)

@@ -20,17 +20,6 @@ class ImportAnnotationsUtil:
     staging_dir = "/staging/"
     datadir = "/kb/module/data/"
 
-    # to make case-insensitive, these are upper case, and the utils.get_ontology_dict() will convert to upper
-    ontology_lookup = {
-        "EC": "EBI_EC_ontologyDictionary.json",
-        "KO": "KEGG_KO_ontologyDictionary.json",
-        "RO": "KEGG_RXN_ontologyDictionary.json",
-        "META": "MetaCyc_RXN_ontologyDictionary.json",
-        "MSRXN": "ModelSEED_RXN_ontologyDictionary.json",
-        "GO": "GO_ontologyDictionary.json",
-        "SSO": "SSO_ontologyDictionary.json"
-    }
-
     def __init__(self, config):
         os.makedirs(self.workdir, exist_ok=True)
         self.config = config
@@ -132,7 +121,7 @@ class ImportAnnotationsUtil:
         # get ontology dictionary
         ontology_dict = mu.get_ontology_dict(params['ontology'],
                                              self.datadir,
-                                             self.ontology_lookup)
+                                             mu.ontology_lookup)
 
         # get list of uploaded annotation terms
         annotations = mu.get_annotations_file(params, self.staging_dir)

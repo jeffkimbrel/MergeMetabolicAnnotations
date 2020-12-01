@@ -3,6 +3,8 @@ import datetime
 import logging
 import json
 import uuid
+import pandas as pd
+from collections import Counter
 
 from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
 from installed_clients.DataFileUtilClient import DataFileUtil
@@ -19,22 +21,6 @@ class MergeAnnotationsUtil:
     staging_dir = "/staging/"
     datadir = "/kb/module/data/"
 
-    translation_locations = {'EC': 'EBI_EC.ModelSEED.json',
-                             'RO': 'KEGG_RXN.ModelSEED.json',
-                             'KO': 'KEGG_KO.ModelSEED.json',
-                             'META': 'Metacyc_RXN.ModelSEED.json',
-                             'SSO': 'SSO.ModelSEED.json',
-                             'GO': 'GO.ModelSEED.json'}
-    ontology_lookup = {
-        "EC": "EBI_EC_ontologyDictionary.json",
-        "KO": "KEGG_KO_ontologyDictionary.json",
-        "RO": "KEGG_RXN_ontologyDictionary.json",
-        "META": "MetaCyc_RXN_ontologyDictionary.json",
-        "MSRXN": "ModelSEED_RXN_ontologyDictionary.json",
-        "GO": "GO_ontologyDictionary.json",
-        "SSO": "SSO_ontologyDictionary.json"
-    }
-
     def __init__(self, config):
         os.makedirs(self.workdir, exist_ok=True)
         self.config = config
@@ -49,263 +35,108 @@ class MergeAnnotationsUtil:
 
         self.events = {}
         self.weights = {}
+        self.genes = {}
 
     def get_ontology_events(self, params):
         if 'ontology_events' in self.genome:
+
             for event, ontology in enumerate(self.genome['ontology_events']):
-                if ontology['description'] in params['annotations_to_merge'] or len(params['annotations_to_merge']) == 0:
+
+                # fix some legacy problems
+                if 'description' not in ontology:
+                    ontology['description'] = ontology['method']
+                ontology["id"] = mu.legacy_fix(ontology["id"])
+
+                if len(params['annotations_to_merge']) == 0:
+                    self.weights[event] = 1
                     self.events[event] = {}
                     for term in ontology:
                         self.events[event][term] = ontology[term]
-                    if len(params['annotations_to_merge']) == 0:
-                        # If no annotations selected, weight them all equally
-                        self.weights[event] = 1
-                    else:
-                        for annot_item in params['annotations_to_merge']:
-                            if annot_item['annotation_source'][0] == ontology['description']:
-                                self.weights[event] = annot_item['annotation_weight']
+
+                else:
+                    for annotations_to_merge in params['annotations_to_merge']:
+                        if ontology['description'] in annotations_to_merge['annotation_source']:
+                            self.events[event] = {}
+                            self.weights[event] = annotations_to_merge['annotation_weight']
+                            for term in ontology:
+                                self.events[event][term] = ontology[term]
+
         else:
             logging.info("No ontology events in this genome!")
 
-        logging.info("******************"+str(self.events))
-        logging.info(self.weights)
-
-    def get_translations(self):
-        self.translations = {}
-
-        for type in self.translation_locations:
-            translations_path = self.datadir + "/" + self.translation_locations[type]
-            ontology_translations = json.loads(open(translations_path, "r").read())
-            self.translations[type] = {}
-
-            for term in ontology_translations['translation']:
-                for entry in ontology_translations['translation'][term]['equiv_terms']:
-                    rxn = entry['equiv_term']
-                    self.translations[type][term] = rxn
-
-    def merge_and_summarize_genome_dict(self, params):
-        # summary = {"genes": set(),
-        #            "terms": set(),
-        #            "rxns": set(),
-        #            "orphan_terms": set()
-        #            }
-        summary = {}
-        genes = {}
-
-        summary[self.merged_ontology_event] = {"genes": set(),
-                                               "terms": set(),
-                                               "rxns": set(),
-                                               "orphan_terms": set()
-                                               }
+    def merge_annotations(self):
+        merged_annotations = {}
 
         # add gene id to summary
         for feature in self.genome['features']:
             gene_id = feature['id']
-            reactions = {}
+            merged_annotations[gene_id] = {}
 
             # get ontology term
             if "ontology_terms" in feature:
                 for type in feature['ontology_terms']:
                     term_dict = feature['ontology_terms'][type]
 
+                    # fix potential legacy problems after getting feature
+                    type = mu.legacy_fix(type)
+
                     for term in term_dict:
-                        for oe in term_dict[term]:
+                        # logging.info(term)
+                        # logging.info(mu.standardize_annotation(term, type))
+
+                        for ontology_event in term_dict[term]:
 
                             # is this ontology event in the user-selected list?
-                            if oe in self.events:
-                                if oe not in summary:
-                                    summary[oe] = {"genes": set(),
-                                                   "terms": set(),
-                                                   "rxns": set(),
-                                                   "orphan_terms": set()
-                                                   }
-                                summary[oe]["genes"].add(gene_id)
+                            if ontology_event in self.events:
 
                                 rxn = "none"
 
-                                # get rxn
-                                ontology_type = self.events[oe]['id']
-
-                                # fix metacyc terms
-                                if ontology_type == 'metacyc':
-                                    if term.startswith("META:"):
-                                        term = term.replace('META:', '')
-
-                                # fix go terms
-                                if ontology_type == 'go':
-                                    if term.startswith("GO:"):
-                                        term = term.replace('GO:', '')
-
-                                # fix SSO terms
-                                if ontology_type == 'SSO':
-                                    if term in self.genome['ontologies_present']['SSO']:
-                                        if self.genome['ontologies_present']['SSO'][term] != 'Unknown':
-                                            term = self.genome['ontologies_present']['SSO'][term]
-
-                                summary[oe]["terms"].add(term)
-
                                 # convert terms to rxns
-                                if term in translations[ontology_type]:
-                                    rxn = translations[ontology_type][term]
-                                    summary[oe]["rxns"].add(rxn)
-                                else:
-                                    summary[oe]["orphan_terms"].add(term)
+                                standardized_term = mu.standardize_annotation(term, type)
 
-                                # add up the weighted score for each reaction
-                                if rxn in reactions:
-                                    reactions[rxn] = reactions[rxn] + self.weights[oe]
-                                else:
-                                    reactions[rxn] = self.weights[oe]
+                                if standardized_term in self.translations[type]:
+                                    rxn = self.translations[type][standardized_term]
 
-                for rxn, score in reactions:
-                    # keep rxn if score > threshold, and is max score OR user wants to keep all above threshold
-                    if score >= params['annotation_threshold'] and (score == max(reactions.values()) or not params['keep_best_annotation_only']):
-                        # collect gene_id:rxn in "genes" dict to be added using update_genome later
-                        if gene_id not in genes:
-                            genes[gene_id] = mu.Gene(gene_id)
-                        genes[gene_id].addAnnotation(rxn)
-                        genes[gene_id].valid = 1
-                        summary[self.merged_ontology_event]["genes"].add(gene_id)
-                        summary[self.merged_ontology_event]["terms"].add(rxn)
-                        summary[self.merged_ontology_event]["rxns"].add(rxn)
+                                if rxn != "none":
+                                    if rxn in merged_annotations[gene_id]:
+                                        merged_annotations[gene_id][rxn]['events'].append(
+                                            ontology_event)
 
-        # # caution: json.dump cannot handle objects wit sets in them?
-        # with open(os.path.join(self.scratch, "summary_dump.json"), 'w') as outfile:
-        #     json.dump(summary, outfile, indent=2)
+                                        # clean up duplicates... eg old versions of prokka added many of the same reaction
+                                        merged_annotations[gene_id][rxn]['events'] = list(
+                                            set(merged_annotations[gene_id][rxn]['events']))
+                                    else:
+                                        merged_annotations[gene_id][rxn] = {'events': []}
+                                        merged_annotations[gene_id][rxn]['events'] = [
+                                            ontology_event]
 
-        return genes, summary
+        return merged_annotations
 
-    # def merge_and_summarize_genome_dict(self, genome_dict, translations, params):
-    #     summary = {"genes": {},
-    #                "terms": {},
-    #                "rxns": {},
-    #                "ontology_events": {},
-    #                "orphan_terms": {}
-    #                }
-    #     genes = {}
-    #
-    #     # add ontology events
-    #     for oe in self.events:
-    #         summary['ontology_events'][oe] = self.events[oe]
-    #
-    #     # add gene id to summary
-    #     for feature in genome_dict['features']:
-    #         gene_id = feature['id']
-    #         summary["genes"][gene_id] = {"terms": {},
-    #                                      "rxns": {}
-    #                                      }
-    #         reactions = {}
-    #
-    #         # get ontology term
-    #         if "ontology_terms" in feature:
-    #             for type in feature['ontology_terms']:
-    #                 term_dict = feature['ontology_terms'][type]
-    #
-    #                 for term in term_dict:
-    #                     for oe in term_dict[term]:
-    #
-    #                         # is this ontology event in the user-selected list?
-    #                         if oe in self.events:
-    #
-    #                             rxn = "none"
-    #
-    #                             # get rxn
-    #                             ontology_type = summary['ontology_events'][oe]['id']
-    #
-    #                             # fix metacyc terms
-    #                             if ontology_type == 'metacyc':
-    #                                 if term.startswith("META:"):
-    #                                     term = term.replace('META:', '')
-    #
-    #                             # fix go terms
-    #                             if ontology_type == 'go':
-    #                                 if term.startswith("GO:"):
-    #                                     term = term.replace('GO:', '')
-    #
-    #                             # fix SSO terms
-    #                             if ontology_type == 'SSO':
-    #                                 if term in genome_dict['ontologies_present']['SSO']:
-    #                                     if genome_dict['ontologies_present']['SSO'][term] != 'Unknown':
-    #                                         term = genome_dict['ontologies_present']['SSO'][term]
-    #
-    #                             # convert terms to rxns
-    #                             if term in translations[ontology_type]:
-    #                                 rxn = translations[ontology_type][term]
-    #                             else:
-    #                                 if oe in summary["orphan_terms"]:
-    #                                     summary["orphan_terms"][oe].append(term)
-    #                                     summary["orphan_terms"][oe] = list(
-    #                                         set(summary["orphan_terms"][oe]))
-    #                                 else:
-    #                                     summary["orphan_terms"][oe] = [term]
-    #
-    #                             # terms
-    #                             if term in summary["genes"][gene_id]['terms']:
-    #                                 summary["genes"][gene_id]['terms'][term].append(oe)
-    #                             else:
-    #                                 summary["genes"][gene_id]['terms'][term] = [oe]
-    #
-    #                             if term in summary['terms']:
-    #                                 summary['terms'][term].append(oe)
-    #                                 summary['terms'][term] = list(set(summary['terms'][term]))
-    #                             else:
-    #                                 summary['terms'][term] = [oe]
-    #
-    #                             # rxns
-    #                             if rxn != "none":
-    #                                 if rxn in summary["genes"][gene_id]['rxns']:
-    #                                     summary["genes"][gene_id]['rxns'][rxn].append(oe)
-    #                                 else:
-    #                                     summary["genes"][gene_id]['rxns'][rxn] = [oe]
-    #
-    #                                 if rxn in summary['rxns']:
-    #                                     summary['rxns'][rxn].append(oe)
-    #                                     summary['rxns'][rxn] = list(set(summary['rxns'][rxn]))
-    #                                 else:
-    #                                     summary['rxns'][rxn] = [oe]
-    #
-    #                                 # add up the weighted score for each reaction
-    #                                 if rxn in reactions:
-    #                                     reactions[rxn] = reactions[rxn] + self.weights[oe]
-    #                                 else: reactions[rxn] = self.weights[oe]
-    #
-    #             for rxn, score in reactions:
-    #                 # keep rxn if score > threshold, and is max score OR user wants to keep all above threshold
-    #                 if score >= params['annotation_threshold'] and (score == max(reactions.values()) or not params['keep_best_annotation_only']):
-    #                     # collect gene_id:rxn in "genes" dict to be added using update_genome later
-    #                     if gene_id not in genes:
-    #                         genes[gene_id] = mu.Gene(gene_id)
-    #                     genes[gene_id].addAnnotation(rxn)
-    #
-    #     with open(os.path.join(self.scratch, "summary_dump.json"), 'w') as outfile:
-    #         json.dump(summary, outfile, indent=2)
-    #
-    #     return genes, summary
+    def score_annotations(self, annotations, threshold, best_only):
+        '''
+        returns a pandas dataframe suitable for import annotations
+        '''
+
+        df = pd.DataFrame(columns=['gene', 'term'])
+
+        for gene_id in annotations:
+            for rxn in annotations[gene_id]:
+                annotations[gene_id][rxn]['score_total'] = 0
+                for ontology_event in annotations[gene_id][rxn]['events']:
+                    annotations[gene_id][rxn]['score_total'] += self.weights[ontology_event]
+                if annotations[gene_id][rxn]['score_total'] >= threshold:
+                    annotations[gene_id][rxn]['passed'] = 1
+                    df = df.append(
+                        pd.Series(data={'gene': gene_id, 'term': rxn}), ignore_index=True)
+                else:
+                    annotations[gene_id][rxn]['passed'] = 0
+
+        with open(os.path.join(self.scratch, "scored.json"), 'w') as outfile:
+            json.dump(annotations, outfile, indent=2)
+
+        return df
 
     def html_summary(self, params, summary):
-
-        # # convert genome_dict summary for this report
-        # html_summary_report = {}
-        #
-        # for oe in summary:
-        #     html_summary_report[oe] = {"gene": [], "term": [], "rxn": []}
-        #
-        # for gene in summary["genes"]:
-        #     for term in summary["genes"][gene]['terms']:
-        #         for oe in summary["genes"][gene]['terms'][term]:
-        #             html_summary_report[oe]['gene'].append(gene)
-        #             html_summary_report[oe]['term'].append(term)
-        #
-        #             html_summary_report[oe]['gene'] = list(set(html_summary_report[oe]['gene']))
-        #             html_summary_report[oe]['term'] = list(set(html_summary_report[oe]['term']))
-        #
-        #     for rxn in summary["genes"][gene]['rxns']:
-        #         for oe in summary["genes"][gene]['rxns'][rxn]:
-        #             html_summary_report[oe]['rxn'].append(rxn)
-        #             html_summary_report[oe]['gene'].append(gene)
-        #
-        #             html_summary_report[oe]['rxn'] = list(set(html_summary_report[oe]['rxn']))
-        #             html_summary_report[oe]['gene'] = list(set(html_summary_report[oe]['gene']))
 
         output_html_files = list()
 
@@ -343,25 +174,6 @@ class MergeAnnotationsUtil:
              'name': os.path.basename(result_file_path),
              'description': 'Summary Report'})
 
-        # # bokeh plots
-        # totals_file_path = os.path.join(output_directory, 'totals.html')
-        # output_file(totals_file_path, title="Totals")
-        # totals = self.plot_totals(summary)
-        # save(totals)
-        # output_html_files.append(
-        #     {'path': output_directory,
-        #      'name': os.path.basename(totals_file_path),
-        #      'description': 'Ontology Totals'})
-        #
-        # csc_file_path = os.path.join(output_directory, 'csc.html')
-        # output_file(csc_file_path, title="CSC")
-        # csc = self.plot_csc2(summary)
-        # save(csc)
-        # output_html_files.append(
-        #     {'path': output_directory,
-        #      'name': os.path.basename(csc_file_path),
-        #      'description': 'Cumulative Sum Plot'})
-
         # finalize html reports
         report_params = {
             'message': '',
@@ -375,47 +187,126 @@ class MergeAnnotationsUtil:
         return {'report_name': output['name'],
                 'report_ref': output['ref']}
 
+    def generate_report(self, params, genome_ref):
+        """
+        Reads in the results from the summary method, and creates the html
+        report.
+
+        This is just a copy/paste of the report from the import app
+        """
+
+        summary = mu.summarize(params, self.genes)
+
+        output_html_files = list()
+
+        # Make report directory and copy over files
+        output_directory = os.path.join(self.scratch, str(uuid.uuid4()))
+        os.mkdir(output_directory)
+        result_file_path = os.path.join(output_directory, 'import_annotations_summary.html')
+
+        # Build HTML tables for results
+        table_lines = []
+        table_lines.append(f'<h2>Import Annotations</h2>')
+        table_lines.append(f'<h3>Summary</h3>')
+        table_lines.append(
+            '<table cellspacing="0" cellpadding="3" border="1"><tr><th>TYPE</th><th>VALID</th><th>INVALID</th></tr>')
+        table_lines.append('<tr><td>GENES</td><td>' + str(
+            len(summary['valid_genes'])) + '</td><td>' + str(len(summary['invalid_genes'])) + '</td></tr>')
+        table_lines.append('<tr><td>TERMS</td><td>' + str(
+            len(summary['valid_terms'])) + '</td><td>' + str(len(summary['invalid_terms'])) + '</td></tr>')
+        table_lines.append('</table>')
+
+        if len(summary['invalid_genes']) > 0:
+            table_lines.append(f'<h3>Invalid Genes</h3>')
+            table_lines.append(
+                '<i>These are locus_tags not identified in the genome object. Frequency shown in parentheses.</i><br><br>')
+
+            invalid_genes_count = dict(Counter(summary['invalid_genes']))
+
+            for gene in sorted(invalid_genes_count.keys()):
+                gene_count = gene + '\t(' + str(invalid_genes_count[gene]) + ')'
+                table_lines.append(gene_count + '<br>')
+
+        if len(summary['invalid_terms']) > 0:
+            table_lines.append(f'<h3>Invalid Terms</h3>')
+            table_lines.append(
+                '<i>These are ontology terms not found in the ontology dictionary. Frequency shown in parentheses.</i><br><br>')
+
+            invalid_terms_count = dict(Counter(summary['invalid_terms']))
+
+            for term in sorted(invalid_terms_count.keys()):
+                term_count = term + '\t(' + str(invalid_terms_count[term]) + ')'
+                table_lines.append(term_count + '<br>')
+
+        # Write to file
+        with open(result_file_path, 'w') as result_file:
+            for line in table_lines:
+                result_file.write(line + "\n")
+
+        output_html_files.append(
+            {'path': output_directory,
+             'name': os.path.basename(result_file_path),
+             'description': 'HTML report for import_annotations app'})
+
+        report_params = {
+            'message': '',
+            'html_links': output_html_files,
+            'direct_html_link_index': 0,
+            'objects_created': [{'ref': genome_ref, 'description': 'Genome with imported annotations'}],
+            'workspace_name': params['workspace_name'],
+            'report_object_name': f'import_annotations_{uuid.uuid4()}'}
+
+        output = self.kbr.create_extended_report(report_params)
+
+        return {'output_genome_ref': genome_ref,
+                'report_name': output['name'],
+                'report_ref': output['ref']}
+
     def run(self, ctx, params):
+        params['ontology'] = 'MSRXN'  # just in case it doesn't get set
 
-        # read and prepare objects/files
-        mu.validate()
-        # self.sso_ref = mu.get_sso_data("KBaseOntology/seed_subsystem_ontology",
-        #                                self.ws_client)
-
-        # get genome
         self.genome = mu.get_genome(params['genome'], self.genome_api)
 
-        ontology_dict = mu.get_ontology_dict(params['ontology'], self.datadir, self.ontology_lookup)
-
-        # collect some metadata
         self.get_ontology_events(params)
-        self.get_translations()
+        self.translations = mu.get_translations(self.datadir)
 
-        self.genome = mu.add_ontology_event(self.genome,
-                                            {"ontology": "MSRXN",
-                                             "description": "Merged annotations"},
-                                            self.timestamp,
-                                            "Merge Annotations")
+        merged_annotations = self.merge_annotations()
+        scored_annotations = self.score_annotations(
+            merged_annotations,
+            params['annotation_threshold'],
+            params['keep_best_annotation_only'])
 
-        self.merged_ontology_event = len(self.genome['ontology_events']) - 1
+        ontology_dict = mu.get_ontology_dict('MSRXN',
+                                             self.datadir,
+                                             mu.ontology_lookup)
 
-        # make reports
-        genes, summary = self.merge_and_summarize_genome_dict(params)
+        # get list of uploaded annotation terms
+        annotations = mu.get_annotations_file(params, self.staging_dir, pass_df=scored_annotations)
+        self.genes = mu.annotations_to_genes(annotations, self.genes)
 
-#        report = self.html_summary(params, summary)
+        self.genome = mu.add_ontology_event(
+            self.genome, params, self.timestamp, "Merge Annotations")
 
-        # # process - do we need this? If so, also need to set ontology_dict
-        # for gene in self.genes:
-        #     self.genes[gene].validateGeneID(genome_dict)
-        #     # logging.info(self.genes[gene].id)
-        for gene in genes:
-            genes[gene].validateAnnotationID(ontology_dict, "MSRXN")
+        # fix missing descriptions
+        o_counter = 0
+        for ontology_event in self.genome['ontology_events']:
+            if 'description' not in ontology_event:
+                ontology_event['description'] = ontology_event['method']
+            self.genome['ontology_events'][o_counter] = ontology_event
+            o_counter += 1
 
-        self.genome = mu.update_genome(self.genome, "MSRXN",
-                                       genes, self.merged_ontology_event)
+        self.current_ontology_event = len(self.genome['ontology_events']) - 1
 
-        # overwrite object with new genome
-        # self.genome_full['data'] = genome_dict
+        # process
+        for gene in self.genes:
+            self.genes[gene].validate_gene_ID(self.genome)
+            self.genes[gene].validate_annotation_ID(ontology_dict, 'MSRXN')
+
+        self.genome = mu.update_genome(
+            self.genome,
+            'MSRXN',
+            self.genes,
+            self.current_ontology_event)
 
         info = self.gfu.save_one_genome({'workspace': params['workspace_name'],
                                          'name': params['output_name'],
@@ -425,11 +316,55 @@ class MergeAnnotationsUtil:
         genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
         logging.info("*** Genome ID: " + str(genome_ref))
 
-        # add event for reporting
-        self.events[self.merged_ontology_event] = {"ontology": "MSRXN",
-                                                   "description": "Merged annotations",
-                                                   "method": "Merged annotations",
-                                                   "id": "MSRXN"}
-        report = self.html_summary(params, summary)
+        report = self.generate_report(params, genome_ref)
 
         return report
+
+    # def run_old(self, ctx, params):
+    #
+    #     # read and prepare objects/files
+    #     mu.validate()
+    #
+    #     # get genome
+    #     self.genome = mu.get_genome(params['genome'], self.genome_api)
+    #
+    #     ontology_dict = mu.get_ontology_dict(params['ontology'], self.datadir, mu.ontology_lookup)
+    #
+    #     # collect some metadata
+    #     self.get_ontology_events(params)
+    #     logging.info(str(self.events))
+    #     # self.get_translations()
+    #
+    #     self.genome = mu.add_ontology_event(self.genome,
+    #                                         {"ontology": "MSRXN",
+    #                                          "description": "Merged annotations"},
+    #                                         self.timestamp,
+    #                                         "Merge Annotations")
+    #
+    #     self.merged_ontology_event = len(self.genome['ontology_events']) - 1
+    #
+    #     # make reports
+    #     genes, summary = self.merge_and_summarize_genome_dict(params)
+    #
+    #     for gene in genes:
+    #         genes[gene].validateAnnotationID(ontology_dict, "MSRXN")
+    #
+    #     self.genome = mu.update_genome(self.genome, "MSRXN",
+    #                                    genes, self.merged_ontology_event)
+    #
+    #     info = self.gfu.save_one_genome({'workspace': params['workspace_name'],
+    #                                      'name': params['output_name'],
+    #                                      'data': self.genome,
+    #                                      'provenance': ctx.provenance()})['info']
+    #
+    #     genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
+    #     logging.info("*** Genome ID: " + str(genome_ref))
+    #
+    #     # add event for reporting
+    #     self.events[self.merged_ontology_event] = {"ontology": "MSRXN",
+    #                                                "description": "Merged annotations",
+    #                                                "method": "Merged annotations",
+    #                                                "id": "MSRXN"}
+    #     report = self.html_summary(params, summary)
+    #
+    #     return report

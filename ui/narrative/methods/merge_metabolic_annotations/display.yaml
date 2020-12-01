@@ -59,14 +59,7 @@ parameters :
             Only keep the annotation with the best score that exceed the specified threshold
         long-hint : |
             Only keep the annotation with the best score that exceed the specified threshold. If unchecked, all annotations scoring above the threshold will be kept.
-    annotation_name :
-        ui-name : |
-            Name for merged annotations
-        short-hint : |
-            Enter a name to use for merged annotations
-        long-hint : |
-            Enter a name to use for merged annotations
-    annotation_description :
+    description :
         ui-name : |
             Description for merged annotations
         short-hint : |

@@ -20,16 +20,6 @@ class ImportBulkAnnotationsUtil:
     staging_dir = "/staging/"
     datadir = "/kb/module/data/"
 
-    ontology_lookup = {
-        "EC": "EBI_EC_ontologyDictionary.json",
-        "KO": "KEGG_KO_ontologyDictionary.json",
-        "RO": "KEGG_RXN_ontologyDictionary.json",
-        "META": "MetaCyc_RXN_ontologyDictionary.json",
-        "MSRXN": "ModelSEED_RXN_ontologyDictionary.json",
-        "GO": "GO_ontologyDictionary.json",
-        "SSO": "SSO_ontologyDictionary.json"
-    }
-
     def __init__(self, config):
         os.makedirs(self.workdir, exist_ok=True)
         self.config = config
@@ -143,7 +133,7 @@ class ImportBulkAnnotationsUtil:
             self.current_ontology_event = len(self.genome['ontology_events']) - 1
 
             ontology_dict = mu.get_ontology_dict(
-                pair_params['ontology'], self.datadir, self.ontology_lookup)
+                pair_params['ontology'], self.datadir, mu.ontology_lookup)
 
             annotations = bulk_annotations[(bulk_annotations.description == row['description'])
                                            & (bulk_annotations.ontology == row['ontology'])][['gene', 'term']]

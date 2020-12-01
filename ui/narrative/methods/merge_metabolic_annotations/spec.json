@@ -101,16 +101,7 @@
         }
      },
      {
-       "id" : "annotation_name",
-       "optional" : false,
-       "advanced" : false,
-       "allow_multiple" : false,
-       "default_values" : [  ],
-       "field_type" : "text",
-       "text_options" : {}
-     },
-     {
-       "id" : "annotation_description",
+       "id" : "description",
        "optional" : false,
        "advanced" : false,
        "allow_multiple" : false,
@@ -158,12 +149,8 @@
                "input_parameter" : "keep_best_annotation_only"
            },
            {
-               "target_property" : "annotation_name",
-               "input_parameter" : "annotation_name"
-           },
-           {
-               "target_property" : "annotation_description",
-               "input_parameter" : "annotation_description"
+               "target_property" : "description",
+               "input_parameter" : "description"
            },
            {
                "target_property" : "output_name",

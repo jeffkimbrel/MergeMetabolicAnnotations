@@ -3,6 +3,7 @@ import json
 import logging
 import pandas as pd
 import os
+import re
 
 
 class Gene:
@@ -118,8 +119,8 @@ def get_ontology_dict(ontology_type, datadir, ontology_lookup):
         id = ontology_dict_raw[entry]['id']
 
         # Add ontology type if not present
-        if not id.upper().startswith(ontology_type + ':'):
-            id = ontology_type + ":" + id
+
+        id = standardize_annotation(id, ontology_type)
 
         name = ontology_dict_raw[entry]['name']
         ontology_dict[id] = name
@@ -127,24 +128,29 @@ def get_ontology_dict(ontology_type, datadir, ontology_lookup):
     return ontology_dict
 
 
-def get_annotations_file(params, staging_dir):
+def get_annotations_file(params, staging_dir, pass_df=None):
     '''
     Returns the uploaded annotation file as a pandas dictionary with gene names
     in the first column, and ontology terms in the second.  Also adds the
     "ontology:" prefix, if missing
+
+    pass_df option is new accepting a pandas dataframe rather than a file from staging
     '''
 
-    if 'debug' in params and params['debug'] is True:
-        annotations_file_path = os.path.join(
-            '/kb/module/test/test_data', params.get('annotation_file'))
+    if isinstance(pass_df, pd.DataFrame):
+        annotations = pass_df
     else:
-        annotations_file_path = os.path.join(staging_dir, params.get('annotation_file'))
+        if 'debug' in params and params['debug'] is True:
+            annotations_file_path = os.path.join(
+                '/kb/module/test/test_data', params.get('annotation_file'))
+        else:
+            annotations_file_path = os.path.join(staging_dir, params.get('annotation_file'))
 
-    annotations = pd.read_csv(annotations_file_path,
-                              sep='\t',
-                              header=None,
-                              names=['gene', 'term']
-                              )
+        annotations = pd.read_csv(annotations_file_path,
+                                  sep='\t',
+                                  header=None,
+                                  names=['gene', 'term']
+                                  )
 
     # add prefix
     ontology_type = params['ontology'].upper()
@@ -152,8 +158,7 @@ def get_annotations_file(params, staging_dir):
         if pd.isnull(row['term']):
             row['term'] = "NA"
 
-        if not row['term'].upper().startswith(ontology_type + ':'):
-            row['term'] = ontology_type + ":" + row['term']
+        row['term'] = standardize_annotation(row['term'], params['ontology'].upper())
 
     return annotations
 
@@ -290,8 +295,8 @@ def get_bulk_annotations_file(params, staging_dir):
 
         if pd.isnull(row['term']):
             row['term'] = "NA"
-        if not row['term'].upper().startswith(row['ontology'] + ':'):
-            row['term'] = row['ontology'] + ":" + row['term']
+
+        row['term'] = standardize_annotation(row['term'], row['ontology'])
 
     return df
 
@@ -304,3 +309,84 @@ def validate_bulk(bulk_annotations):
 
 def get_description_ontology_pairs(bulk_annotations):
     return bulk_annotations.groupby(['description', 'ontology']).size().reset_index().rename(columns={0: 'count'})
+
+
+translation_locations = {'EC': 'EBI_EC.ModelSEED.json',
+                         'RO': 'KEGG_RXN.ModelSEED.json',
+                         'KO': 'KEGG_KO.ModelSEED.json',
+                         'META': 'Metacyc_RXN.ModelSEED.json',
+                         'SSO': 'SSO.ModelSEED.json',
+                         'GO': 'GO.ModelSEED.json'}
+
+ontology_lookup = {
+    "EC": "EBI_EC_ontologyDictionary.json",
+    "KO": "KEGG_KO_ontologyDictionary.json",
+    "RO": "KEGG_RXN_ontologyDictionary.json",
+    "META": "MetaCyc_RXN_ontologyDictionary.json",
+    "MSRXN": "ModelSEED_RXN_ontologyDictionary.json",
+    "GO": "GO_ontologyDictionary.json",
+    "SSO": "SSO_ontologyDictionary.json"
+}
+
+
+def search_for_ec(line):
+    ecList = re.findall(r"\(*[0-9]+\.[0-9\-]+\.[0-9\-]+\.[0-9\-]+", line)
+    return(ecList)
+
+
+def get_translations(datadir):
+    translations = {}
+
+    for ontology_type in translation_locations:
+        translations_path = datadir + "/" + translation_locations[ontology_type]
+        ontology_translations = json.loads(open(translations_path, "r").read())
+        translations[ontology_type] = {}
+
+        for term in ontology_translations['translation']:
+
+            for entry in ontology_translations['translation'][term]['equiv_terms']:
+                if entry['equiv_term'] != None:
+                    rxn = entry['equiv_term']
+                    # logging.info(rxn)
+                    if not rxn.upper().startswith('MSRXN:'):
+                        rxn = 'MSRXN:' + rxn
+                    # logging.info(rxn)
+
+                    # Add ontology type if not present
+                    term = standardize_annotation(term, ontology_type)
+
+                    translations[ontology_type][term] = rxn
+
+    return translations
+
+
+legacy_codes = {'MODELSEED': 'MSRXN',
+                'KEGGKO': 'KO',
+                'KEGGRO': 'RO',
+                'METACYC': 'META'
+                }
+
+
+def legacy_fix(old):
+    '''
+    update ontology type with updated terms
+    '''
+    new = old.upper()
+    if new in legacy_codes:
+        new = legacy_codes[new]
+
+    return new
+
+
+def standardize_annotation(annotation, ontology_type):
+    '''
+    fix annotation to conform to our standards
+    '''
+
+    if not annotation.startswith(ontology_type + ':'):
+        if annotation.startswith('ec:'):
+            annotation = annotation.upper()
+        else:
+            annotation = ontology_type.upper() + ":" + annotation
+
+    return annotation

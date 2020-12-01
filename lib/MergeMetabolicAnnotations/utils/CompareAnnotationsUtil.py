@@ -28,20 +28,6 @@ class CompareAnnotationsUtil:
     staging_dir = "/staging/"
     datadir = "/kb/module/data/"
 
-    # to make case-insensitive, these are upper case, and the utils.get_ontology_dict() will convert to upper
-    translation_locations = {'EC': 'EBI_EC.ModelSEED.json',
-                             'RO': 'KEGG_RXN.ModelSEED.json',
-                             'KO': 'KEGG_KO.ModelSEED.json',
-                             'META': 'Metacyc_RXN.ModelSEED.json',
-                             'SSO': 'SSO.ModelSEED.json',
-                             'GO': 'GO.ModelSEED.json'}
-
-    legacy_codes = {'MODELSEED': 'MSRXN',
-                    'KEGGKO': 'KO',
-                    'KEGGRO': 'RO',
-                    'METACYC': 'META'
-                    }
-
     def __init__(self, config):
         os.makedirs(self.workdir, exist_ok=True)
         self.config = config
@@ -65,45 +51,14 @@ class CompareAnnotationsUtil:
                 if ontology['description'] in params['annotations_to_compare'] or len(params['annotations_to_compare']) == 0:
                     self.events[event] = {}
 
-                    ontology["id"] = ontology["id"].upper()
-
-                    if ontology["id"] in self.legacy_codes:
-                        ontology["id"] = self.legacy_codes[ontology["id"]]
+                    ontology["id"] = mu.legacy_fix(ontology["id"])
 
                     for term in ontology:
                         self.events[event][term] = ontology[term]
         else:
             logging.info("No ontology events in this genome!")
 
-        logging.info(self.events)
-
-    def get_translations(self):
-        self.translations = {}
-
-        for ontology_type in self.translation_locations:
-            translations_path = self.datadir + "/" + self.translation_locations[ontology_type]
-            ontology_translations = json.loads(open(translations_path, "r").read())
-            self.translations[ontology_type] = {}
-
-            for term in ontology_translations['translation']:
-
-                for entry in ontology_translations['translation'][term]['equiv_terms']:
-                    if entry['equiv_term'] != None:
-                        rxn = entry['equiv_term']
-                        # logging.info(rxn)
-                        if not rxn.upper().startswith('MSRXN:'):
-                            rxn = 'MSRXN:' + rxn
-                        # logging.info(rxn)
-
-                        # Add ontology type if not present
-                        if not term.upper().startswith(ontology_type + ':'):
-                            term = ontology_type + ":" + term
-
-                        self.translations[ontology_type][term] = rxn
-
-    def search_for_ec(self, line):
-        ecList = re.findall(r"\(*[0-9]+\.[0-9\-]+\.[0-9\-]+\.[0-9\-]+", line)
-        return(ecList)
+        # logging.info(self.events)
 
     def summarize_gto(self, params):
         summary = {"genes": {},
@@ -134,8 +89,8 @@ class CompareAnnotationsUtil:
 
                     # ontology_term_type = ontology_term_type.upper()
                     # logging.info(ontology_term_type)
-                    # if ontology_term_type in self.legacy_codes:
-                    #     ontology_term_type = self.legacy_codes[ontology_term_type]
+                    # if ontology_term_type in mu.legacy_codes:
+                    #     ontology_term_type = mu.legacy_codes[ontology_term_type]
                     # logging.info(ontology_term_type)
 
                     term_dict = feature['ontology_terms'][ontology_term_type]
@@ -153,11 +108,8 @@ class CompareAnnotationsUtil:
                                 )
 
                                 # fix annotation term to fit with style
-                                if not term.startswith(ontology_type):
-                                    if term.startswith('ec:'):
-                                        term = term.upper()
-                                    else:
-                                        term = ontology_type + ':' + term
+
+                                term = mu.standardize_annotation(term, ontology_type)
 
                                 # convert terms to rxns
                                 if term in self.translations[ontology_type]:
@@ -483,10 +435,9 @@ class CompareAnnotationsUtil:
         self.genome = mu.get_genome(params['genome'], self.genome_api)
 
         self.get_ontology_events(params)
-        self.get_translations()
-        #
-        # # make reports
-        summary = self.summarize_gto(params)
+        self.translations = mu.get_translations(self.datadir)
 
+        # summarize and make reports
+        summary = self.summarize_gto(params)
         report = self.html_summary(params, summary)
         return report
