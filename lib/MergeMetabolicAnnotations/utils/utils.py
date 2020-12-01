@@ -195,6 +195,7 @@ def add_ontology_event(genome, params, timestamp, method):
             "method": method,
             "method_version": get_app_version(),
             "description": params['description'],
+            "ontology_ref": "605/6/1",  # this is a hack for now... it is the SSO reference, but this field appears necessary
             "timestamp": timestamp
         }
     )

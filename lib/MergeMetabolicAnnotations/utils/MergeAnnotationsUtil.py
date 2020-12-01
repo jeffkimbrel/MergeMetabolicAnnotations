@@ -117,7 +117,7 @@ class MergeAnnotationsUtil:
         returns a pandas dataframe suitable for import annotations
         '''
 
-        df = pd.DataFrame(columns=['gene', 'term'])
+        df = pd.DataFrame(columns=['gene', 'term', 'events', 'score'])
 
         for gene_id in annotations:
             for rxn in annotations[gene_id]:
@@ -127,12 +127,14 @@ class MergeAnnotationsUtil:
                 if annotations[gene_id][rxn]['score_total'] >= threshold:
                     annotations[gene_id][rxn]['passed'] = 1
                     df = df.append(
-                        pd.Series(data={'gene': gene_id, 'term': rxn}), ignore_index=True)
+                        pd.Series(data={'gene': gene_id, 'term': rxn, 'events': annotations[gene_id][rxn]['events'], 'score': annotations[gene_id][rxn]['score_total']}), ignore_index=True)
                 else:
                     annotations[gene_id][rxn]['passed'] = 0
 
-        with open(os.path.join(self.scratch, "scored.json"), 'w') as outfile:
-            json.dump(annotations, outfile, indent=2)
+        # with open(os.path.join(self.scratch, "scored.json"), 'w') as outfile:
+        #     json.dump(annotations, outfile, indent=2)
+
+        df.to_csv(os.path.join(self.scratch, "scored.txt"), sep="\t", index=False)
 
         return df
 
