@@ -134,7 +134,8 @@
            },
            {
                "target_property" : "genome",
-               "input_parameter" : "genome"
+               "input_parameter" : "genome",
+               "target_type_transform": "resolved-ref"
            },
            {
                "target_property" : "annotations_to_merge",
