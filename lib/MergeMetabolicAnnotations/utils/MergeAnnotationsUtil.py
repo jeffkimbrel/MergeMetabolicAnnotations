@@ -120,16 +120,32 @@ class MergeAnnotationsUtil:
         df = pd.DataFrame(columns=['gene', 'term', 'events', 'score'])
 
         for gene_id in annotations:
+
+            # get total score of each rxn, save to 'score_total'
             for rxn in annotations[gene_id]:
                 annotations[gene_id][rxn]['score_total'] = 0
                 for ontology_event in annotations[gene_id][rxn]['events']:
                     annotations[gene_id][rxn]['score_total'] += self.weights[ontology_event]
+
+            # get list of the best rxn or rxns
+            '''
+            best_score = max()
+
+            for rxn in annotations[gene_id]:
+
                 if annotations[gene_id][rxn]['score_total'] >= threshold:
-                    annotations[gene_id][rxn]['passed'] = 1
-                    df = df.append(
-                        pd.Series(data={'gene': gene_id, 'term': rxn, 'events': annotations[gene_id][rxn]['events'], 'score': annotations[gene_id][rxn]['score_total']}), ignore_index=True)
-                else:
-                    annotations[gene_id][rxn]['passed'] = 0
+                    if best_only == "all" or rxn in best_rxn:
+                        annotations[gene_id][rxn]['passed'] = 1
+                        df = df.append(
+                            pd.Series(data={'gene': gene_id, 'term': rxn, 'events': annotations[gene_id][rxn]['events'], 'score': annotations[gene_id][rxn]['score_total']}), ignore_index=True)
+
+                    else:
+                        annotations[gene_id][rxn]['passed'] = 0
+                        # df = df.append(
+                        #     pd.Series(data={'gene': gene_id, 'term': rxn, 'events': annotations[gene_id][rxn]['events'], 'score': annotations[gene_id][rxn]['score_total']}), ignore_index=True)
+
+            #        annotations[gene_id][rxn]['passed'] = 0
+            '''
 
         # with open(os.path.join(self.scratch, "scored.json"), 'w') as outfile:
         #     json.dump(annotations, outfile, indent=2)
