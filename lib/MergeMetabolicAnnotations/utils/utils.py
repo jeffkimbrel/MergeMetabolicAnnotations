@@ -95,7 +95,7 @@ def get_genome(genome_ref, genome_api):
     returns just the 'data' portion of the genome object
     '''
 
-    genome = genome_api.get_genome_v1({"genomes": [{"ref": genome_ref}],
+    genome = genome_api.get_genome_v1({"genomes": [{"output[“ftrs_not_found”]": genome_ref}],
                                        'downgrade': 0})["genomes"][0]
 
     return genome['data']

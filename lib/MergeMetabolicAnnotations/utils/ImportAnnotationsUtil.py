@@ -1,3 +1,4 @@
+import sys
 import os
 import datetime
 import logging
@@ -10,8 +11,12 @@ from installed_clients.DataFileUtilClient import DataFileUtil
 from installed_clients.GenomeFileUtilClient import GenomeFileUtil
 from installed_clients.WorkspaceClient import Workspace as Workspace
 from installed_clients.KBaseReportClient import KBaseReport
+from installed_clients.annotation_ontology_apiServiceClient import annotation_ontology_api
 
 import MergeMetabolicAnnotations.utils.utils as mu
+import MergeMetabolicAnnotations.utils.functions as f
+
+#####
 
 
 class ImportAnnotationsUtil:
@@ -26,11 +31,14 @@ class ImportAnnotationsUtil:
         self.timestamp = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
         self.callback_url = config['SDK_CALLBACK_URL']
         self.scratch = config['scratch']
-        self.genome_api = GenomeAnnotationAPI(self.callback_url)
-        self.dfu = DataFileUtil(self.callback_url)
-        self.gfu = GenomeFileUtil(self.callback_url)
-        self.kbr = KBaseReport(self.callback_url)
+        self.workspace_url = config["workspace-url"]
         self.ws_client = Workspace(config["workspace-url"])
+        self.anno_api = annotation_ontology_api()
+
+        # self.genome_api = GenomeAnnotationAPI(self.callback_url)
+        # self.dfu = DataFileUtil(self.callback_url)
+        # self.gfu = GenomeFileUtil(self.callback_url)
+        self.kbr = KBaseReport(self.callback_url)
 
         self.genes = {}
 
@@ -112,55 +120,84 @@ class ImportAnnotationsUtil:
         The main run called by the implementation file.
         '''
 
-        # read and prepare imported file
-        mu.validate()
+        ontology = f.df_to_ontology(params, self.staging_dir)
 
-        # get genome object, store as a dictionary
-        self.genome = mu.get_genome(params['genome'], self.genome_api)
+        with open(os.path.join(self.scratch, "new_ontology_API_dump.json"), 'w') as outfile:
+            json.dump(ontology, outfile, indent=2)
 
-        # get ontology dictionary
-        ontology_dict = mu.get_ontology_dict(params['ontology'],
-                                             self.datadir,
-                                             mu.ontology_lookup)
+        output = self.anno_api.add_annotation_ontology_events({
+            "input_ref": params['genome'],
+            "output_name": params['output_name'],
+            "input_workspace": self.workspace_url + params['workspace_name'],
+            "events": [ontology],
+            "timestamp": self.timestamp,
+            "output_workspace": self.workspace_url + params['workspace_name'],
+            "save": 1
+        })
 
-        # get list of uploaded annotation terms
-        annotations = mu.get_annotations_file(params, self.staging_dir)
+        logging.info(str(output))
 
-        # add annotation terms to gene class
-        self.genes = mu.annotations_to_genes(annotations, self.genes)
-
-        self.genome = mu.add_ontology_event(
-            self.genome, params, self.timestamp, "Import Annotations")
-
-        # fix missing descriptions
-        o_counter = 0
-        for ontology_event in self.genome['ontology_events']:
-            if 'description' not in ontology_event:
-                ontology_event['description'] = ontology_event['method']
-            self.genome['ontology_events'][o_counter] = ontology_event
-            o_counter += 1
-
-        self.current_ontology_event = len(self.genome['ontology_events']) - 1
-
-        # process
-        for gene in self.genes:
-            self.genes[gene].validate_gene_ID(self.genome)
-            self.genes[gene].validate_annotation_ID(ontology_dict, params['ontology'])
-
-        self.genome = mu.update_genome(
-            self.genome,
-            params['ontology'],
-            self.genes,
-            self.current_ontology_event)
-
-        info = self.gfu.save_one_genome({'workspace': params['workspace_name'],
-                                         'name': params['output_name'],
-                                         'data': self.genome,
-                                         'provenance': ctx.provenance()})['info']
-
-        genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
-        logging.info("*** Genome ID: " + str(genome_ref))
-
-        report = self.generate_report(params, genome_ref)
-
-        return report
+        # DYNAMIC SERVICE
+        #
+        # logging.info(self.anno_api)
+        # ontology = self.anno_api.get_annotation_ontology_events({
+        #     "input_ref": params['genome']
+        # })
+        # with open(os.path.join(self.scratch, "ontology_API_dump.json"), 'w') as outfile:
+        #     json.dump(ontology, outfile, indent=2)
+        #
+        # sys.exit()
+        # #####
+        #
+        # # read and prepare imported file
+        # mu.validate()
+        #
+        # # get genome object, store as a dictionary
+        # self.genome = mu.get_genome(params['genome'], self.genome_api)
+        #
+        # # get ontology dictionary
+        # ontology_dict = mu.get_ontology_dict(params['ontology'],
+        #                                      self.datadir,
+        #                                      mu.ontology_lookup)
+        #
+        # # get list of uploaded annotation terms
+        # annotations = mu.get_annotations_file(params, self.staging_dir)
+        #
+        # # add annotation terms to gene class
+        # self.genes = mu.annotations_to_genes(annotations, self.genes)
+        #
+        # self.genome = mu.add_ontology_event(
+        #     self.genome, params, self.timestamp, "Import Annotations")
+        #
+        # # fix missing descriptions
+        # o_counter = 0
+        # for ontology_event in self.genome['ontology_events']:
+        #     if 'description' not in ontology_event:
+        #         ontology_event['description'] = ontology_event['method']
+        #     self.genome['ontology_events'][o_counter] = ontology_event
+        #     o_counter += 1
+        #
+        # self.current_ontology_event = len(self.genome['ontology_events']) - 1
+        #
+        # # process
+        # for gene in self.genes:
+        #     self.genes[gene].validate_gene_ID(self.genome)
+        #     self.genes[gene].validate_annotation_ID(ontology_dict, params['ontology'])
+        #
+        # self.genome = mu.update_genome(
+        #     self.genome,
+        #     params['ontology'],
+        #     self.genes,
+        #     self.current_ontology_event)
+        #
+        # info = self.gfu.save_one_genome({'workspace': params['workspace_name'],
+        #                                  'name': params['output_name'],
+        #                                  'data': self.genome,
+        #                                  'provenance': ctx.provenance()})['info']
+        #
+        # genome_ref = str(info[6]) + '/' + str(info[0]) + '/' + str(info[4])
+        # logging.info("*** Genome ID: " + str(genome_ref))
+        #
+        # report = self.generate_report(params, genome_ref)
+        #
+        # return report
