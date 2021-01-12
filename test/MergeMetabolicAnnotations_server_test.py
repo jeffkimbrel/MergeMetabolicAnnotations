@@ -90,7 +90,7 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # compare app
         # params_compare = {
         #     "debug": True,
-        #     "genome": "27005/29/1",
+        #     "genome": "23001/49/1",
         #     "output_name": "compareGenome_temp",
         #     "annotations_to_compare": [],
         #     # "annotations_to_compare": ["ProkkaAnnotation:2.1.5:EC:2020_10_13_20_07_38", "KOFAM93", "annotate_genome"],
