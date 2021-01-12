@@ -128,10 +128,11 @@ class ImportAnnotationsUtil:
         output = self.anno_api.add_annotation_ontology_events({
             "input_ref": params['genome'],
             "output_name": params['output_name'],
-            "input_workspace": self.workspace_url + params['workspace_name'],
+            "input_workspace": params['workspace_name'],
+            "workspace-url": self.workspace_url,
             "events": [ontology],
             "timestamp": self.timestamp,
-            "output_workspace": self.workspace_url + params['workspace_name'],
+            "output_workspace": params['workspace_name'],
             "save": 1
         })
 
