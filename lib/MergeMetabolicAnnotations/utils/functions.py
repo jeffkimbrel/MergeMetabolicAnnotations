@@ -5,7 +5,7 @@ import yaml
 import datetime
 
 
-def df_to_ontology(params, staging_dir, pass_df=None):
+def df_to_ontology(params, pass_df=None):
     '''
     Takes the text file from staging, or the pandas df passed from the merge
     app, and converts to an ontology dictionary suitable from the annotation
@@ -20,7 +20,7 @@ def df_to_ontology(params, staging_dir, pass_df=None):
             annotations_file_path = os.path.join(
                 '/kb/module/test/test_data', params['annotation_file'])
         else:
-            annotations_file_path = os.path.join(staging_dir, params['annotation_file'])
+            annotations_file_path = os.path.join("/staging/", params['annotation_file'])
 
         annotations = pd.read_csv(annotations_file_path,
                                   sep='\t',

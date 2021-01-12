@@ -68,9 +68,9 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         params_import = {
             "debug": True,
             "ontology": "KO",
-            "annotation_file": "ARW1R1.KOALA.20191015.forUpload.txt",
+            "annotation_file": "K_algicida_OT-1_protein_IDs.faa.kofam93.txt",
             "description": "annotation_API_test",
-            "genome": "41362/29/1",
+            "genome": "44643/3/1",
             "output_name": "import_genome",
             "workspace_name": self.wsName
         }

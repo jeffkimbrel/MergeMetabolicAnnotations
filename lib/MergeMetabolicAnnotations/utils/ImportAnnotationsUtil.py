@@ -22,7 +22,6 @@ import MergeMetabolicAnnotations.utils.functions as f
 class ImportAnnotationsUtil:
 
     workdir = 'tmp/work/'
-    staging_dir = "/staging/"
     datadir = "/kb/module/data/"
 
     def __init__(self, config):
@@ -42,85 +41,134 @@ class ImportAnnotationsUtil:
 
         self.genes = {}
 
-    def generate_report(self, params, genome_ref):
-        """
-        Reads in the results from the summary method, and creates the html
-        report.
-        """
-
-        summary = mu.summarize(params, self.genes)
-
-        output_html_files = list()
+    def generate_report2(self, params, output):
 
         # Make report directory and copy over files
         output_directory = os.path.join(self.scratch, str(uuid.uuid4()))
         os.mkdir(output_directory)
         result_file_path = os.path.join(output_directory, 'import_annotations_summary.html')
 
-        # Build HTML tables for results
-        table_lines = []
-        table_lines.append(f'<h2>Import Annotations</h2>')
-        table_lines.append(f'<h3>Summary</h3>')
-        table_lines.append(
-            '<table cellspacing="0" cellpadding="3" border="1"><tr><th>TYPE</th><th>VALID</th><th>INVALID</th></tr>')
-        table_lines.append('<tr><td>GENES</td><td>' + str(
-            len(summary['valid_genes'])) + '</td><td>' + str(len(summary['invalid_genes'])) + '</td></tr>')
-        table_lines.append('<tr><td>TERMS</td><td>' + str(
-            len(summary['valid_terms'])) + '</td><td>' + str(len(summary['invalid_terms'])) + '</td></tr>')
-        table_lines.append('</table>')
+        report = []
+        report.append(f'<h2>Import Annotations</h2>')
+        report.append(f'<h3>Summary</h3>')
 
-        if len(summary['invalid_genes']) > 0:
-            table_lines.append(f'<h3>Invalid Genes</h3>')
-            table_lines.append(
-                '<i>These are locus_tags not identified in the genome object. Frequency shown in parentheses.</i><br><br>')
+        report.append(f'Annotations file: {params["annotation_file"]}<br>')
+        report.append(f'Ontology ID: {params["ontology"]}<br>')
+        report.append(f'Description: {params["description"]}<br>')
 
-            invalid_genes_count = dict(Counter(summary['invalid_genes']))
+        report.append(f'Input Ref: {params["genome"]}<br>')
+        report.append(f'Output Ref: {output["output_ref"]}<br><br>')
 
-            for gene in sorted(invalid_genes_count.keys()):
-                gene_count = gene + '\t(' + str(invalid_genes_count[gene]) + ')'
-                table_lines.append(gene_count + '<br>')
-
-        if len(summary['invalid_terms']) > 0:
-            table_lines.append(f'<h3>Invalid Terms</h3>')
-            table_lines.append(
-                '<i>These are ontology terms not found in the ontology dictionary. Frequency shown in parentheses.</i><br><br>')
-
-            invalid_terms_count = dict(Counter(summary['invalid_terms']))
-
-            for term in sorted(invalid_terms_count.keys()):
-                term_count = term + '\t(' + str(invalid_terms_count[term]) + ')'
-                table_lines.append(term_count + '<br>')
+        report.append(f'Features (found): {output["ftrs_found"]}<br>')
+        report.append(f'Features (not found): {len(output["ftrs_not_found"])}<br>')
+        if len(output["ftrs_not_found"]) > 0:
+            report.append(
+                f'These genes were not found in the genome: <br>{(", ").join(output["ftrs_not_found"])}<br>')
 
         # Write to file
         with open(result_file_path, 'w') as result_file:
-            for line in table_lines:
+            for line in report:
                 result_file.write(line + "\n")
 
-        output_html_files.append(
+        output_html_files = [
             {'path': output_directory,
              'name': os.path.basename(result_file_path),
-             'description': 'HTML report for import_annotations app'})
+             'description': 'HTML report for import_annotations app'}
+        ]
 
         report_params = {
             'message': '',
             'html_links': output_html_files,
             'direct_html_link_index': 0,
-            'objects_created': [{'ref': genome_ref, 'description': 'Genome with imported annotations'}],
+            'objects_created': [{'ref': output["output_ref"], 'description': 'Genome with imported annotations'}],
             'workspace_name': params['workspace_name'],
             'report_object_name': f'import_annotations_{uuid.uuid4()}'}
 
-        output = self.kbr.create_extended_report(report_params)
+        report_output = self.kbr.create_extended_report(report_params)
 
-        return {'output_genome_ref': genome_ref,
-                'report_name': output['name'],
-                'report_ref': output['ref']}
+        return {'output_genome_ref': output["output_ref"],
+                'report_name': report_output['name'],
+                'report_ref': report_output['ref']}
+
+    # def generate_report(self, params, genome_ref):
+    #     """
+    #     Reads in the results from the summary method, and creates the html
+    #     report.
+    #     """
+    #
+    #     summary = mu.summarize(params, self.genes)
+    #
+    #     output_html_files = list()
+    #
+    #     # Make report directory and copy over files
+    #     output_directory = os.path.join(self.scratch, str(uuid.uuid4()))
+    #     os.mkdir(output_directory)
+    #     result_file_path = os.path.join(output_directory, 'import_annotations_summary.html')
+    #
+    #     # Build HTML tables for results
+    #     table_lines = []
+    #     table_lines.append(f'<h2>Import Annotations</h2>')
+    #     table_lines.append(f'<h3>Summary</h3>')
+    #     table_lines.append(
+    #         '<table cellspacing="0" cellpadding="3" border="1"><tr><th>TYPE</th><th>VALID</th><th>INVALID</th></tr>')
+    #     table_lines.append('<tr><td>GENES</td><td>' + str(
+    #         len(summary['valid_genes'])) + '</td><td>' + str(len(summary['invalid_genes'])) + '</td></tr>')
+    #     table_lines.append('<tr><td>TERMS</td><td>' + str(
+    #         len(summary['valid_terms'])) + '</td><td>' + str(len(summary['invalid_terms'])) + '</td></tr>')
+    #     table_lines.append('</table>')
+    #
+    #     if len(summary['invalid_genes']) > 0:
+    #         table_lines.append(f'<h3>Invalid Genes</h3>')
+    #         table_lines.append(
+    #             '<i>These are locus_tags not identified in the genome object. Frequency shown in parentheses.</i><br><br>')
+    #
+    #         invalid_genes_count = dict(Counter(summary['invalid_genes']))
+    #
+    #         for gene in sorted(invalid_genes_count.keys()):
+    #             gene_count = gene + '\t(' + str(invalid_genes_count[gene]) + ')'
+    #             table_lines.append(gene_count + '<br>')
+    #
+    #     if len(summary['invalid_terms']) > 0:
+    #         table_lines.append(f'<h3>Invalid Terms</h3>')
+    #         table_lines.append(
+    #             '<i>These are ontology terms not found in the ontology dictionary. Frequency shown in parentheses.</i><br><br>')
+    #
+    #         invalid_terms_count = dict(Counter(summary['invalid_terms']))
+    #
+    #         for term in sorted(invalid_terms_count.keys()):
+    #             term_count = term + '\t(' + str(invalid_terms_count[term]) + ')'
+    #             table_lines.append(term_count + '<br>')
+    #
+    #     # Write to file
+    #     with open(result_file_path, 'w') as result_file:
+    #         for line in table_lines:
+    #             result_file.write(line + "\n")
+    #
+    #     output_html_files.append(
+    #         {'path': output_directory,
+    #          'name': os.path.basename(result_file_path),
+    #          'description': 'HTML report for import_annotations app'})
+    #
+    #     report_params = {
+    #         'message': '',
+    #         'html_links': output_html_files,
+    #         'direct_html_link_index': 0,
+    #         'objects_created': [{'ref': genome_ref, 'description': 'Genome with imported annotations'}],
+    #         'workspace_name': params['workspace_name'],
+    #         'report_object_name': f'import_annotations_{uuid.uuid4()}'}
+    #
+    #     output = self.kbr.create_extended_report(report_params)
+    #
+    #     return {'output_genome_ref': genome_ref,
+    #             'report_name': output['name'],
+    #             'report_ref': output['ref']}
 
     def run(self, ctx, params):
         '''
         The main run called by the implementation file.
         '''
 
-        ontology = f.df_to_ontology(params, self.staging_dir)
+        ontology = f.df_to_ontology(params)
 
         with open(os.path.join(self.scratch, "new_ontology_API_dump.json"), 'w') as outfile:
             json.dump(ontology, outfile, indent=2)
@@ -136,7 +184,12 @@ class ImportAnnotationsUtil:
             "save": 1
         })
 
-        logging.info(str(output))
+        with open(os.path.join(self.scratch, "add_API_dump.json"), 'w') as outfile:
+            json.dump(output, outfile, indent=2)
+
+        report = self.generate_report2(params, output)
+
+        return report
 
         # DYNAMIC SERVICE
         #
