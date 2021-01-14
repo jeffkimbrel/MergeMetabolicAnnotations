@@ -13,34 +13,23 @@ from bokeh.models import ColumnDataSource, FactorRange
 from bokeh.transform import factor_cmap
 from bokeh.models import HoverTool
 
-from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
-from installed_clients.DataFileUtilClient import DataFileUtil
-from installed_clients.GenomeFileUtilClient import GenomeFileUtil
 from installed_clients.WorkspaceClient import Workspace as Workspace
 from installed_clients.KBaseReportClient import KBaseReport
+from installed_clients.annotation_ontology_apiServiceClient import annotation_ontology_api
 
-import MergeMetabolicAnnotations.utils.utils as mu
+import MergeMetabolicAnnotations.utils.functions as f
 
 
 class CompareAnnotationsUtil:
 
-    workdir = 'tmp/work/'
-    staging_dir = "/staging/"
-    datadir = "/kb/module/data/"
-
     def __init__(self, config):
-        os.makedirs(self.workdir, exist_ok=True)
         self.config = config
         self.timestamp = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
         self.callback_url = config['SDK_CALLBACK_URL']
         self.scratch = config['scratch']
-        self.genome_api = GenomeAnnotationAPI(self.callback_url)
-        self.dfu = DataFileUtil(self.callback_url)
-        self.gfu = GenomeFileUtil(self.callback_url)
         self.kbr = KBaseReport(self.callback_url)
+        self.anno_api = annotation_ontology_api()
         self.ws_client = Workspace(config["workspace-url"])
-
-        self.events = {}
 
     def get_ontology_events(self, params):
 
@@ -57,8 +46,6 @@ class CompareAnnotationsUtil:
                         self.events[event][term] = ontology[term]
         else:
             logging.info("No ontology events in this genome!")
-
-        # logging.info(self.events)
 
     def summarize_gto(self, params):
         summary = {"genes": {},
@@ -430,14 +417,30 @@ class CompareAnnotationsUtil:
         return(max_key)
 
     def run(self, ctx, params):
+        ontology = self.anno_api.get_annotation_ontology_events({
+            "input_ref": params['genome'],
+            "workspace-url": self.config["workspace-url"]
+        })
 
-        # collect some metadata
-        self.genome = mu.get_genome(params['genome'], self.genome_api)
+        with open(os.path.join(self.scratch, "get_ontology_dump.json"), 'w') as outfile:
+            json.dump(ontology, outfile, indent=2)
 
-        self.get_ontology_events(params)
-        self.translations = mu.get_translations(self.datadir)
+        # collect reports
+        html_reports = []
+        output_directory = os.path.join(self.scratch, str(uuid.uuid4()))
+        os.mkdir(output_directory)
 
-        # summarize and make reports
-        summary = self.summarize_gto(params)
-        report = self.html_summary(params, summary)
-        return report
+        html_reports.append(f.html_get_ontology_summary(ontology, output_directory))
+
+        # finalize html reports
+        report_params = {
+            'message': '',
+            'html_links': html_reports,
+            'direct_html_link_index': 0,
+            'workspace_name': params['workspace_name'],
+            'report_object_name': f'compare_annotations_{uuid.uuid4()}'}
+
+        output = self.kbr.create_extended_report(report_params)
+
+        return {'report_name': output['name'],
+                'report_ref': output['ref']}

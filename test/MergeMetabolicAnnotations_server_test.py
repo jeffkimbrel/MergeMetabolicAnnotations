@@ -65,16 +65,16 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # self.assertEqual(ret[...], ...) or other unittest methods
 
         # import app
-        params_import = {
-            "debug": True,
-            "ontology": "KO",
-            "annotation_file": "K_algicida_OT-1_protein_IDs.faa.kofam93.txt",
-            "description": "annotation_API_test",
-            "genome": "44643/3/1",
-            "output_name": "import_genome",
-            "workspace_name": self.wsName
-        }
-        ret = self.serviceImpl.import_annotations(self.ctx, params_import)
+        # params_import = {
+        #     "debug": True,
+        #     "ontology": "KO",
+        #     "annotation_file": "K_algicida_OT-1_protein_IDs.faa.kofam93.txt",
+        #     "description": "annotation_API_test",
+        #     "genome": "44643/11/1",
+        #     "output_name": "import_genome",
+        #     "workspace_name": self.wsName
+        # }
+        # ret = self.serviceImpl.import_annotations(self.ctx, params_import)
 
         # bulk import app
         # params_import = {
@@ -90,7 +90,7 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # compare app
         # params_compare = {
         #     "debug": True,
-        #     "genome": "23001/49/1",
+        #     "genome": "27005/40/1",
         #     "output_name": "compareGenome_temp",
         #     "annotations_to_compare": [],
         #     # "annotations_to_compare": ["ProkkaAnnotation:2.1.5:EC:2020_10_13_20_07_38", "KOFAM93", "annotate_genome"],
@@ -99,25 +99,26 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)
 
         # merge app
-        # params_merge = {
-        #     "debug": True,
-        #     "genome": "27005/29/1",
-        #     "output_name": "mergeGenome_temp",
-        #     "annotations_to_merge": [
-        #         {
-        #             "annotation_source": ["KEGG KOs"],
-        #             "annotation_weight": 0.9
-        #         }, {
-        #             "annotation_source": ["KOFAM93"],
-        #             "annotation_weight": 0.5
-        #         }, {
-        #             "annotation_source": ['ProkkaAnnotation:2.1.5:EC:2020_10_13_20_07_38'],
-        #             "annotation_weight": 1
-        #         }
-        #     ],
-        #     "annotation_threshold": 1.0,
-        #     "keep_best_annotation_only": 0,
-        #     "description": "Merged annotations",
-        #     "workspace_name": self.wsName
-        # }
-        # ret = self.serviceImpl.merge_metabolic_annotations(self.ctx, params_merge)
+        params_merge = {
+            "debug": True,
+            "genome": "27005/29/1",
+            "output_name": "mergeGenome_temp",
+            # "annotations_to_merge": [
+            #     {
+            #         "annotation_source": ["Import Annotations:0.3.0:keggko:2019_03_07_00_35_49"],
+            #         "annotation_weight": 0.6
+            #     }, {
+            #         "annotation_source": ["Import Annotations:0.8.11:keggko:2020_07_15_01_40_43"],
+            #         "annotation_weight": 0.6
+            #     }, {
+            #         "annotation_source": ['Prokka Annotation:2.1.5:ec:2020_10_13_20_07_38'],
+            #         "annotation_weight": 1
+            #     }
+            # ],
+            "annotations_to_merge": [],
+            "annotation_threshold": 1.0,
+            "keep_best_annotation_only": 0,
+            "description": "Merged annotations threshold=1, keep_best=0",
+            "workspace_name": self.wsName
+        }
+        ret = self.serviceImpl.merge_metabolic_annotations(self.ctx, params_merge)
