@@ -417,13 +417,10 @@ class CompareAnnotationsUtil:
         return(max_key)
 
     def run(self, ctx, params):
-        ontology = self.anno_api.get_annotation_ontology_events({
+        get_ontology_results = self.anno_api.get_annotation_ontology_events({
             "input_ref": params['genome'],
             "workspace-url": self.config["workspace-url"]
         })
-
-        with open(os.path.join(self.scratch, "get_ontology_dump.json"), 'w') as outfile:
-            json.dump(ontology, outfile, indent=2)
 
         # collect reports
         html_reports = []
@@ -431,8 +428,10 @@ class CompareAnnotationsUtil:
         os.mkdir(output_directory)
 
         ontology_selected = f.filter_selected_ontologies(
-            ontology, params, workflow="compare")
+            get_ontology_results, params, workflow="compare")
         html_reports.append(f.html_get_ontology_summary(ontology_selected, output_directory))
+        with open(os.path.join(self.scratch, "get_ontology_dump.json"), 'w') as outfile:
+            json.dump(ontology_selected, outfile, indent=2)
 
         # finalize html reports
         report_params = {

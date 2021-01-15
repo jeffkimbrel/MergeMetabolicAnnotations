@@ -51,10 +51,12 @@ class ImportAnnotationsUtil:
 
         html_reports.append(f.html_add_ontology_summary(
             params, ontology, add_ontology_results, output_directory))
-        html_reports.append(f.html_get_ontology_summary(get_ontology_results, output_directory))
 
+        ontology_selected = f.filter_selected_ontologies(
+            get_ontology_results, params, workflow="unique")
+        html_reports.append(f.html_get_ontology_summary(ontology_selected, output_directory))
         with open(os.path.join(self.scratch, "get_ontology_dump.json"), 'w') as outfile:
-            json.dump(get_ontology_results, outfile, indent=2)
+            json.dump(ontology_selected, outfile, indent=2)
 
         # finalize html reports
         report_params = {
