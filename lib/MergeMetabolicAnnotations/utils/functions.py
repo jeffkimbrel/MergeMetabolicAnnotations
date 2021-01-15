@@ -3,6 +3,7 @@ import os
 import logging
 import yaml
 import datetime
+import json
 
 
 def df_to_ontology(params, pass_df=None):
@@ -115,6 +116,40 @@ def html_add_ontology_summary(params, ontology, api_results, output_directory):
             'description': 'HTML report for import_annotations app'}
 
 
+def get_event_lists(ontology):
+    # print(type(ontology['feature_types']))
+
+    gene_features = [k for k, v in ontology['feature_types'].items() if v == "gene"]
+
+    events = {}
+    for event in ontology["events"]:
+        event_id = event['event_id']
+        events[event_id] = {'genes': [],
+                            'terms': [],
+                            'msrxns': [],
+                            'description': event['description'],
+                            'timestamp': event['timestamp'],
+                            'method_version': event['method_version'],
+                            'ontology_id': event['ontology_id']
+                            }
+
+        for gene in event["ontology_terms"]:
+            if gene in gene_features:
+                events[event_id]['genes'].append(gene)
+                for entry in event["ontology_terms"][gene]:
+                    if "term" in entry.keys():
+                        events[event_id]['terms'].append(entry['term'])
+
+                    if "modelseed_ids" in entry.keys():
+                        events[event_id]['msrxns'] += entry['modelseed_ids']
+
+        events[event_id]['genes'] = list(set(events[event_id]['genes']))
+        events[event_id]['terms'] = list(set(events[event_id]['terms']))
+        events[event_id]['msrxns'] = list(set(events[event_id]['msrxns']))
+
+    return events
+
+
 def html_get_ontology_summary(ontology, output_directory):
     '''
     Only counts gene features, ignores cds
@@ -129,33 +164,14 @@ def html_get_ontology_summary(ontology, output_directory):
         '<table cellspacing="0" cellpadding="3" border="1"><tr><th>Description</th><th>Timestamp</th><th>App Version</th><th>Ontology</th><th>Genes</th><th>Unique Terms</th><th>Unique ModelSEED rxns</th></tr>')
 
     # get counts and add to new line of table
-    gene_features = [k for k, v in ontology['feature_types'].items() if v == "gene"]
-
-    for event in ontology["events"]:
-        gene_count = 0
-
-        terms = []
-        msrxns = []
-
-        for gene in event["ontology_terms"]:
-            if gene in gene_features:
-                gene_count += 1
-                for entry in event["ontology_terms"][gene]:
-                    if "term" in entry.keys():
-                        terms.append(entry['term'])
-
-                    if "modelseed_ids" in entry.keys():
-                        msrxns += entry['modelseed_ids']
-
-        # term_count = 0
-        # msrxn_count = 0
-        term_count = len(list(set(terms)))
-        msrxn_count = len(list(set(msrxns)))
-
+    event_summary = get_event_lists(ontology)
+    for event in event_summary:
         report.append(
-            f'<tr><td>{event["description"].split(":")[0]}</td><td>{event["timestamp"]}</td><td>{event["method_version"]}</td><td>{event["ontology_id"]}</td><td>{gene_count}</td><td>{term_count}</td><td>{msrxn_count}</td></tr>')
+            f'<tr><td>{event_summary[event]["description"].split(":")[0]}</td><td>{event_summary[event]["timestamp"]}</td><td>{event_summary[event]["method_version"]}</td><td>{event_summary[event]["ontology_id"]}</td><td>{len(event_summary[event]["genes"])}</td><td>{len(event_summary[event]["terms"])}</td><td>{len(event_summary[event]["msrxns"])}</td></tr>')
 
     report.append('</table>')
+
+    print(output_file)
 
     # Write to file
     with open(output_file, 'w') as f:
@@ -274,3 +290,11 @@ def score_mergers(ontology_merged, params):
 
     # returns all results
     return df
+
+
+if __name__ == "__main__":
+    ontology_selected = json.loads(
+        open("/Users/kimbrel1/Desktop/get_ontology_dump.json", "r").read())
+
+    # d = get_event_lists(ontology_selected)
+    html_get_ontology_summary(ontology_selected, "/Users/kimbrel1/Desktop/")
