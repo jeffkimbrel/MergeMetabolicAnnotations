@@ -123,7 +123,7 @@ def html_get_ontology_summary(ontology, output_directory):
     output_file = os.path.join(output_directory, "get_ontology_summary.html")
 
     report = html_header()
-    report.append(f'<h3>Compare Annotations Test</h3>')
+    report.append(f'<h3>Compare Annotations Summary</h3>')
 
     report.append(
         '<table cellspacing="0" cellpadding="3" border="1"><tr><th>Description</th><th>Timestamp</th><th>App Version</th><th>Ontology</th><th>Genes</th><th>Unique Terms</th><th>Unique ModelSEED rxns</th></tr>')
@@ -169,27 +169,44 @@ def html_get_ontology_summary(ontology, output_directory):
 
 def filter_selected_ontologies(ontology, params, workflow="compare"):
     '''
-    both workflows filter out the ontologies to those selected in the UI, but
-    the merge workflow also adds the annotation_weights to the events
+    unique will not use params and just give all unique event_ids.
+    compare and merge workflows filter out the ontologies to those selected in
+    the UI, but the merge workflow also adds the annotation_weights to the
+    events. both return all unique if no events are selected, and defaulting to
+    a weight of 1 for the merge
 
-    both return all if no events are selected, and defaulting to a weight of 1
-    for the merge
+    The unique functionality is added because of a current bug
     '''
 
     ontology_selected = {"events": [],
                          "feature_types": ontology["feature_types"]}
 
+    added_ontologies = []
+
+    # the list of selections have different names depending on the app
+    if workflow == "compare":
+        selected_events = params['annotations_to_compare']
+    elif workflow == "merge":
+        selected_events = params['annotations_to_merge']
+
     for event in ontology["events"]:
-        if len(params["annotations_to_merge"]) == 0:
-            if workflow == "merge":
-                event['annotation_weight'] = 1
-            ontology_selected['events'].append(event)
-        else:
-            for selected_event in params["annotations_to_merge"]:
-                if event["event_id"] == selected_event["annotation_source"][0]:
+        if event["event_id"] not in added_ontologies:
+            if workflow == "unique":
+                ontology_selected['events'].append(event)
+                added_ontologies.append(event["event_id"])
+            else:
+                if len(selected_events) == 0:
                     if workflow == "merge":
-                        event['annotation_weight'] = selected_event["annotation_weight"]
+                        event['annotation_weight'] = 1
                     ontology_selected['events'].append(event)
+                    added_ontologies.append(event["event_id"])
+                else:
+                    for selected_event in selected_events:
+                        if event["event_id"] == selected_event["annotation_source"][0]:
+                            if workflow == "merge":
+                                event['annotation_weight'] = selected_event["annotation_weight"]
+                            ontology_selected['events'].append(event)
+                            added_ontologies.append(event["event_id"])
 
     return ontology_selected
 
@@ -239,6 +256,8 @@ def score_mergers(ontology_merged, params):
                     best_score = ontology_merged[gene_id][MSRXN]
 
             # replace threshold value with best score, if "best only" is true
+            # righ tnow, this happens whether or not the best_score is above the
+            # threshold, but may need to only happen if best_score > treshold
             gene_threshold = best_score
 
         else:

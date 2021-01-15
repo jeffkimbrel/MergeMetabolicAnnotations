@@ -430,7 +430,9 @@ class CompareAnnotationsUtil:
         output_directory = os.path.join(self.scratch, str(uuid.uuid4()))
         os.mkdir(output_directory)
 
-        html_reports.append(f.html_get_ontology_summary(ontology, output_directory))
+        ontology_selected = f.filter_selected_ontologies(
+            ontology, params, workflow="compare")
+        html_reports.append(f.html_get_ontology_summary(ontology_selected, output_directory))
 
         # finalize html reports
         report_params = {
