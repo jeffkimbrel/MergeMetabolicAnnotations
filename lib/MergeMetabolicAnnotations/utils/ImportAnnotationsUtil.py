@@ -44,6 +44,11 @@ class ImportAnnotationsUtil:
             "workspace-url": self.config["workspace-url"]
         })
 
+        ontology_selected = f.filter_selected_ontologies(
+            get_ontology_results, params, workflow="unique")
+        with open(os.path.join(self.scratch, "get_ontology_dump.json"), 'w') as outfile:
+            json.dump(ontology_selected, outfile, indent=2)
+
         # make report
         html_reports = []
         output_directory = os.path.join(self.scratch, str(uuid.uuid4()))
@@ -51,12 +56,8 @@ class ImportAnnotationsUtil:
 
         html_reports.append(f.html_add_ontology_summary(
             params, ontology, add_ontology_results, output_directory))
-
-        ontology_selected = f.filter_selected_ontologies(
-            get_ontology_results, params, workflow="unique")
-        html_reports.append(f.html_get_ontology_summary(ontology_selected, output_directory))
-        with open(os.path.join(self.scratch, "get_ontology_dump.json"), 'w') as outfile:
-            json.dump(ontology_selected, outfile, indent=2)
+        event_summary = f.get_event_lists(ontology_selected)
+        html_reports = f.compare_report_stack(html_reports, event_summary, output_directory)
 
         # finalize html reports
         report_params = {

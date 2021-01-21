@@ -10,6 +10,7 @@ MAINTAINER KBase Developer
 
 RUN pip install bokeh
 RUN pip install pandas
+RUN pip install holoviews
 
 # -----------------------------------------
 
