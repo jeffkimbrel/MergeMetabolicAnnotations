@@ -416,6 +416,7 @@ def compare_report_stack(html_reports, event_summary, output_directory, to_highl
     html_reports.append(plot_totals(event_summary, output_directory))
     html_reports.append(plot_agreements(event_summary, output_directory))
     html_reports.append(plot_csc(event_summary, output_directory))
+    html_reports.append(plot_csc2(event_summary, output_directory))
 
     return html_reports
 
@@ -481,10 +482,84 @@ def plot_csc(event_summary, output_directory):
             'description': 'CSC Report'}
 
 
+def plot_csc2(event_summary, output_directory):
+
+    def get_longest(type, modified_event_summary, aggregated_events):
+        current_longest = {'description': '', 'a': 0}
+        for event in modified_event_summary:
+            a = len(list(set(modified_event_summary[event][type]) - set(aggregated_events)))
+            if a >= current_longest['a']:  # need >= in case the last one is 0
+                current_longest = {'description': event, 'a': a}
+        return current_longest['description']
+
+    def load_it_up(type, **kwargs):
+        processed_events = {}
+        aggregated_events = []
+        original_event_count = len(event_summary.keys())
+        modified_event_summary = event_summary.copy()
+        # bar_order = []
+        baseline = 0
+
+        df = pd.DataFrame(columns=['DESCRIPTION', 'COMPARISON', 'COUNT'])
+
+        while len(processed_events.keys()) < original_event_count:
+            l = modified_event_summary.pop(get_longest(
+                type, modified_event_summary, aggregated_events))
+
+            new_events = l[type]
+            sub_baseline = baseline
+
+            # get what overlaps with already processed events
+            for event in processed_events:
+                overlap = set(new_events) & set(processed_events[event])
+                new_events = set(new_events) - set(processed_events[event])
+                df = df.append(pd.Series(data={
+                    'DESCRIPTION': l['description'], 'COMPARISON': event, 'COUNT': len(overlap), 'HIGH': sub_baseline, 'LOW': sub_baseline-len(overlap)}), ignore_index=True)
+                sub_baseline -= len(overlap)
+
+            processed_events[l['description']] = new_events
+            aggregated_events = list(set(aggregated_events).union(set(new_events)))
+
+            # if anything is left, add it has new events
+            df = df.append(pd.Series(data={
+                'DESCRIPTION': l['description'], 'COMPARISON': l['description'], 'COUNT': len(new_events), 'HIGH': baseline + len(new_events), 'LOW': baseline}), ignore_index=True)
+            baseline = len(aggregated_events)
+        print(df)
+
+        seg = hv.Segments(df, [hv.Dimension('LOW', label='Count'),
+                               hv.Dimension('DESCRIPTION', label='Genome Event'),
+                               'HIGH',
+                               'DESCRIPTION'])
+
+        return seg
+
+    sets = ['genes', 'msrxns', 'gene_msrxns']
+    seg = hv.DynamicMap(load_it_up, kdims='Type').redim.values(Type=sets)
+
+    csc_hover = HoverTool(tooltips=[("Main", "@DESCRIPTION"),
+                                    ("Comp", "@COMPARISON"),
+                                    ("Count", "@COUNT")])
+
+    seg.opts(line_width=40, color='COMPARISON', cmap='bgy', width=100+50*len(event_summary.keys()),
+             height=800, tools=[csc_hover], invert_axes=True, xrotation=90)
+
+    # bars.opts(
+    #     opts.Bars(color=hv.Cycle('Colorblind'), invert_axes=True, show_legend=False, stacked=True,
+    #               tools=['hover'], width=1000, height=100+50*len(event_summary.keys()), xrotation=90))
+
+    p_path = os.path.join(output_directory, 'csc2.html')
+    hv.output(widget_location='top')
+    hv.save(seg, p_path, backend='bokeh')
+
+    return {'path': output_directory,
+            'name': os.path.basename(p_path),
+            'description': 'CSC Report'}
+
+
 if __name__ == "__main__":
     ontology_selected = json.loads(
-        open("/Users/kimbrel1/Desktop/get_ontology_dump.json", "r").read())
+        open("/Users/kimbrel1/Desktop/get_ontology_dump_after_merge.json", "r").read())
 
     d = get_event_lists(ontology_selected)
-    p_path = plot_csc(d, "/Users/kimbrel1/Desktop/")
-    # print(p_path)
+    p_path = plot_csc2(d, "/Users/kimbrel1/Desktop/")
+    print(p_path)
