@@ -514,7 +514,7 @@ def plot_csc2(event_summary, output_directory):
                 overlap = set(new_events) & set(processed_events[event])
                 new_events = set(new_events) - set(processed_events[event])
                 df = df.append(pd.Series(data={
-                    'DESCRIPTION': l['description'], 'COMPARISON': event, 'COUNT': len(overlap), 'HIGH': sub_baseline, 'LOW': sub_baseline-len(overlap)}), ignore_index=True)
+                    'DESCRIPTION': l['description'][:50], 'COMPARISON': event[:50], 'COUNT': len(overlap), 'HIGH': sub_baseline, 'LOW': sub_baseline-len(overlap)}), ignore_index=True)
                 sub_baseline -= len(overlap)
 
             processed_events[l['description']] = new_events
@@ -522,9 +522,14 @@ def plot_csc2(event_summary, output_directory):
 
             # if anything is left, add it has new events
             df = df.append(pd.Series(data={
-                'DESCRIPTION': l['description'], 'COMPARISON': l['description'], 'COUNT': len(new_events), 'HIGH': baseline + len(new_events), 'LOW': baseline}), ignore_index=True)
+                'DESCRIPTION': l['description'][:50], 'COMPARISON': l['description'][:50], 'COUNT': len(new_events), 'HIGH': baseline + len(new_events), 'LOW': baseline}), ignore_index=True)
             baseline = len(aggregated_events)
+
         print(df)
+
+        # # flip the df order so plot order is flipped.
+        # df = df.loc[::-1].reset_index(drop=True)
+        # print(df)
 
         seg = hv.Segments(df, [hv.Dimension('LOW', label='Count'),
                                hv.Dimension('DESCRIPTION', label='Genome Event'),
@@ -540,8 +545,8 @@ def plot_csc2(event_summary, output_directory):
                                     ("Comp", "@COMPARISON"),
                                     ("Count", "@COUNT")])
 
-    seg.opts(line_width=40, color='COMPARISON', cmap='bgy', width=100+50*len(event_summary.keys()),
-             height=800, tools=[csc_hover], invert_axes=True, xrotation=90)
+    seg.opts(line_width=40, color='COMPARISON', cmap='bgy', height=100+50*len(event_summary.keys()),
+             width=800, tools=[csc_hover], invert_axes=False, xrotation=90)
 
     # bars.opts(
     #     opts.Bars(color=hv.Cycle('Colorblind'), invert_axes=True, show_legend=False, stacked=True,
