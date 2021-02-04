@@ -528,8 +528,8 @@ def plot_csc2(event_summary, output_directory, descript_truncate=50):
         print(df)
 
         # # flip the df order so plot order is flipped.
-        # df = df.loc[::-1].reset_index(drop=True)
-        # print(df)
+        df = df.loc[::-1].reset_index(drop=True)
+        print(df)
 
         seg = hv.Segments(df, [hv.Dimension('LOW', label='Count'),
                                hv.Dimension('DESCRIPTION', label='Genome Event'),
@@ -545,7 +545,7 @@ def plot_csc2(event_summary, output_directory, descript_truncate=50):
                                     ("Comp", "@COMPARISON"),
                                     ("Count", "@COUNT")])
 
-    seg.opts(line_width=40, color='COMPARISON', cmap='bgy', height=100+50*len(event_summary.keys()),
+    seg.opts(line_width=40, color='COMPARISON', cmap='bgy_r', height=100+50*len(event_summary.keys()),
              width=800, tools=[csc_hover], invert_axes=False, xrotation=90)
 
     # bars.opts(
