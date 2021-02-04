@@ -5,9 +5,11 @@ import json
 import uuid
 from collections import Counter
 
-from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
-from installed_clients.DataFileUtilClient import DataFileUtil
-from installed_clients.GenomeFileUtilClient import GenomeFileUtil
+############# THIS APP IS DEFUNCT FOR NOW #############
+
+# from installed_clients.GenomeAnnotationAPIClient import GenomeAnnotationAPI
+# from installed_clients.DataFileUtilClient import DataFileUtil
+# from installed_clients.GenomeFileUtilClient import GenomeFileUtil
 from installed_clients.WorkspaceClient import Workspace as Workspace
 from installed_clients.KBaseReportClient import KBaseReport
 

@@ -26,11 +26,11 @@ suggestions :
 parameters :
     genome :
       ui-name : |
-            Genome to be annotated
+            Genome to compare
       short-hint : |
-            Select the Genome object that these annotations should be assigned to
+            Select the Genome with annotation events to compare
       long-hint  : |
-            Select the Genome object that these annotations should be assigned to
+            Select the Genome with annotation events to compare
     annotations_to_compare :
         ui-name : |
             Annotations to compare
