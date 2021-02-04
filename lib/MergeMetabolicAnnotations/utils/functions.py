@@ -482,7 +482,7 @@ def plot_csc(event_summary, output_directory):
             'description': 'CSC Report'}
 
 
-def plot_csc2(event_summary, output_directory):
+def plot_csc2(event_summary, output_directory, descript_truncate=50):
 
     def get_longest(type, modified_event_summary, aggregated_events):
         current_longest = {'description': '', 'a': 0}
@@ -514,7 +514,7 @@ def plot_csc2(event_summary, output_directory):
                 overlap = set(new_events) & set(processed_events[event])
                 new_events = set(new_events) - set(processed_events[event])
                 df = df.append(pd.Series(data={
-                    'DESCRIPTION': l['description'][:50], 'COMPARISON': event[:50], 'COUNT': len(overlap), 'HIGH': sub_baseline, 'LOW': sub_baseline-len(overlap)}), ignore_index=True)
+                    'DESCRIPTION': l['description'][:descript_truncate], 'COMPARISON': event[:descript_truncate], 'COUNT': len(overlap), 'HIGH': sub_baseline, 'LOW': sub_baseline-len(overlap)}), ignore_index=True)
                 sub_baseline -= len(overlap)
 
             processed_events[l['description']] = new_events
@@ -522,7 +522,7 @@ def plot_csc2(event_summary, output_directory):
 
             # if anything is left, add it has new events
             df = df.append(pd.Series(data={
-                'DESCRIPTION': l['description'][:50], 'COMPARISON': l['description'][:50], 'COUNT': len(new_events), 'HIGH': baseline + len(new_events), 'LOW': baseline}), ignore_index=True)
+                'DESCRIPTION': l['description'][:descript_truncate], 'COMPARISON': l['description'][:descript_truncate], 'COUNT': len(new_events), 'HIGH': baseline + len(new_events), 'LOW': baseline}), ignore_index=True)
             baseline = len(aggregated_events)
 
         print(df)
