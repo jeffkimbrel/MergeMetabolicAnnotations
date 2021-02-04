@@ -38,13 +38,19 @@ class MergeAnnotationsUtil:
             json.dump(ontology, outfile, indent=2)
 
         ontology_selected = f.filter_selected_ontologies(ontology, params, workflow="merge")
-        ontology_merged = f.merge_ontology_events(ontology_selected)
+        # ontology_merged = f.merge_ontology_events(ontology_selected)
+        #
+        # with open(os.path.join(self.scratch, "ontology_merged.json"), 'w') as outfile:
+        #     json.dump(ontology_merged, outfile, indent=2)
+
+        ontology_merged = f.merge_ontology_events2(ontology_selected)
 
         with open(os.path.join(self.scratch, "ontology_merged.json"), 'w') as outfile:
             json.dump(ontology_merged, outfile, indent=2)
 
-        scored_df = f.score_mergers(ontology_merged, params)
-        scored_df.to_csv(os.path.join(self.scratch, "scored.txt"), sep="\t", index=False)
+        # scored_df = f.score_mergers(ontology_merged, params)
+        scored_df = f.score_mergers2(ontology_merged, params)
+        # scored_df.to_csv(os.path.join(self.scratch, "scored.txt"), sep="\t", index=False)
 
         filtered_df = scored_df[scored_df['pass'] == 1]
 
@@ -95,14 +101,17 @@ class MergeAnnotationsUtil:
         html_reports = f.compare_report_stack(
             html_reports, event_summary, output_directory, to_highlight=to_highlight)
 
+        # not technically an html report, but a text file
+        html_reports.append(f.merge_details_report(scored_df, output_directory))
+
         # finalize html reports
         report_params = {
             'message': '',
             'html_links': html_reports,
             'direct_html_link_index': 0,
-            'objects_created': [{'ref': add_ontology_results["output_ref"], 'description': 'Genome with imported annotations'}],
+            'objects_created': [{'ref': add_ontology_results["output_ref"], 'description': 'Genome with merged annotations'}],
             'workspace_name': params['workspace_name'],
-            'report_object_name': f'import_annotations_{uuid.uuid4()}'}
+            'report_object_name': f'merge_annotations_{uuid.uuid4()}'}
 
         report_output = self.kbr.create_extended_report(report_params)
 

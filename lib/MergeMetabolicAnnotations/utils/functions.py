@@ -199,6 +199,16 @@ def html_get_ontology_summary(event_summary, output_directory, to_highlight=[]):
             'description': 'Summary Report'}
 
 
+def merge_details_report(df, output_directory):
+    output_file = os.path.join(output_directory, "merge_details.txt")
+
+    df.to_csv(output_file, sep="\t", index=False)
+
+    return {'path': output_directory,
+            'name': os.path.basename(output_file),
+            'description': 'Merge Details'}
+
+
 def filter_selected_ontologies(ontology, params, workflow="compare"):
     '''
     unique will not use params and just give all unique event_ids.
@@ -281,6 +291,43 @@ def merge_ontology_events(ontology):
     return ontology_merged
 
 
+def merge_ontology_events2(ontology):
+    '''
+    The annotation ontology api can put annotations in the cds features as well
+    as the gene features. This code only considers gene features, and ignores
+    annotations in cds features. I think they only get added to cds features if
+    they were aliases
+
+    Now, adds to a dictionary by gene/rxn/event... this will keep an event from
+    double dipping and scoring twice for a gene_msrxn pair
+    '''
+
+    # get counts and add to new line of table
+    gene_features = [k for k, v in ontology['feature_types'].items() if v == "gene"]
+
+    ontology_merged = {}
+
+    for event in ontology["events"]:
+        event_id = event['event_id']
+
+        for gene in event["ontology_terms"]:
+            if gene in gene_features:
+                for entry in event["ontology_terms"][gene]:
+                    if "modelseed_ids" in entry.keys():
+                        for MSRXN in entry['modelseed_ids']:
+                            if gene in ontology_merged:
+                                if MSRXN in ontology_merged[gene]:
+                                    ontology_merged[gene][MSRXN][event_id] = event['annotation_weight']
+                                else:
+                                    ontology_merged[gene][MSRXN] = {
+                                        event_id: event['annotation_weight']}
+                            else:
+                                ontology_merged[gene] = {
+                                    MSRXN: {event_id: event['annotation_weight']}}
+
+    return ontology_merged
+
+
 def score_mergers(ontology_merged, params):
     '''
     returns a pandas dataframe suitable for the import annotations workflow
@@ -306,11 +353,59 @@ def score_mergers(ontology_merged, params):
         for MSRXN in ontology_merged[gene_id]:
             if ontology_merged[gene_id][MSRXN] >= gene_threshold:
                 df = df.append(pd.Series(data={
-                               'gene': gene_id, 'term': MSRXN, 'score': ontology_merged[gene_id][MSRXN], 'pass': 1}), ignore_index=True)
+                               'gene': gene_id, 'term': MSRXN, 'score': ontology_merged[gene_id][MSRXN], 'gene_treshold': gene_threshold, 'pass': 1}), ignore_index=True)
 
             else:
                 df = df.append(pd.Series(data={
-                               'gene': gene_id, 'term': MSRXN, 'score': ontology_merged[gene_id][MSRXN], 'pass': 0}), ignore_index=True)
+                               'gene': gene_id, 'term': MSRXN, 'score': ontology_merged[gene_id][MSRXN], 'gene_treshold': gene_threshold, 'pass': 0}), ignore_index=True)
+
+    # returns all results
+    return df
+
+
+def score_mergers2(ontology_merged, params):
+    '''
+    returns a pandas dataframe suitable for the import annotations workflow
+    '''
+
+    df = pd.DataFrame(columns=['gene', 'term', 'score', 'gene_treshold'])
+
+    for gene_id in ontology_merged:
+        if params["keep_best_annotation_only"] == 1:
+            best_score = 0
+            for MSRXN in ontology_merged[gene_id]:
+                MSRXN_sum = sum(ontology_merged[gene_id][MSRXN].values())
+                if MSRXN_sum > best_score:
+                    best_score = MSRXN_sum
+
+            # if best only is true and best_score is above threshold, use best_score as new threshold
+            if best_score > params["annotation_threshold"]:
+                gene_threshold = best_score
+            else:
+                gene_threshold = params["annotation_threshold"]
+        else:
+            gene_threshold = params["annotation_threshold"]
+
+        for MSRXN in ontology_merged[gene_id]:
+            MSRXN_sum = sum(ontology_merged[gene_id][MSRXN].values())
+            event_series = pd.Series(ontology_merged[gene_id][MSRXN])
+            # logging.info(
+            #     gene_id + "\t" + MSRXN + "\t" + str(ontology_merged[gene_id][MSRXN]) + "\t" + str(MSRXN_sum) + "\t" + str(gene_threshold))
+
+            score_series = pd.Series(data={
+                'gene': gene_id,
+                'term': MSRXN,
+                'score': MSRXN_sum,
+                'gene_treshold': gene_threshold})
+
+            score_series = score_series.append(event_series)
+
+            if MSRXN_sum >= gene_threshold:
+                score_series = score_series.append(pd.Series({'pass': 1}))
+            else:
+                score_series = score_series.append(pd.Series({'pass': 0}))
+
+            df = df.append(score_series, ignore_index=True)
 
     # returns all results
     return df
@@ -415,7 +510,7 @@ def compare_report_stack(html_reports, event_summary, output_directory, to_highl
     html_reports.append(html_get_ontology_summary(event_summary, output_directory, to_highlight))
     html_reports.append(plot_totals(event_summary, output_directory))
     html_reports.append(plot_agreements(event_summary, output_directory))
-    html_reports.append(plot_csc(event_summary, output_directory))
+    #html_reports.append(plot_csc(event_summary, output_directory))
     html_reports.append(plot_csc2(event_summary, output_directory))
 
     return html_reports
