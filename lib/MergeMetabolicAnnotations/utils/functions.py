@@ -337,36 +337,6 @@ def merge_ontology_events(ontology):
     as the gene features. This code only considers gene features, and ignores
     annotations in cds features. I think they only get added to cds features if
     they were aliases
-    '''
-
-    # get counts and add to new line of table
-    gene_features = [k for k, v in ontology['feature_types'].items() if v == "gene"]
-
-    ontology_merged = {}
-
-    for event in ontology["events"]:
-        for gene in event["ontology_terms"]:
-            if gene in gene_features:
-                for entry in event["ontology_terms"][gene]:
-                    if "modelseed_ids" in entry.keys():
-                        for MSRXN in entry['modelseed_ids']:
-                            if gene in ontology_merged:
-                                if MSRXN in ontology_merged[gene]:
-                                    ontology_merged[gene][MSRXN] += event['annotation_weight']
-                                else:
-                                    ontology_merged[gene][MSRXN] = event['annotation_weight']
-                            else:
-                                ontology_merged[gene] = {MSRXN: event['annotation_weight']}
-
-    return ontology_merged
-
-
-def merge_ontology_events2(ontology):
-    '''
-    The annotation ontology api can put annotations in the cds features as well
-    as the gene features. This code only considers gene features, and ignores
-    annotations in cds features. I think they only get added to cds features if
-    they were aliases
 
     Now, adds to a dictionary by gene/rxn/event... this will keep an event from
     double dipping and scoring twice for a gene_msrxn pair
@@ -399,41 +369,6 @@ def merge_ontology_events2(ontology):
 
 
 def score_mergers(ontology_merged, params):
-    '''
-    returns a pandas dataframe suitable for the import annotations workflow
-    '''
-
-    df = pd.DataFrame(columns=['gene', 'term', 'score', 'pass'])
-
-    for gene_id in ontology_merged:
-        if params["keep_best_annotation_only"] == 1:
-            best_score = 0
-            for MSRXN in ontology_merged[gene_id]:
-                if ontology_merged[gene_id][MSRXN] > best_score:
-                    best_score = ontology_merged[gene_id][MSRXN]
-
-            # if best only is true and best_score is above threshold, use best_score as new threshold
-            if best_score > params["annotation_threshold"]:
-                gene_threshold = best_score
-            else:
-                gene_threshold = params["annotation_threshold"]
-        else:
-            gene_threshold = params["annotation_threshold"]
-
-        for MSRXN in ontology_merged[gene_id]:
-            if ontology_merged[gene_id][MSRXN] >= gene_threshold:
-                df = df.append(pd.Series(data={
-                               'gene': gene_id, 'term': MSRXN, 'score': ontology_merged[gene_id][MSRXN], 'gene_treshold': gene_threshold, 'pass': 1}), ignore_index=True)
-
-            else:
-                df = df.append(pd.Series(data={
-                               'gene': gene_id, 'term': MSRXN, 'score': ontology_merged[gene_id][MSRXN], 'gene_treshold': gene_threshold, 'pass': 0}), ignore_index=True)
-
-    # returns all results
-    return df
-
-
-def score_mergers2(ontology_merged, params):
     '''
     returns a pandas dataframe suitable for the import annotations workflow
     '''
@@ -580,74 +515,12 @@ def compare_report_stack(html_reports, event_summary, output_directory, to_highl
     html_reports.append(html_get_ontology_summary(event_summary, output_directory, to_highlight))
     html_reports.append(plot_totals(event_summary, output_directory))
     html_reports.append(plot_agreements(event_summary, output_directory))
-    #html_reports.append(plot_csc(event_summary, output_directory))
-    html_reports.append(plot_csc2(event_summary, output_directory))
+    html_reports.append(plot_csc(event_summary, output_directory))
 
     return html_reports
 
 
-def plot_csc(event_summary, output_directory):
-
-    def get_longest(type, modified_event_summary, aggregated_events):
-        current_longest = {'description': '', 'a': 0}
-        for event in modified_event_summary:
-            a = len(list(set(modified_event_summary[event][type]) - set(aggregated_events)))
-            if a >= current_longest['a']:  # need >= in case the last one is 0
-                current_longest = {'description': event, 'a': a}
-        return current_longest['description']
-
-    def load_it_up(type, **kwargs):
-        processed_events = {}
-        aggregated_events = []
-        original_event_count = len(event_summary.keys())
-        modified_event_summary = event_summary.copy()
-        bar_order = []
-
-        df = pd.DataFrame(columns=['DESCRIPTION', 'COMPARISON', 'COUNT'])
-
-        while len(processed_events.keys()) < original_event_count:
-            l = modified_event_summary.pop(get_longest(
-                type, modified_event_summary, aggregated_events))
-
-            new_events = l[type]
-            for event in processed_events:
-                df = df.append(pd.Series(data={
-                    'DESCRIPTION': l['description'], 'COMPARISON': event, 'COUNT': 0 - len(set(new_events) & set(processed_events[event]))}), ignore_index=True)
-                new_events = set(new_events) - set(processed_events[event])
-
-            processed_events[l['description']] = new_events
-            aggregated_events = list(set(aggregated_events).union(set(new_events)))
-            df = df.append(pd.Series(data={
-                'DESCRIPTION': l['description'], 'COMPARISON': l['description'], 'COUNT': len(new_events)}), ignore_index=True)
-
-        # create a line plot
-        df_to_self = df[df['DESCRIPTION'] == df['COMPARISON']]
-        df_to_self = df_to_self.drop(columns=['COMPARISON'])
-        line_plot = hv.Curve(df_to_self).opts(color='k')
-        dot_plot = hv.Scatter(df_to_self).opts(color='k', marker='+', size=10)
-
-        bars = hv.Bars(df, ['DESCRIPTION', 'COMPARISON'], 'COUNT')
-        bars = bars * line_plot * dot_plot
-
-        return bars
-
-    sets = ['genes', 'msrxns', 'gene_msrxns']
-    bars = hv.DynamicMap(load_it_up, kdims='Type').redim.values(Type=sets)
-
-    bars.opts(
-        opts.Bars(color=hv.Cycle('Colorblind'), invert_axes=True, show_legend=False, stacked=True,
-                  tools=['hover'], width=1000, height=100+50*len(event_summary.keys()), xrotation=90))
-
-    p_path = os.path.join(output_directory, 'csc.html')
-    hv.output(widget_location='top')
-    hv.save(bars, p_path, backend='bokeh')
-
-    return {'path': output_directory,
-            'name': os.path.basename(p_path),
-            'description': 'CSC Report'}
-
-
-def plot_csc2(event_summary, output_directory, descript_truncate=50):
+def plot_csc(event_summary, output_directory, descript_truncate=50):
 
     def get_longest(type, modified_event_summary, aggregated_events):
         current_longest = {'description': '', 'a': 0}
@@ -690,11 +563,8 @@ def plot_csc2(event_summary, output_directory, descript_truncate=50):
                 'DESCRIPTION': l['description'][:descript_truncate], 'COMPARISON': l['description'][:descript_truncate], 'COUNT': len(new_events), 'HIGH': baseline + len(new_events), 'LOW': baseline}), ignore_index=True)
             baseline = len(aggregated_events)
 
-        print(df)
-
         # # flip the df order so plot order is flipped.
         df = df.loc[::-1].reset_index(drop=True)
-        print(df)
 
         seg = hv.Segments(df, [hv.Dimension('LOW', label='Count'),
                                hv.Dimension('DESCRIPTION', label='Genome Event'),
@@ -728,8 +598,8 @@ def plot_csc2(event_summary, output_directory, descript_truncate=50):
 
 if __name__ == "__main__":
     ontology_selected = json.loads(
-        open("/Users/kimbrel1/Desktop/get_ontology_dump_after_merge.json", "r").read())
+        open("~/Desktop/get_ontology_dump_after_merge.json", "r").read())
 
     d = get_event_lists(ontology_selected)
-    p_path = plot_csc2(d, "/Users/kimbrel1/Desktop/")
+    p_path = plot_csc(d, "~/Desktop/")
     print(p_path)

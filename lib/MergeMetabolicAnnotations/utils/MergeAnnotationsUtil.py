@@ -43,13 +43,13 @@ class MergeAnnotationsUtil:
         # with open(os.path.join(self.scratch, "ontology_merged.json"), 'w') as outfile:
         #     json.dump(ontology_merged, outfile, indent=2)
 
-        ontology_merged = f.merge_ontology_events2(ontology_selected)
+        ontology_merged = f.merge_ontology_events(ontology_selected)
 
         with open(os.path.join(self.scratch, "ontology_merged.json"), 'w') as outfile:
             json.dump(ontology_merged, outfile, indent=2)
 
         # scored_df = f.score_mergers(ontology_merged, params)
-        scored_df = f.score_mergers2(ontology_merged, params)
+        scored_df = f.score_mergers(ontology_merged, params)
         # scored_df.to_csv(os.path.join(self.scratch, "scored.txt"), sep="\t", index=False)
 
         filtered_df = scored_df[scored_df['pass'] == 1]
