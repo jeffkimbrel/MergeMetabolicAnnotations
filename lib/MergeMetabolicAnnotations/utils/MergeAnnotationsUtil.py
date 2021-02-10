@@ -56,14 +56,14 @@ class MergeAnnotationsUtil:
 
         ###### BELOW: This is basically just the run code from the import app ######
 
-        ontology = f.df_to_ontology(params, pass_df=filtered_df)
+        ontology = f.df_to_ontology(params, pass_df=filtered_df, method="Merge Annotations")
 
         add_ontology_results = self.anno_api.add_annotation_ontology_events({
             "input_ref": params['genome'],
             "output_name": params['output_name'],
             "input_workspace": params['workspace_name'],
             "workspace-url": self.config["workspace-url"],
-            "events": [ontology],
+            "events": ontology,
             "timestamp": self.timestamp,
             "output_workspace": params['workspace_name'],
             "save": 1

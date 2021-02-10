@@ -79,9 +79,8 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # bulk import app
         # params_import = {
         #     "debug": True,
-        #     "annotation_file": "pt32_bulk.txt",
-        #     "description": "test",
-        #     "genome": "30128/3/1",
+        #     "annotation_file": "pf5_bulk_test2.txt",
+        #     "genome": "52279/9/1",
         #     "output_name": "import_bulk_genome",
         #     "workspace_name": self.wsName
         # }

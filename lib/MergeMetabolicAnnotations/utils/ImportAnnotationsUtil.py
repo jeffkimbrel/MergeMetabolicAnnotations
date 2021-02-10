@@ -32,7 +32,7 @@ class ImportAnnotationsUtil:
             "output_name": params['output_name'],
             "input_workspace": params['workspace_name'],
             "workspace-url": self.config["workspace-url"],
-            "events": [ontology],
+            "events": ontology,
             "timestamp": self.timestamp,
             "output_workspace": params['workspace_name'],
             "save": 1

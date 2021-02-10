@@ -4,14 +4,19 @@ import logging
 import yaml
 import datetime
 import json
+import time
+import sys
 
 import holoviews as hv
 from holoviews import opts
 from bokeh.models import HoverTool
 hv.extension('bokeh')
 
+allowed_ontologies = ["KO", "EC", "SSO", "RO", "META", "MSRXN",
+                      "MSCPD", "MSCPX", "BIGG", "BIGGCPD", "GO", "TC", "RHEA"]
 
-def df_to_ontology(params, pass_df=None):
+
+def df_to_ontology(params, pass_df=None, method="Import Annotations"):
     '''
     Takes the text file from staging, or the pandas df passed from the merge
     app, and converts to an ontology dictionary suitable from the annotation
@@ -20,11 +25,13 @@ def df_to_ontology(params, pass_df=None):
     The merge app also calls this, and it can use the same params that the
     import gives... all shared features are in both (except for the
     annotations_file which the html_add_ontology_summary needs to fix)
+
+    The new bulk app also calls this, using pass_df and a "fake" params
     '''
 
     if isinstance(pass_df, pd.DataFrame):
         annotations = pass_df
-        method = "Merge Annotations"
+
     else:
         if 'debug' in params and params['debug'] is True:
             annotations_file_path = os.path.join(
@@ -38,8 +45,6 @@ def df_to_ontology(params, pass_df=None):
                                   names=['gene', 'term']
                                   )
 
-        method = "Import Annotations"
-
     # remove duplicate rows, if any
     annotations = annotations.drop_duplicates()
 
@@ -50,7 +55,9 @@ def df_to_ontology(params, pass_df=None):
         'method': method,  # from above
         'method_version': get_app_version(),
         "timestamp": datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"),
-        'ontology_terms': {}
+        'ontology_terms': {},
+        'gene_count': int(annotations['gene'].nunique()),  # not used in the api
+        'term_count': int(annotations['term'].nunique())  # not used in the api
     }
 
     # add imported terms
@@ -65,7 +72,64 @@ def df_to_ontology(params, pass_df=None):
                     {'term': row['term']}
                 ]
 
-    return ontology
+    return [ontology]
+
+
+def bulk_df_to_ontology(params):
+
+    ontologies = []
+
+    if 'debug' in params and params['debug'] is True:
+        annotations_file_path = os.path.join(
+            '/kb/module/test/test_data', params['annotation_file'])
+    else:
+        annotations_file_path = os.path.join("/staging/", params['annotation_file'])
+
+    annotations = pd.read_csv(annotations_file_path,
+                              sep='\t',
+                              header=None,
+                              names=['gene', 'term', 'ontology', 'description']
+                              )
+
+    for description, description_df in annotations.groupby(annotations['description']):
+
+        for ontology, ontology_df in description_df.groupby(description_df['ontology']):
+
+            if ontology.upper() not in allowed_ontologies:
+                sys.exit(f"ERROR: {ontology} is not a valid Ontology string")
+
+            time.sleep(2)  # This just "guarantees" the timestamps will all be different
+
+            ontology_df = ontology_df[ontology_df['term'].notna()]
+            ontology_df = ontology_df.drop_duplicates()
+
+            ontology = {
+                'event_id': description,
+                'description': description,
+                'ontology_id': ontology.upper(),
+                'method': "Import Bulk Annotations",
+                'method_version': get_app_version(),
+                "timestamp": datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S"),
+                'ontology_terms': {},
+                'gene_count': int(ontology_df['gene'].nunique()),  # not used in the api
+                'term_count': int(ontology_df['term'].nunique())  # not used in the api
+            }
+
+            # add imported terms
+            for index, row in ontology_df.iterrows():
+                if pd.notnull(row['term']):
+                    if row['gene'] in ontology['ontology_terms']:
+                        ontology['ontology_terms'][row['gene']].append(
+                            {'term': row['term']}
+                        )
+                    else:
+                        ontology['ontology_terms'][row['gene']] = [
+                            {'term': row['term']}
+                        ]
+
+            ontologies.append(ontology)
+
+    return ontologies
 
 
 def get_app_version():
@@ -83,30 +147,36 @@ def html_header():
 
 def html_add_ontology_summary(params, ontology, api_results, output_directory):
 
+    logging.info(api_results)
+
     output_file = os.path.join(output_directory, "add_ontology_summary.html")
 
     # Make report directory and copy over files
     report = html_header()
 
     report.append(f'<h3>Import Annotations Summary</h3>')
-
-    report.append(f'<b>Import App version:</b> {ontology["method_version"]}<br>')
-    report.append(f'<b>Timestamp:</b> {ontology["timestamp"]}<br>')
-
-    # running this code with the merge app doesn't have an annotations file
+    report.append(f'<b>Import App version:</b> {get_app_version()}<br>')
     if "annotation_file" in params:
         report.append(f'<b>Annotations file:</b> {params["annotation_file"]}<br>')
-
-    report.append(f'<b>Ontology ID:</b> {params["ontology"]}<br>')
-    report.append(f'<b>Description:</b> {params["description"]}<br>')
-
     report.append(f'<b>Input Ref:</b> {params["genome"]}<br>')
-    report.append(f'<b>Output Ref:</b> {api_results["output_ref"]}<br><br>')
+    report.append(f'<b>Output Ref:</b> {api_results["output_ref"]}<br>')
+    report.append(f'<b>Output Name:</b> {api_results["output_name"]}<br><br>')
 
-    report.append(f'<b>Features in annotations file:</b> {len(ontology["ontology_terms"])}<br>')
     report.append(f'<b>Features (found):</b> {api_results["ftrs_found"]}<br>')
-    report.append(f'<b>Features (not found):</b> {len(api_results["ftrs_not_found"])}<br>')
+    report.append(f'<b>Features (not found):</b> {len(api_results["ftrs_not_found"])}<br><br>')
 
+    # make table
+    report.append(
+        '<table cellspacing="0" cellpadding="3" border="1"><tr><th>Description</th><th>Timestamp</th><th>Ontology</th><th>Genes in file</th><th>Terms in file</th></tr>')
+    for import_event in ontology:
+        gene_count = len(import_event["ontology_terms"])
+        # term_count =
+
+        report.append(
+            f'<tr style="background-color:#EEEEEE"><td>{import_event["description"].split(":")[0]}</td><td>{import_event["timestamp"]}</td><td>{import_event["ontology_id"]}</td><td>{import_event["gene_count"]}</td><td>{import_event["term_count"]}</td></tr>')
+    report.append('</table>')
+
+    # add missing terms
     if len(api_results["ftrs_not_found"]) > 0:
         report.append(
             f'<br><b>These genes were not found in the genome:</b> <br>{("<br>").join(api_results["ftrs_not_found"])}<br>')
