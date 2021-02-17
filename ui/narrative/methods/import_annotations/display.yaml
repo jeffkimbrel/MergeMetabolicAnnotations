@@ -3,7 +3,6 @@
 #
 
 name     : Import Annotations from Staging
-subtitle : Import a file in TSV format from your staging area with new annotations to add to an existing genome
 tooltip  : Import a file in TSV format from your staging area with new annotations to add to an existing genome
 
 icon: data-teal.png
@@ -26,39 +25,83 @@ suggestions :
 parameters :
     ontology :
         ui-name : |
-            Annotation namespace
+            Annotation Type
         short-hint : |
-            Namespace of annotation terms used in the input file
-        long-hint  : |
             Namespace of annotation terms used in the input file
     annotation_file :
         ui-name : |
-            Annotation file path (TSV files only)
+            Annotation File (TSV files only)
         short-hint : |
-            Select the TSV file containing your annotation.
-        long-hint  : |
-            Select the TSV file containing your annotation.
+            Select the TSV file containing your annotation
     description :
         ui-name : |
             Description
         short-hint : |
-            Describe how the annotations were generated
-        long-hint  : |
             Describe how the annotations were generated
     genome :
       ui-name : |
             Genome to be annotated
       short-hint : |
             Select the Genome object that these annotations should be assigned to
-      long-hint  : |
-            Select the Genome object that these annotations should be assigned to
     output_name :
         ui-name : |
             Output genome name
         short-hint : |
             Provide a name for the modified genome that includes the new annotations
-        long-hint : |
-            Provide a name for the modified genome that includes the new annotations
 description : |
-    <p>Import a file in TSV format from your staging area containing new annotations to be mapped into a selected genome.
-        Please see the <a href="http://kbase.us/data-upload-download-guide/">Data Upload/Download Guide</a> for more information. </p>
+    <p>Import a file in TSV format from your staging area containing new annotations to be mapped into a selected genome.</p>
+
+    <h1 id="toc_0">Input Objects</h1>
+
+    <p>Select an existing genome object to add annotations to using the dropdown menu. This can be any KBase object of the &quot;genome&quot; type, including imported genbank files or output from other KBase apps (such as RAST or Prokka). </p>
+
+    <p>This requires gene calls to be present. If you are starting with a Fasta file or &quot;assembly&quot; type object, first run an app that will produce gene calls such as RAST or Prokka. Note, if you generate gene calls within KBase, it is important to use these gene calls and Gene IDs when annotating through external sources. To download a protein fasta file of your KBase gene calls, use the <a href="https://narrative.kbase.us/#catalog/modules/Report_util_landml">Text Reports - Genome</a> app to download an mRNA or CDS fasta file to ensure your imported Gene IDs match the Gene IDs in the genome object. </p>
+
+    <h1 id="toc_1">Parameters</h1>
+
+    <h2 id="toc_2">Annotation Type</h2>
+
+    <p>From the dropdown menu, select the annotation type of the imported annotations. </p>
+
+    <p>Currently, the import app can only accept one type of annotation per import event. If you have multiple annotation types, these can be imported using the Bulk Import tool.</p>
+
+    <h2 id="toc_3">Annotation File</h2>
+
+    <h3 id="toc_4">The Staging Area</h3>
+
+    <p>The staging area is a user’s uploaded files area, and is unique to each KBase user. To add your TSV file to the staging area, click the &quot;Add Data&quot; button and drag the file from your computer to the staging area tab. At this point, it is ready for the Import App - there is no need to further import the TSV as you might for other file types.</p>
+
+    <h3 id="toc_5">The TSV File</h3>
+
+    <p>The Import Annotations app expects a two-column tab-delimited/tab-separated file (TSV) with gene IDs in the first column, and the annotation term in the second column. These columns do not need a header line, and will be ignored if provided. There is some flexibility with the TSV file to accommodate direct output from annotation tools.</p>
+
+    <ul>
+    <li>Additional columns will be ignored, but will not cause the app to fail (as long as the gene IDs and annotation terms are in columns 1 and 2)</li>
+    <li>Rows with empty term fields will be ignored</li>
+    <li>Gene IDs are typically locus tags. If the genome object the annotations are to be added to have alias gene IDs, those can be used in column 1 of the TSV file</li>
+    <li>Multiple terms to be added to one gene must be on separate lines</li>
+    </ul>
+
+    <h2 id="toc_6">Description</h2>
+
+    <p>Each annotation event is stored separately in the genome object, and each of the events has a unique “description” field. Try to keep these as concise as possible to describe the source of the annotations.</p>
+
+    <ul>
+    <li>blastKOALA v96</li>
+    <li>deepEC</li>
+    <li>genbank products parsed with pathway tools</li>
+    </ul>
+
+    <p>It is best practice to make sure all descriptions within a genome object are unique. This may not fit all workflows, so internally the descriptions will have the ontology type and a time stamp appended to make sure they are truly unique. Be aware, however, that downstream tools (e.g. the compare, merge and metabolic modeling apps) may produce reports with only the description field and may therefore be ambiguous.</p>
+
+    <h2 id="toc_7">Output Objects</h2>
+
+    <h3 id="toc_8">New Genome</h3>
+
+    <p>A new genome object will be created and named according to the user defined &quot;output name&quot;. This genome object will have all prior annotation events, as well as the new one from the staging area.</p>
+
+    <h3 id="toc_9">Reports</h3>
+
+    <p>The &quot;add_ontology_summary.html&quot; report gives some statistics on how many features were in the TSV file, and how many Gene IDs did and did not match the genome object. Ideally, there should be no Gene IDs that were not found in the genome, so be sure to inspect any Gene IDs returned in this report to identify why they were not added. If necessary, correct the Gene IDs in your TSV file, then re-upload to the staging area. You can &quot;reset&quot; the Import App to re-import you new TSV.</p>
+
+    <p>By default, the Import App runs the Compare Annotations app to produce the &quot;get_ontology_summary.html&quot; report and several interactive plots. Refer to the Compare Annotations app documentation for further explanations.</p>
