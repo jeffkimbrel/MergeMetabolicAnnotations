@@ -4,7 +4,7 @@
   "authors" : ["jakimbrel","chenry","patrikd"],
   "contact" : "http://kbase.us/contact-us/",
   "visible" : true,
-  "categories" : [ "active","annotation","upload" ],
+  "categories" : [ "active","annotation","upload","metabolic_modeling"],
   "widgets": {
     "input": "kbaseNarrativeMethodInput",
     "output" : "no-display"
