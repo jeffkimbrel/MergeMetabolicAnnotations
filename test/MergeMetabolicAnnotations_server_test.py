@@ -77,14 +77,14 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # ret = self.serviceImpl.import_annotations(self.ctx, params_import)
 
         # bulk import app
-        # params_import = {
-        #     "debug": True,
-        #     "annotation_file": "pf5_bulk_test2.txt",
-        #     "genome": "52279/9/1",
-        #     "output_name": "import_bulk_genome",
-        #     "workspace_name": self.wsName
-        # }
-        # ret = self.serviceImpl.import_bulk_annotations(self.ctx, params_import)
+        params_import = {
+            "debug": True,
+            "annotation_file": "pf5_bulk_test2.txt",
+            "genome": "52279/9/1",
+            "output_name": "import_bulk_genome",
+            "workspace_name": self.wsName
+        }
+        ret = self.serviceImpl.import_bulk_annotations(self.ctx, params_import)
 
         # compare app
         # params_compare = {
@@ -98,24 +98,24 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)
 
         # merge app
-        params_merge = {
-            "debug": True,
-            "genome": "52279/12/1",
-            "output_name": "merge_test",
-            # "annotations_to_merge": [{
-            #     "annotation_source": ["ProkkaAnnotation:3.2.1:EC:2021_01_14_16_28_25"],
-            #     "annotation_weight": 0.6
-            # }, {
-            #     "annotation_source": ["BlastKOALA_V96_KOs:2021_01_21_02_23_59"],
-            #     "annotation_weight": 0.6
-            # }],
-            "annotations_to_merge": [{
-                "annotation_source": [],
-                "annotation_weight": 1
-            }],
-            "annotation_threshold": 2,
-            "keep_best_annotation_only": 0,
-            "description": "merge t=1 best=F",
-            "workspace_name": self.wsName
-        }
-        ret = self.serviceImpl.merge_metabolic_annotations(self.ctx, params_merge)
+        # params_merge = {
+        #     "debug": True,
+        #     "genome": "52279/12/1",
+        #     "output_name": "merge_test",
+        #     # "annotations_to_merge": [{
+        #     #     "annotation_source": ["ProkkaAnnotation:3.2.1:EC:2021_01_14_16_28_25"],
+        #     #     "annotation_weight": 0.6
+        #     # }, {
+        #     #     "annotation_source": ["BlastKOALA_V96_KOs:2021_01_21_02_23_59"],
+        #     #     "annotation_weight": 0.6
+        #     # }],
+        #     "annotations_to_merge": [{
+        #         "annotation_source": [],
+        #         "annotation_weight": 1
+        #     }],
+        #     "annotation_threshold": 2,
+        #     "keep_best_annotation_only": 0,
+        #     "description": "merge t=1 best=F",
+        #     "workspace_name": self.wsName
+        # }
+        # ret = self.serviceImpl.merge_metabolic_annotations(self.ctx, params_merge)

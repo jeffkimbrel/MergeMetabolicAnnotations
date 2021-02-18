@@ -3,7 +3,6 @@
 #
 
 name     : Bulk Import Annotations from Staging
-subtitle : Import a file in TSV format from your staging area with new annotations to add to an existing genome
 tooltip  : Import a file in TSV format from your staging area with new annotations to add to an existing genome
 
 icon: data-teal.png
@@ -29,22 +28,64 @@ parameters :
             Genome to be annotated
       short-hint : |
             Select the Genome object that these annotations should be assigned to
-      long-hint  : |
-            Select the Genome object that these annotations should be assigned to
     annotation_file :
         ui-name : |
             Annotation file path (TSV files only)
         short-hint : |
-            Select the TSV file containing your annotation.
-        long-hint  : |
             Select the TSV file containing your annotation.
     output_name :
         ui-name : |
             Output genome name
         short-hint : |
             Provide a name for the modified genome that includes the new annotations
-        long-hint : |
-            Provide a name for the modified genome that includes the new annotations
 description : |
-    <p>Import a file in TSV format from your staging area containing new annotations to be mapped into a selected genome.
-        Please see the <a href="http://kbase.us/data-upload-download-guide/">Data Upload/Download Guide</a> for more information. </p>
+    <p>The Bulk Import Annotations app is a wrapper around the <a href="https://appdev.kbase.us/#catalog/apps/MergeMetabolicAnnotations/import_annotations">Import Annotations</a> tool, allowing for the addition of functional annotations from external/third-party annotation tools to an existing genome object. Consult the <a href="https://appdev.kbase.us/#catalog/apps/MergeMetabolicAnnotations/import_annotations">Import Annotations</a> documentation for more details about it's core functionality.</p>
+
+    <p>The genome to add annotations to must be of the <a href="https://narrative.kbase.us/#spec/type/KBaseGenomes.Genome">KBaseGenomes.Genome</a> type, including gene calls. If you are starting with a Fasta file or &quot;Assembly&quot; type object, first run an app that will produce gene calls such as RAST or Prokka. Note, if you generate gene calls within KBase, it is important to use these gene calls and Gene IDs when annotating through external sources. To download a protein fasta file of your KBase gene calls, use the <a href="https://narrative.kbase.us/#catalog/modules/Report_util_landml">Text Reports - Genome</a> app to download an mRNA or CDS fasta file to ensure your imported Gene IDs match the Gene IDs in the genome object. </p>
+
+    <p><strong>The Staging Area</strong></p>
+
+    <p>The staging area is a user&#39;s <a href="https://docs.kbase.us/data/upload-download-guide/uploads">uploaded files</a> area, and is unique to each KBase user. To add your TSV file to the staging area, click the &quot;Add Data&quot; button (or the red plus sign) and drag the file from your computer to the &quot;Import&quot; tab. At this point, it is ready for the Import App - there is no need to further import the TSV as you might for other file types.</p>
+
+    <p><strong>The Annotation file</strong></p>
+
+    <p>The Bulk Import Annotations app expects a simple four-column tab-separated value (TSV) file with gene IDs in the first column,  the annotation term in the second column, annotation type in the third, and a description in the fourth. Here is an example of what a valid annotation file might look like:</p>
+
+    <div><pre><code class="language-none">gene_1  K00001    KO  blastKOALA
+    gene_1  EC:1.1.1.1  EC  deepEC
+    gene_2      KO  blastKOALA
+    gene_3  K00035  KO  blastKOALA
+    gene_3  K12191  KO  blastKOALA
+    gene_3  0019151 GO  deepGO
+    gene_3  EC:1.1.1.48    EC deepEC
+    ...
+    gene_3411   K03667  KO  blastKOALA</code></pre></div>
+
+    <p>This Bulk Import Annotations app will create an annotation event for each unique combination of annotation type (column 3) and description (column 4). The above example will iteratively run 3 instances of the Import App (EC+deepEC, KO+blastKOALA and GO_deepGO), resulting in one new genome object. There is some flexibility with the TSV file to accommodate direct output from annotation tools:</p>
+
+    <ul>
+    <li>The order of the rows does not matter, and the TSV can be sorted by gene ID, description, unsorted, etc. and the results will be the same</li>
+    <li>Additional columns will be ignored, but will not cause the app to fail (as long columns 1-4 are as defined above)</li>
+    <li>Any header or comments lines can usually be left in place, and will typically be ignored as a line with an unrecongnized gene ID.</li>
+    <li>Rows with empty term fields will be ignored (e.g. <em>gene_2</em> in above example)</li>
+    <li>Multiple terms to be added to one gene must be on separate lines, even if they are a part of the same annotation event (e.g. <em>gene_3</em> in above example)</li>
+    <li>Gene IDs are typically locus tags. If the genome object the annotations are to be added to have alias gene IDs, those can be used in column 1 of the TSV file. Make sure to check the output report for any gene IDs that were not recognized.</li>
+    <li>Commonly used prefixes for the annotation terms - such as "EC:" in front of EC numbers - are not required, but are generally tolerated by the Import app. Make sure to check the output report for any annotation terms that were not recognized.</li>
+    </ul>
+
+    <p><strong>Output Genome</strong></p>
+
+    <p>A new genome object will be created and named according to the user defined &quot;output name&quot;. This genome object will have all prior annotation events, as well as the new one from the staging area.</p>
+
+    <p>Each annotation event is stored separately in the genome object, and each of the events has a unique “description” field. Try to keep these as concise as possible to describe the source of the annotations.</p>
+
+    <p>It is best practice to make sure all descriptions within a genome object are short and unique. This may not fit all workflows, so internally the descriptions will have the ontology type and a time stamp appended to make sure they are truly unique. Be aware, however, that downstream tools (e.g. the compare, merge and metabolic modeling apps) may produce reports with only the description field and may therefore be ambiguous.</p>
+
+    <p><strong>Reports</strong></p>
+
+    <p>The &quot;add_ontology_summary.html&quot; report gives some statistics on how many features were in the TSV file, and how many Gene IDs did and did not match the genome object. Ideally, there should be no Gene IDs that were not found in the genome, so be sure to inspect any Gene IDs returned in this report to identify why they were not added. If necessary, correct the Gene IDs in your TSV file, then re-upload to the staging area. You can &quot;reset&quot; the Import App to re-import your new TSV. Likewise, make sure to check for any annotation terms which were not recognized. A common source of unrecognized annotation terms is deprecated terms which may still be in use by some annotation tools. For example, some old EC numbers may have been retired or merged with others by the Enzyme Commission, but may still be generated by some annotation tools. You might be able to identify the updated terms that should be used instead.</p>
+
+    <p>By default, the Bulk Import App runs the Compare Annotations app to produce the &quot;get_ontology_summary.html&quot; report and several interactive plots. Refer to the <a href="https://appdev.kbase.us/#catalog/apps/MergeMetabolicAnnotations/compare_metabolic_annotations/">Compare Annotations</a> app documentation for further explanations.</p>
+
+    <p><strong>Team members who developed & deployed algorithm in KBase:</strong>
+    Jeffrey Kimbrel, Patrik D'haeseleer, Chris Henry. For questions, please <a href="https://www.kbase.us/support/">contact us</a>.</p>

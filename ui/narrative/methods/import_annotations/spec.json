@@ -1,7 +1,7 @@
 {
   "name" : "Import Annotations from Staging",
   "ver" : "0.0.1",
-  "authors" : ["jakimbrel","chenry","patrikd"],
+  "authors" : ["kimbrel1","chenry","patrikd"],
   "contact" : "http://kbase.us/contact-us/",
   "visible" : true,
   "categories" : [ "active","annotation","upload","metabolic_modeling"],

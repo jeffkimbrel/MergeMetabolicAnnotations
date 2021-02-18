@@ -1,7 +1,7 @@
 {
   "name" : "Merge Metabolic Annotations",
   "ver" : "0.0.2",
-  "authors" : ["jakimbrel","chenry","patrikd"],
+  "authors" : ["kimbrel1","chenry","patrikd"],
   "contact" : "http://kbase.us/contact-us/",
   "visble" : true,
   "categories" : ["active","annotation","metabolic_modeling"],
