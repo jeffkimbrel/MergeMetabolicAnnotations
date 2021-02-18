@@ -39,4 +39,15 @@ parameters :
         long-hint : |
             Select the annotations you want to compare
 description : |
-    <p>Conduct side-by-side comparison of various genome annotations.</p>
+    <p>The Compare Metabolic Annotations app conduct side-by-side annotation sources present in a single genome. The following reports are generated, and can be downloaded as separate html files:</p>
+
+    <p><strong>Compare Annotations Summary</strong> (get_ontology_summary.html) - This report produces a table with all selected annotation sources in the genome, including their description, time they were added to the genome, the KBase App that was used to add them, the annotation ontology used, the number of genes annotated with ontology terms, the total number of unique annotation terms, how many unique ModelSEED reactions these terms map to, and the number of unique gene / ModelSEED reaction pairs. Note that some annotation types such as KEGG orthologs (KO) and Gene Ontology (GO) include many terms that do not directly map to metabolic reactions, so the number of unique terms may be much larger than the number of unique ModelSEED reaction.</p>
+
+    <p><strong>Totals Report</strong> (totals.html) - This report produces a vertical bar chart summarizing all of the unique features found in a genome object, grouped either by feature type (genes, unique terms, unique ModelSEED reactions, and unique gene / ModelSEED reaction pairs), or annotation description (that is, annotation source). Descriptions are truncated to first 20 characters.</p>
+
+    <p><strong>Agreements Report</strong> (agreements.html) - These plot shows the pairwise agreements (left) and disagreements (right) between annotation events in a genome object, in terms of genes annotated, unique ModelSeed reactions, or gene/ModelSEED reaction pairs. The agreements plot is symmetrical, showing the total annotation types found in both the row and the column events. The disagreements plot is non-symmetrical, showing the count of unique annotation types found in the column event, but missing from the row event. Descriptions are truncated to the first 20 characters.</p>
+
+    <p><strong>Cumulative Sum Count Report</strong> (csc.html) - This cumulative sum plot shows how the addition of new annotation events increases the unique list of features, in terms of genes annotated, unique ModelSeed reactions, or gene/ModelSEED reaction pairs. The y-axis is ranked so the annotation event at the top contributes the most new knowledge, followed by the next event down, etc. The x-axis shows a count of these new annotation types, and are color coded for new annotations, or by the 'highest' annotation event that it overlaps.</p>
+
+    <p><strong>Team members who developed & deployed algorithm in KBase:</strong>
+    Jeffrey Kimbrel, Patrik D'haeseleer, Chris Henry. For questions, please <a href="https://www.kbase.us/support/">contact us</a>.</p>

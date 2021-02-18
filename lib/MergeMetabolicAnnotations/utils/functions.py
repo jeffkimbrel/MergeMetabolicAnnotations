@@ -450,8 +450,9 @@ def plot_totals(event_summary, output_directory, descript_truncate=20):
 
     caption = hv.Div("""
     This plot summarizes all of the unique features found in a genome object,
-    grouped by feature type and annotation description. Descriptions are
-    truncated to first 20 characters.
+    grouped either by feature type (genes, unique terms, unique ModelSEED reactions,
+    and unique gene/ModelSEED reaction pairs), or annotation description (that is,
+    annotation source). Descriptions are truncated to first 20 characters.
     """).opts(width=150*len(event_summary.keys()))
 
     layout = hv.Layout(bars + caption).cols(1)
