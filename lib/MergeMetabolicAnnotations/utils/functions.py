@@ -9,6 +9,7 @@ import sys
 
 import holoviews as hv
 from holoviews import opts
+from holoviews.element import Div
 from bokeh.models import HoverTool
 hv.extension('bokeh')
 
@@ -416,13 +417,13 @@ def score_mergers(ontology_merged, params):
     return df
 
 
-def plot_totals(event_summary, output_directory):
+def plot_totals(event_summary, output_directory, descript_truncate=20):
 
     df = pd.DataFrame(columns=['DESCRIPTION', 'GENES', 'TERMS', 'MSRXNS', 'GENE_MSRXNS'])
 
     for event in event_summary:
         df = df.append(pd.Series(data={
-            'DESCRIPTION': event_summary[event]["description"],
+            'DESCRIPTION': event_summary[event]["description"][:descript_truncate] + "...",
             'GENES': len(event_summary[event]["genes"]),
             'TERMS': len(event_summary[event]["terms"]),
             'MSRXNS': len(event_summary[event]["msrxns"]),
@@ -436,7 +437,6 @@ def plot_totals(event_summary, output_directory):
             bars = hv.Bars(df, kdims=['DESCRIPTION', 'TYPE'])
         elif group == "Type":
             bars = hv.Bars(df, kdims=['TYPE', 'DESCRIPTION'])
-
         return bars
 
     sets = ['Description', 'Type']
@@ -447,16 +447,24 @@ def plot_totals(event_summary, output_directory):
                   tools=['hover'], width=150*len(event_summary.keys()), height=600, xrotation=90))
 
     p_path = os.path.join(output_directory, 'totals.html')
+
+    caption = hv.Div("""
+    This plot summarizes all of the unique features found in a genome object,
+    grouped by feature type and annotation description. Descriptions are
+    truncated to first 20 characters.
+    """).opts(width=150*len(event_summary.keys()))
+
+    layout = hv.Layout(bars + caption).cols(1)
+
     hv.output(widget_location='top')
-    hv.save(bars, p_path, backend='bokeh')
+    hv.save(layout, p_path, backend='bokeh')
 
     return {'path': output_directory,
             'name': os.path.basename(p_path),
             'description': 'Totals Report'}
 
 
-def plot_agreements(event_summary, output_directory):
-
+def plot_agreements(event_summary, output_directory, descript_truncate=25):
     def load_it_up(annotation_type, **kwargs):
         shared_genes = pd.DataFrame(columns=['A', 'B', 'AGREE', 'DISAGREE'])
 
@@ -466,10 +474,10 @@ def plot_agreements(event_summary, output_directory):
                 if event1 != event2:
                     b = set(event_summary[event2][annotation_type])
                     shared_genes = shared_genes.append(pd.Series(data={
-                        'A': event1, 'B': event2, 'AGREE': len(a & b), 'DISAGREE': len(a - b)}), ignore_index=True)
+                        'A': event1[:descript_truncate] + "...", 'B': event2[:descript_truncate] + "...", 'AGREE': len(a & b), 'DISAGREE': len(a - b)}), ignore_index=True)
                 else:
                     shared_genes = shared_genes.append(pd.Series(data={
-                        'A': event1, 'B': event2, 'AGREE': None, 'DISAGREE': None}), ignore_index=True)
+                        'A': event1[:descript_truncate] + "...", 'B': event2[:descript_truncate] + "...", 'AGREE': None, 'DISAGREE': None}), ignore_index=True)
 
         h1 = hv.HeatMap(shared_genes, ['A', 'B'], ['AGREE', 'DISAGREE'],
                         label="Agree (in row and column)")
@@ -479,7 +487,19 @@ def plot_agreements(event_summary, output_directory):
         h1.opts(cmap='bgy')
         h2.opts(cmap='YlOrRd')
 
-        return (h1 + h2).cols(1)
+        caption = hv.Div("""
+        These plot shows the pairwise agreements (left) and disagreements (right)
+        between annotation events in a genome object.
+
+        The agreements plot is symmetrical, showing the total annotation types
+        found in both the row and the column events.
+
+        The disagreements plot is non-symmetrical, showing the count of unique
+        annotation types found in the column event, but missing from the row
+        event. Descriptions are truncated to the first 20 characters.
+        """).opts(width=500)
+
+        return (h1 + h2 + caption).cols(2)
 
     sets = ['genes', 'msrxns', 'gene_msrxns']
     heatmap = hv.DynamicMap(load_it_up, kdims='Type').redim.values(Type=sets)
@@ -490,8 +510,8 @@ def plot_agreements(event_summary, output_directory):
                                 ("Disagree", '@DISAGREE')])
 
     heatmap.opts(
-        opts.HeatMap(width=700,
-                     height=100+75*len(event_summary.keys()),
+        opts.HeatMap(width=200+45*len(event_summary.keys()),
+                     height=100+45*len(event_summary.keys()),
                      tools=[hover],
                      axiswise=False,
                      logz=False,
@@ -587,9 +607,20 @@ def plot_csc(event_summary, output_directory, descript_truncate=50):
     #     opts.Bars(color=hv.Cycle('Colorblind'), invert_axes=True, show_legend=False, stacked=True,
     #               tools=['hover'], width=1000, height=100+50*len(event_summary.keys()), xrotation=90))
 
-    p_path = os.path.join(output_directory, 'csc2.html')
+    caption = hv.Div("""
+    This cumulative sum plot shows how the addition of new annotation events
+    increases the unique list of features. The y-axis is ranked so the annotation event at the top
+    contributes the most new knowledge, followed by the next event down, etc.
+
+    The x-axis shows a count of these new annotation types, and are color coded
+    for new annotations, or by the 'highest' annotation event that it overlaps.
+    """).opts(width=800)
+
+    layout = hv.Layout(seg + caption).cols(1)
+
+    p_path = os.path.join(output_directory, 'csc.html')
     hv.output(widget_location='top')
-    hv.save(seg, p_path, backend='bokeh')
+    hv.save(layout, p_path, backend='bokeh')
 
     return {'path': output_directory,
             'name': os.path.basename(p_path),
@@ -598,8 +629,10 @@ def plot_csc(event_summary, output_directory, descript_truncate=50):
 
 if __name__ == "__main__":
     ontology_selected = json.loads(
-        open("~/Desktop/get_ontology_dump_after_merge.json", "r").read())
+        open("/Users/kimbrel1/Desktop/get_ontology_dump_after_merge.json", "r").read())
 
     d = get_event_lists(ontology_selected)
-    p_path = plot_csc(d, "~/Desktop/")
+    p_path = plot_totals(d, "/Users/kimbrel1/Desktop/")
+    p_path = plot_csc(d, "/Users/kimbrel1/Desktop/")
+    p_path = plot_agreements(d, "/Users/kimbrel1/Desktop/")
     print(p_path)
