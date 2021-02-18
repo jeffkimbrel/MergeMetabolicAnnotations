@@ -57,16 +57,17 @@ description : |
     gene_3  K00035  KO  blastKOALA
     gene_3  K12191  KO  blastKOALA
     gene_3  0019151 GO  deepGO
+    gene_3  K00035  KO  kofamKOALA
     gene_3  EC:1.1.1.48    EC deepEC
     ...
     gene_3411   K03667  KO  blastKOALA</code></pre></div>
 
-    <p>This Bulk Import Annotations app will create an annotation event for each unique combination of annotation type (column 3) and description (column 4). The above example will iteratively run 3 instances of the Import App (EC+deepEC, KO+blastKOALA and GO_deepGO), resulting in one new genome object. There is some flexibility with the TSV file to accommodate direct output from annotation tools:</p>
+    <p>This Bulk Import Annotations app will create an annotation event for each unique combination of annotation type (column 3) and description (column 4). The above example will iteratively run 4 instances of the Import App (EC+deepEC, KO+blastKOALA, KO+kofamKOALA and GO+deepGO), resulting in one new genome object. There is some flexibility with the TSV file to accommodate direct output from annotation tools:</p>
 
     <ul>
     <li>The order of the rows does not matter, and the TSV can be sorted by gene ID, description, unsorted, etc. and the results will be the same</li>
     <li>Additional columns will be ignored, but will not cause the app to fail (as long columns 1-4 are as defined above)</li>
-    <li>Any header or comments lines can usually be left in place, and will typically be ignored as a line with an unrecongnized gene ID.</li>
+    <li>Any header or comments lines can usually be left in place, and will typically be ignored as a line with an unrecongnized gene ID</li>
     <li>Rows with empty term fields will be ignored (e.g. <em>gene_2</em> in above example)</li>
     <li>Multiple terms to be added to one gene must be on separate lines, even if they are a part of the same annotation event (e.g. <em>gene_3</em> in above example)</li>
     <li>Gene IDs are typically locus tags. If the genome object the annotations are to be added to have alias gene IDs, those can be used in column 1 of the TSV file. Make sure to check the output report for any gene IDs that were not recognized.</li>
