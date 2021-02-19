@@ -27,7 +27,7 @@ parameters :
       ui-name : |
             Genome to be annotated
       short-hint : |
-            Select the Genome object that these annotations should be assigned to
+            Select the Genome object that these annotations should be assigned to. Make sure the gene IDs used in the TSV file correspond to the gene IDs in the genome.
     annotation_file :
         ui-name : |
             Annotation file path (TSV files only)
@@ -39,7 +39,7 @@ parameters :
         short-hint : |
             Provide a name for the modified genome that includes the new annotations
 description : |
-    <p>The Bulk Import Annotations app is a wrapper around the <a href="https://appdev.kbase.us/#catalog/apps/MergeMetabolicAnnotations/import_annotations">Import Annotations</a> tool, allowing for the addition of functional annotations from external/third-party annotation tools to an existing genome object. Consult the <a href="https://appdev.kbase.us/#catalog/apps/MergeMetabolicAnnotations/import_annotations">Import Annotations</a> documentation for more details about it's core functionality.</p>
+    <p>The Bulk Import Annotations app is a wrapper around the <a href="https://appdev.kbase.us/#catalog/apps/MergeMetabolicAnnotations/import_annotations">Import Annotations</a> tool, allowing for the addition of functional annotations from external/third-party annotation tools to an existing genome object. Consult the <a href="https://appdev.kbase.us/#catalog/apps/MergeMetabolicAnnotations/import_annotations">Import Annotations</a> documentation for more details about its core functionality.</p>
 
     <p>You must have a KBase Genome object in your Narrative to import annotations into. You can import your own genome or add one from public data. If you are starting with a Fasta file or &quot;Assembly&quot; type object, first run an app that will produce gene calls such as RAST or Prokka. Note, if you generate gene calls within KBase, it is important to use these gene calls and Gene IDs when annotating through external sources. To download a protein fasta file of your KBase gene calls, use the <a href="https://narrative.kbase.us/#catalog/modules/Report_util_landml">Text Reports - Genome</a> app to download an mRNA or CDS fasta file to ensure your imported Gene IDs match the Gene IDs in the genome object. </p>
 
@@ -49,7 +49,19 @@ description : |
 
     <p><strong>The Annotation file</strong></p>
 
-    <p>The Bulk Import Annotations app expects a simple four-column tab-separated value (TSV) file with gene IDs in the first column,  the annotation term in the second column, annotation type in the third, and a description in the fourth. Here is an example of what a valid annotation file might look like:</p>
+    <p>The Bulk Import Annotations app expects a simple four-column tab-separated value (TSV) file with gene IDs in the first column,  the annotation term in the second column, annotation type in the third, and a short description of the annotation source in the fourth. These are the annotation types currently supported:</p>
+
+    <ul>
+    <li>"KO" - KEGG orthologs</li>
+    <li>"RO" - KEGG reactions</li>
+    <li>"EC" - Enzyme Commission numbers</li>
+    <li>"SSO" - SEED Subsystem Ontology</li>
+    <li>"META" - MetaCyc reaction identifiers</li>
+    <li>"MSRXN" - ModelSEED reaction identifiers</li>
+    <li>"GO" - Gene Ontology</li>
+    </ul>
+
+    <p>Here is an example of what a valid annotation file might look like:</p>
 
     <div><pre><code class="language-none">gene_1  K00001    KO  blastKOALA
     gene_1  EC:1.1.1.1  EC  deepEC
