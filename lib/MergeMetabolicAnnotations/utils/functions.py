@@ -130,6 +130,8 @@ def bulk_df_to_ontology(params):
 
             ontologies.append(ontology)
             logging.info(len(ontology['ontology_terms']))
+            for gene in ontology['ontology_terms']:
+                logging.info(description + "\t" + gene)
     return ontologies
 
 
