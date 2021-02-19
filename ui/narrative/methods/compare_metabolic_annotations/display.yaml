@@ -3,8 +3,8 @@
 #
 
 name     : Compare metabolic annotations
-subtitle : Conduct a side-by-side annotation of various metabolic annotations mapped into a genome
-tooltip  : Conduct a side-by-side annotation of various metabolic annotations mapped into a genome
+subtitle : Conduct a side-by-side comparison of various metabolic annotations mapped into a genome
+tooltip  : Conduct a side-by-side comparison of various metabolic annotations mapped into a genome
 
 icon: data-teal.png
 
@@ -39,7 +39,7 @@ parameters :
         long-hint : |
             Select the annotations you want to compare
 description : |
-    <p>The Compare Metabolic Annotations app conduct side-by-side annotation sources present in a single genome. The following reports are generated, and can be downloaded as separate html files:</p>
+    <p>The Compare Metabolic Annotations app conduct side-by-side comparisons of the annotation sources present in a single genome. The following reports are generated, and can be downloaded as separate html files:</p>
 
     <p><strong>Compare Annotations Summary</strong> (get_ontology_summary.html) - This report produces a table with all selected annotation sources in the genome, including their description, time they were added to the genome, the KBase App that was used to add them, the annotation ontology used, the number of genes annotated with ontology terms, the total number of unique annotation terms, how many unique ModelSEED reactions these terms map to, and the number of unique gene / ModelSEED reaction pairs. Note that some annotation types such as KEGG orthologs (KO) and Gene Ontology (GO) include many terms that do not directly map to metabolic reactions, so the number of unique terms may be much larger than the number of unique ModelSEED reaction.</p>
 
