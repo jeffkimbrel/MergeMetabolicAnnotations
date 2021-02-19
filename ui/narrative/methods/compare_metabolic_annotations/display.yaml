@@ -2,7 +2,7 @@
 # define display information
 #
 
-name     : Compare metabolic annotations
+name     : Compare Metabolic Annotations
 tooltip  : Conduct a side-by-side comparison of various metabolic annotations mapped into a genome
 
 icon: data-teal.png
