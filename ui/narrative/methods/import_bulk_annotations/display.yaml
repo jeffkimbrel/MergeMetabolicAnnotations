@@ -49,7 +49,19 @@ description : |
 
     <p><strong>The Annotation file</strong></p>
 
-    <p>The Bulk Import Annotations app expects a simple four-column tab-separated value (TSV) file with gene IDs in the first column,  the annotation term in the second column, annotation type in the third, and a description in the fourth. Here is an example of what a valid annotation file might look like:</p>
+    <p>The Bulk Import Annotations app expects a simple four-column tab-separated value (TSV) file with gene IDs in the first column,  the annotation term in the second column, annotation type in the third, and a short description of the annotation source in the fourth. These are the annotation types currently supported:</p>
+
+    <ul>
+    <li>"KO" - KEGG orthologs</li>
+    <li>"RO" - KEGG reactions</li>
+    <li>"EC" - Enzyme Commission numbers</li>
+    <li>"SSO" - SEED Subsystem Ontology</li>
+    <li>"META" - MetaCyc reaction identifiers</li>
+    <li>"MSRXN" - ModelSEED reaction identifiers</li>
+    <li>"GO" - Gene Ontology</li>
+    </ul>
+
+    <p>Here is an example of what a valid annotation file might look like:</p>
 
     <div><pre><code class="language-none">gene_1  K00001    KO  blastKOALA
     gene_1  EC:1.1.1.1  EC  deepEC
