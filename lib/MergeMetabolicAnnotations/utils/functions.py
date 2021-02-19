@@ -129,7 +129,7 @@ def bulk_df_to_ontology(params):
                         ]
 
             ontologies.append(ontology)
-
+            logging.info(len(ontology['ontology_terms']))
     return ontologies
 
 
