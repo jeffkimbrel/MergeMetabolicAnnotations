@@ -30,9 +30,7 @@ class CompareAnnotationsUtil:
 
         ontology_selected = f.filter_selected_ontologies(
             get_ontology_results, params, workflow="compare")
-        with open(os.path.join(self.scratch, "get_ontology_dump.json"), 'w') as outfile:
-            json.dump(ontology_selected, outfile, indent=2)
-
+        
         # make reports
         html_reports = []
         output_directory = os.path.join(self.scratch, str(uuid.uuid4()))
@@ -42,8 +40,11 @@ class CompareAnnotationsUtil:
         html_reports = f.compare_report_stack(html_reports, event_summary, output_directory)
 
         # add json dump
+        with open(os.path.join(output_directory, "get_ontology_dump.json"), 'w') as outfile:
+            json.dump(ontology_selected, outfile, indent=2)
+            
         html_reports.append({'path': output_directory,
-            'name': os.path.basename(outfile),
+            'name': "get_ontology_dump.json",
             'description': 'all results'})
 
         # finalize html reports
