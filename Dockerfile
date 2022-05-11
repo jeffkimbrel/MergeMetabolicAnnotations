@@ -8,6 +8,8 @@ MAINTAINER KBase Developer
 
 # RUN apt-get update
 
+RUN pip install --upgrade pip
+RUN pip install Pillow
 RUN pip install bokeh
 RUN pip install pandas
 RUN pip install holoviews

@@ -41,6 +41,11 @@ class CompareAnnotationsUtil:
         event_summary = f.get_event_lists(ontology_selected)
         html_reports = f.compare_report_stack(html_reports, event_summary, output_directory)
 
+        # add json dump
+        html_reports.append({'path': output_directory,
+            'name': os.path.basename(outfile),
+            'description': 'all results'})
+
         # finalize html reports
         report_params = {
             'message': '',

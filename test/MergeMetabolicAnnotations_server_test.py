@@ -77,25 +77,25 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         # ret = self.serviceImpl.import_annotations(self.ctx, params_import)
 
         # bulk import app
-        params_import = {
-            "debug": True,
-            "annotation_file": "pf5_bulk_test2.txt",
-            "genome": "52279/9/1",
-            "output_name": "import_bulk_genome",
-            "workspace_name": self.wsName
-        }
-        ret = self.serviceImpl.import_bulk_annotations(self.ctx, params_import)
-
-        # compare app
-        # params_compare = {
+        # params_import = {
         #     "debug": True,
+        #     "annotation_file": "pf5_bulk_test2.txt",
         #     "genome": "52279/9/1",
-        #     "output_name": "compare_test",
-        #     "annotations_to_compare": [],
-        #     # "annotations_to_compare": ["ProkkaAnnotation:3.2.1:EC:2021_01_14_16_28_25", "koalaFams_v96_KO:2021_01_14_16_32_51"],
+        #     "output_name": "import_bulk_genome",
         #     "workspace_name": self.wsName
         # }
-        # ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)
+        # ret = self.serviceImpl.import_bulk_annotations(self.ctx, params_import)
+
+        # compare app
+        params_compare = {
+            "debug": True,
+            "genome": "116449/93/2",
+            "output_name": "compare_test",
+            "annotations_to_compare": [],
+            # "annotations_to_compare": ["ProkkaAnnotation:3.2.1:EC:2021_01_14_16_28_25", "koalaFams_v96_KO:2021_01_14_16_32_51"],
+            "workspace_name": self.wsName
+        }
+        ret = self.serviceImpl.compare_metabolic_annotations(self.ctx, params_compare)
 
         # merge app
         # params_merge = {
