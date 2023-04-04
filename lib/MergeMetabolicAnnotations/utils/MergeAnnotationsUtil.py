@@ -6,7 +6,8 @@ import uuid
 
 from installed_clients.WorkspaceClient import Workspace as Workspace
 from installed_clients.KBaseReportClient import KBaseReport
-from installed_clients.annotation_ontology_apiServiceClient import annotation_ontology_api
+#from installed_clients.annotation_ontology_apiServiceClient import annotation_ontology_api
+from installed_clients.cb_annotation_ontology_apiClient import cb_annotation_ontology_api
 
 import MergeMetabolicAnnotations.utils.functions as f
 
@@ -20,7 +21,8 @@ class MergeAnnotationsUtil:
         self.scratch = config['scratch']
         self.kbr = KBaseReport(self.callback_url)
         self.ws_client = Workspace(config["workspace-url"])
-        self.anno_api = annotation_ontology_api()
+        # self.anno_api = annotation_ontology_api()
+        self.anno_api = cb_annotation_ontology_api(self.callback_url) # ,token=self.token
 
         self.events = {}
         self.weights = {}
