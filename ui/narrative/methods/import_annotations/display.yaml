@@ -28,6 +28,11 @@ parameters :
             Annotation Type
         short-hint : |
             Select the annotation type of the imported annotations in the input file
+    evidence :
+        ui-name : |
+            Probabilities included
+        short-hint : |
+            Select if additional columns for annotation probabilities are included
     annotation_file :
         ui-name : |
             Annotation File (TSV files only)

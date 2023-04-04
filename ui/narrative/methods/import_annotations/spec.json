@@ -73,6 +73,23 @@
       "text_options" : {}
     },
     {
+      "default_values" : [
+         "0"
+      ],
+      "advanced" : false,
+      "checkbox_options" : {
+         "unchecked_value" : 0,
+         "checked_value" : 1
+      },
+      "text_options" : {
+         "valid_ws_types" : []
+      },
+      "field_type" : "checkbox",
+      "allow_multiple" : false,
+      "optional" : false,
+      "id" : "evidence"
+    },
+    {
       "id" : "genome",
       "optional" : true,
       "advanced" : false,

@@ -40,11 +40,20 @@ def df_to_ontology(params, pass_df=None, method="Import Annotations"):
         else:
             annotations_file_path = os.path.join("/staging/", params['annotation_file'])
 
-        annotations = pd.read_csv(annotations_file_path,
+        if params['evidence'] == 0:
+            annotations = pd.read_csv(annotations_file_path,
                                   sep='\t',
                                   header=None,
                                   names=['gene', 'term']
                                   )
+        else:
+            annotations = pd.read_csv(annotations_file_path,
+                                  sep='\t',
+                                  header=None,
+                                  names=['gene', 'term', 'evidence', 'score']
+                                  )
+            
+            # TO DO: validate evidence terms against controlled vocab
 
     # remove duplicate rows, if any
     annotations = annotations.drop_duplicates()
@@ -62,6 +71,7 @@ def df_to_ontology(params, pass_df=None, method="Import Annotations"):
     }
 
     # add imported terms
+    ## to do, add scores somewhere once possible
     for index, row in annotations.iterrows():
         if pd.notnull(row['term']):
             if row['gene'] in ontology['ontology_terms']:
