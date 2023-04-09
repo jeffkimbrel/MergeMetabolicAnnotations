@@ -28,6 +28,8 @@ class ImportAnnotationsUtil:
     def run(self, ctx, params):
 
         ontology = f.df_to_ontology(params)
+        with open(os.path.join(self.scratch, "ontology_before_api.json"), 'w') as outfile:
+            json.dump(ontology, outfile, indent=2)
 
         add_ontology_results = self.anno_api.add_annotation_ontology_events({
             "input_ref": params['genome'],

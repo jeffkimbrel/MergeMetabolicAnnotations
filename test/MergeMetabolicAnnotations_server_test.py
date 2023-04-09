@@ -68,10 +68,10 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         params_import = {
             "debug": True,
             "ontology": "KO",
-            "annotation_file": "ARW1R1.KOALA.20191015.forUpload.txt",
+            "annotation_file": "evidence_test.txt",
             "description": "import_test",
-            "genome": "52279/9/1",
-            "evidence" : 0,
+            "genome": "32903/9/1",
+            "evidence" : 1,
             "output_name": "import_genome",
             "workspace_name": self.wsName
         }

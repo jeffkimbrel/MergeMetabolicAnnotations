@@ -42,16 +42,33 @@ def df_to_ontology(params, pass_df=None, method="Import Annotations"):
 
         if params['evidence'] == 0:
             annotations = pd.read_csv(annotations_file_path,
-                                  sep='\t',
-                                  header=None,
-                                  names=['gene', 'term']
-                                  )
+                        sep='\t',
+                        header=0
+                        )
+    
+            if {'gene', 'term'}.issubset(annotations.columns):
+                annotations = annotations[["gene", "term"]]
+            else:
+                annotations = pd.read_csv(annotations_file_path,
+                                    sep='\t',
+                                    usecols = [0,1],
+                                    header=None,
+                                    names=['gene', 'term']
+                                    )
+                
+
+
         else:
             annotations = pd.read_csv(annotations_file_path,
-                                  sep='\t',
-                                  header=None,
-                                  names=['gene', 'term', 'evidence', 'score']
-                                  )
+                            sep='\t',
+                            header=0,
+                            )
+    
+            # pivot from wide to long format
+            if {'gene', 'term'}.issubset(annotations.columns):
+                pass
+            else:
+                sys.exit("ERROR: table appears to be missing the 'gene' and 'term' column headers")
             
             # TO DO: validate evidence terms against controlled vocab
 
@@ -70,18 +87,39 @@ def df_to_ontology(params, pass_df=None, method="Import Annotations"):
         'term_count': int(annotations['term'].nunique())  # not used in the api
     }
 
-    # add imported terms
-    ## to do, add scores somewhere once possible
+    # add imported terms, and optional evidence scores is the parameter checkbox is selected (1)
     for index, row in annotations.iterrows():
         if pd.notnull(row['term']):
             if row['gene'] in ontology['ontology_terms']:
-                ontology['ontology_terms'][row['gene']].append(
-                    {'term': row['term']}
-                )
+                if params['evidence'] == 0:
+                    ontology['ontology_terms'][row['gene']].append(
+                        {'term': row['term']}
+                    )
+                else: # if evidence checkbox is checked
+                    evidence_terms = row.to_dict()
+                    evidence_terms.pop('gene', None)
+                    evidence_terms.pop('term', None)
+
+                    ontology['ontology_terms'][row['gene']].append(
+                            {'term': row['term'],
+                            'evidence': {'scores': evidence_terms}}
+                    )
             else:
-                ontology['ontology_terms'][row['gene']] = [
-                    {'term': row['term']}
-                ]
+                if params['evidence'] == 0:
+                    ontology['ontology_terms'][row['gene']] = [
+                            {'term': row['term']}
+                        ]
+                else: # if evidence checkbox is checked
+
+                    evidence_terms = row.to_dict()
+                    evidence_terms.pop('gene', None)
+                    evidence_terms.pop('term', None)
+
+                    ontology['ontology_terms'][row['gene']] = [
+                        {'term': row['term'],
+                            'evidence': {'scores': evidence_terms}}
+                    ]
+
 
     return [ontology]
 
