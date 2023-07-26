@@ -140,6 +140,10 @@
           "target_property": "description"
         },
         {
+          "input_parameter": "evidence",
+          "target_property": "evidence"
+        },
+        {
           "input_parameter": "genome",
           "target_property": "genome",
           "target_type_transform": "resolved-ref"
