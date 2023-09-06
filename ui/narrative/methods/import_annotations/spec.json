@@ -48,6 +48,10 @@
           {
               "display": "SSO",
               "value": "SSO"
+          },
+          {
+              "display": "Rhea reactions",
+              "value": "RHEA"
           }
         ]
       }

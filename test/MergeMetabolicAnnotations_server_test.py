@@ -67,12 +67,12 @@ class MergeMetabolicAnnotationsTest(unittest.TestCase):
         #import app
         params_import = {
             "debug": True,
-            "ontology": "KO",
-            "annotation_file": "evidence_test.txt",
-            "description": "import_test",
+            "ontology": "RHEA",
+            "annotation_file": "Swissprot_Rhea.txt",
+            "description": "rhea_import_test",
             "genome": "32903/9/1",
-            "evidence" : 1,
-            "output_name": "import_genome",
+            "evidence" : 0,
+            "output_name": "rhea_import_test",
             "workspace_name": self.wsName
         }
         ret = self.serviceImpl.import_annotations(self.ctx, params_import)
