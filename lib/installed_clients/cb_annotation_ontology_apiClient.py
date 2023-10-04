@@ -24,7 +24,7 @@ class cb_annotation_ontology_api(object):
             password=None, token=None, ignore_authrc=False,
             trust_all_ssl_certificates=False,
             auth_svc='https://ci.kbase.us/services/auth/api/legacy/KBase/Sessions/Login',
-            service_ver='release',
+            service_ver='dev',
             async_job_check_time_ms=100, async_job_check_time_scale_percent=150, 
             async_job_check_max_time_ms=300000):
         if url is None:
@@ -56,8 +56,11 @@ class cb_annotation_ontology_api(object):
            parameter "feature_types" of mapping from String to String,
            parameter "ontology_terms" of mapping from String to list of type
            "AnnotationOntologyTerm" -> structure: parameter "term" of String,
-           parameter "modelseed_ids" of list of String, parameter "evidence"
-           of String
+           parameter "modelseed_ids" of list of String, parameter
+           "evidence_only" of Long, parameter "evidence" of type "Evidence"
+           -> structure: parameter "reference" of tuple of size 2: parameter
+           "entity_type" of String, parameter "ref_entity" of String,
+           parameter "scores" of mapping from String to Double
         """
         return self._client.run_job('cb_annotation_ontology_api.get_annotation_ontology_events',
                                     [params], self._service_ver, context)
@@ -78,7 +81,10 @@ class cb_annotation_ontology_api(object):
            String, parameter "ontology_terms" of mapping from String to list
            of type "AnnotationOntologyTerm" -> structure: parameter "term" of
            String, parameter "modelseed_ids" of list of String, parameter
-           "evidence" of String
+           "evidence_only" of Long, parameter "evidence" of type "Evidence"
+           -> structure: parameter "reference" of tuple of size 2: parameter
+           "entity_type" of String, parameter "ref_entity" of String,
+           parameter "scores" of mapping from String to Double
         :returns: instance of type "AddAnnotationOntologyEventsOutput" ->
            structure: parameter "output_ref" of String
         """
