@@ -68,6 +68,8 @@ class MergeMetabolicAnnotations:
         output = import_runner.run(ctx, params)
         #END import_annotations
 
+        print(output)
+
         #At some point might do deeper type checking...
         if not isinstance(output, object):
             raise ValueError('Method import_annotations return value ' +

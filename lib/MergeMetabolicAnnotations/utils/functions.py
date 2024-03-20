@@ -260,18 +260,18 @@ def get_event_lists(ontology):
                             'method_version': event['method_version'],
                             'ontology_id': event['ontology_id']
                             }
+        if "ontology_terms" in event:
+            for gene in event["ontology_terms"]:
+                if gene in gene_features:
+                    events[event_id]['genes'].append(gene)
+                    for entry in event["ontology_terms"][gene]:
+                        if "term" in entry.keys():
+                            events[event_id]['terms'].append(entry['term'])
 
-        for gene in event["ontology_terms"]:
-            if gene in gene_features:
-                events[event_id]['genes'].append(gene)
-                for entry in event["ontology_terms"][gene]:
-                    if "term" in entry.keys():
-                        events[event_id]['terms'].append(entry['term'])
-
-                    if "modelseed_ids" in entry.keys():
-                        events[event_id]['msrxns'] += entry['modelseed_ids']
-                        for msrxn in entry['modelseed_ids']:
-                            events[event_id]['gene_msrxns'].append(gene + '_' + msrxn)
+                        if "modelseed_ids" in entry.keys():
+                            events[event_id]['msrxns'] += entry['modelseed_ids']
+                            for msrxn in entry['modelseed_ids']:
+                                events[event_id]['gene_msrxns'].append(gene + '_' + msrxn)
 
         events[event_id]['genes'] = list(set(events[event_id]['genes']))
         events[event_id]['terms'] = list(set(events[event_id]['terms']))
