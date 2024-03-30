@@ -52,13 +52,18 @@ class MergeAnnotationsUtil:
 
         # scored_df = f.score_mergers(ontology_merged, params)
         scored_df = f.score_mergers(ontology_merged, params)
-        # scored_df.to_csv(os.path.join(self.scratch, "scored.txt"), sep="\t", index=False)
+        scored_df.to_csv(os.path.join(self.scratch, "scored.txt"), sep="\t", index=False)
 
-        filtered_df = scored_df[scored_df['pass'] == 1]
+        # only keey the rows that passed the threshold
+        passed_df = scored_df[scored_df['pass'] == 1]
+
+        # the scores df has extra columns, this will only get the merged score column to pass to the next step
+        filtered_df = passed_df.loc[:, ['gene', 'term', 'score']] 
 
         ###### BELOW: This is basically just the run code from the import app ######
 
         ontology = f.df_to_ontology(params, pass_df=filtered_df, method="Merge Annotations")
+        #print(ontology)
 
         add_ontology_results = self.anno_api.add_annotation_ontology_events({
             "input_ref": params['genome'],

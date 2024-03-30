@@ -91,7 +91,17 @@ def df_to_ontology(params, pass_df=None, method="Import Annotations"):
     for index, row in annotations.iterrows():
         if pd.notnull(row['term']):
             if row['gene'] in ontology['ontology_terms']:
-                if params['evidence'] == 0:
+                if method == "Merge Annotations":
+                    # score mergers will output the sum of the weights as the score
+                    evidence_terms = row.to_dict()
+                    evidence_terms.pop('gene', None)
+                    evidence_terms.pop('term', None)
+
+                    ontology['ontology_terms'][row['gene']] = [
+                        {'term': row['term'],
+                            'evidence': {'scores': evidence_terms}}
+                    ]
+                elif params['evidence'] == 0:
                     ontology['ontology_terms'][row['gene']].append(
                         {'term': row['term']}
                     )
@@ -105,7 +115,17 @@ def df_to_ontology(params, pass_df=None, method="Import Annotations"):
                             'evidence': {'scores': evidence_terms}}
                     )
             else:
-                if params['evidence'] == 0:
+                if method == "Merge Annotations":
+                    # score mergers will output the sum of the weights as the score
+                    evidence_terms = row.to_dict()
+                    evidence_terms.pop('gene', None)
+                    evidence_terms.pop('term', None)
+
+                    ontology['ontology_terms'][row['gene']] = [
+                        {'term': row['term'],
+                            'evidence': {'scores': evidence_terms}}
+                    ]
+                elif params['evidence'] == 0:
                     ontology['ontology_terms'][row['gene']] = [
                             {'term': row['term']}
                         ]
@@ -464,6 +484,7 @@ def score_mergers(ontology_merged, params):
             df = df.append(score_series, ignore_index=True)
 
     # returns all results
+    #df = df.fillna(0)
     return df
 
 
