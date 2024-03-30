@@ -52,6 +52,42 @@
           {
               "display": "Rhea reactions",
               "value": "RHEA"
+          },
+          {
+              "display": "antiSMASH",
+              "value": "antiSMASH-CV"
+          },
+          {
+              "display": "ModelSEED CPD",
+              "value": "MSCPD"
+          },
+          {
+              "display": "ModelSEED CPX",
+              "value": "MSCPX"
+          },
+          {
+              "display": "BiGG reactions",
+              "value": "BIGG"
+          },
+          {
+              "display": "BiGG compounds",
+              "value": "BIGGCPD"
+          },
+          {
+              "display": "TCDB Transporters",
+              "value": "TC"
+          },
+          {
+              "display": "TIGR",
+              "value": "TIGR"
+          },
+          {
+              "display": "PFAM",
+              "value": "PF"
+          },
+          {
+              "display": "Panther",
+              "value": "PTHR"
           }
         ]
       }
