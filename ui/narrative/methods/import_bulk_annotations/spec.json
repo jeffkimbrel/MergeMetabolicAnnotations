@@ -3,8 +3,8 @@
   "ver" : "0.0.1",
   "authors" : ["kimbrel1","chenry","patrikd"],
   "contact" : "http://kbase.us/contact-us/",
-  "visible" : true,
-  "categories" : [ "active","annotation","upload","metabolic_modeling"],
+  "visible" : false,
+  "categories" : [ "inactive"],
   "widgets": {
     "input": "kbaseNarrativeMethodInput",
     "output" : "no-display"
