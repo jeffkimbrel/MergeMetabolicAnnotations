@@ -59,6 +59,16 @@ description : |
     <li>"META" - MetaCyc reaction identifiers</li>
     <li>"MSRXN" - ModelSEED reaction identifiers</li>
     <li>"GO" - Gene Ontology</li>
+    <li>"RHEA" - Rhea reactions</li>
+    <li>"antiSMASH-CV" - antiSMASH</li>
+    <li>"MSCPD" - ModelSEED CPD</li>
+    <li>"MSCPX" - ModelSEED CPX</li>
+    <li>"BIGG" - BiGG reactions</li>
+    <li>"BIGGCPD" - BiGG compounds</li>
+    <li>"TC" - TCDB Transporters</li>
+    <li>"TIGR" - TIGRfam</li>
+    <li>"PF" - PFAM</li>
+    <li>"PTHR" - Panther</li>
     </ul>
 
     <p>Here is an example of what a valid annotation file might look like:</p>

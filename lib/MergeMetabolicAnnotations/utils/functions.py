@@ -87,7 +87,7 @@ def df_to_ontology(params, pass_df=None, method="Import Annotations"):
         'term_count': int(annotations['term'].nunique())  # not used in the api
     }
 
-    # add imported terms, and optional evidence scores is the parameter checkbox is selected (1)
+    # add imported terms, and optional evidence scores if the parameter checkbox is selected (1)
     for index, row in annotations.iterrows():
         if pd.notnull(row['term']):
             if row['gene'] in ontology['ontology_terms']:

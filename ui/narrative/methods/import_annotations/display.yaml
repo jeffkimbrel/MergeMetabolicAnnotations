@@ -30,9 +30,9 @@ parameters :
             Select the annotation type of the imported annotations in the input file
     evidence :
         ui-name : |
-            Probabilities included
+            Scores included
         short-hint : |
-            Select if additional columns for annotation probabilities are included
+            Select if additional columns for annotation scores are included
     annotation_file :
         ui-name : |
             Annotation File (TSV files only)
@@ -66,7 +66,29 @@ description : |
 
     <p><strong>The Annotation file</strong></p>
 
-    <p>The Import Annotations app expects a simple two-column tab-separated value (TSV) file with gene IDs in the first column, and the annotation term in the second column. Here is an example of what a valid annotation file might look like:</p>
+    <p>The Import Annotations app expects a simple two-column tab-separated value (TSV) file with gene IDs in the first column, and the annotation term in the second column. These are the annotation types currently supported:</p>
+
+    <ul>
+    <li>"KO" - KEGG orthologs</li>
+    <li>"RO" - KEGG reactions</li>
+    <li>"EC" - Enzyme Commission numbers</li>
+    <li>"SSO" - SEED Subsystem Ontology</li>
+    <li>"META" - MetaCyc reaction identifiers</li>
+    <li>"MSRXN" - ModelSEED reaction identifiers</li>
+    <li>"GO" - Gene Ontology</li>
+    <li>"RHEA" - Rhea reactions</li>
+    <li>"antiSMASH-CV" - antiSMASH</li>
+    <li>"MSCPD" - ModelSEED CPD</li>
+    <li>"MSCPX" - ModelSEED CPX</li>
+    <li>"BIGG" - BiGG reactions</li>
+    <li>"BIGGCPD" - BiGG compounds</li>
+    <li>"TC" - TCDB Transporters</li>
+    <li>"TIGR" - TIGRfam</li>
+    <li>"PF" - PFAM</li>
+    <li>"PTHR" - Panther</li>
+    </ul>
+
+    <p>Here is an example of what a valid annotation file might look like:</p>
 
     <div><pre><code class="language-none">gene_1  K00001
     gene_2
@@ -78,7 +100,7 @@ description : |
     <p>Depending on the output format from the third-party annotation tool you want to use, you may need to use a small script to adjust some of the formatting. There is some flexibility with the TSV file to accommodate direct output from annotation tools:</p>
 
     <ul>
-    <li>Additional columns will be ignored, but will not cause the app to fail (as long as the gene IDs and annotation terms are in columns 1 and 2)</li>
+    <li>Additional columns will be ignored, but will not cause the app to fail (as long as the gene IDs and annotation terms are in columns 1 and 2) If the "Scores included" checkbox was checked, the content of any additional columns will be stored as evidence scores for the annotation (e.g. probabilities, E-values, bitscores, etc).</li>
     <li>Any header or comments lines can usually be left in place, and will typically be ignored as a line with an unrecongnized gene ID.</li>
     <li>Rows with empty term fields will be ignored (e.g. <em>gene_2</em> in above example)</li>
     <li>Multiple terms to be added to one gene must be on separate lines (e.g. <em>gene_3</em> in above example)</li>
